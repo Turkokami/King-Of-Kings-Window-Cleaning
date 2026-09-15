@@ -41,9 +41,15 @@ export const AWARDS: Award[] = [
   { year: 2024, name: 'Whatcom Business Alliance Awards', level: 'Finalist', category: 'Start-Up Business of the Year', awardedBy: 'Whatcom Business Alliance', headline: false },
 ];
 
-/** schema.org `award` — one plain string per recognition. */
+/** schema.org `award` — one plain string per recognition.
+ *
+ * `level` is already the whole word for Nextdoor's "Winner" and the WBA's
+ * "Finalist", so appending " Winner," to everything that is not a Finalist
+ * emitted "Winner Winner, Neighborhood Favorite" into the schema graph. Only the
+ * placing levels take the noun.
+ */
 export const awardStrings = (): string[] =>
-  AWARDS.map((a) => `${a.year} ${a.name} — ${a.level}${a.level === 'Finalist' ? ',' : ' Winner,'} ${a.category} (${a.awardedBy})`);
+  AWARDS.map((a) => `${a.year} ${a.name} — ${a.level}${['Gold', 'Silver', 'Platinum'].includes(a.level) ? ' Winner,' : ','} ${a.category} (${a.awardedBy})`);
 
 export const latestHeadlineAward = (): Award | null =>
   AWARDS.filter((a) => a.headline).sort((a, b) => b.year - a.year)[0] ?? null;

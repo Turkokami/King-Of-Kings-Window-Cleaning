@@ -50,7 +50,13 @@ const jsonld = buildGraph({ ...schema, description });
   <meta name="twitter:image" content={social} />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  {/*
+    Manrope is self-hosted (public/fonts), so there is no Google Fonts origin to
+    preconnect to any more — that handshake was removed with the third-party
+    font. The face is preloaded because it sets every heading on the page and a
+    swap-in after first paint is the visible "unfinished" flash we are fixing.
+  */}
+  <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
   {/* Only where the widget will actually load — a preconnect to a host this page
       never calls is a wasted handshake, not a free one. */}
   {BUSINESS.chatWidget.enabled && chatOk && (

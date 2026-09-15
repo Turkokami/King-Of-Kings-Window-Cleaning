@@ -44,30 +44,58 @@ const schema = {
 ---
 <BaseLayout schema={schema} noindex={!hasBody}>
   <article class="t1-home">
-    <h1>Window &amp; Exterior Cleaning in Bellingham, WA</h1>
-    <AnswerBox text={answer} />
+    {/*
+      The hero band. The brand is a gold mark on near-black navy and the live
+      site opens on exactly that; the first build opened on a bare H1 against
+      white, which is why it read as unfinished. One phrase of the headline
+      carries the gold, which is the brand's own signature move.
+      Still exactly one H1 — the span is inside it.
+    */}
+    <div class="hero">
+      <p class="eyebrow">Whatcom &amp; Skagit County · Locally owned</p>
+      <h1>Window &amp; Exterior Cleaning in <span class="accent">Bellingham, WA</span></h1>
+      <p class="hero__lead">
+        Windows, gutters, roofs and siding — cleaned on a schedule that suits a
+        wet, wooded, coastal county, from Bellingham to Anacortes.
+      </p>
 
-    {/* Trust strip — near the hero, not buried in one block at the bottom (doctrine #5). */}
-    <div class="trust-strip">
-      <span>{credentialLine()}</span>
-      {streakClaim() && <span>{streakClaim()}</span>}
+      <AnswerBox text={answer} />
+
+      {/* Trust strip — near the hero, not buried in one block at the bottom (doctrine #5). */}
+      <div class="trust-strip">
+        <span>{credentialLine()}</span>
+        {streakClaim() && <span>{streakClaim()}</span>}
+      </div>
+
+      <div class="hero__actions">
+        <a class="hero__btn hero__btn--primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+        <a class="hero__btn hero__btn--ghost" href={BUSINESS.quoteUrl}>Get a free on-site quote</a>
+      </div>
     </div>
 
     <ExpertBlock />
 
     <section class="entry-grid">
-      <h2>What we do</h2>
+      <p class="eyebrow">What we do</p>
+      <h2>Exterior cleaning, done by the owner's own crews</h2>
       <ul>{buildableServices().map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
       <p><a href="/services/">All services</a></p>
     </section>
 
-    {Content && <Content />}
+    {Content && <div class="prose"><Content /></div>}
 
     <section class="awards-strip">
-      <h2>Recognition</h2>
+      <p class="eyebrow">Recognition</p>
+      <h2>Voted for by Whatcom County, not by us</h2>
+      {/*
+        Every award here is real, dated and attributed to the body that gave it —
+        which is the substantiated replacement for the legacy site's
+        "Bellingham's Best" (audit finding P0-5). Listing them is not the same as
+        leading with one: `headline` still governs what the CTA is allowed to claim.
+      */}
       <ul>
-        {AWARDS.filter((a) => a.headline).map((a) => (
-          <li>{a.year} {a.name} — {a.level} Winner, {a.category} <em>({a.awardedBy})</em></li>
+        {AWARDS.map((a) => (
+          <li>{a.year} {a.name} — {a.level}{['Gold', 'Silver', 'Platinum'].includes(a.level) ? ' Winner,' : ','} {a.category} <em>({a.awardedBy})</em></li>
         ))}
       </ul>
       <p><a href="/team/randy-fee/">More about Randy and the company</a></p>

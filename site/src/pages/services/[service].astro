@@ -80,8 +80,11 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
   <article class="t2">
-    <h1>{service.name} in Whatcom &amp; Skagit County</h1>
-    <AnswerBox text={answer} />
+    <div class="hero">
+      <p class="eyebrow">Whatcom &amp; Skagit County</p>
+      <h1>{service.name} in <span class="accent">Whatcom &amp; Skagit County</span></h1>
+      <AnswerBox text={answer} />
+    </div>
     <ExpertBlock />
 
     {Content ? <Content /> : (

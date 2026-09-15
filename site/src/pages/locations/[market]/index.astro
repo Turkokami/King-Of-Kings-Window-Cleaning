@@ -63,8 +63,11 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
   <article class="t4-city">
-    <h1>Exterior Cleaning in {market.name}, WA</h1>
-    <AnswerBox text={answer} />
+    <div class="hero">
+      <p class="eyebrow">{market.county} County</p>
+      <h1>Exterior Cleaning in <span class="accent">{market.name}, WA</span></h1>
+      <AnswerBox text={answer} />
+    </div>
     <ExpertBlock context={`We run the ${market.name} route on a regular rotation.`} />
 
     {Content ? <Content /> : (
