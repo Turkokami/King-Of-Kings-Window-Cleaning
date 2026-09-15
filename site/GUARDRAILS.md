@@ -85,6 +85,25 @@ changing:**
 
 ---
 
+## Substance gate waivers
+
+### Ferndale window cleaning — item 2 (first-party proof) WAIVED
+
+| | |
+|---|---|
+| Page | `src/content/cityService/ferndale/window-cleaning.md` |
+| Decided | 15 Sep 2026, by the site operator, to get the Keystone 7A build live on Vercel |
+| Gate | `scripts/word-count.mjs` → `ITEM2_WAIVERS` |
+| Still owed | A real Ferndale job photo, dated job note or Ferndale customer review |
+
+The placeholder is still a placeholder. It is not rendered on the page, and the
+gate prints a `WAIVED` line on every build so the debt stays visible. **When the
+proof lands, replace `firstPartyProof` and delete the waiver entry.** Do not add a
+second page to the waiver list to get a build through — that is the loophole the
+gate exists to close.
+
+---
+
 ## Things that look like bugs and are not
 
 - **`alt=""` on the header logo.** Correct: the link carries an `aria-label`, so

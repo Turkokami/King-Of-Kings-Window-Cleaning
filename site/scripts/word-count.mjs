@@ -65,12 +65,21 @@ if (!files.length) {
   process.exit(0);
 }
 
+/*
+ * Item 2 waivers — one entry per page, each with who decided and when. A waived
+ * placeholder still prints on every build. Recorded in GUARDRAILS.md; delete the
+ * entry the day the real proof lands.
+ */
+const ITEM2_WAIVERS = {
+  'cityService/ferndale/window-cleaning.md': 'operator direction 2026-09-15, Ferndale job proof still owed',
+};
+
 const warnings = [];
 const failures = [];
 const rows = [];
 
 for (const f of files) {
-  const rel = f.replace(`${ROOT}/`, '');
+  const rel = path.relative(ROOT, f).split(path.sep).join('/');
   const collection = rel.split('/')[0];
   const band = BANDS[collection];
   const raw = fs.readFileSync(f, 'utf8');
@@ -109,7 +118,9 @@ for (const f of files) {
     if (!/firstPartyProof:/.test(fm)) {
       failures.push(`SUBSTANCE GATE  ${rel}: no firstPartyProof — item 2 requires proof from this geography`);
     } else if (placeholder.test(field('firstPartyProof'))) {
-      failures.push(`SUBSTANCE GATE  ${rel}: firstPartyProof is a placeholder — item 2 needs a real job, photo or review`);
+      const msg = `SUBSTANCE GATE  ${rel}: firstPartyProof is a placeholder — item 2 needs a real job, photo or review`;
+      if (ITEM2_WAIVERS[rel]) console.warn(`WAIVED  ${msg} — ${ITEM2_WAIVERS[rel]}`);
+      else failures.push(msg);
     }
     // Item 3 — one fact the top five competitors don't carry.
     if (!/uniqueFact:/.test(fm)) {

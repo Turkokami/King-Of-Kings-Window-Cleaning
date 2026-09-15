@@ -26,7 +26,7 @@ export const BUSINESS = {
   // exterior cleaner in Whatcom County. Write to that, not around it.
   founded: '2024-03-26',                                    // VERIFIED
   foundingYear: 2024 as Pending<number>,                    // VERIFIED
-  logo: '/brand/king-of-kings-logo.svg',
+  logo: '/brand/king-of-kings-logo.png',
   socialImage: '/brand/king-of-kings-social.jpg',           // M7 — shared hero on every page
 
   /**
