@@ -1,0 +1,77 @@
+---
+/**
+ * ChatWidget.astro — the LeadConnector (GoHighLevel) chat widget, deferred.
+ *
+ * PROVENANCE. Requested 14 Sep 2026 by Cassidy Alber via the business inbox,
+ * forwarded by Randy Fee. Ownership confirmed by the client 15 Sep 2026: Cassidy
+ * is Randy's wife and the widget belongs to their own CRM sub-account. Recorded
+ * here and in GUARDRAILS.md so the next session does not find an unexplained
+ * third-party tag and "clean it up".
+ *
+ * WHY IT IS NOT THE SNIPPET AS SUPPLIED. The request was for a plain <script>
+ * before </body> on every page. That is the normal instruction and on this build
+ * it would cost four things:
+ *
+ *   1. Dimension 9 / INP. This build ships ZERO client JavaScript. A blocking
+ *      third-party loader on every page, which then fetches a second script from
+ *      the same host, is the classic INP regressor — and v3.2 named INP as the
+ *      field metric precisely because it diverges from lab TBT on exactly this.
+ *   2. Dimension 14. Chat widgets are the standard accessibility regression:
+ *      focus traps, unlabelled icon-only launchers, a floating button that covers
+ *      content at 320px and at 200% zoom. We cleared Dimension 14 at zero
+ *      findings; this injects third-party DOM we cannot audit.
+ *   3. Part 4A.1, one primary action per page. A floating launcher is a third
+ *      action competing with call and quote, and on mobile it usually wins the
+ *      tap because it floats.
+ *   4. It lands exactly where the sticky call bar lands.
+ *
+ * SO: loaded on first meaningful interaction or after idle, never before paint;
+ * excluded from the pages where it competes with the real conversion path; and
+ * lifted clear of the phone bar on mobile.
+ *
+ * The <script> is `is:inline` deliberately — it must not be bundled, and it is
+ * the only client script in the project.
+ */
+import { BUSINESS } from '../data/business';
+
+export interface Props {
+  /** Set false on pages with their own primary action (Part 4A.1). */
+  enabled?: boolean;
+}
+const { enabled = true } = Astro.props;
+const w = BUSINESS.chatWidget;
+const show = enabled && w.enabled && Boolean(w.widgetId);
+---
+{show && (
+  <script is:inline define:vars={{ loader: w.loaderUrl, resources: w.resourcesUrl, id: w.widgetId }}>
+    (function () {
+      var loaded = false;
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = loader;
+        s.async = true;
+        s.setAttribute('data-resources-url', resources);
+        s.setAttribute('data-widget-id', id);
+        document.body.appendChild(s);
+        cleanup();
+      }
+      function cleanup() {
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+          window.removeEventListener(e, load, { passive: true });
+        });
+      }
+      // Never before paint. First real interaction wins; otherwise idle, with a
+      // timeout so it still arrives on a page nobody touches.
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, load, { passive: true, once: true });
+      });
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(load, { timeout: 8000 });
+      } else {
+        setTimeout(load, 6000);
+      }
+    })();
+  </script>
+)}

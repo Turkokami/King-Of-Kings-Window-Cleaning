@@ -1,0 +1,58 @@
+{
+  "_doc": "Keystone v2 scorecard dimension 12 — Entity & off-site presence. First measurement pass, partial. Read directly off the live Google Business Profile via Maps; nothing here is inferred or estimated.",
+  "measured": "2026-09-12",
+  "method": "browser, public Google Maps place page for King of Kings Window Cleaning LLC",
+  "profile": {
+    "name": "King of Kings Window Cleaning LLC",
+    "primaryCategory": "Window cleaning service",
+    "rating": 5.0,
+    "reviewCount": 256,
+    "reviewCountAtAudit": 248,
+    "reviewCountNote": "The 2026-09-10 audit recorded 248. Eight more in two days is real velocity and it is the first velocity datapoint this engagement has — dimension 4 was capped at 4 pending exactly this.",
+    "address": "2194 Shallow Shr Ln, Bellingham, WA 98229",
+    "phone": "(360) 303-6806",
+    "website": "kingofkingswindowcleaning.com",
+    "coordinates": { "lat": 48.6490629, "lng": -122.3739165 },
+    "plusCode": "JJXG+JC Bellingham, Washington",
+    "hours": "Open 24 hours",
+    "postsActive": true
+  },
+  "findings": [
+    {
+      "id": "GBP-1",
+      "severity": "decision required",
+      "finding": "The residential principal office address is PUBLISHED on the GBP.",
+      "detail": "The build currently keeps streetAddress null because the Secretary of State filing address is residential. That decision was made to protect the household. It is now in tension with reality: the address is already public on the profile the business controls, and Keystone's NAP rule asks for character-for-character consistency with the GBP. Two coherent options, and this is a client decision under Part 8, not an agent decision. (a) Hide the address on the GBP and mark it a service-area business, then keep streetAddress null site-wide — consistent, and the standard recommendation for a home-based service business. (b) Keep it public and mirror it exactly in the LocalBusiness node — also consistent, and gives up the privacy. What is NOT acceptable is the current split, where the GBP publishes it and the site does not."
+    },
+    {
+      "id": "GBP-2",
+      "severity": "high",
+      "finding": "Hours are set to 'Open 24 hours'.",
+      "detail": "Almost certainly not true of a window cleaning crew, and it costs more than it looks. Hours feed the local pack, they feed 'open now' filtering, and an implausible value reads as an unmaintained profile. Real opening hours are a pending client input for the schema node anyway; the same answer fixes both. Holiday hours are also unset."
+    },
+    {
+      "id": "GBP-3",
+      "severity": "opportunity",
+      "finding": "Randy is actively posting dated job reports that name the neighborhood.",
+      "detail": "A post from three days ago reads: 'Another home protected and cleaned up today in the Roosevelt neighborhood of Bellingham' — followed by the services performed (roof cleaning, gutter cleaning, moss preventative treatment, exterior window cleaning) and photos. That is precisely what the substance gate's item 2 asks for: a dated, first-party, photographed record of work in a named geography. It is a better proof source than customer reviews, because it carries the place name deliberately rather than incidentally, and because the business owns it. Roosevelt is on the City of Bellingham's official neighborhood list.",
+      "action": "Harvest the post archive by geography. Every post naming a place becomes the firstPartyProof for that place's page. Ask Randy to keep naming the town or neighborhood in every post — it costs him nothing and it produces the evidence the build needs on a rolling basis."
+    },
+    {
+      "id": "GBP-4",
+      "severity": "unmeasured",
+      "finding": "Predefined services, service areas and photo recency were not captured.",
+      "detail": "These need the owner dashboard rather than the public page. Service areas matter: the GBP allows 20, and the build declares 41 markets, so the declared territory already exceeds what a profile can express — which is itself a finding about how the territory gets represented off-site."
+    }
+  ],
+  "resolved_pending_items": [
+    "Verified coordinates — 48.6490629, -122.3739165, read from the GBP pin.",
+    "Primary category confirmed — Window cleaning service.",
+    "Review count and rating observed — 5.0 / 256. NOT hand-entered into the build: Keystone Part 5.3 requires aggregateRating to be pulled from the verified GBP at build time, not typed in from a reading."
+  ],
+  "still_needed_for_dimension_12": [
+    "Owner-dashboard audit: predefined services, service areas against the 20 limit, photo recency, holiday hours.",
+    "Citation sweep across the core 30-50, checked against the GBP rather than against the website.",
+    "Unlinked brand mention scan.",
+    "Presence check on the third-party platforms that surface in local assistant answers."
+  ]
+}

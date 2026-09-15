@@ -1,0 +1,150 @@
+---
+/**
+ * T2 — the service spoke. Nine of these, and they are built BEFORE their geo
+ * children (Keystone Part 3.1, the cardinal rule, promoted to the top of the
+ * architecture after the King of Kings build itself taught it).
+ *
+ * The legacy site has no /services/window-cleaning/ at all. The flagship
+ * service's hub duty is being done by /window-cleaning-bellingham-wa/, a geo
+ * page. That is P0-1 in the audit and this route is the fix.
+ */
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import ExpertBlock from '../../components/ExpertBlock.astro';
+import { buildableServices, serviceBySlug } from '../../data/services';
+import { MARKETS } from '../../data/markets';
+import { marketsForService, DECLINED_CITIES } from '../../data/authorised';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+export async function getStaticPaths() {
+  return buildableServices().map((s) => ({ params: { service: s.slug }, props: { slug: s.slug } }));
+}
+
+const { slug } = Astro.props;
+const service = serviceBySlug(slug)!;
+
+/*
+ * A hub may only link to pages that EXIST. services.ts lists eighteen problem
+ * pages and twenty-four library profiles as the architecture's intent; six and
+ * six are written. Linking the intent produced 2,876 dead links on the first
+ * real build — which is exactly what a dead-link crawler is for, and exactly why
+ * it has to run against built HTML rather than against the data files.
+ */
+const writtenProblems = new Set((await getCollection('problem')).map((p) => p.slug));
+const writtenLibrary = new Set((await getCollection('library')).map((p) => p.slug));
+const problems = service.problems.filter((p) => writtenProblems.has(p.slug));
+const library = service.library.filter((l) => writtenLibrary.has(l));
+
+const entry = await getEntry('service', slug)?.catch(() => undefined);
+const hasBody = Boolean(entry);
+const { Content } = hasBody ? await entry!.render() : { Content: null };
+const d = entry?.data;
+
+// KEYSTONE v3.2 PART 6A. This used to be every market in the tier list, which is
+// precisely the v1 behaviour that produced 150 geo pages returning one click in
+// sixteen months. It is now the markets that CLEARED THE DEMAND GATE for this
+// service — so a hub cannot link to a page the evidence declined, and cannot
+// manufacture a dead link by disagreeing with the committed map.
+const authorisedSlugs = marketsForService(slug);
+const markets = MARKETS.filter((m) => authorisedSlugs.includes(m.slug));
+// Declined geographies are still SAID — as areaServed coverage, never as links.
+const alsoServed = MARKETS.filter((m) => DECLINED_CITIES.includes(m.slug)).map((m) => m.name);
+const whatcom = markets.filter((m) => m.county === 'Whatcom');
+const skagit = markets.filter((m) => m.county === 'Skagit');
+const other = markets.filter((m) => m.county !== 'Whatcom' && m.county !== 'Skagit');
+
+const title = d?.title ?? buildTitle(`${service.name} — Whatcom & Skagit`);
+const answer = d?.answer ?? `${service.name} across Whatcom and Skagit County.`;
+const description = d?.metaDescription ?? answer;
+const faqs = d?.faqs ?? [];
+const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
+const heroAlt = d?.heroAlt ?? `${service.name} crew at work in Whatcom County, Washington`;
+
+const schema = {
+  path: `/services/${service.slug}/`,
+  title, description, image: heroImage, imageAlt: heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services/' },
+    { name: service.short, path: `/services/${service.slug}/` },
+  ],
+  faqs,
+  service: { name: service.name, serviceType: service.name },
+};
+---
+<BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
+  <article class="t2">
+    <h1>{service.name} in Whatcom &amp; Skagit County</h1>
+    <AnswerBox text={answer} />
+    <ExpertBlock />
+
+    {Content ? <Content /> : (
+      <div class="scaffold-notice">
+        <p><strong>Route live, content pending.</strong> Noindex until the 3,000–5,000 word body lands (M1).</p>
+      </div>
+    )}
+
+    {problems.length > 0 && (
+      <section class="problems">
+        <h2>Specific {service.short.toLowerCase()} problems we get called for</h2>
+        <ul>
+          {problems.map((p) => (
+            <li><a href={`/services/${service.slug}/${p.slug}/`}>{p.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {library.length > 0 && (
+      <section class="library-links">
+        <h2>The surfaces this work touches</h2>
+        <ul>
+          {library.map((l) => (
+            <li><a href={`/surface-library/${l}/`}>{l.replace(/-/g, ' ')}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {/* The hub distributing to every market that carries this service. */}
+    <section class="hub-wheel">
+      <h2>{service.name} where you live</h2>
+      <h3>Whatcom County</h3>
+      <ul class="hub-wheel__grid">
+        {whatcom.map((m) => (
+          <li><a href={`/locations/${m.slug}/${service.slug}/`}>{service.short} in {m.name}</a></li>
+        ))}
+      </ul>
+      <h3>Skagit County</h3>
+      <ul class="hub-wheel__grid">
+        {skagit.map((m) => (
+          <li><a href={`/locations/${m.slug}/${service.slug}/`}>{service.short} in {m.name}</a></li>
+        ))}
+      </ul>
+      {other.length > 0 && (
+        <ul class="hub-wheel__grid">
+          {other.map((m) => (
+            <li><a href={`/locations/${m.slug}/${service.slug}/`}>{service.short} in {m.name}</a></li>
+          ))}
+        </ul>
+      )}
+      {alsoServed.length > 0 && (
+        <p class="also-served">
+          We also cover {alsoServed.slice(0, -1).join(', ')} and {alsoServed.at(-1)} from
+          these bases. Those areas do not have their own page — if you are not sure
+          whether you are inside the area, call and ask.
+        </p>
+      )}
+      <p><a href="/services/">All services</a> · <a href="/locations/">Full service area</a></p>
+    </section>
+
+    <Faq faqs={faqs} heading={`${service.short} questions`} />
+    <Cta service={service.name} />
+  </article>
+</BaseLayout>

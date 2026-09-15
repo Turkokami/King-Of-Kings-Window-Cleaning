@@ -1,0 +1,51 @@
+---
+/**
+ * /our-guarantee/ — the terms page that does not exist on the legacy site, while
+ * "Risk-Free" runs as an <h2> on 74 of its pages. Doctrine #6: defined-term
+ * guarantees only, and every "guaranteed" links here.
+ *
+ * This page renders the real terms or it renders an honest placeholder. It never
+ * invents terms, because inventing a warranty is inventing a contract.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS, READY } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+const ready = READY.guarantee();
+const answer = ready
+  ? BUSINESS.guarantee.headline!
+  : 'Our guarantee terms are being finalised. In the meantime, if you are not satisfied with any part of a clean, call the office and we will come back and put it right.';
+
+const faqs = ready ? [] : [];
+const schema = {
+  path: '/our-guarantee/',
+  title: buildTitle('Our Guarantee'),
+  description: 'The terms of the King of Kings Window Cleaning guarantee — what is covered, for how long, and how to make a claim on it.',
+  image: BUSINESS.socialImage,
+  imageAlt: 'King of Kings Window Cleaning technician rechecking a finished window',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Our guarantee', path: '/our-guarantee/' }],
+  faqs,
+  pageType: 'WebPage' as const,
+};
+---
+<BaseLayout schema={schema} noindex={!ready}>
+  <article class="guarantee">
+    <h1>Our Guarantee</h1>
+    <AnswerBox text={answer} label="What we stand behind" />
+    {ready ? (
+      <div class="guarantee__terms" set:html={BUSINESS.guarantee.terms} />
+    ) : (
+      <div class="scaffold-notice">
+        <p>
+          <strong>Terms pending.</strong> This page is noindex and no "risk-free"
+          or "guaranteed" wording renders anywhere on the site until Randy supplies
+          the actual terms: what is covered, for how long, what a claim requires,
+          and what is excluded.
+        </p>
+      </div>
+    )}
+    <Cta />
+  </article>
+</BaseLayout>

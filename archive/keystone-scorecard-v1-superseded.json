@@ -1,0 +1,89 @@
+{
+  "subject": "King of Kings Window Cleaning LLC — kingofkingswindowcleaning.com",
+  "rubric": "Keystone v1, Part 10 — eleven dimensions, 1-5, averaged to 2 decimals",
+  "audit_date": "2026-09-10",
+  "build_track": "7A — greenfield static (Astro/Next on Vercel), replacing the live WordPress/Elementor install",
+  "tier": "2.0 Regional (Whatcom + Skagit multi-market)",
+  "current_average": 2.55,
+  "target_average": 4.73,
+  "market_rank_current": "4th of 7",
+  "dimensions": [
+    {
+      "n": 1, "name": "Services", "current": 3, "target": 5,
+      "evidence": "Eight service concepts sold (window, pressure washing, roof, moss, gutter, solar panel, house washing, commercial window). Five have a root hub; window cleaning — the flagship — has none: /window-cleaning-bellingham-wa/ is doing hub duty as a geo page. Hubs run 643-2,015 words. Zero problem-specific micro pages exist for problem-aware commercial intent.",
+      "movement": "Give every money service a real hub at /services/{service}/ built before its spokes (Part 3.1 cardinal rule), add the missing window-cleaning hub, split moss removal from moss prevention, and add ~18 problem micro pages at /services/{service}/{problem}/."
+    },
+    {
+      "n": 2, "name": "Local", "current": 3, "target": 5,
+      "evidence": "The city x service matrix is complete and that is a real asset: 25 cities x 6 services = 150 pages, no holes. But the neighborhood tier is 12 pages — Bellingham only, window cleaning only — against a city with 25+ recognised neighborhoods, and no other city has a neighborhood layer at all. There is no /locations/ hub; /service-area/ is a single flat page. Whatcom markets absent entirely: Point Roberts, Lummi Island, Kendall, Van Zandt, Wickersham, Marietta, Geneva, Semiahmoo. Skagit absent: Concrete, Hamilton, Rockport, Big Lake, Conway, Bay View, Samish Island, Guemes Island.",
+      "movement": "Build /locations/ as a real geo hub, take the market count from 25 to 40, and run the neighborhood tier properly: 26 Bellingham neighborhoods plus a neighborhood layer under the seven other Tier-1 markets."
+    },
+    {
+      "n": 3, "name": "E-E-A-T", "current": 2, "target": 5,
+      "evidence": "No named expert anywhere on a service or geo page. The only Person nodes in the entire graph are blog authors. UBI 605476674 and 'Licensed / Insured / L&I' appear as visible text but are in no schema node — there is no hasCredential, no Person entity page, no first-person attribution. Five case studies exist (a genuine strength most of this market lacks) but they are not wired into the service spokes.",
+      "movement": "One named credentialed operator, surfaced in a named-expert block on every page, with a Person entity page, hasCredential carrying the real WA registration, and author/reviewedBy references from Service and Article nodes. Wire every case study into its service spoke, its city page and the hub (Part 4.2 T9)."
+    },
+    {
+      "n": 4, "name": "Reviews", "current": 3, "target": 4,
+      "evidence": "248 Google reviews is real, hard-won off-page authority and the second-strongest in the market. It is completely disconnected from the build: no aggregateRating, no LocalBusiness node to hang it on, no sameAs to the GBP or to the six social profiles the footer links out to.",
+      "movement": "Connect the entity — consistent NAP, sameAs to GBP and socials, correct business subtype — and pull aggregateRating from the verified GBP only, never hand-entered (Part 5.3). Add a review-generation loop. Ceiling is 4 until review velocity is measured, not assumed."
+    },
+    {
+      "n": 5, "name": "Schema", "current": 1, "target": 5,
+      "evidence": "One JSON-LD emitter per page, which is correct and better than the two-emitter collision this portfolio has seen elsewhere. What it emits is the problem. A typical service page carries four nodes — WebPage, BreadcrumbList and two ListItems. Across all 287 URLs: zero LocalBusiness, zero Organization, zero Service, zero aggregateRating, zero sameAs, zero SpeakableSpecification. FAQPage appears on 6 of 287 pages. Nothing on this site tells a search engine what business this is.",
+      "movement": "Hand-built 7-node graph, one shared root #localbusiness @id declared once per domain and imported by every page, Service nodes on spokes, FAQPage on every URL from the same array the visible block renders, SpeakableSpecification on the Quick Answer and FAQ, breadcrumbs mirroring the new taxonomy exactly."
+    },
+    {
+      "n": 6, "name": "Content", "current": 2, "target": 5,
+      "evidence": "297,054 words across 287 URLs — a 1,035-word average, median 995. 286 of 287 pages sit under the 3,000-word M1 floor; the single exception is /metal-roof-cleaning-bellingham-wa/ at 3,154. Quality is not the problem: the Ferndale page talks about Cherry Point fallout, farm dust and hard-water spotting, which is real local research, not slop. Depth is the problem, and so is structure — 73 blog posts in a chronological dump with six thin category pages, no cluster architecture, no surface library, no AEO Quick Answer on any page.",
+      "movement": "Every indexable page to 3,000-5,000 unique words. AEO Quick Answer block at the top of every page, reused as meta description, first FAQ answer and Speakable target. Consolidate the 73 posts into ~40 cluster posts each feeding exactly one service spoke. Build the Surface Library (glass types, siding, roofing materials, gutter metals, moss/lichen/algae species, hard water, Cherry Point industrial fallout, salt spray) as the topical-authority backbone."
+    },
+    {
+      "n": 7, "name": "Design", "current": 3, "target": 4,
+      "evidence": "Clean, consistent Elementor build on hello-elementor from the 180sites.com template stable. Mobile-workable, click-to-call present. It reads as a template because it is one — nothing in the visual system is specific to this brand.",
+      "movement": "A real named palette and type system as CSS variables, brand hero and logo on every page (M7), field photography as the visual anchor rather than stock."
+    },
+    {
+      "n": 8, "name": "Convert", "current": 3, "target": 5,
+      "evidence": "Better than the market: click-to-call, 'Get a Fast Quote - Takes Only 5 Seconds', a Square checkout path, a referral program, and a risk-free offer. Undermined by discipline problems — 'Try Bellingham's Best Window Washing Risk-Free' is an H2 on 74 pages, so the primary offer is a heading rather than a CTA block; the CTA is a sitewide banner rather than named to each market; there is no financing page and no guarantee terms page.",
+      "movement": "One primary action per page, CTA named to the page's market (Part 4.1 block 6), the risk-free offer rendered from a CTA component instead of a duplicated heading, a real /our-guarantee/ terms page, and a financing page with a live calculator."
+    },
+    {
+      "n": 9, "name": "Performance", "current": 3, "target": 5,
+      "evidence": "Measured logged-out on /window-cleaning-ferndale-wa/: TTFB 149ms, DOM interactive 362ms, load 595ms — the WP Rocket cache is doing its job. The payload is the weakness: 96 requests and 707KB, of which 486KB is CSS (Elementor + Elementor Pro + Premium Addons Pro). Only 75 of 2,277 image elements sitewide are WebP (3.3%), and the sampled page lazy-loads none of its 13 images, though all 13 carry explicit width and height.",
+      "movement": "Static output kills the 486KB of builder CSS outright. WebP with explicit dimensions, lazy-load below the fold, LCP under 2.5s measured logged-out over HTTP/2 as a launch gate, not a phase."
+    },
+    {
+      "n": 10, "name": "Integrity", "current": 2, "target": 5,
+      "evidence": "Strong on the basics — exactly one H1 on all 287 pages, zero orphans, zero duplicate titles, zero canonical mismatches, zero noindex accidents, zero non-200s, zero JSON-LD parse errors. Wrecked by two things. First, taxonomy: 275 of 287 URLs are flat root-level slugs, one up to 113 characters; there is no /services/ or /locations/ directory, so no hierarchy exists for authority to flow through. Second, cannibalization: Bellingham window cleaning is targeted simultaneously by /window-cleaning-bellingham-wa/, /window-cleaning-cost-bellingham-wa/, /what-affects-the-cost-of-professional-window-cleaning-in-bellingham-and-surrounding-areas/, /professional-window-cleaning-services-in-bellingham-surrounding-areas/, /the-complete-guide-to-professional-window-cleaning-in-bellingham-wa/, /best-window-cleaning-in-bellingham-wa-why-more-homeowners-are-choosing.../ and several more. 'Try Bellingham's Best Window Washing Risk-Free' as an H2 on 74 pages is the Part 12.1 repeated-exact-match-H2 signature.",
+      "movement": "Impose the Part 3.3 taxonomy with page-by-page 301s, consolidate each duplicated intent to one canonical page, and render the repeated heading from a CTA component so it stops being a heading at all."
+    },
+    {
+      "n": 11, "name": "Honesty & compliance", "current": 3, "target": 5,
+      "evidence": "Nothing fabricated — no invented aggregateRating, no fake pricing, no phantom credentials, NAP consistent across the site, single-entity site with no cross-brand bleed. Two real violations of doctrine #6: 'Risk-Free' is used as an unqualified guarantee on 74 pages with no terms page anywhere on the domain, and 'Bellingham's Best' is an unsubstantiated superiority claim in a heading. The UBI is published, which is legitimate public record but should be a documented client decision (Part 8).",
+      "movement": "Every 'guaranteed' and 'risk-free' string links to /our-guarantee/ with defined terms. Replace the superiority claim with a substantiated one (review count and years in market, both verifiable). Confirm UBI publication in writing."
+    }
+  ],
+  "p0_defects": [
+    {"id": "P0-1", "defect": "Zero LocalBusiness / Organization / Service nodes across all 287 URLs", "class": "schema", "why": "Nothing identifies the business to a search engine; 248 reviews and 287 local pages have no entity to accrue to.", "fix_phase": 1},
+    {"id": "P0-2", "defect": "286 of 287 indexable pages under the 3,000-word M1 floor", "class": "content", "why": "Mandate M1 gate item; median page is 995 words.", "fix_phase": 2},
+    {"id": "P0-3", "defect": "No URL taxonomy — 275 flat root-level slugs, no /services/ or /locations/", "class": "architecture", "why": "No hub-and-spoke hierarchy exists; equity cannot travel.", "fix_phase": 1},
+    {"id": "P0-4", "defect": "Bellingham intent cannibalized across 8+ URLs", "class": "integrity", "why": "Part 12.1 #1 recurring killer; splits the head term.", "fix_phase": 0},
+    {"id": "P0-5", "defect": "\"Try Bellingham's Best Window Washing Risk-Free\" as an H2 on 74 pages", "class": "integrity", "why": "Part 12.1 repeated-exact-match-H2 pattern; also an unqualified guarantee with no terms page.", "fix_phase": 0},
+    {"id": "P0-6", "defect": "No named expert or Person entity on any service or geo page; UBI and L&I in text only", "class": "eeat", "why": "hasCredential is the cheapest E-E-A-T win in the standard and it is entirely absent.", "fix_phase": 1},
+    {"id": "P0-7", "defect": "No AEO Quick Answer on any page; FAQPage on 6 of 287; zero Speakable", "class": "content", "why": "Mandates M2 and M4; the cheapest answer-engine win, unavailable everywhere.", "fix_phase": 2},
+    {"id": "P0-8", "defect": "Neighborhood tier is 12 pages, one city, one service", "class": "local", "why": "The hyperlocal layer is where volume comes from at Tier 2.0; it is ~5% built.", "fix_phase": 3},
+    {"id": "P0-9", "defect": "305 images with no alt text; 3.3% WebP; no lazy-loading on the sampled page", "class": "media/performance", "why": "Mandates M6 and the Part 9 performance gate.", "fix_phase": 1},
+    {"id": "P0-10", "defect": "No guarantee/terms page for a risk-free claim made on 74 pages", "class": "honesty", "why": "Doctrine #6 — every guarantee links to terms.", "fix_phase": 2}
+  ],
+  "what_is_already_right": [
+    "Exactly one H1 on all 287 pages — no missing-H1 epidemic, unlike most Elementor builds in this portfolio.",
+    "Single JSON-LD emitter, no duplicate-node collision.",
+    "Zero orphan pages, zero duplicate titles, zero canonical mismatches, zero non-200s, zero noindex accidents.",
+    "The city x service matrix is complete — 150 of 150 — which is a rare and genuinely valuable starting asset.",
+    "Local research in the copy is real (Cherry Point fallout, Nooksack Valley, farm dust, hard-water spotting), so the rewrite is a depth problem, not a from-scratch problem.",
+    "248 Google reviews and six live social profiles — the off-page half of the entity already exists.",
+    "TTFB 149ms and load 595ms — the hosting and cache layer is not the bottleneck.",
+    "No fabricated ratings, stats or pricing anywhere."
+  ]
+}

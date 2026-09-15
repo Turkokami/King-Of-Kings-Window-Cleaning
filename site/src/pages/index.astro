@@ -1,0 +1,93 @@
+---
+/**
+ * T1 — the home page / hub. Everything links back to it, and its job is to push
+ * equity back out. The legacy homepage absorbs 292 inbound internal links and
+ * passes 15 out; Mt. Baker's passes 107. That imbalance is why the geo lattice
+ * underneath it never ranked.
+ */
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import ExpertBlock from '../components/ExpertBlock.astro';
+import { buildableServices } from '../data/services';
+import { MARKETS, marketsByCounty } from '../data/markets';
+import { AUTHORISED_CITIES, DECLINED_CITIES } from '../data/authorised';
+import { AWARDS, streakClaim } from '../data/awards';
+import { BUSINESS, credentialLine } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+/* Part 6A — the home page links to the ten evidenced markets and names the rest. */
+const linked = (county: 'Whatcom' | 'Skagit') =>
+  marketsByCounty(county).filter((m) => AUTHORISED_CITIES.includes(m.slug));
+const alsoServed = MARKETS.filter((m) => DECLINED_CITIES.includes(m.slug)).map((m) => m.name);
+
+const entry = await getEntry('sitePage', 'home')?.catch(() => undefined);
+const hasBody = Boolean(entry);
+const { Content } = hasBody ? await entry!.render() : { Content: null };
+const d = entry?.data;
+
+const answer = d?.answer ?? `King of Kings cleans windows, gutters, roofs and siding across Whatcom and Skagit County, from Bellingham to Anacortes. Owner Randy Fee trains every technician personally. Licensed, L&I insured, hundreds of five-star reviews. Free on-site quote.`;
+const faqs = d?.faqs ?? [];
+const title = d?.title ?? buildTitle('Window Cleaning in Bellingham WA');
+
+const schema = {
+  path: '/',
+  title,
+  description: d?.metaDescription ?? answer,
+  image: d?.heroImage ?? BUSINESS.socialImage,
+  imageAlt: d?.heroAlt ?? 'King of Kings Window Cleaning working on a Bellingham home',
+  crumbs: [{ name: 'Home', path: '/' }],
+  faqs,
+};
+---
+<BaseLayout schema={schema} noindex={!hasBody}>
+  <article class="t1-home">
+    <h1>Window &amp; Exterior Cleaning in Bellingham, WA</h1>
+    <AnswerBox text={answer} />
+
+    {/* Trust strip — near the hero, not buried in one block at the bottom (doctrine #5). */}
+    <div class="trust-strip">
+      <span>{credentialLine()}</span>
+      {streakClaim() && <span>{streakClaim()}</span>}
+    </div>
+
+    <ExpertBlock />
+
+    <section class="entry-grid">
+      <h2>What we do</h2>
+      <ul>{buildableServices().map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      <p><a href="/services/">All services</a></p>
+    </section>
+
+    {Content && <Content />}
+
+    <section class="awards-strip">
+      <h2>Recognition</h2>
+      <ul>
+        {AWARDS.filter((a) => a.headline).map((a) => (
+          <li>{a.year} {a.name} — {a.level} Winner, {a.category} <em>({a.awardedBy})</em></li>
+        ))}
+      </ul>
+      <p><a href="/team/randy-fee/">More about Randy and the company</a></p>
+    </section>
+
+    {/* The hub distributing outward — every market, both counties. */}
+    <section class="locations-callout">
+      <h2>Where we work</h2>
+      <h3>Whatcom County</h3>
+      <ul class="locations-callout__grid">
+        {linked('Whatcom').map((m) => <li><a href={`/locations/${m.slug}/`}>{m.name}</a></li>)}
+      </ul>
+      <h3>Skagit County</h3>
+      <ul class="locations-callout__grid">
+        {linked('Skagit').map((m) => <li><a href={`/locations/${m.slug}/`}>{m.name}</a></li>)}
+      </ul>
+      <p>{MARKETS.length} markets — <a href="/locations/">full service area</a></p>
+    </section>
+
+    <Faq faqs={faqs} />
+    <Cta />
+  </article>
+</BaseLayout>

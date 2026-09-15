@@ -1,0 +1,103 @@
+---
+/**
+ * T4 — the city page. 41 of these. Parent of every city × service page and of
+ * the neighborhood tier.
+ */
+import { getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import ExpertBlock from '../../../components/ExpertBlock.astro';
+import { MARKETS, marketBySlug, isBuildable } from '../../../data/markets';
+import { AUTHORISED_CITIES, AUTHORISED_TUPLES } from '../../../data/authorised';
+import { serviceBySlug } from '../../../data/services';
+import { geoCopy } from '../../../lib/geo';
+import { buildTitle } from '../../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+/*
+ * KEYSTONE v3.2 PART 6A. This used to emit all 41 markets. It now emits only the
+ * ten that cleared the two-signal demand gate. The other 31 are areaServed
+ * mentions on /locations/ and on the nearest authorised city page — a declined
+ * geography is still said, it is just not a URL.
+ */
+export async function getStaticPaths() {
+  return MARKETS
+    .filter((m) => AUTHORISED_CITIES.includes(m.slug))
+    .map((m) => ({ params: { market: m.slug }, props: { slug: m.slug } }));
+}
+
+const { slug } = Astro.props;
+const market = marketBySlug(slug)!;
+const gate = isBuildable(market);
+const copy = geoCopy(slug);
+// Only the services that cleared the gate FOR THIS CITY get a link. A city page
+// linking to a tuple the evidence declined is a dead link by construction.
+const services = AUTHORISED_TUPLES[market.slug] ?? [];
+
+const entry = await getEntry('cityService', `${slug}/_city`)?.catch(() => undefined);
+const hasBody = Boolean(entry);
+const { Content } = hasBody ? await entry!.render() : { Content: null };
+const d = entry?.data;
+
+const title = d?.title ?? buildTitle(`Exterior Cleaning in ${market.name} WA`);
+const answer = d?.answer ?? copy.conditions;
+const description = d?.metaDescription ?? copy.conditions;
+const faqs = d?.faqs ?? [];
+const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
+const heroAlt = d?.heroAlt ?? `Exterior cleaning work on a home in ${market.name}, Washington`;
+
+const schema = {
+  path: `/locations/${market.slug}/`,
+  title, description, image: heroImage, imageAlt: heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Service area', path: '/locations/' },
+    { name: market.name, path: `/locations/${market.slug}/` },
+  ],
+  faqs,
+  service: { name: `Exterior cleaning in ${market.name}`, serviceType: 'Exterior cleaning', areaName: market.name },
+};
+---
+<BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
+  <article class="t4-city">
+    <h1>Exterior Cleaning in {market.name}, WA</h1>
+    <AnswerBox text={answer} />
+    <ExpertBlock context={`We run the ${market.name} route on a regular rotation.`} />
+
+    {Content ? <Content /> : (
+      <div class="scaffold-notice">
+        <p><strong>Route live, content pending.</strong> Noindex until the body lands (M1).</p>
+        {!gate.ok && <p class="scaffold-notice__blocker">{gate.reason}</p>}
+      </div>
+    )}
+
+    <section class="city-services">
+      <h2>What we do in {market.name}</h2>
+      <ul>
+        {services.map((s) => (
+          <li><a href={`/locations/${market.slug}/${s}/`}>{serviceBySlug(s)?.name} in {market.name}</a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="city-nearby">
+      <h2>Nearby</h2>
+      <ul>
+        {/* Part 6A — link the neighbours that earned a page; name the rest. */}
+        {market.neighbours.filter((n) => AUTHORISED_CITIES.includes(n)).map((n) => (
+          <li><a href={`/locations/${n}/`}>{marketBySlug(n)?.name}</a></li>
+        ))}
+        {market.neighbours.filter((n) => !AUTHORISED_CITIES.includes(n)).map((n) => (
+          <li>{marketBySlug(n)?.name} <span class="no-page">(served, no page of its own)</span></li>
+        ))}
+      </ul>
+      <p><a href="/locations/">Full service area</a> · <a href="/services/">All services</a></p>
+    </section>
+
+    <Faq faqs={faqs} heading={`${market.name} questions`} />
+    <Cta market={market.name} />
+  </article>
+</BaseLayout>

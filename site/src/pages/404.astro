@@ -1,0 +1,39 @@
+---
+/**
+ * 404. Useful rather than decorative: most 404s here will be legacy URLs whose
+ * redirect has not been mapped, so the page points at the three hubs rather than
+ * apologising.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BUSINESS } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+
+const schema = {
+  path: '/404/',
+  title: buildTitle('Page Not Found'),
+  description: 'That page is not here. Links to our services, service area and contact details so you can find what you were looking for.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'King of Kings Window Cleaning',
+  crumbs: [{ name: 'Home', path: '/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema} noindex={true}>
+  <article class="t1 prose">
+    <h1>That page is not here</h1>
+    <p>
+      The address may have changed, or the link may be from an older version of
+      this site. Three places that will have what you were after:
+    </p>
+    <ul>
+      <li><a href="/services/">What we do</a> — windows, gutters, roofs, moss, siding, hardscape and solar</li>
+      <li><a href="/locations/">Where we work</a> — Whatcom and Skagit County, and the towns we cover without a page of their own</li>
+      <li><a href="/surface-library/">The surface library</a> — what each material is and what cleaning can honestly change</li>
+    </ul>
+    <p>
+      Or call <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a> and ask.
+    </p>
+  </article>
+</BaseLayout>

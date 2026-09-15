@@ -1,0 +1,77 @@
+{
+  "_doc": "Keystone v2 Part 6A.7, demand signal 4 — 'a dedicated page on two or more of the top five local competitors'. This is the ONLY one of the five signals measurable without client-side data, and it is measured here, not estimated. Method: anonymous in-page fetch of each competitor's own sitemap from its own origin (credentials:'omit', cache:'no-store'), full <loc> enumeration, path-only extraction. Nothing in this file is inferred.",
+  "measured": "2026-09-11",
+  "method": "browser, same-origin sitemap fetch, complete enumeration (no sampling)",
+  "top_five": ["mtbakerwindows.com", "pnwwash.com", "pureshinenw.com", "nwwindowcleaningbellingham.com", "whatcomgrc.com"],
+  "corrections_to_the_2026-09-10_competitor_set": [
+    "Mt. Baker's 213 sitemap URLs are now decomposed: 175 of them are service x city pages across 7 services x 26 cities. The 2026-09-10 audit recorded the total but not the shape, and an intermediate WebFetch read of page-sitemap1.xml was truncated by the fetch tool and briefly suggested Mt. Baker had no window-cleaning geo pages. It has 24.",
+    "Pure Shine NW runs a city-page layer, not a city x service lattice: 7 geographies, one page each, plus a parallel Christmas-lights city set.",
+    "Whatcom GRC has 12 URLs and zero geo pages. Its robots.txt blocks anthropic-ai, AI2Bot, Amazonbot, Applebot-Extended, Bytespider and others by name — relevant to scorecard dimension 13, and the reason it will not appear in assistant answers regardless of how it ranks.",
+    "Northwest Window Cleaning has 8 URLs and zero geo pages."
+  ],
+  "competitors": {
+    "mtbakerwindows.com": {
+      "shape": "service x city lattice",
+      "total_urls": 213,
+      "geo_pages": 175,
+      "url_pattern": "/{service}/{city}-wa/",
+      "cities": ["acme","alger","allen","anacortes","bellingham","birch-bay","blaine","bow","burlington","custer","deming","eastsound","everson","ferndale","friday-harbor","glacier","la-conner","lynden","maple-falls","mount-vernon","olga","point-roberts","sedro-woolley","stanwood","sudden-valley","sumas"],
+      "services": {
+        "solar-panel-cleaning": {"n": 25, "missing": ["bellingham"]},
+        "christmas-light-installation": {"n": 26, "missing": []},
+        "gutter-cleaning": {"n": 25, "missing": ["bellingham"]},
+        "window-cleaning": {"n": 24, "missing": ["bellingham", "birch-bay"]},
+        "roof-moss-removal": {"n": 25, "missing": ["bellingham"]},
+        "house-washing": {"n": 25, "missing": ["bellingham"]},
+        "pressure-washing": {"n": 25, "missing": ["bellingham"]}
+      },
+      "note": "Bellingham — the head market — is absent from six of seven geo runs. Mt. Baker targets Bellingham from the homepage and the bare service hubs, and uses the geo lattice for everything else. Worth reading before assuming a Bellingham x service page is uncontested; it is contested by a hub, not by a geo page."
+    },
+    "pnwwash.com": {
+      "shape": "service x city lattice",
+      "total_urls": 85,
+      "geo_pages": 50,
+      "url_pattern": "/{service}/{city}-wa/",
+      "cities": ["anacortes","bellingham","blaine","burlington","everson","ferndale","geneva","lynden","marietta","sudden-valley"],
+      "services": {
+        "gutter-guard-installation": {"n": 10},
+        "house-washing": {"n": 10},
+        "window-cleaning": {"n": 10},
+        "roof-cleaning": {"n": 10},
+        "gutter-cleaning": {"n": 10}
+      },
+      "note": "Ten cities, all five services, no holes. Includes Bellingham, Marietta and Geneva, which Mt. Baker's lattice does not."
+    },
+    "pureshinenw.com": {
+      "shape": "city pages, not a lattice",
+      "total_urls": 30,
+      "geo_pages": 14,
+      "url_pattern": "/service-areas/{city}/",
+      "cities": ["anacortes","bellingham","blaine-birch-bay","burlington","ferndale","lynden","mount-vernon"],
+      "also": ["/service-areas/whatcom-county-window-cleaning/", "a parallel christmas-lights city set at /service-areas/{city}-christmas-lights-installation/"],
+      "note": "Blaine and Birch Bay are one page, not two."
+    },
+    "nwwindowcleaningbellingham.com": {"shape": "flat", "total_urls": 8, "geo_pages": 0, "cities": []},
+    "whatcomgrc.com": {"shape": "flat", "total_urls": 12, "geo_pages": 0, "cities": [], "robots_blocks_ai_crawlers": true}
+  },
+  "service_slug_alignment": {
+    "_doc": "How competitor service slugs map onto the King of Kings service tree, so signal 4 is counted against the right tuple.",
+    "window-cleaning": ["mtbakerwindows:window-cleaning", "pnwwash:window-cleaning"],
+    "gutter-cleaning": ["mtbakerwindows:gutter-cleaning", "pnwwash:gutter-cleaning"],
+    "roof-cleaning": ["mtbakerwindows:roof-moss-removal", "pnwwash:roof-cleaning"],
+    "moss-removal": ["mtbakerwindows:roof-moss-removal"],
+    "house-washing": ["mtbakerwindows:house-washing", "pnwwash:house-washing"],
+    "pressure-washing": ["mtbakerwindows:pressure-washing"],
+    "solar-panel-cleaning": ["mtbakerwindows:solar-panel-cleaning"],
+    "metal-roof-cleaning": [],
+    "commercial-window-cleaning": []
+  },
+  "out_of_territory_competitor_cities": {
+    "_doc": "Cities the competitors build for that are outside the declared Whatcom + Skagit territory. Listed so the decision to decline them is a recorded decision rather than an oversight.",
+    "allen": "Skagit, but unincorporated and tiny — no KOK signal",
+    "eastsound": "San Juan County",
+    "friday-harbor": "San Juan County",
+    "olga": "San Juan County",
+    "stanwood": "Snohomish County"
+  }
+}

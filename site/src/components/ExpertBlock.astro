@@ -1,0 +1,49 @@
+---
+/**
+ * ExpertBlock.astro — the named-expert E-E-A-T layer (Keystone 4.1 block 2).
+ *
+ * Randy Fee, owner. The legacy site has no named expert on any service or geo
+ * page — the only Person nodes in 287 URLs are blog authors. This block is that
+ * defect's fix, and it renders on every indexable page.
+ *
+ * The credential line states exactly what the evidence supports and no more:
+ * a real registration number if one exists, otherwise the WA business licence
+ * and L&I coverage, which are verifiable today. It never invents a licence.
+ */
+import { BUSINESS, READY, credentialLine, yearsTrading } from '../data/business';
+export interface Props {
+  /** One line tying Randy to THIS page's market. Keep it specific and true. */
+  context?: string;
+}
+const { context } = Astro.props;
+const e = BUSINESS.expert;
+const years = yearsTrading();
+---
+{READY.expert() ? (
+  <section class="expert" aria-label="Who does this work">
+    {e.photo && (
+      <img class="expert__photo" src={e.photo}
+           alt={`${e.name}, ${e.jobTitle} of ${BUSINESS.name}`}
+           width="96" height="96" loading="lazy" decoding="async" />
+    )}
+    <div class="expert__body">
+      <p class="expert__name">
+        <a href={`/team/${e.slug}/`}>{e.name}</a> — {e.jobTitle}, {BUSINESS.name}
+      </p>
+      <p class="expert__cred">{credentialLine()}</p>
+      {/*
+        The differentiator, in his own words on his own site: the owner is the
+        one doing the work and training everyone who does it. On a two-year-old
+        company that beats any claim about decades of experience.
+      */}
+      <p class="expert__note">
+        Randy runs the company himself, so you are dealing with the owner, not a
+        call centre — and every technician here is personally trained by him.
+        {years >= 1 && <> Working Whatcom and Skagit County since {new Date(BUSINESS.founded).getFullYear()}.</>}
+      </p>
+      {context && <p class="expert__context">{context}</p>}
+    </div>
+  </section>
+) : (
+  <!-- business.ts expert.name is unset. Checked by scripts/seo-audit.mjs. -->
+)}

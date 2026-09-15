@@ -1,0 +1,80 @@
+---
+/**
+ * T6 — the surface library profile. The topical-authority backbone.
+ *
+ * Part 4.3 declares these definition paragraph + table + list: the definition
+ * pattern wins the identification query, the table carries the facts, the list
+ * carries the signs.
+ */
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { serviceBySlug } from '../../data/services';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+export async function getStaticPaths() {
+  const profiles = await getCollection('library');
+  return profiles.map((p) => ({ params: { profile: p.slug }, props: { slug: p.slug } }));
+}
+
+const { slug } = Astro.props;
+const entry = (await getEntry('library', slug))!;
+const { Content } = await entry.render();
+const d = entry.data;
+
+const siblings = (await getCollection('library'))
+  .filter((p) => p.data.category === d.category && p.slug !== slug);
+
+const schema = {
+  path: `/surface-library/${slug}/`,
+  title: d.title.length > 60 ? d.title : buildTitle(d.title),
+  description: d.metaDescription,
+  image: d.heroImage,
+  imageAlt: d.heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Surface library', path: '/surface-library/' },
+    { name: d.title, path: `/surface-library/${slug}/` },
+  ],
+  faqs: d.faqs,
+};
+---
+<BaseLayout schema={schema} ogImage={d.heroImage}>
+  <article class="t6 prose">
+    <h1>{d.title}</h1>
+    <AnswerBox text={d.answer} label="What it is" />
+    <Content />
+
+    <nav class="wheel" aria-label="Related pages">
+      <h2>Related</h2>
+      <h3>Services that work on this surface</h3>
+      <ul>
+        {d.linkedServices.map((s) => {
+          const svc = serviceBySlug(s);
+          return svc ? <li><a href={`/services/${svc.slug}/`}>{svc.name}</a></li> : null;
+        })}
+      </ul>
+      {siblings.length > 0 && (
+        <>
+          <h3>Other {d.category} profiles</h3>
+          <ul>
+            {siblings.map((s) => (
+              <li><a href={`/surface-library/${s.slug}/`}>{s.data.title}</a></li>
+            ))}
+          </ul>
+        </>
+      )}
+      <p><a href="/surface-library/">The whole library</a></p>
+    </nav>
+
+    <Faq faqs={d.faqs} id={`faq-${slug}`} heading="Questions about this surface" />
+    <Cta />
+    <p class="updated">Last updated <time datetime={d.updated.toISOString().slice(0, 10)}>
+      {d.updated.toISOString().slice(0, 10)}</time></p>
+  </article>
+</BaseLayout>

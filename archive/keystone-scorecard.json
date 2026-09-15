@@ -1,0 +1,365 @@
+{
+  "subject": "King of Kings Window Cleaning LLC \u2014 kingofkingswindowcleaning.com",
+  "rubric": "Keystone v2, Part 10 \u2014 thirteen dimensions. NOT restated on v3.2; see rebaselining_rule.",
+  "rubric_version": "v2",
+  "audit_date": "2026-09-10",
+  "restated": "2026-09-11",
+  "supersedes": "archive/keystone-scorecard-v1-superseded.json (eleven dimensions, average 2.55)",
+  "build_track": "7A \u2014 greenfield static (Astro/Next on Vercel), replacing the live WordPress/Elementor install",
+  "tier": "2.0 Regional (Whatcom + Skagit multi-market)",
+  "current_average": 2.27,
+  "average_basis": "Eleven scored dimensions. Dimensions 12 and 13 are UNSCORED because neither has been measured, and Part 10 is explicit that they are scored from measurement, not from the survey \u2014 'do not backfill it with an estimate.' Including them as zeros or as guesses would both be wrong; they are excluded from the mean and named as outstanding.",
+  "previous_average_on_v1_rubric": 2.55,
+  "why_the_score_moved": "Two dimensions were restated under changed v2 definitions and one under a newly written contract. Local fell from 3 to 1 because v2 redefines it as evidenced surface divided by claimed territory rather than raw lattice completeness \u2014 the 162 geo pages that earned a 3 for being complete now earn a 1 for being unevidenced. Convert fell from 3 to 2 because Part 4A finally specifies what Convert means, and the specification catches failures the old unspecified dimension could not. Nothing about the site changed between the two scores; the standard did.",
+  "target_average": 4.82,
+  "target_basis": "Eleven scored dimensions. Targets for 12 and 13 are set after the first measurement pass.",
+  "market_rank_current": "4th of 7 \u2014 unchanged, because every competitor was scored on the same eleven dimensions and none of them clears the v2 Local definition either. Mt. Baker's 175 geo pages are as unevidenced as King of Kings' 162.",
+  "dimensions": [
+    {
+      "n": 1,
+      "name": "Services",
+      "current": 3,
+      "target": 5,
+      "v2_change": "none",
+      "evidence": "Eight service concepts sold (window, pressure washing, roof, moss, gutter, solar panel, house washing, commercial window). Five have a root hub; window cleaning \u2014 the flagship \u2014 has none: /window-cleaning-bellingham-wa/ is doing hub duty as a geo page. Hubs run 643-2,015 words. Zero problem-specific micro pages exist for problem-aware commercial intent.",
+      "movement": "Give every money service a real hub at /services/{service}/ built before its spokes (Part 3.1 cardinal rule), add the missing window-cleaning hub, split moss removal from moss prevention, and add the problem micro pages at /services/{service}/{problem}/. Nine hubs are now written and in band."
+    },
+    {
+      "n": 2,
+      "name": "Local",
+      "current": 1,
+      "target": 5,
+      "v2_change": "REDEFINED",
+      "v2_definition": "Evidenced geographic surface divided by claimed territory. A geography correctly declined for lack of evidence costs nothing; a built page that cannot clear the substance gate costs a point.",
+      "evidence": "The live site claims 25 cities and builds 150 city x service pages plus 12 Bellingham neighborhood pages \u2014 162 geo URLs. Measured against the v2 definition, the evidenced share of that surface is zero. Not one of the 162 declares three verifiable local specifics, carries a first-party proof from its own geography, or traces to a demand cluster; the demand map built on 2026-09-11 finds 0 of 328 geo slots clearing the Part 6A two-signal gate. The neighborhood tier additionally violates Part 3.4 item 4 outright \u2014 those 12 pages were built as the way into Bellingham, and the clause says neighborhood pages are built only inside cities that already rank, never as the way into a market. Under v1 this same surface scored 3, because v1 rewarded completeness. It is the same lattice; v2 asks a different question of it. MEASURED 2026-09-14, from the client's own 16-month Search Console export: the 150-page city x service lattice produced 388 impressions and 1 click in the entire window \u2014 0.6% of the site's impressions and 0.1% of its clicks, at a median position of 41. 88 of the 150 were never shown once. Bellingham alone accounts for 21,409 of 31,164 query impressions (69%); every other market in the declared 25 returns fewer than 30 impressions over 16 months, and 33 of the 41 planned markets return nothing above noise. The v1 score of 3 was awarded for lattice completeness. The lattice is complete and it is invisible, which is the distinction v2's definition was written to capture.",
+      "movement": "Not 'build more geo pages.' Open the gate first: S5 job history from the client, then GSC. Then build only what clears it, with the substance gate enforced in the harness. A correctly declined geography costs nothing, so the honest end state may be materially fewer than 41 markets \u2014 and will score higher than 162 unevidenced pages do. The demand map now prunes on evidence rather than on judgement: 45 of 355 geo slots clear the two-signal gate \u2014 Bellingham across all seven services, plus nine other cities. The remaining 310 become areaServed mentions on their parent city page. A geography correctly declined costs nothing on this dimension.",
+      "v3_2_note": "v3.2 sharpens the decline exemption: \"A geography declined for lack of job history is not a correct decline and does not earn the exemption \u2014 that cap is retired.\" Every decline in this build is on DEMAND evidence (no second signal), not on job history, so all 310 qualify as correct declines and cost nothing on this dimension."
+    },
+    {
+      "n": 3,
+      "name": "E-E-A-T",
+      "current": 2,
+      "target": 5,
+      "v2_change": "none",
+      "evidence": "No named expert anywhere on a service or geo page. The only Person nodes in the entire graph are blog authors. UBI 605476674 and 'Licensed / Insured / L&I' appear as visible text but are in no schema node \u2014 no hasCredential, no Person entity page, no first-person attribution. Five case studies exist (a genuine strength most of this market lacks) but they are not wired into the service spokes.",
+      "movement": "Randy Fee is now identified as the named expert and is wired into the build data layer with a two-part READY guard, so a named owner alone renders the expert block and hasCredential waits for a real registration number rather than blocking the name. Person entity page, author/reviewedBy references from Service and Article nodes, and every case study wired into its service spoke, city page and hub."
+    },
+    {
+      "n": 4,
+      "name": "Reviews",
+      "current": 3,
+      "target": 4,
+      "v2_change": "none",
+      "evidence": "248 Google reviews is real, hard-won off-page authority and the second-strongest in the market. It is completely disconnected from the build: no aggregateRating, no LocalBusiness node to hang it on, no sameAs to the GBP or to the six social profiles the footer links out to.",
+      "movement": "Connect the entity \u2014 consistent NAP, sameAs to GBP and socials, correct business subtype \u2014 and pull aggregateRating from the verified GBP only, never hand-entered (Part 5.3). Ceiling stays 4 until review velocity is measured rather than assumed. v2 note: Part 10 now scores review incentives, gating and staff-written reviews under dimension 11, so the acquisition loop has to be designed clean, not just designed."
+    },
+    {
+      "n": 5,
+      "name": "Schema",
+      "current": 1,
+      "target": 5,
+      "v2_change": "M4 retired",
+      "evidence": "One JSON-LD emitter per page, which is correct and better than the two-emitter collision this portfolio has seen elsewhere. What it emits is the problem. A typical service page carries four nodes \u2014 WebPage, BreadcrumbList and two ListItems. Across all 287 URLs: zero LocalBusiness, zero Organization, zero Service, zero aggregateRating, zero sameAs. FAQPage appears on 6 of 287 pages. Nothing on this site tells a search engine what business this is. RESTATED: the v1 audit also counted zero SpeakableSpecification as a defect. v2 retires mandate M4 \u2014 Speakable never covered local-business pages, only news \u2014 so that is no longer a finding, and the emitter in the new build deliberately omits it.",
+      "movement": "Hand-built 7-node graph, one shared root #localbusiness @id declared once per domain and imported by every page, Service nodes on spokes, FAQPage on every URL from the same array the visible block renders, breadcrumbs mirroring the new taxonomy exactly."
+    },
+    {
+      "n": 6,
+      "name": "Content",
+      "current": 2,
+      "target": 5,
+      "v2_change": "REDEFINED \u2014 word floor retired, substance gate introduced",
+      "evidence": "297,054 words across 287 URLs \u2014 a 1,035-word average, median 995. RESTATED: the v1 audit's headline content defect was that 286 of 287 pages sat under the 3,000-word M1 floor. v2 removes that floor as 'the one requirement in Keystone with no supporting evidence and material evidence against it,' and replaces it with per-type bands plus the four-item substance gate. Re-measured against the bands, the median city page at 995 words is INSIDE its 800-1,600 band, and most of the site's alleged thinness disappears. What does not disappear is the substance gate: zero of 287 pages declare three verifiable local specifics, zero carry a first-party proof from their own geography, zero carry a fact the top five competitors do not, and the 74-page duplicate H2 is a direct failure of item four. Structure is the other half \u2014 73 blog posts in a chronological dump with six thin category pages, no cluster architecture, no surface library, no AEO Quick Answer on any page. Quality of the underlying research is genuinely good (Cherry Point fallout, Nooksack Valley farm dust, hard-water spotting), which is why this is a substantiation problem rather than a from-scratch one. MEASURED 2026-09-14: 138 of 287 URLs \u2014 48% of the site \u2014 recorded zero impressions in 16 months. The homepage took 44% of page impressions and 79% of clicks; a 287-page site is performing as a one-page site. /roof-cleaning/ carries 5,125 impressions at average position 53.5 and /gutter-cleaning/ 4,781 at 57.5 \u2014 audiences already arriving at pages that cannot rank.",
+      "movement": "AEO Quick Answer block at the top of every page, reused as meta description and first FAQ answer. Pages written to band, not to a quota, with the four-item substance gate enforced as a build failure in the harness \u2014 which it now is, and which currently blocks the Ferndale exemplar for want of a real first-party proof. Consolidate the 73 posts into cluster posts each feeding exactly one service spoke. Build the Surface Library as the topical-authority backbone."
+    },
+    {
+      "n": 7,
+      "name": "Design",
+      "current": 3,
+      "target": 4,
+      "v2_change": "none",
+      "evidence": "Clean, consistent Elementor build on hello-elementor from the 180sites.com template stable. Mobile-workable, click-to-call present. It reads as a template because it is one \u2014 nothing in the visual system is specific to this brand.",
+      "movement": "A real named palette and type system as CSS variables, brand hero and logo on every page (M7), field photography as the visual anchor rather than stock."
+    },
+    {
+      "n": 8,
+      "name": "Convert",
+      "current": 2,
+      "target": 5,
+      "v2_change": "NEWLY SPECIFIED \u2014 Part 4A, the Conversion Contract",
+      "evidence": "RESTATED DOWNWARD, on the site as it was already measured. v1 scored this 3 against an unwritten standard; v2 Part 4A exists because 'a build that ranks and does not convert is a failure the scorecard could previously mark as a 4.' Against the written contract: 4A.1 requires exactly one declared primary action per page, and the primary offer here is an H2 \u2014 'Try Bellingham's Best Window Washing Risk-Free' on 74 pages \u2014 competing with the click-to-call for the same visual weight, so the primary action is ambiguous by construction. 4A.2 requires a guarantee with terms; there is no /our-guarantee/ page on the domain. There is no financing page. The CTA is a sitewide banner rather than named per market. Genuinely better than the market on the basics: click-to-call, a five-second quote promise, a Square checkout path, a referral programme. NOT MEASURED, and therefore not counted against the score: form field count against the five-field limit, GA4 call and form conversion events, the #:~:text= custom dimension, AI-referrer segmentation, and whether a call-tracking number has displaced the GBP number in the footer NAP or the schema node (4A.3). Those five are the first things to check, and any of them could move this score in either direction.",
+      "movement": "One declared primary action per page in the data row. Risk-free offer rendered from a CTA component instead of a duplicated heading. Real /our-guarantee/ terms page. Financing page with a live calculator. GA4 attribution shipped as part of the build, not after it \u2014 including the #:~:text= dimension, without which roughly 22% of AI-Overview citation clicks misattribute to Direct."
+    },
+    {
+      "n": 9,
+      "name": "Performance",
+      "current": 3,
+      "target": 5,
+      "v2_change": "GATE TIGHTENED",
+      "v2_gate": "LCP <= 2.0s, TBT <= 200ms, CLS <= 0.05, Lighthouse >= 90, median of five runs, mobile; LCP image in initial HTML with fetchpriority; JS < 300KB; images sized; HTML under 2MB; field re-check at 28 days.",
+      "evidence": "Measured logged-out on /window-cleaning-ferndale-wa/: TTFB 149ms, DOM interactive 362ms, load 595ms \u2014 the WP Rocket cache is doing its job. Payload is the weakness: 96 requests and 707KB, of which 486KB is CSS (Elementor + Elementor Pro + Premium Addons Pro). Only 75 of 2,277 image elements sitewide are WebP (3.3%), and the sampled page lazy-loads none of its 13 images, though all 13 carry explicit width and height. HONESTY NOTE: navigation timings are not the v2 lab gate. No Lighthouse median-of-five mobile run has been performed, so LCP, TBT, CLS and the score are unmeasured and this 3 rests on payload discipline and server response alone. It is provisional in both directions.",
+      "movement": "Static output kills the 486KB of builder CSS outright. WebP with explicit dimensions, LCP image in the initial HTML with fetchpriority, lazy-load below the fold. Run the median-of-five mobile lab gate before launch and again in the field at 28 days \u2014 v2 makes both a gate, not a phase.",
+      "v3_2_note": "v3.2 names INP as the field metric, distinct from lab TBT: \"a passing TBT does not imply a passing INP, and on page-builder themes they diverge routinely.\" The 28-day field re-check is now INP <= 200ms, run with Vercel Optimize where the site is on Vercel. Neither has been measured here, so this 3 remains provisional."
+    },
+    {
+      "n": 10,
+      "name": "Integrity",
+      "current": 2,
+      "target": 5,
+      "v2_change": "harness item added",
+      "evidence": "Strong on the basics \u2014 exactly one H1 on all 287 pages, zero orphans, zero duplicate titles, zero canonical mismatches, zero noindex accidents, zero non-200s, zero JSON-LD parse errors. Wrecked by two things. First, taxonomy: 275 of 287 URLs are flat root-level slugs, one up to 113 characters; there is no /services/ or /locations/ directory, so no hierarchy exists for authority to flow through. Second, cannibalization: Bellingham window cleaning is targeted simultaneously by /window-cleaning-bellingham-wa/, /window-cleaning-cost-bellingham-wa/, /what-affects-the-cost-of-professional-window-cleaning-in-bellingham-and-surrounding-areas/, /professional-window-cleaning-services-in-bellingham-surrounding-areas/, /the-complete-guide-to-professional-window-cleaning-in-bellingham-wa/ and several more. 'Try Bellingham's Best Window Washing Risk-Free' as an H2 on 74 pages is the Part 12.1 repeated-exact-match-H2 signature. Cannibalization is now confirmed in performance data rather than inferred from the crawl: /services/pressure-washing/ (1,420 impressions, position 32.2) and /pressure-washing/ (356, position 43.2) are both live and both accruing impressions for the same intent.",
+      "movement": "Impose the Part 3.3 taxonomy with page-by-page 301s (197 mapped), consolidate each duplicated intent to one canonical page, and render the repeated heading from a CTA component so it stops being a heading at all. v2 adds the prevention layer the v1 harness lacked: scripts/keyword-map-check.mjs now fails the wave on a (service, geo) tuple claimed by two URLs, so this specific failure cannot recur in the new build."
+    },
+    {
+      "n": 11,
+      "name": "Honesty & compliance",
+      "current": 3,
+      "target": 5,
+      "v2_change": "review practices added",
+      "evidence": "Nothing fabricated \u2014 no invented aggregateRating, no fake pricing, no phantom credentials, NAP consistent across the site, single-entity site with no cross-brand bleed. Two real violations of doctrine #6: 'Risk-Free' is used as an unqualified guarantee on 74 pages with no terms page anywhere on the domain, and 'Bellingham's Best' is an unsubstantiated superiority claim in a heading. The UBI is published, which is legitimate public record but should be a documented client decision (Part 8). NOT MEASURED: v2 adds review incentives, review gating and staff-written reviews to this dimension. Nothing observed suggests any of the three, but nothing observed rules them out either \u2014 this needs a direct conversation with the client, not an inference from the site.",
+      "movement": "Every 'guaranteed' and 'risk-free' string links to /our-guarantee/ with defined terms \u2014 blocked on Randy supplying the actual terms, and /our-guarantee/ is noindex until he does. 'Bellingham's Best' is already replaced in the build by a substantiated claim drawn from the client's own awards page, with dates. Confirm UBI publication in writing.",
+      "v3_2_note": "v3.2 reworded \"credentials real\" to the client-attested standard and RETIRED verification as a publish blocker. Nothing ships gated on independent verification. What replaces it: record who supplied a fact and when, mark it attested in the guardrail file, and never invent. The honesty doctrine is untouched \u2014 fabrication is still barred, and an attestation is not a fabrication. Randy's territory-wide job history is the live example: attested, recorded, used."
+    },
+    {
+      "n": 12,
+      "name": "Entity & off-site presence",
+      "current": null,
+      "target": null,
+      "v2_change": "NEW IN V2",
+      "status": "UNSCORED \u2014 not measured",
+      "what_is_scored": "GBP completeness \u2014 primary category, hours including holidays, keyword-bearing predefined services, service areas within the 20 limit, photo recency, the address-visibility decision. A citation core of 30-50 mainstream plus vertical directories, not 500. Unlinked brand mentions. Presence on the third-party platforms LLMs draw on for local queries.",
+      "why_unscored": "None of it has been measured. The GBP has not been audited, no citation sweep has been run, and no brand-mention scan exists. Part 10 says to score 12 and 13 from measurement and explicitly warns against backfilling with an estimate, so this stays blank rather than becoming a plausible 3.",
+      "what_is_known_without_scoring": [
+        "248 Google reviews exist, so a GBP exists and is active.",
+        "Six social profiles are linked from the site footer \u2014 the off-page half of the entity is partly built already.",
+        "The Secretary of State principal office address is residential, which makes the address-visibility decision a real decision rather than a default, and it is why streetAddress stays null in the build data.",
+        "Whatcom County service-area coverage against the 20-service-area GBP limit is untested against the 41 declared markets \u2014 the declared territory already exceeds what a GBP can express."
+      ],
+      "first_measurement_pass": [
+        "GBP audit: category, hours including holidays, predefined services, service areas, photo recency, address visibility.",
+        "Citation sweep across the 30-50 core: NAP character-consistency against the GBP, not against the website.",
+        "Unlinked brand mention scan.",
+        "Presence check on the third-party platforms that surface in local assistant answers."
+      ],
+      "v3_2_citation_core": {
+        "note": "v3.2 names the core, because \"30-50 mainstream plus vertical\" was never a list anyone could work from. Selection is on entity contribution, not Domain Rating.",
+        "tier_1_entity_layer": [
+          "Google Business Profile",
+          "Apple Business Connect",
+          "Bing Places",
+          "Facebook Page",
+          "Yelp",
+          "Nextdoor",
+          "Better Business Bureau"
+        ],
+        "tier_2_data_aggregators": [
+          "Data Axle",
+          "Neustar Localeze",
+          "Foursquare"
+        ],
+        "tier_3_trade_relevant": [
+          "Angi",
+          "Thumbtack",
+          "HomeAdvisor",
+          "Porch",
+          "BuildZoom",
+          "local Chamber of Commerce",
+          "state trade association",
+          "licensing board public directory"
+        ],
+        "tier_4_general": "Only where the category genuinely fits. Low value individually and never worth paying for.",
+        "scored_sub_items": [
+          "NAP consistency character-for-character across every live listing",
+          "duplicate suppression as ongoing work",
+          "the service-area-business decision, decided once and applied identically"
+        ],
+        "status_here": "Only the GBP has been read. Tier 1 is otherwise unaudited, tiers 2-4 untouched. The address-visibility decision is open and is the live sub-item \u2014 see archive/gbp-findings.json GBP-1."
+      }
+    },
+    {
+      "n": 13,
+      "name": "AI answer surface",
+      "current": null,
+      "target": null,
+      "v2_change": "NEW IN V2",
+      "status": "UNSCORED \u2014 not measured",
+      "what_is_scored": "Measured presence across a fixed prompt set \u2014 service x city x intent, held constant per client \u2014 in AI Overviews, AI Mode, ChatGPT and Perplexity. GSC generative-AI impression trend. Named-mention versus ghost-citation split.",
+      "why_unscored": "No prompt set has been run. A score here without a run would be exactly the fabrication the standard forbids.",
+      "what_is_known_without_scoring": [
+        "MEASURED 2026-09-11: kingofkingswindowcleaning.com/robots.txt allows every AI crawler. It contains one User-agent: * group disallowing only /wp-admin/, plus the sitemap line. GPTBot, OAI-SearchBot, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, Applebot-Extended, CCBot and Bytespider are all permitted. There is no access problem to fix \u2014 the surface is reachable and simply has nothing on it worth citing.",
+        "MEASURED 2026-09-11: whatcomgrc.com blocks anthropic-ai, AI2Bot, Ai2Bot-Dolma, aiHitBot, Amazonbot, Applebot-Extended and Bytespider by name. One of the seven competitors has voluntarily removed itself from assistant answers.",
+        "Vercel's crawler study finds GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Meta's crawler fetch JavaScript but do not execute it. The 7A static track therefore serves NAP, services, reviews and the Quick Answer in initial HTML by construction, which the current Elementor build does not guarantee.",
+        "Steady Demand's 86,645-citation study finds AI Overviews cite the business's own website 70.7% of the time while AI Mode cites Google Maps / GBP 79.8% \u2014 so dimension 13 cannot be moved by the site alone, and dimension 12 is half of its remedy."
+      ],
+      "first_measurement_pass": [
+        "Fix a prompt set \u2014 service x city x intent \u2014 and freeze it, so the trend is comparable quarter over quarter.",
+        "Run it across AI Overviews, AI Mode, ChatGPT and Perplexity; record named-mention versus ghost-citation.",
+        "Wire the GSC generative-AI report and the GA4 #:~:text= custom dimension before launch, not after \u2014 without the latter roughly 22% of AI-Overview citation sessions misattribute to Direct."
+      ],
+      "v3_2_citability_subscore": {
+        "rule": "v3.2 adds an input sub-score to this dimension: the share of indexable pages carrying all four Part 6.5 citability signals, and the share carrying their declared snippet shape in real markup (Part 4.3). Presence is the outcome and lags; citability is the input and can be scored on day one. Never average the input into the outcome to flatter the number.",
+        "measured_2026_09_14": "0 of 25 pages carry all four signals; 5 carry three or more. 25 of 25 carry their declared snippet shape in real markup.",
+        "instrument": "scripts/citability.mjs, wired into npm run verify."
+      }
+    },
+    {
+      "n": 14,
+      "name": "Accessibility",
+      "current": null,
+      "target": null,
+      "v2_change": "NEW IN v3.1",
+      "status": "UNSCORED \u2014 not measured",
+      "what_is_scored": "Operable without a mouse and legible without perfect vision: keyboard reachability and order, a visible :focus-visible state everywhere, real <label> or aria-label on every control plus autocomplete and a meaningful name, labelled icon-only buttons, semantic elements for their job (never <div onClick>), WCAG AA contrast (4.5:1 body, 3:1 large) with colour never the only carrier of meaning, tap targets >= 44x44px with touch-action: manipulation, link text descriptive out of context, prefers-reduced-motion honoured, correct alt with alt=\"\" on decorative images, and usable at 200% zoom and 320px.",
+      "how_it_is_run": "Per TEMPLATE, not per page. A finding on a template blocks that template's first publish as a P0.",
+      "rule_source": "Vercel Web Interface Guidelines, referenced not copied (Part 16.5) \u2014 fetched fresh at run time, because a pasted copy is stale within a month.",
+      "status_here": "Seven components and three layouts exist and none has been audited. This is the one dimension that can be moved entirely by us, with no client input and no measurement window \u2014 which makes it the cheapest outstanding item on the rubric."
+    }
+  ],
+  "p0_defects": [
+    {
+      "id": "P0-1",
+      "defect": "Zero LocalBusiness / Organization / Service nodes across all 287 URLs",
+      "class": "schema",
+      "why": "Nothing identifies the business to a search engine; 248 reviews and 287 local pages have no entity to accrue to.",
+      "fix_phase": 1,
+      "status": "fixed in build \u2014 7-node graph emitted from a single lib/schema.ts"
+    },
+    {
+      "id": "P0-2",
+      "defect": "RETIRED \u2014 '286 of 287 pages under the 3,000-word floor' is no longer a defect",
+      "class": "content",
+      "why": "v2 removes the word floor. Re-measured against the v2 bands, the median page is inside band for its type. Superseded by P0-11.",
+      "fix_phase": null,
+      "status": "retired by rubric change"
+    },
+    {
+      "id": "P0-3",
+      "defect": "No URL taxonomy \u2014 275 flat root-level slugs, no /services/ or /locations/",
+      "class": "architecture",
+      "why": "No hub-and-spoke hierarchy exists; equity cannot travel.",
+      "fix_phase": 1,
+      "status": "architecture + 197-redirect map built"
+    },
+    {
+      "id": "P0-4",
+      "defect": "Bellingham intent cannibalized across 8+ URLs",
+      "class": "integrity",
+      "why": "Part 12.1 #1 recurring killer; splits the head term.",
+      "fix_phase": 0,
+      "status": "consolidation mapped; keyword-map-check.mjs now prevents recurrence"
+    },
+    {
+      "id": "P0-5",
+      "defect": "\"Try Bellingham's Best Window Washing Risk-Free\" as an H2 on 74 pages",
+      "class": "integrity",
+      "why": "Part 12.1 repeated-exact-match-H2 pattern; an unqualified guarantee with no terms page; and under Part 4A it also makes the primary action ambiguous.",
+      "fix_phase": 0,
+      "status": "replaced by a substantiated claim + CTA component"
+    },
+    {
+      "id": "P0-6",
+      "defect": "No named expert or Person entity on any service or geo page; UBI and L&I in text only",
+      "class": "eeat",
+      "why": "hasCredential is the cheapest E-E-A-T win in the standard and it is entirely absent.",
+      "fix_phase": 1,
+      "status": "Randy Fee wired in; hasCredential still pending a real registration number"
+    },
+    {
+      "id": "P0-7",
+      "defect": "No AEO Quick Answer on any page; FAQPage on 6 of 287",
+      "class": "content",
+      "why": "Mandate M2. RESTATED: the v1 version of this defect also cited zero SpeakableSpecification under M4. v2 retires M4, so that half is withdrawn.",
+      "fix_phase": 2,
+      "status": "Quick Answer shipped on all 11 written pages"
+    },
+    {
+      "id": "P0-8",
+      "defect": "Neighborhood tier is 12 pages, one city, one service \u2014 and was built as the way into Bellingham",
+      "class": "local",
+      "why": "RESTATED under v2. The v1 finding was that the tier was only ~5% built. The v2 finding is worse and different: Part 3.4 item 4 forbids building neighborhood pages as the way into a market at all. The 12 pages are not an incomplete tier, they are a tier that should not have been started.",
+      "fix_phase": 3,
+      "status": "blocked by design until Bellingham is measured as ranking"
+    },
+    {
+      "id": "P0-9",
+      "defect": "305 images with no alt text; 3.3% WebP; no lazy-loading on the sampled page",
+      "class": "media/performance",
+      "why": "Mandate M6 and the Part 9 performance gate.",
+      "fix_phase": 1,
+      "status": "open"
+    },
+    {
+      "id": "P0-10",
+      "defect": "No guarantee/terms page for a risk-free claim made on 74 pages",
+      "class": "honesty",
+      "why": "Doctrine #6 \u2014 every guarantee links to terms.",
+      "fix_phase": 2,
+      "status": "blocked on Randy supplying terms; /our-guarantee/ noindex until then"
+    },
+    {
+      "id": "P0-11",
+      "defect": "NEW under v2 \u2014 zero of 287 pages clear the four-item substance gate",
+      "class": "content",
+      "why": "Replaces P0-2 as the real content defect. No page declares three verifiable local specifics, none carries a first-party proof from its own geography, none carries a fact the top five competitors do not, and the 74-page duplicate H2 fails item four outright. This is the measurable form of 'depth', and unlike a word count it cannot be satisfied by padding.",
+      "fix_phase": 2,
+      "status": "gate now enforced in the harness as a build failure"
+    },
+    {
+      "id": "P0-12",
+      "defect": "162 live geo URLs producing 388 impressions and 1 click in 16 months; 45 of 355 planned geo slots clear the Part 6A demand gate",
+      "class": "local / architecture",
+      "why": "Measured 2026-09-14 against the client's own Search Console export. The existing geo surface is not underperforming, it is inert: 0.6% of site impressions, 0.1% of clicks, median position 41, and 88 of 150 pages never shown at all. Two of the five demand signals are now measured (S2 GSC, S4 competitor coverage) and one is attested (S5 job history), which authorises 45 slots and declines 310.",
+      "fix_phase": 0,
+      "status": "gate measured and enforcing; 45 slots authorised, 310 become areaServed mentions"
+    },
+    {
+      "id": "P0-13",
+      "defect": "NEW under v2 \u2014 dimensions 12 and 13 have never been measured",
+      "class": "entity / AI surface",
+      "why": "Part 10 makes the GBP entity and the AI answer surface scored dimensions. Steady Demand's data puts AI Mode citing Google Maps/GBP 79.8% of the time against AI Overviews citing the business's own site 70.7% \u2014 two surfaces, two assets, and only one of them has ever been audited for this client.",
+      "fix_phase": 1,
+      "status": "measurement passes specified in dimensions 12 and 13"
+    }
+  ],
+  "what_is_already_right": [
+    "Exactly one H1 on all 287 pages \u2014 no missing-H1 epidemic, unlike most Elementor builds in this portfolio.",
+    "Single JSON-LD emitter, no duplicate-node collision.",
+    "Zero orphan pages, zero duplicate titles, zero canonical mismatches, zero non-200s, zero noindex accidents.",
+    "robots.txt allows every AI crawler \u2014 measured 2026-09-11. One of the seven competitors has blocked them; King of Kings has not, so the AI surface is reachable and the work is to give it something to cite.",
+    "Local research in the copy is real (Cherry Point fallout, Nooksack Valley, farm dust, hard-water spotting), so the rewrite is a substantiation problem, not a from-scratch problem.",
+    "248 Google reviews and six live social profiles \u2014 the off-page half of the entity already exists.",
+    "TTFB 149ms and load 595ms \u2014 the hosting and cache layer is not the bottleneck.",
+    "No fabricated ratings, stats or pricing anywhere.",
+    "Five case studies exist, which most of this market lacks \u2014 they are unwired, not absent."
+  ],
+  "outstanding_client_inputs": [
+    "Documented job history per geography \u2014 unblocks demand signal S5, the Part 3.4 hard cap, and the whole geo tier.",
+    "Search Console access on the verified property \u2014 unblocks S2, the neighborhood-tier 'already ranks' test, and the dimension 13 generative-AI trend.",
+    "Guarantee terms \u2014 unblocks /our-guarantee/ leaving noindex and the 'risk-free' wording rendering anywhere.",
+    "A first-party proof from Ferndale \u2014 a job photo, dated job note or customer review. The Ferndale exemplar is blocked by two independent harness gates for want of it.",
+    "Contractor registration number, if one exists \u2014 unblocks hasCredential.",
+    "Written confirmation to publish the UBI.",
+    "GBP access for the dimension 12 measurement pass.",
+    "Bio, photo, and years in trade before founding, for Randy Fee.",
+    "Verified coordinates and opening hours.",
+    "The Oak Harbor retain-or-drop decision \u2014 it is in Island County, outside the declared Whatcom + Skagit territory, and no competitor builds it."
+  ],
+  "gsc_measured": "2026-09-14",
+  "current_average_rubric": "v2 (thirteen dimensions, eleven scored)",
+  "rebaselining_rule": {
+    "standard": "Keystone v3.1/v3.2, Part 10: \"never restate a historical score on a newer rubric \u2014 state the rubric version with every score quoted.\"",
+    "what_this_means_here": "The 2.27 average on this page is a KEYSTONE v2 SCORE and stays labelled as one. It is not converted to v3.2 and must not be quoted as a v3.2 number. v3.2 adds Dimension 14 (Accessibility), redefines the Dimension 2 decline exemption, adds a citability sub-score to Dimension 13 and names the citation core in Dimension 12 \u2014 a v3.2 figure requires a fresh scoring pass against those definitions, not arithmetic on this one.",
+    "note_on_the_earlier_restatement": "This file previously restated the v1 score of 2.55 as 2.27 on the v2 rubric. v3 now forbids exactly that move. The v2 restatement stands as history because it was made under v2, and no further restatement will be made.",
+    "next_score": "A v3.2 scoring pass is outstanding and is listed in the open items below."
+  },
+  "open_items_v3_2": [
+    "Run a v3.2 scoring pass across all fourteen dimensions. The 2.27 on this page is a v2 score and may not be converted.",
+    "Accessibility audit per template (7 components, 3 layouts) against the Web Interface Guidelines \u2014 blocks first publish of each template.",
+    "Backfill Part 6.5 citability on the 20 pages that do not yet carry all four signals.",
+    "Dimension 13 measurement per the new 10.4 methodology: 3-5 runs per prompt with the rate reported against its sample size, fan-out query extraction, three-way cause split, visibility ladder, branded search as the attribution basis.",
+    "Citation core audit \u2014 Tier 1 beyond the GBP, then Tier 2 aggregators.",
+    "Part 3.5 navigation shell specification, including the Nav Location column in the keyword-URL map.",
+    "Segment pages (the ninth page type) \u2014 [service] for [segment], orthogonal to (service, geo).",
+    "Segmented XML sitemaps by page type; writer-register scanner as the eighth harness script.",
+    "GA4 measurement hygiene per 16.6 \u2014 retention set past the two-month default, internal traffic excluded, referral exclusions, no summing of platform-claimed conversions."
+  ]
+}

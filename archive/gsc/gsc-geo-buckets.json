@@ -1,0 +1,78 @@
+{
+ "markets": {
+  "bellingham": {
+   "name": "Bellingham",
+   "queries": 201,
+   "impr": 21409,
+   "clicks": 52,
+   "bestPos": 1.0,
+   "top": "window cleaning bellingham"
+  },
+  "ferndale": {
+   "name": "Ferndale",
+   "queries": 3,
+   "impr": 21,
+   "clicks": 0,
+   "bestPos": 10.33,
+   "top": "affordable pressure washing ferndale wa"
+  },
+  "lynden": {
+   "name": "Lynden",
+   "queries": 2,
+   "impr": 27,
+   "clicks": 0,
+   "bestPos": 19.0,
+   "top": "lynden window cleaning"
+  },
+  "blaine": {
+   "name": "Blaine",
+   "queries": 1,
+   "impr": 1,
+   "clicks": 0,
+   "bestPos": 9.0,
+   "top": "blaine moss control"
+  },
+  "mount-vernon": {
+   "name": "Mount Vernon",
+   "queries": 4,
+   "impr": 17,
+   "clicks": 0,
+   "bestPos": 9.0,
+   "top": "window cleaning mount vernon"
+  },
+  "burlington": {
+   "name": "Burlington",
+   "queries": 4,
+   "impr": 9,
+   "clicks": 0,
+   "bestPos": 1.0,
+   "top": "window washing burlington"
+  },
+  "anacortes": {
+   "name": "Anacortes",
+   "queries": 4,
+   "impr": 12,
+   "clicks": 0,
+   "bestPos": 28.33,
+   "top": "gutter cleaning company anacortes wa"
+  },
+  "oak-harbor": {
+   "name": "Oak Harbor",
+   "queries": 1,
+   "impr": 3,
+   "clicks": 0,
+   "bestPos": 44.67,
+   "top": "oak harbor gutter cleaning near me"
+  }
+ },
+ "neighborhoods": {
+  "south": {
+   "name": "South",
+   "queries": 1,
+   "impr": 2,
+   "clicks": 0,
+   "bestPos": 91.5,
+   "top": "roof washing south bay"
+  }
+ }
+}

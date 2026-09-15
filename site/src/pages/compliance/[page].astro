@@ -1,0 +1,69 @@
+---
+/**
+ * T8 — the compliance page. "Enormous trust signal; almost no competitor builds
+ * it" (Keystone Part 3.4 page type 5).
+ *
+ * Part 4.2: every factual or legal claim carries a source and a review date, and
+ * both render visibly. Part 4.3 declares this definition paragraph + table.
+ */
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+export async function getStaticPaths() {
+  const pages = await getCollection('compliance');
+  return pages.map((p) => ({ params: { page: p.slug }, props: { slug: p.slug } }));
+}
+
+const { slug } = Astro.props;
+const entry = (await getEntry('compliance', slug))!;
+const { Content } = await entry.render();
+const d = entry.data;
+
+const schema = {
+  path: `/compliance/${slug}/`,
+  title: d.title.length > 60 ? d.title : buildTitle(d.title),
+  description: d.metaDescription,
+  image: d.heroImage,
+  imageAlt: d.heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Local rules', path: '/compliance/' },
+    { name: d.title, path: `/compliance/${slug}/` },
+  ],
+  faqs: d.faqs,
+};
+---
+<BaseLayout schema={schema} ogImage={d.heroImage}>
+  <article class="t8 prose">
+    <h1>{d.title}</h1>
+    <AnswerBox text={d.answer} label="The rule, in one paragraph" />
+    <Content />
+
+    {/* Part 4.2 — sources and a review date, visible, not buried. */}
+    <section class="sources" aria-labelledby={`sources-${slug}`}>
+      <h2 id={`sources-${slug}`}>Sources</h2>
+      <ul>
+        {d.sources.map((s) => (
+          <li><a href={s.url} rel="noopener">{s.label}</a></li>
+        ))}
+      </ul>
+      <p class="reviewed">
+        Reviewed <time datetime={d.reviewed.toISOString().slice(0, 10)}>
+          {d.reviewed.toISOString().slice(0, 10)}</time>.
+        Municipal codes are amended and section numbering changes. This is a
+        plain-language summary, not legal advice — read the current text at the
+        links above or call the city.
+      </p>
+    </section>
+
+    <Faq faqs={d.faqs} id={`faq-${slug}`} heading="Questions about this" />
+    <Cta />
+  </article>
+</BaseLayout>

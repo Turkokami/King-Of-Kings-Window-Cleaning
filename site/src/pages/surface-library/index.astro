@@ -1,0 +1,66 @@
+---
+/**
+ * T6 hub — the surface library index, grouped by category.
+ *
+ * This is the topical-authority backbone (Keystone Part 3.4 page type 7). It is
+ * also the part of the build with no competitor equivalent: of the five local
+ * competitors, none has a library tier at all.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Cta from '../../components/Cta.astro';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+
+const profiles = (await getCollection('library'))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const CATEGORY_LABEL: Record<string, string> = {
+  glass: 'Glass', siding: 'Siding', roofing: 'Roofing',
+  gutters: 'Gutters', growth: 'Growth', soiling: 'Soiling and deposit',
+};
+const categories = [...new Set(profiles.map((p) => p.data.category))].sort();
+
+const answer = 'A plain reference for the surfaces we clean and the things that grow on them in Whatcom and Skagit County. What each material is, how it fails, what comes off and what does not, and which method a surface can actually take.';
+
+const schema = {
+  path: '/surface-library/',
+  title: buildTitle('Surface Library'),
+  description: 'A reference for the surfaces we clean in Whatcom and Skagit County — what each material is, how it fails, and what cleaning can honestly change.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'King of Kings Window Cleaning surface library',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Surface library', path: '/surface-library/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t6-hub prose">
+    <h1>Surface Library</h1>
+    <AnswerBox text={answer} label="What this is" />
+
+    <p>
+      Every surface on a building fails in its own way, and most of the
+      disappointment in this trade comes from expecting one material to behave
+      like another. These are the ones we actually work on here.
+    </p>
+
+    {categories.map((c) => (
+      <section class="library-group">
+        <h2>{CATEGORY_LABEL[c] ?? c}</h2>
+        <ul>
+          {profiles.filter((p) => p.data.category === c).map((p) => (
+            <li>
+              <a href={`/surface-library/${p.slug}/`}>{p.data.title}</a>
+              {' — '}{p.data.answer.split('.')[0]}.
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <p><a href="/services/">Services</a> · <a href="/locations/">Where we work</a></p>
+    <Cta />
+  </article>
+</BaseLayout>

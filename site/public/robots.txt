@@ -1,0 +1,15 @@
+# King of Kings Window Cleaning
+#
+# Every AI retrieval crawler is allowed, deliberately. The legacy robots.txt
+# allowed them too and that is worth keeping: one competitor in this market
+# blocks anthropic-ai, AI2Bot, Amazonbot, Applebot-Extended and Bytespider by
+# name, and has removed itself from assistant answers as a result.
+#
+# Keystone v3.2 also names a trap this file cannot fix on its own: a WAF or
+# bot-fight rule silently overrides a permissive robots.txt. If retrieval
+# crawlers stop appearing in the logs, check the edge before checking this file.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.kingofkingswindowcleaning.com/sitemap.xml

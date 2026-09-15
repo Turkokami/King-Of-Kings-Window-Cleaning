@@ -1,0 +1,89 @@
+---
+/**
+ * The geo hub. The legacy site has no /locations/ directory at all — a single
+ * flat /service-area/ page stands in for it, which 301s here.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { MARKETS, marketsByCounty } from '../../data/markets';
+import { AUTHORISED_CITIES, AUTHORISED_TUPLES, DECLINED_CITIES } from '../../data/authorised';
+import { buildTitle } from '../../lib/seo';
+
+const answer = `King of Kings works ${MARKETS.length} markets across Whatcom and Skagit County — Bellingham, Ferndale, Lynden, Blaine and Birch Bay through to Mount Vernon, Burlington, Sedro-Woolley and Anacortes. Local crews on a regular rotation, so a booking does not mean waiting for someone to drive up.`;
+const faqs = [
+  { q: 'Do you charge more to come further out?', a: 'Distance is a factor in scheduling more than in price. We run both counties on a regular rotation rather than dispatching one-off, so most of the service area is covered at the same rates. The exceptions are the places that genuinely take longer to reach — the islands and Point Roberts — and we say so up front rather than burying it.' },
+  { q: 'What if I am just outside the towns listed?', a: 'Call and ask. The honest answer is usually yes. The list names the towns, not the boundaries, and a lot of this area is rural addresses between them.' },
+  { q: 'How quickly can you get to my town?', a: 'Bellingham, Ferndale and Lynden are usually within the week. Skagit markets and the smaller Whatcom communities run on a rotation, so it depends where we are in the cycle — generally one to two weeks, faster in the quiet months.' },
+  { q: 'Do you work the islands?', a: 'Lummi Island and Guemes Island are served, and scheduling is governed by the ferry rather than by us — which means a fixed window rather than a flexible one. Point Roberts requires two border crossings. All three are honest about that on their own pages.' },
+  { q: 'Which services are available in every town?', a: 'Window cleaning, gutter cleaning and moss removal are available everywhere we work. The larger markets also carry roof cleaning, pressure washing, house washing and solar panel cleaning. Each town page lists exactly what is available there.' },
+  { q: 'Are you a local company?', a: 'Yes. King of Kings is Bellingham-based and Bellingham-owned, formed in 2024, and works this area only. There is no national franchise behind it and no out-of-area call centre.' },
+];
+const schema = {
+  path: '/locations/',
+  title: buildTitle('Service Area'),
+  description: 'Window, gutter and roof cleaning across Whatcom and Skagit County — Bellingham, Ferndale, Lynden, Mount Vernon, Anacortes and 36 more markets.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Map of the King of Kings Window Cleaning service area across Whatcom and Skagit County',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Service area', path: '/locations/' }],
+  faqs,
+  pageType: 'CollectionPage' as const,
+};
+/*
+ * Part 6A. The geo hub lists the geographies that EARNED a page and names the
+ * ones that did not. It used to list all 41 as links, 31 of which now 404.
+ *
+ * This is the page where the distinction matters most to a reader: they want to
+ * know whether we come to their town, and the honest answer for a declined
+ * geography is "yes, and it does not have its own page" — not a broken link.
+ */
+const counties = [
+  { name: 'Whatcom County', markets: marketsByCounty('Whatcom').filter((m) => AUTHORISED_CITIES.includes(m.slug)) },
+  { name: 'Skagit County', markets: marketsByCounty('Skagit').filter((m) => AUTHORISED_CITIES.includes(m.slug)) },
+  { name: 'Island County', markets: marketsByCounty('Island').filter((m) => AUTHORISED_CITIES.includes(m.slug)) },
+].filter((c) => c.markets.length > 0);
+
+const alsoServed = MARKETS.filter((m) => DECLINED_CITIES.includes(m.slug));
+---
+<BaseLayout schema={schema}>
+  <article class="geo-hub">
+    <h1>Where King of Kings Works</h1>
+    <AnswerBox text={answer} />
+    {counties.filter((c) => c.markets.length).map((c) => (
+      <section>
+        <h2>{c.name}</h2>
+        <ul class="geo-hub__grid">
+          {c.markets.map((m) => (
+            <li>
+              <a href={`/locations/${m.slug}/`}><strong>{m.name}</strong></a>
+              <span class="geo-hub__count">{(AUTHORISED_TUPLES[m.slug] ?? []).length} services</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+    {alsoServed.length > 0 && (
+      <section class="also-served">
+        <h2>Also served, without a page of their own</h2>
+        <p>
+          We work these communities on the same rotation. They do not have their
+          own page because we build a page where there is evidence people search
+          for one, and say so plainly where there is not — which is the opposite
+          of how most of this trade handles a service-area list.
+        </p>
+        <ul class="geo-hub__grid">
+          {alsoServed.map((m) => <li>{m.name}, {m.county} County</li>)}
+        </ul>
+        <p>
+          If you are not sure whether you are inside the area, call and ask. The
+          honest answer is usually yes, and where it is not, we say so rather than
+          quote a job we cannot service properly.
+        </p>
+      </section>
+    )}
+
+    <Faq faqs={faqs} heading="Questions about our service area" />
+    <Cta />
+  </article>
+</BaseLayout>

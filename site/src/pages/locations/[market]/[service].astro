@@ -1,0 +1,139 @@
+---
+/**
+ * T4 — the city × service page. 230 of the 468 pages in this build use this route.
+ *
+ * Keystone 7A: dynamic segments enumerate slugs from data, plus
+ * `dynamicParams = false` so anything off-list 404s cleanly — no accidental
+ * thin pages. The markdown body is poured in from the content collection when it
+ * exists; the route stands up first and the content arrives in waves, so the
+ * site is never broken mid-build.
+ */
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import ExpertBlock from '../../../components/ExpertBlock.astro';
+import { MARKETS, TIER_SERVICES, marketBySlug, isBuildable } from '../../../data/markets';
+import { AUTHORISED_TUPLES, AUTHORISED_CITIES } from '../../../data/authorised';
+import { serviceBySlug, geoServices } from '../../../data/services';
+import { geoCopy, wheel } from '../../../lib/geo';
+import { buildTitle } from '../../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+/*
+ * KEYSTONE v3.2 PART 6A. Previously the cross-product of markets x tier services
+ * — 230 pages generated from two arrays. That is exactly the construction that
+ * produced 150 live geo pages returning 388 impressions and one click in sixteen
+ * months. It now emits only the 35 (geo, service) tuples that cleared the
+ * two-signal demand gate, read from the committed map.
+ */
+export async function getStaticPaths() {
+  const paths = [];
+  for (const m of MARKETS) {
+    for (const svc of AUTHORISED_TUPLES[m.slug] ?? []) {
+      paths.push({ params: { market: m.slug, service: svc }, props: { marketSlug: m.slug, serviceSlug: svc } });
+    }
+  }
+  return paths;
+}
+
+const { marketSlug, serviceSlug } = Astro.props;
+const market = marketBySlug(marketSlug)!;
+const service = serviceBySlug(serviceSlug)!;
+const gate = isBuildable(market);
+const copy = geoCopy(marketSlug, serviceSlug);
+const links = wheel(marketSlug, serviceSlug, TIER_SERVICES[market.tier]);
+
+// Content arrives in waves. Until this page's markdown lands, the route renders
+// the scaffold and is marked noindex — a thin geo page is worse than no geo page.
+const entry = await getEntry('cityService', `${marketSlug}/${serviceSlug}`)?.catch(() => undefined);
+const hasBody = Boolean(entry);
+const { Content } = hasBody ? await entry!.render() : { Content: null };
+
+const data = entry?.data;
+/*
+ * M5 — 60 characters. `service.name` is the long form ("Roof Cleaning & Debris
+ * Removal"), which overflows on the longer market names: Blaine, Everson and
+ * Lynden all shipped 63-64 character titles on the first real build. `short` is
+ * what the nav and the wheel already use, and it is what a searcher types.
+ */
+const geoCore = `${service.name} in ${market.name} WA`;
+const title = data?.title ?? buildTitle(
+  geoCore.length + ' | King of Kings'.length <= 60 ? geoCore : `${service.short} in ${market.name} WA`
+);
+const answer = data?.answer ?? copy.conditions;
+/*
+ * M5 forbids duplicate descriptions, and the fallback was `copy.conditions` —
+ * one string per MARKET, reused by the city page and every service under it. On
+ * the first real build that produced seven pages sharing a description in
+ * Bellingham alone. The fallback is now scoped to the tuple, so a scaffolded page
+ * is still unique while it waits for a body.
+ */
+const description = data?.metaDescription
+  ?? `${service.name} in ${market.name}, ${market.county} County. ${copy.conditions}`;
+// No slice — BaseLayout runs trimDescription, which cuts to the 110-165 band on a
+// sentence boundary and guarantees terminal punctuation. Slicing first produced a
+// 166-character string because the trimmer then had to add the full stop.
+const faqs = data?.faqs ?? [];
+const heroImage = data?.heroImage ?? '/brand/king-of-kings-social.jpg';
+const heroAlt = data?.heroAlt ?? `${service.name} crew working in ${market.name}, Washington`;
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Service area', path: '/locations/' },
+  { name: market.name, path: `/locations/${market.slug}/` },
+  { name: service.short, path: `/locations/${market.slug}/${service.slug}/` },
+];
+
+const schema = {
+  path: `/locations/${market.slug}/${service.slug}/`,
+  title, description, image: heroImage, imageAlt: heroAlt, crumbs, faqs,
+  service: { name: `${service.name} in ${market.name}`, serviceType: service.name, areaName: market.name },
+};
+---
+<BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
+  <article class="t4">
+    {/* Exactly one H1, and it matches the page's core query (Part 9.1). */}
+    <h1>{service.name} in {market.name}, WA</h1>
+
+    <AnswerBox text={answer} />
+    <ExpertBlock context={`I run the ${market.name} route personally.`} />
+
+    {Content ? <Content /> : (
+      <div class="scaffold-notice">
+        <p><strong>Route live, content pending.</strong> This page is noindex until its 3,000–5,000 word body lands (mandate M1).</p>
+        {!gate.ok && <p class="scaffold-notice__blocker">{gate.reason}</p>}
+      </div>
+    )}
+
+    {/* M3 — the spoke-and-wheel. Up to parent, in to hub, laterally to siblings. */}
+    <nav class="wheel" aria-label="Related pages">
+      <h2>{service.name} near {market.name}</h2>
+      {/* Dimension 14: these were <p> labels sitting above unlabelled lists, so a
+          screen reader moving by structure heard two anonymous lists. As headings
+          they carry the same visual weight and become navigable landmarks. */}
+      <h3>More in {market.name}</h3>
+      <ul>
+        {links.siblingServices.map((s) => (
+          <li><a href={s.href}>{serviceBySlug(s.slug)?.name} in {market.name}</a></li>
+        ))}
+      </ul>
+      <h3>{service.name} nearby</h3>
+      <ul>
+        {links.nearbyCities.map((c) => (
+          <li><a href={c.href}>{service.name} in {marketBySlug(c.slug)?.name}</a></li>
+        ))}
+      </ul>
+      <p>
+        <a href={links.up}>All services in {market.name}</a> ·
+        <a href={links.hub}>{service.name} across Whatcom &amp; Skagit</a>
+      </p>
+    </nav>
+
+    <Faq faqs={faqs} heading={`${service.short} questions from ${market.name} homeowners`} />
+    <Cta market={market.name} service={service.name} />
+  </article>
+</BaseLayout>

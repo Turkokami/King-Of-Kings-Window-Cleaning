@@ -1,0 +1,70 @@
+---
+/**
+ * T1 trust — contact. Part 4A.2, contact friction: the primary action above the
+ * fold on mobile at 390px, a real tel: link everywhere the number appears, and
+ * the form posting to a destination the client owns.
+ *
+ * The form here is deliberately NOT rebuilt: Keystone 4A.2 says to embed the
+ * client's existing CRM form on a static build, because a static site cannot
+ * email and rebuilding the form silently destroys their lead tracking. Until
+ * that embed is supplied, this page routes to the number and the existing quote
+ * URL rather than to a form that goes nowhere.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import { BUSINESS, trustLine } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+
+const answer = `Call ${BUSINESS.phone} or request a quote online. Quotes are free, on site and in person — we walk the property with you, tell you what actually needs doing this cycle and what can wait, and price the work in front of us.`;
+
+const schema = {
+  path: '/contact/',
+  title: buildTitle('Contact — Free On-Site Quote'),
+  description: `Call King of Kings Window Cleaning on ${BUSINESS.phone} or request a free on-site quote across Whatcom and Skagit County.`,
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Contact King of Kings Window Cleaning',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }],
+  faqs: [],
+  pageType: 'ContactPage' as const,
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t1 prose">
+    <h1>Contact</h1>
+    <AnswerBox text={answer} label="How to reach us" />
+
+    <section class="contact-actions">
+      <h2>The quickest way</h2>
+      <p>
+        <a class="cta__btn cta__btn--primary" href={`tel:${BUSINESS.phoneE164}`}
+           aria-label={`Call King of Kings Window Cleaning on ${BUSINESS.phone}`}>
+          Call {BUSINESS.phone}
+        </a>
+        <a class="cta__btn" href={BUSINESS.quoteUrl}>Request a quote online</a>
+      </p>
+      <p><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></p>
+      <p>{trustLine()}</p>
+    </section>
+
+    <section>
+      <h2>What happens after you call</h2>
+      <ol>
+        <li><strong>We book a walk-round</strong>, usually within the week in Bellingham, Ferndale and Lynden.</li>
+        <li><strong>We look at the property with you</strong> and say which surfaces have growth, which have deposit, and which have simply weathered.</li>
+        <li><strong>You get a number for the work in front of us</strong> — not a phone estimate, which in a region where condition varies this much street to street is a guess.</li>
+        <li><strong>Nothing starts until you have agreed what is in it.</strong></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Where we work</h2>
+      <p>
+        Whatcom and Skagit County. <a href="/locations/">The service area page</a>
+        lists the towns with their own pages and names the ones we cover without
+        one — if you are not sure whether you are inside it, call and ask.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

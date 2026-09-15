@@ -1,0 +1,618 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>@page{size:letter;margin:14mm 13mm}html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head><body>
+<title>King of Kings Keystone Audit</title>
+<style>
+:root{
+  --ink:#14202b; --ground:#f6f9fa; --surface:#ffffff; --surface-2:#eef3f5;
+  --rule:#d7e1e6; --rule-soft:#e6edf0; --muted:#5b6d78; --muted-2:#7d8f99;
+  --copper:#b06a2c; --sea:#1d5a72; --sea-soft:#e2eef3;
+  --bad:#9e2f28; --warn:#8a6a12; --good:#2f6b4f;
+  --shadow:0 1px 2px rgba(20,32,43,.06), 0 8px 24px -18px rgba(20,32,43,.35);
+  --display:"Zilla Slab", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e6eef2; --ground:#111a21; --surface:#17222b; --surface-2:#1e2b35;
+    --rule:#2c3e4a; --rule-soft:#243441; --muted:#9fb2bd; --muted-2:#7f939f;
+    --copper:#d99553; --sea:#7fc0da; --sea-soft:#1b3542;
+    --bad:#e0736a; --warn:#d0a63f; --good:#6fbf95;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e6eef2; --ground:#111a21; --surface:#17222b; --surface-2:#1e2b35;
+  --rule:#2c3e4a; --rule-soft:#243441; --muted:#9fb2bd; --muted-2:#7f939f;
+  --copper:#d99553; --sea:#7fc0da; --sea-soft:#1b3542;
+  --bad:#e0736a; --warn:#d0a63f; --good:#6fbf95;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+p{margin:0 0 1em}
+a{color:var(--sea)}
+.measure{max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--copper);margin:0 0 10px}
+
+/* masthead */
+.mast{border-bottom:3px solid var(--ink);padding-block:44px 26px;margin-bottom:38px}
+.mast h1{font-size:clamp(34px,6vw,58px);line-height:1.02;letter-spacing:-.015em}
+.mast .sub{font-family:var(--display);font-size:clamp(17px,2.4vw,23px);color:var(--muted);margin-top:10px}
+.metarow{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:24px;font-size:13px;
+  font-family:var(--mono);color:var(--muted)}
+.metarow b{color:var(--ink);font-weight:500}
+
+/* headline figures */
+.figs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin:0 0 44px}
+@media (max-width:860px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.figs{grid-template-columns:1fr}}
+.fig{background:var(--surface);padding:20px 18px}
+.fig .n{font-family:var(--display);font-size:36px;line-height:1;letter-spacing:-.02em}
+.fig .n small{font-size:16px;color:var(--muted-2);letter-spacing:0}
+.fig .l{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.4}
+.fig.hero .n{color:var(--copper)}
+
+/* sections */
+section{margin-block:0 56px;scroll-margin-top:20px}
+.shead{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--rule);
+  padding-bottom:10px;margin-bottom:22px}
+.shead .num{font-family:var(--mono);font-size:12px;color:var(--copper);letter-spacing:.1em}
+.shead h2{font-size:clamp(21px,3vw,27px);letter-spacing:-.01em}
+
+/* verdict */
+.verdict{background:var(--sea-soft);border-left:4px solid var(--sea);padding:22px 24px;margin-bottom:14px}
+.verdict p{font-family:var(--display);font-size:18.5px;line-height:1.5;margin:0}
+.verdict p+p{margin-top:.7em}
+
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+thead th{background:var(--surface-2);font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);
+  white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);white-space:nowrap}
+.mono{font-family:var(--mono);font-size:12.5px;word-break:break-word}
+
+/* scorecard */
+.sc td{padding:12px 13px}
+.sc .dim{font-family:var(--display);font-size:16px;font-weight:600;white-space:nowrap}
+.bars{display:flex;align-items:center;gap:9px;min-width:190px}
+.track{position:relative;flex:1;height:9px;background:var(--surface-2);border:1px solid var(--rule-soft)}
+.now{position:absolute;inset-block:0;left:0;background:var(--muted-2)}
+.then{position:absolute;inset-block:0;background:repeating-linear-gradient(135deg,var(--copper),var(--copper) 3px,transparent 3px,transparent 6px);
+  border-right:2px solid var(--copper)}
+.delta{font-family:var(--mono);font-size:12px;color:var(--copper);white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+.why{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+/* defects */
+.defects{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.defect{background:var(--surface);display:grid;grid-template-columns:76px 1fr;gap:0}
+.defect .tag{background:var(--surface-2);padding:14px 12px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.06em;color:var(--bad);border-right:1px solid var(--rule)}
+.defect .bd{padding:14px 16px}
+.defect h4{font-size:15.5px;margin-bottom:5px}
+.defect p{font-size:13.5px;color:var(--muted);margin:0}
+.defect .ph{font-family:var(--mono);font-size:11px;color:var(--muted-2);margin-top:7px;display:block}
+
+/* rewrites */
+.rw{border:1px solid var(--rule);background:var(--surface);margin-bottom:14px}
+.rw .cap{padding:11px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rw .pair{display:grid;grid-template-columns:1fr 1fr}
+.rw .side{padding:15px 16px}
+.rw .side+.side{border-left:1px solid var(--rule)}
+.rw .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:8px}
+.rw .before .lab{color:var(--bad)} .rw .after .lab{color:var(--good)}
+.rw .str{font-size:14px;line-height:1.55;word-break:break-word}
+.rw .str.code{font-family:var(--mono);font-size:12px;white-space:pre-wrap}
+.rw .note{font-size:12.5px;color:var(--muted);margin-top:9px;padding-top:9px;border-top:1px dashed var(--rule)}
+
+/* rank list */
+.rank{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.rrow{background:var(--surface);display:grid;grid-template-columns:44px 1fr 150px 62px;
+  align-items:center;gap:12px;padding:12px 16px}
+.rrow.us{background:var(--sea-soft)}
+.rrow .pos{font-family:var(--mono);font-size:12px;color:var(--muted-2)}
+.rrow .nm{font-family:var(--display);font-size:16px}
+.rrow .nm span{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);
+  text-transform:none;letter-spacing:0;margin-top:2px}
+.rrow .sc2{font-family:var(--mono);font-size:15px;text-align:right;font-variant-numeric:tabular-nums}
+.rbar{height:7px;background:var(--surface-2);border:1px solid var(--rule-soft);position:relative}
+.rbar i{position:absolute;inset-block:0;left:0;background:var(--muted-2);display:block}
+.rrow.us .rbar i{background:var(--copper)}
+
+/* taxonomy block */
+pre.tax{background:var(--surface);border:1px solid var(--rule);padding:16px;overflow-x:auto;
+  font-family:var(--mono);font-size:12.5px;line-height:1.75;margin:0}
+pre.tax b{color:var(--copper);font-weight:400}
+
+/* phases */
+.phases{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.phase{background:var(--surface);display:grid;grid-template-columns:96px 1fr 84px;gap:14px;padding:14px 16px;align-items:start}
+.phase .p{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--copper);
+  text-transform:uppercase;padding-top:3px}
+.phase h4{font-size:15.5px;margin-bottom:4px}
+.phase p{font-size:13.5px;color:var(--muted);margin:0}
+.phase .ct{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;padding-top:3px}
+
+/* cost */
+.cost{border:1px solid var(--rule);background:var(--surface)}
+.costband{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
+.cb{background:var(--surface);padding:20px 18px;text-align:center}
+.cb .lv{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cb .amt{font-family:var(--display);font-size:clamp(24px,4vw,34px);margin-top:7px;letter-spacing:-.02em}
+.cb.mid .amt{color:var(--copper)}
+.cb .rt{font-family:var(--mono);font-size:11.5px;color:var(--muted-2);margin-top:5px}
+.costnote{padding:16px 18px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--muted)}
+
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;white-space:nowrap}
+.pill.new{color:var(--copper)} .pill.mig{color:var(--good)} .pill.t1{color:var(--sea)}
+
+.foot{border-top:3px solid var(--ink);padding-top:20px;margin-top:16px;
+  font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.8}
+
+ul.tight{margin:0;padding-left:20px}
+ul.tight li{margin-bottom:7px}
+ul.tight li::marker{color:var(--copper)}
+
+@media (max-width:720px){
+  .rw .pair{grid-template-columns:1fr}
+  .rw .side+.side{border-left:none;border-top:1px solid var(--rule)}
+  .rrow{grid-template-columns:34px 1fr 56px;gap:10px}
+  .rbar{display:none}
+  .phase{grid-template-columns:1fr;gap:6px}
+  .phase .ct{text-align:left}
+  .costband{grid-template-columns:1fr}
+  .defect{grid-template-columns:1fr}
+  .defect .tag{border-right:none;border-bottom:1px solid var(--rule);padding:9px 14px}
+}
+@media print{
+  body{background:#fff;font-size:11.4pt}
+  .wrap{max-width:none;padding-inline:0;padding-block:0}
+  section{break-inside:auto;margin-bottom:26px}
+  .shead,.mast{break-after:avoid}
+  .rw,.defect,.phase,.rrow,.fig,.verdict,.cb{break-inside:avoid}
+  tr{break-inside:avoid}
+  .tw{overflow:visible}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Keystone v1 · Standing Audit Format · Part 10.1</p>
+  <h1>King of Kings Window Cleaning</h1>
+  <p class="sub">Full-site audit and Keystone rebuild architecture — kingofkingswindowcleaning.com</p>
+  <div class="metarow">
+    <span><b>Audited</b> 10 Sep 2026</span>
+    <span><b>Track</b> 7A greenfield static</span>
+    <span><b>Tier</b> 2.0 Regional</span>
+    <span><b>Territory</b> Whatcom + Skagit</span>
+    <span><b>URLs swept</b> 287 of 287</span>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="fig hero"><div class="n">2.55</div><div class="l">Measured now, eleven-dimension rubric</div></div>
+  <div class="fig"><div class="n">4.73</div><div class="l">Target after rebuild</div></div>
+  <div class="fig"><div class="n">4<small>/7</small></div><div class="l">Rank in the Bellingham market today</div></div>
+  <div class="fig"><div class="n">286<small>/287</small></div><div class="l">Pages under the 3,000-word floor</div></div>
+  <div class="fig"><div class="n">0</div><div class="l">LocalBusiness nodes across the whole domain</div></div>
+</div>
+
+<section>
+  <div class="shead"><span class="num">01</span><h2>The verdict</h2></div>
+  <div class="verdict">
+    <p>King of Kings has the largest site in its market — 287 URLs against Mt.&nbsp;Baker's 213 — the second-largest review base at 248 Google reviews, and copy that does real local research: the Ferndale page talks about Cherry Point fallout, farm dust and hard-water spotting. It still scores fourth of seven.</p>
+    <p>The reason is narrow and fixable. Those 287 pages are attached to no business entity. There is not one LocalBusiness, Organization or Service node anywhere on the domain, and they sit in a flat URL space — 275 of 287 URLs are root-level slugs with no <span class="mono">/services/</span> or <span class="mono">/locations/</span> directory — so nothing gives that authority a shape to travel through.</p>
+  </div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted)">The rebuild is not a rescue. It is a rehousing: take a complete 150-page city&nbsp;×&nbsp;service matrix and a genuine 248-review reputation, put them on a real entity graph and a real taxonomy, take every page to the depth floor, and extend the geo lattice from 25 markets to 41 and from 12 neighborhood pages to 62.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">02</span><h2>How this was measured</h2></div>
+  <div class="measure">
+    <p>Every URL in the four live sitemaps was fetched anonymously — <span class="mono">credentials:'omit', cache:'no-store'</span> — at concurrency 6, and parsed for the Part&nbsp;9.4 field set: title and length, meta description and length, canonical, robots, H1 count and text, full H2 list, body word count, image and missing-alt counts, every JSON-LD node type and <span class="mono">@id</span>, and every internal outbound link. All 287 returned 200. Nothing here is estimated.</p>
+    <p>The cloud sandbox's egress policy blocks this host, so the sweep ran from the operator's own browser — the same live-site-is-the-source-of-truth method Keystone requires, and the same one that produced the King of Kings lessons folded into this standard. Lab performance was sampled logged-out over the WP Rocket cache. Two of the six competitors could not be navigated to under the browser extension's site permissions and were measured through a server-side fetch instead; their rows are marked as medium confidence.</p>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">03</span><h2>The scorecard</h2></div>
+  <p class="measure" style="font-size:14px;color:var(--muted);margin-bottom:20px">Solid bar is the measured score today; the hatched bar is the target after the rebuild. Scale is 1–5.</p>
+  <div class="tw"><table class="sc">
+    <thead><tr><th>Dimension</th><th class="num">Now</th><th class="num">Target</th><th style="min-width:200px">Movement</th><th>What the sweep found</th></tr></thead>
+    <tbody id="scorebody"></tbody>
+    <tfoot><tr style="border-top:2px solid var(--rule)">
+      <td class="dim">Average</td><td class="num" style="font-size:16px">2.55</td>
+      <td class="num" style="font-size:16px;color:var(--copper)">4.73</td>
+      <td colspan="2" class="why">Sasquatch WA benchmark is 4.38. Mt. Baker Windows, the strongest site in this market, measures 3.91.</td>
+    </tr></tfoot>
+  </table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">04</span><h2>What is already right</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:18px">Worth stating plainly, because it changes the scope. This is not a broken site — most of the failure modes this portfolio sees on inherited Elementor builds are simply absent here, and that is why the rebuild is an upgrade path rather than a teardown.</p>
+  <ul class="tight measure" style="font-size:15px">
+    <li><b>Exactly one H1 on all 287 pages.</b> No missing-H1 epidemic, no doubles. Elementor builds in this portfolio routinely fail this.</li>
+    <li><b>One JSON-LD emitter per page</b> — no duplicate-node collision of the kind that cost weeks on a previous build.</li>
+    <li><b>Zero orphans, zero duplicate titles, zero canonical mismatches, zero accidental noindex, zero non-200s, zero schema parse errors.</b></li>
+    <li><b>The city × service matrix is complete</b> — 150 of 150, no holes. That is a rare starting asset and it migrates straight across.</li>
+    <li><b>The local research in the copy is real.</b> Cherry Point industrial fallout, the Nooksack Valley, agricultural dust, hard-water spotting. The rewrite is a depth problem, not a blank page.</li>
+    <li><b>248 Google reviews and six live social profiles.</b> The off-page half of the entity already exists; only the on-page half is missing.</li>
+    <li><b>TTFB 149&nbsp;ms, load 595&nbsp;ms.</b> Hosting and cache are not the bottleneck.</li>
+    <li><b>Nothing fabricated.</b> No invented ratings, no phantom pricing, no false credentials, consistent NAP.</li>
+    <li><b>Seven real awards, all third-party and dated</b> — including Cascades Best <i>Gold</i> for Best Cleaning Service in 2025 <i>and</i> 2026 from The Bellingham Herald, and CommunityVotes Platinum for Best Window Cleaning. None of it is in schema, and it is sitting one page away from the "Bellingham's Best" claim it could substitute for.</li>
+    <li><b>A named owner who is actually on the job.</b> Randy Fee founded the company in March 2024, personally trains every technician, and is named by customers in their own reviews. Hundreds of reviews and seven awards in under three years is a better story than "decades of experience" — and it is unused.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="shead"><span class="num">05</span><h2>P0 defects — fixed before anything new is built</h2></div>
+  <div class="defects" id="defectlist"></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">06</span><h2>Before and after — real strings from the live site</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:20px">Every "before" below is a verbatim string pulled from the live site on 10 September 2026, not an illustrative example.</p>
+
+  <div class="rw">
+    <div class="cap">Sitewide heading · appears on 74 pages</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before — an &lt;h2&gt;</div>
+        <div class="str">Try Bellingham's Best Window Washing Risk-Free</div>
+        <div class="note">Two defects in one string. It is the Part 12.1 repeated-exact-match-H2 signature — the same heading on 74 pages tells Google those pages are the same page. And it is an unqualified guarantee plus an unsubstantiated superiority claim, with no terms page anywhere on the domain.</div>
+      </div>
+      <div class="side after"><div class="lab">After — a CTA component, not a heading</div>
+        <div class="str">Cascades Best Gold, Best Cleaning Service, 2025 and 2026 — The Bellingham Herald. <span style="color:var(--sea)">See the terms →</span></div>
+        <div class="note">The fix was on his own <span class="mono">/awards/</span> page the whole time. He doesn't need to claim he is the best — the Herald's readers voted him Gold two years running. Attributed, dated, verifiable, and stronger than the puffery it replaces. Rendered from <span class="mono">&lt;Cta&gt;</span> so it is never a heading and never counted as duplicated H2 text, and every "risk-free" string links to <span class="mono">/our-guarantee/</span>.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw">
+    <div class="cap">Page-level structured data · a typical city × service page</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before — 4 nodes</div>
+        <div class="str code">WebPage
+BreadcrumbList
+  ListItem
+  ListItem</div>
+        <div class="note">No LocalBusiness. No Service. No FAQPage. No Person. No aggregateRating, no sameAs, no areaServed, no Speakable. Nothing in this graph says what the business is, where it works, or that 248 people have reviewed it.</div>
+      </div>
+      <div class="side after"><div class="lab">After — the 7-node graph</div>
+        <div class="str code">WebSite          #website
+WebPage          {PAGE}#webpage
+ImageObject      #primaryimage
+LocalBusiness    #localbusiness   ← shared root @id
+  · NAP · geo · openingHours
+  · areaServed · sameAs
+  · aggregateRating (from GBP only)
+Service          #service
+  · provider → #localbusiness
+  · author   → #named-expert
+FAQPage          #faq
+BreadcrumbList   #breadcrumb</div>
+        <div class="note">Declared once per domain and imported by <span class="mono">@id</span> on every page — no node is ever redeclared.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw">
+    <div class="cap">URL · a live blog post, 107 characters of path</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before</div>
+        <div class="str mono">/best-window-cleaning-in-bellingham-wa-why-more-homeowners-are-choosing-professional-window-washing-services/</div>
+        <div class="note">One of at least eight root-level URLs competing for Bellingham window-cleaning intent, alongside <span class="mono">/window-cleaning-bellingham-wa/</span>, <span class="mono">/window-cleaning-cost-bellingham-wa/</span> and <span class="mono">/the-complete-guide-to-professional-window-cleaning-in-bellingham-wa/</span>.</div>
+      </div>
+      <div class="side after"><div class="lab">After</div>
+        <div class="str mono">/locations/bellingham/window-cleaning/</div>
+        <div class="note">One intent, one canonical page. The other seven 301 into it or into <span class="mono">/services/window-cleaning/</span>, each redirect pointed at its final destination so no A→B→C chains form.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw">
+    <div class="cap">Homepage meta description · 114 characters</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before</div>
+        <div class="str">Sits at 114 characters with no AEO function — it is a description, not an answer, and nothing on the page reuses it.</div>
+      </div>
+      <div class="side after"><div class="lab">After — one string, three jobs</div>
+        <div class="str">King of Kings cleans windows, gutters, roofs and siding across Whatcom and Skagit County, from Bellingham to Anacortes. Licensed, L&amp;I insured, 248 Google reviews. Free on-site quote.</div>
+        <div class="note">159 characters, ends on punctuation. The same string is the page's AEO Quick Answer, its first FAQPage answer and its SpeakableSpecification target — mandates M2, M4 and M5 satisfied by writing one sentence well.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw">
+    <div class="cap">Geo page depth · /window-cleaning-ferndale-wa/</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before — 1,033 words</div>
+        <div class="str">H1 "Window Cleaning in Ferndale" · 3 H2s · 4 images, 1 missing alt · 0 FAQ · 4 schema nodes. The copy is good — it names Cherry Point fallout and the Nooksack Valley — there is simply not enough of it.</div>
+      </div>
+      <div class="side after"><div class="lab">After — 3,000–5,000 words at /locations/ferndale/window-cleaning/</div>
+        <div class="str">Quick Answer → named-expert block with the WA registration → local conditions (Cherry Point emissions, Nooksack Valley agricultural dust, Portal Way corridor, well-water hardness) → what's included → method → what it costs in Ferndale → problem-page links → local proof with real job photos → guarantee → 6–8 FAQ → CTA named to Ferndale.</div>
+        <div class="note">Links up to <span class="mono">/locations/ferndale/</span>, in to <span class="mono">/services/window-cleaning/</span>, laterally to the six sibling Ferndale services and to the neighbouring Custer and Blaine pages. Never orphaned.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rw">
+    <div class="cap">Trust signals · currently text only</div>
+    <div class="pair">
+      <div class="side before"><div class="lab">Before</div>
+        <div class="str">"Licensed · Insured · L&amp;I · UBI 605476674 · 248 Google Reviews" — all present as visible text, none of it in any schema node, and no named human anywhere.</div>
+      </div>
+      <div class="side after"><div class="lab">After</div>
+        <div class="str code">Person #named-expert
+  name        Randy Fee
+  jobTitle    Owner
+  founder     → #localbusiness
+  worksFor    → #localbusiness
+LocalBusiness #localbusiness
+  foundingDate 2024-03-26
+  award        × 7 (dated, attributed)
+  aggregateRating ← verified GBP
+  sameAs ← GBP, Facebook, Instagram,
+          YouTube, Nextdoor, Yelp, X</div>
+        <div class="note">Randy Fee, owner — registered agent and Individual Governor on the Washington filing, and the name customers already use in their own reviews. <span class="mono">hasCredential</span> stays out until a real registration number exists: the site says "Licensed", but only a UBI is findable, and a UBI is a business licence, not a contractor registration. Publishing the UBI stays a documented client decision (Part 8).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">07</span><h2>The market, scored on the same rubric</h2></div>
+  <div class="rank" id="ranklist"></div>
+  <div class="tw" style="margin-top:22px"><table>
+    <thead><tr><th>Site</th><th class="num">URLs</th><th class="num">Home words</th><th class="num">Imgs / no alt</th><th>Entity schema</th><th>Reviews claimed</th></tr></thead>
+    <tbody>
+      <tr><td>Mt. Baker Windows</td><td class="num">213</td><td class="num">2,670</td><td class="num">68 / 0</td><td style="font-size:13px">LocalBusiness + Organization + Place + GeoCoordinates + PostalAddress + FAQPage + Person</td><td>1,000+</td></tr>
+      <tr><td>Pacific NW ProWash</td><td class="num">85</td><td class="num">3,601</td><td class="num">46 / 0</td><td style="font-size:13px">LocalBusiness + Organization + Place + PostalAddress + FAQPage + Person</td><td>—</td></tr>
+      <tr><td>Pure Shine NW</td><td class="num">30</td><td class="num">1,483</td><td class="num">94 / 1</td><td style="font-size:13px">Organization + WebSite + BreadcrumbList</td><td>501</td></tr>
+      <tr style="background:var(--sea-soft)"><td><b>King of Kings</b></td><td class="num"><b>287</b></td><td class="num">2,089</td><td class="num">2,277 / 305</td><td style="font-size:13px"><b>none</b> — WebPage + BreadcrumbList only</td><td>248</td></tr>
+      <tr><td>NW Window Cleaning</td><td class="num">—</td><td class="num">~1,300</td><td class="num">—</td><td style="font-size:13px">none</td><td>testimonials only</td></tr>
+      <tr><td>Whatcom Gutter &amp; Roof</td><td class="num">12</td><td class="num">—</td><td class="num">—</td><td style="font-size:13px">not measured</td><td>—</td></tr>
+      <tr><td>Bellingham Window &amp; Gutter</td><td class="num">4</td><td class="num">235</td><td class="num">7 / 2</td><td style="font-size:13px">LocalBusiness + PostalAddress</td><td>—</td></tr>
+    </tbody>
+  </table></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px" class="steal">
+    <div>
+      <p class="eyebrow">What to take</p>
+      <ul class="tight" style="font-size:14.5px">
+        <li><b>Mt. Baker's geo trio.</b> GeoCoordinates + PostalAddress + Place hung off the LocalBusiness node. Free, and King of Kings has none of it.</li>
+        <li><b>Mt. Baker's hub behaviour.</b> 107 internal links off their homepage. King of Kings' homepage absorbs 292 inbound links and passes 15 out.</li>
+        <li><b>ProWash's hub depth.</b> 3,601 words on the homepage — depth on the hub, not just the spokes.</li>
+        <li><b>Whatcom GRC's service split.</b> They sell moss <i>prevention</i> separately from moss removal, and gutter installation and gutter guards as their own services. Three commercial intents King of Kings currently gives away.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">What to leave</p>
+      <ul class="tight" style="font-size:14.5px">
+        <li>ProWash's 104-character title, and an H1 reading "Gutter cleaning and Christmas light installer" on a page whose title sells pressure washing.</li>
+        <li>NW Window Cleaning's sixteen-city meta description standing in for city pages.</li>
+        <li>Pure Shine's 94-image homepage.</li>
+        <li>The whole market's unqualified guarantee language. Nobody here publishes terms — that is an opening to take, not a licence to copy.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">08</span><h2>The taxonomy</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:18px">One taxonomy per domain, decided before Phase&nbsp;1 and never mixed. Every internal-link rewrite is domain-guarded — matched as <span class="mono">kingofkingswindowcleaning.com/services/…</span>, never the bare string — and every redirect points at its final destination.</p>
+  <pre class="tax">/                                          <b>hub / home</b>
+/services/                                 <b>single services hub — never two</b>
+/services/{service}/                       <b>9 core service spokes</b>
+/services/{service}/{problem}/             <b>18 problem micro pages</b>
+/locations/                                <b>geo hub</b>
+/locations/{city}/                         <b>41 markets</b>
+/locations/{city}/{service}/               <b>230 city × service</b>
+/locations/{city}/{neighborhood}/          <b>62 neighborhood pages</b>
+/surface-library/{surface}/                <b>24 material &amp; soiling profiles</b>
+/compliance/{topic}/                       <b>8 code &amp; regulation pages</b>
+/case-studies/{slug}/                      <b>20 case studies</b>
+/team/{expert-slug}/                       <b>named-expert Person entity</b>
+/our-guarantee/                            <b>defined-term warranty</b>
+/financing/                                <b>BNPL + calculator</b>
+/blog/{cluster-post}/                      <b>73 posts consolidated to 40</b></pre>
+  <p style="font-size:13.5px;color:var(--muted);margin-top:14px" class="measure">The current site has no taxonomy to migrate from — 275 of 287 URLs are flat root-level slugs, and the only directories in use are <span class="mono">/case-studies/</span> (5 pages) and <span class="mono">/category/</span> (6). <b>197 page-by-page 301s</b> are mapped, including 26 that collapse cannibalising duplicates into a single canonical page.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">09</span><h2>The service area — 41 markets</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:18px">Tiering is capacity-gated, not ambition-gated: a market earns its full service run only when there are enough real local facts — housing stock, water hardness, prevailing weather exposure, industry, road and route reality — to carry six or seven pages past the uniqueness floor without repeating itself. Twenty-five of these markets are live today; sixteen are net new.</p>
+  <div class="tw"><table id="markets">
+    <thead><tr><th>Tier</th><th>Markets</th><th class="num">Count</th><th>Pages each</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="tw" style="margin-top:18px"><table>
+    <thead><tr><th>County</th><th class="num">Markets</th><th class="num">Live today</th><th class="num">Net new</th></tr></thead>
+    <tbody>
+      <tr><td>Whatcom</td><td class="num">22</td><td class="num">14</td><td class="num">8</td></tr>
+      <tr><td>Skagit</td><td class="num">18</td><td class="num">10</td><td class="num">8</td></tr>
+      <tr><td>Island (retained legacy — Oak Harbor)</td><td class="num">1</td><td class="num">1</td><td class="num">0</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">10</span><h2>The neighborhood run</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:18px">Today there are 12 neighborhood pages: Bellingham only, window cleaning only. The rebuild takes the layer to 62 and puts a real neighborhood tier under every Tier-1 market.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Market</th><th class="num">Pages</th><th>Neighborhoods</th></tr></thead>
+    <tbody>
+      <tr><td><b>Bellingham</b></td><td class="num">27</td><td style="font-size:13.5px">All 27 city-recognised neighborhoods. <span class="pill mig">12 live</span> Alabama Hill · Barkley · Birchwood · Columbia · Cordata · Edgemoor · Fairhaven · Happy Valley · Silver Beach · South Hill · Squalicum · Sunnyland &nbsp;<span class="pill new">15 new</span> Cornwall Park · Downtown · Guide Meridian · Irongate · King Mountain · Lettered Streets · Meridian · Mount Baker · Puget · Roosevelt · Samish · Sehome · South · Whatcom Falls · York</td></tr>
+      <tr><td>Ferndale</td><td class="num">5</td><td style="font-size:13.5px" rowspan="1">Names sourced in Phase 3 from Whatcom/Skagit assessor plat records, USPS delivery areas and the owner's own route knowledge — never invented. A neighborhood without enough real material to carry 3,000 unique words gets an <span class="mono">areaServed</span> mention on its city page instead of a page of its own.</td></tr>
+      <tr><td>Lynden</td><td class="num">5</td><td style="font-size:13.5px">—</td></tr>
+      <tr><td>Blaine</td><td class="num">5</td><td style="font-size:13.5px">Semiahmoo, Birch Point and Drayton Harbor are the obvious candidates — waterfront salt-spray exposure is a genuinely different glass problem.</td></tr>
+      <tr><td>Mount Vernon</td><td class="num">5</td><td style="font-size:13.5px">—</td></tr>
+      <tr><td>Burlington</td><td class="num">5</td><td style="font-size:13.5px">—</td></tr>
+      <tr><td>Sedro-Woolley</td><td class="num">5</td><td style="font-size:13.5px">—</td></tr>
+      <tr><td>Anacortes</td><td class="num">5</td><td style="font-size:13.5px">Old Town, Skyline and the Guemes Channel waterfront carry the same salt-exposure angle.</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:13.5px;color:var(--muted);margin-top:14px" class="measure">A neighborhood × service layer for Bellingham — 27 neighborhoods × the three core services, 81 further pages — is held back deliberately. It is only built once the city and neighborhood tiers are ranking and the uniqueness floor is proven at that grain. A thin geo page is worse than no geo page.</p>
+</section>
+
+<section>
+  <div class="shead"><span class="num">11</span><h2>The build — 468 pages in six phases</h2></div>
+  <div class="phases" id="phaselist"></div>
+  <div class="tw" style="margin-top:20px"><table>
+    <thead><tr><th>Page type</th><th class="num">Count</th><th>Template</th><th class="num">Migrated</th><th class="num">Net new</th></tr></thead>
+    <tbody>
+      <tr><td>City × service</td><td class="num">230</td><td>T4</td><td class="num">150</td><td class="num">80</td></tr>
+      <tr><td>Neighborhood</td><td class="num">62</td><td>T5</td><td class="num">12</td><td class="num">50</td></tr>
+      <tr><td>City</td><td class="num">41</td><td>T4</td><td class="num">25</td><td class="num">16</td></tr>
+      <tr><td>Blog (consolidated from 73)</td><td class="num">40</td><td>T6</td><td class="num">40</td><td class="num">0</td></tr>
+      <tr><td>Surface library</td><td class="num">25</td><td>T6</td><td class="num">0</td><td class="num">25</td></tr>
+      <tr><td>Case study</td><td class="num">20</td><td>T9</td><td class="num">5</td><td class="num">15</td></tr>
+      <tr><td>Problem micro page</td><td class="num">18</td><td>T3</td><td class="num">0</td><td class="num">18</td></tr>
+      <tr><td>Service spoke</td><td class="num">9</td><td>T2</td><td class="num">7</td><td class="num">2</td></tr>
+      <tr><td>Compliance &amp; code</td><td class="num">8</td><td>T8</td><td class="num">0</td><td class="num">8</td></tr>
+      <tr><td>Trust &amp; utility</td><td class="num">10</td><td>T1 / T8</td><td class="num">8</td><td class="num">2</td></tr>
+      <tr><td>Hubs (home, services, locations, library, blog)</td><td class="num">5</td><td>T1 / T4 / T6</td><td class="num">2</td><td class="num">3</td></tr>
+    </tbody>
+    <tfoot><tr style="border-top:2px solid var(--rule)"><td><b>Total indexable</b></td><td class="num"><b>468</b></td><td>—</td><td class="num">201</td><td class="num">267</td></tr></tfoot>
+  </table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">12</span><h2>What this would normally cost</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:20px">468 indexable pages at the 3,000–5,000-word mandate is <b>1,638,000 words</b> at a 3,500-word average. Priced against 2026 US market rates for SEO content writing. This is a value benchmark against what the same scope costs on the open market — it is not an invoice, and the fixed engagement price sits beside it.</p>
+  <div class="cost">
+    <div class="costband">
+      <div class="cb"><div class="lv">Conservative</div><div class="amt">$245,700</div><div class="rt">1,638,000 words × $0.15</div></div>
+      <div class="cb mid"><div class="lv">Mid-market</div><div class="amt">$573,300</div><div class="rt">1,638,000 words × $0.35</div></div>
+      <div class="cb"><div class="lv">Premium research</div><div class="amt">$982,800</div><div class="rt">1,638,000 words × $0.60</div></div>
+    </div>
+    <div class="costnote">
+      Plus a one-time technical build at prevailing rates of <b>$5,000–$9,500</b> (common band $2,501–$5,000; agency average ~$9,500), and a local SEO retainer equivalent of <b>~$38,500/yr</b> front-loaded into the build (12 × ~$3,209/mo agency average).
+      <p style="margin:12px 0 0;font-family:var(--display);font-size:15.5px;color:var(--ink)">"At prevailing 2026 SEO-writing rates, the content in this build alone represents roughly $246,000–$983,000, plus $5k–$9.5k of technical build — engineered and delivered as one fixed engagement."</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">13</span><h2>The archive</h2></div>
+  <p class="measure" style="font-size:14.5px;color:var(--muted);margin-bottom:18px">Everything measured is saved as structured data so the rebuild reads from files, not from memory.</p>
+  <div class="tw"><table>
+    <thead><tr><th>File</th><th>Contents</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">archive/crawl-metrics.json</td><td>The complete Part 9.4 sweep — coverage, platform fingerprint, taxonomy shape, content distribution, title/meta stats, heading analysis with the sitewide-repeat table, image and alt counts, the full schema node inventory, internal-link distribution, NAP and trust strings, sampled performance, and the geo lattice as built.</td></tr>
+      <tr><td class="mono">archive/keystone-scorecard.json</td><td>Eleven dimensions with measured evidence and the movement required for each, the ten P0 defects with fix phase, and the what-is-already-right list.</td></tr>
+      <tr><td class="mono">archive/competitor-set.json</td><td>Six competitors measured on the same harness, scored on the same rubric, ranked, with the steal list and the do-not-copy list.</td></tr>
+      <tr><td class="mono">architecture/page-list.csv</td><td>All 468 URLs with type, template contract, build phase and migrate-or-new status.</td></tr>
+      <tr><td class="mono">architecture/redirect-map.csv</td><td>197 page-by-page 301s, including the 26 cannibalisation consolidations.</td></tr>
+      <tr><td class="mono">architecture/architecture-summary.json</td><td>Counts by phase, type and status; market tiering; neighborhood targets.</td></tr>
+      <tr><td class="mono">architecture/build_architecture.py</td><td>The generator. Change the market list or the tiering and the page list, redirect map and totals regenerate.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <div class="shead"><span class="num">14</span><h2>Open items before Phase 1</h2></div>
+  <ul class="tight measure" style="font-size:15px">
+    <li><b>Named expert — <span style="color:var(--good)">resolved</span>.</b> Randy Fee, owner. Wired into the Person node, the expert block on every page and his own entity page at <span class="mono">/team/randy-fee/</span>. Still owed: his bio, a real photo, and his years in the trade before founding the company in March 2024.</li>
+    <li><b>The word "Licensed".</b> The site says licensed and L&amp;I insured, but the only identifier findable anywhere is the UBI — which is a business licence, not a contractor registration. Window cleaning generally doesn't require one in Washington; roof cleaning and pressure washing can. Randy should confirm with L&amp;I. Until then <span class="mono">hasCredential</span> stays out and the credential line reads "Washington business licence and L&amp;I coverage", which is true.</li>
+    <li><b>UBI publication.</b> 605476674 is already visible on the live site. Confirm in writing that it stays published in schema — Part 8 makes publishing an identifier a client decision.</li>
+    <li><b>The filed address.</b> The Secretary of State filing carries a residential principal office address. It is public record and it is staying out of the build — schema carries locality and region only, matching the legacy site's own correct choice. Flagging it so the decision is explicit rather than accidental.</li>
+    <li><b>Guarantee terms.</b> "Risk-free" runs on 74 pages with no terms. The actual terms need writing before <span class="mono">/our-guarantee/</span> can exist, and every guarantee string links there.</li>
+    <li><b>Review count.</b> 248 is the on-page claim. <span class="mono">aggregateRating</span> gets pulled from the verified GBP at build time and never hand-entered.</li>
+    <li><b>Service confirmations.</b> Does he sell gutter installation and gutter guards? Moss prevention as a standalone job? Christmas lights? Build only the confirmed set — a vertical page for work he doesn't do is a liability.</li>
+    <li><b>Oak Harbor.</b> It is Island County, outside the chosen Whatcom + Skagit territory, and it is live today with six pages. Retain and maintain, or let it go?</li>
+    <li><b>Sixteen new markets.</b> Point Roberts, Lummi Island, Guemes Island and Samish Island all need a truthful travel-and-scheduling answer before their pages can claim service.</li>
+  </ul>
+</section>
+
+<div class="foot">
+  Keystone v1 · consolidated August 2026 · Part 10.1 standing audit format<br>
+  Measured live on 10 September 2026 — 287 of 287 URLs, anonymous fetch, zero estimates<br>
+  King of Kings Window Cleaning LLC · UBI 605476674 · (360) 303-6806 · Bellingham, WA
+</div>
+</div>
+
+<script>
+const DIMS=[
+ ["Services",3,5,"Eight services sold, five have a root hub. Window cleaning — the flagship — has none; a geo page is doing hub duty. Hubs run 643–2,015 words. No problem-aware micro pages at all."],
+ ["Local",3,5,"The 25 × 6 city matrix is complete and that is real. The neighborhood tier is 12 pages, one city, one service. No /locations/ hub. Eight Whatcom and eight Skagit markets absent entirely."],
+ ["E-E-A-T",2,5,"No named expert on any service or geo page — though one exists: Randy Fee, owner, who personally trains every technician. The only Person nodes are blog authors. UBI, L&I and seven dated third-party awards are all visible text in no schema node. Five case studies exist but are wired into nothing."],
+ ["Reviews",3,4,"248 Google reviews — second strongest in the market — with no aggregateRating, no LocalBusiness node to attach it to, and no sameAs to the GBP or the six linked social profiles."],
+ ["Schema",1,5,"Single emitter, which is correct. A typical service page emits four nodes. Across 287 URLs: zero LocalBusiness, zero Organization, zero Service, zero aggregateRating, zero Speakable. FAQPage on 6 pages."],
+ ["Content",2,5,"297,054 words over 287 URLs. Median 995. 286 of 287 under the 3,000 floor; the lone exception is the metal-roof page at 3,154. 73 blog posts in a chronological dump, no clusters, no library, no Quick Answer anywhere."],
+ ["Design",3,4,"Clean, consistent hello-elementor build from the 180sites template stable. Mobile-workable. Nothing in the visual system is specific to this brand."],
+ ["Convert",3,5,"Ahead of the market — click-to-call, five-second quote, Square checkout, referral program. Undermined by the offer living in an H2 on 74 pages, a sitewide rather than per-market CTA, and no guarantee or financing page."],
+ ["Performance",3,5,"TTFB 149 ms, load 595 ms — cache is fine. Payload is not: 96 requests, 707 KB, of which 486 KB is builder CSS. 75 of 2,277 images are WebP (3.3%); the sampled page lazy-loads none of its 13."],
+ ["Integrity",2,5,"One H1 everywhere, no orphans, no duplicate titles, no canonical drift, no parse errors. Then: 275 flat root URLs with no hierarchy, Bellingham intent split across 8+ pages, and one exact H2 on 74 pages."],
+ ["Honesty",3,5,"Nothing fabricated anywhere — no invented ratings, pricing or credentials, NAP consistent, single entity. But an unqualified 'Risk-Free' on 74 pages with no terms page, and 'Bellingham's Best' as an unsubstantiated superiority claim — while seven real, dated, attributable awards sit unused on his own /awards/ page."]
+];
+document.getElementById('scorebody').innerHTML=DIMS.map(([n,a,b,w],i)=>{
+ const pa=(a-1)/4*100, pb=(b-1)/4*100;
+ return `<tr><td class="dim">${String(i+1).padStart(2,'0')} &nbsp;${n}</td>
+ <td class="num">${a}</td><td class="num" style="color:var(--copper)">${b}</td>
+ <td><div class="bars"><div class="track"><i class="then" style="left:${pa}%;width:${pb-pa}%"></i><i class="now" style="width:${pa}%"></i></div><span class="delta">+${(b-a).toFixed(0)}</span></div></td>
+ <td class="why">${w}</td></tr>`}).join('');
+
+const DEF=[
+ ["P0-1","Zero LocalBusiness, Organization or Service nodes across all 287 URLs","Nothing on the domain identifies the business to a search engine. 248 reviews and 287 local pages have no entity to accrue to.",1],
+ ["P0-2","286 of 287 indexable pages sit under the 3,000-word M1 floor","Median page is 995 words. Mandate M1 is a gate item — a page that misses it does not ship.",2],
+ ["P0-3","No URL taxonomy — 275 flat root slugs, no /services/ or /locations/","There is no hub-and-spoke hierarchy, so link equity has no shape to travel through. One path runs 113 characters.",1],
+ ["P0-4","Bellingham intent cannibalised across eight or more URLs","Part 12.1's number-one recurring killer: homepage, city page, cost page and four blog posts all self-canonical on the same head term.",0],
+ ["P0-5","\"Try Bellingham's Best Window Washing Risk-Free\" is an H2 on 74 pages","The repeated-exact-match-H2 signature. It is also an unqualified guarantee and a superiority claim, in a heading, with no terms page.",0],
+ ["P0-6","No named expert or Person entity on any service or geo page","hasCredential with the real WA registration is the cheapest E-E-A-T win in the standard, and it is entirely absent.",1],
+ ["P0-7","No AEO Quick Answer anywhere; FAQPage on 6 of 287; zero Speakable","Mandates M2 and M4. One well-written 40–60 word answer per page satisfies the meta description, the first FAQ answer and the Speakable target at once.",2],
+ ["P0-8","The neighborhood tier is 12 pages — one city, one service","At Tier 2.0 the hyperlocal layer is where volume comes from. It is roughly 5% built.",3],
+ ["P0-9","305 images with no alt text; 3.3% WebP; no lazy-loading on the sampled page","Mandate M6 and the Part 9 performance gate. 2,277 image elements sitewide, 75 of them WebP.",1],
+ ["P0-10","A risk-free claim on 74 pages with no guarantee or terms page on the domain","Doctrine #6 — every 'guaranteed' links to defined terms. There is no /our-guarantee/, no /terms/, nothing.",2]
+];
+document.getElementById('defectlist').innerHTML=DEF.map(([id,t,w,ph])=>
+ `<div class="defect"><div class="tag">${id}</div><div class="bd"><h4>${t}</h4><p>${w}</p><span class="ph">Fixed in Phase ${ph}</span></div></div>`).join('');
+
+const RANK=[[1,"Mt. Baker Window Cleaning","mtbakerwindows.com",3.91,0],
+ [2,"Pacific Northwest ProWash","pnwwash.com",3.18,0],
+ [3,"Pure Shine NW","pureshinenw.com",2.73,0],
+ [4,"King of Kings Window Cleaning","kingofkingswindowcleaning.com",2.55,1],
+ [5,"Northwest Window Cleaning","nwwindowcleaningbellingham.com",2.45,0],
+ [5,"Whatcom Gutter &amp; Roof Cleaning","whatcomgrc.com",2.45,0],
+ [7,"Bellingham Window and Gutter","bellinghamwindowandgutter.com",1.73,0]];
+document.getElementById('ranklist').innerHTML=RANK.map(([p,n,d,s,us])=>
+ `<div class="rrow${us?' us':''}"><span class="pos">${String(p).padStart(2,'0')}</span>
+  <span class="nm">${n}<span>${d}</span></span>
+  <span class="rbar"><i style="width:${(s-1)/4*100}%"></i></span>
+  <span class="sc2">${s.toFixed(2)}</span></div>`).join('');
+
+const MK=[["Tier 1","Bellingham · Ferndale · Lynden · Blaine · Mount Vernon · Burlington · Sedro-Woolley · Anacortes",8,"City page + 7 services + neighborhood run"],
+ ["Tier 2","Birch Bay · Semiahmoo · Custer · Everson · Nooksack · Sumas · Deming · Acme · Maple Falls · Glacier · Sudden Valley · Kendall · Van Zandt · La Conner · Lyman · Edison · Bow · Alger · Clear Lake · Big Lake · Conway · Concrete · Hamilton · Bay View · Oak Harbor",25,"City page + 6 services"],
+ ["Tier 3","Point Roberts · Lummi Island · Marietta · Geneva · Wickersham · Rockport · Samish Island · Guemes Island",8,"City page + 3 core services"]];
+document.querySelector('#markets tbody').innerHTML=MK.map(([t,m,c,p])=>
+ `<tr><td><span class="pill t1">${t}</span></td><td style="font-size:13.5px;line-height:1.65">${m}</td><td class="num">${c}</td><td style="font-size:13.5px">${p}</td></tr>`).join('');
+
+const PH=[["Phase 0","Defect remediation","Kill the cannibalisation, strip the 74-page duplicate H2, map every 301, run the indexing and publication audit. Nothing new is built on a broken foundation.","0 new"],
+ ["Phase 1","Entity &amp; schema","Constants file, the shared root @id, the 7-node graph, the named-expert Person entity, the taxonomy decided, all 197 legacy 301s mapped. Every later page inherits a correct entity graph for free.","1"],
+ ["Phase 2","Money pages","Home, the services hub, nine service spokes, the guarantee, financing, and the trust set. The pages that convert are correct before the pages that attract exist.","21"],
+ ["Phase 3","Geographic surface","41 city pages, then the 230-page city × service matrix — 150 migrated and deepened, 80 net new. Capacity-gated: build only what the uniqueness floor supports.","272"],
+ ["Phase 4","Authority layer","62 neighborhood pages, 20 case studies, the named expert woven into every page built in Phases 2–3. Not bolted on afterward.","82"],
+ ["Phase 5","Blue-ocean clusters","18 problem micro pages, the 25-page Surface Library, 8 compliance and code pages. Almost no competitor in this market builds any of it.","51"],
+ ["Phase 6","Cadence","73 blog posts consolidated into 40 clustered pieces, each feeding exactly one service spoke, plus the seasonal calendar — moss season, gutter season, spring glass.","41"]];
+document.getElementById('phaselist').innerHTML=PH.map(([p,t,d,c])=>
+ `<div class="phase"><span class="p">${p}</span><div><h4>${t}</h4><p>${d}</p></div><span class="ct">${c}</span></div>`).join('');
+</script>
+
+</body></html>

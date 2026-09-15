@@ -1,0 +1,995 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/best-window-cleaning-in-bellingham-wa-why-more-homeowners-are-choosing-professional-window-washing-services",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/gutter-cleaning",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/house-washing",
+      "destination": "/services/house-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/category/pressure-washing",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/category/roof-cleaning",
+      "destination": "/services/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/solar-panel-cleaning",
+      "destination": "/services/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/window-cleaning",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-window-cleaning",
+      "destination": "/services/commercial-window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-acme-wa",
+      "destination": "/locations/acme/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-alger-wa",
+      "destination": "/locations/alger/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-anacortes-wa",
+      "destination": "/locations/anacortes/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-bellingham-wa",
+      "destination": "/locations/bellingham/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-birch-bay-wa",
+      "destination": "/locations/birch-bay/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-blaine-wa",
+      "destination": "/locations/blaine/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-bow-wa",
+      "destination": "/locations/bow/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-burlington-wa",
+      "destination": "/locations/burlington/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-clear-lake-wa",
+      "destination": "/locations/clear-lake/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-cost-bellingham-wa",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-custer-wa",
+      "destination": "/locations/custer/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-deming-wa",
+      "destination": "/locations/deming/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-edison-wa",
+      "destination": "/locations/edison/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-everson-wa",
+      "destination": "/locations/everson/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-ferndale-wa",
+      "destination": "/locations/ferndale/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-glacier-wa",
+      "destination": "/locations/glacier/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-la-conner-wa",
+      "destination": "/locations/la-conner/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-lyman-wa",
+      "destination": "/locations/lyman/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-lynden-wa",
+      "destination": "/locations/lynden/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-maple-falls-wa",
+      "destination": "/locations/maple-falls/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-nooksack-wa",
+      "destination": "/locations/nooksack/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning-sumas-wa",
+      "destination": "/locations/sumas/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/gutter-cleaning",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/house-washing-cost-bellingham-wa",
+      "destination": "/services/house-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/house-washing",
+      "destination": "/services/house-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/metal-roof-cleaning-bellingham-wa",
+      "destination": "/services/roof-cleaning/metal-roof-soft-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-acme-wa",
+      "destination": "/locations/acme/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-alger-wa",
+      "destination": "/locations/alger/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-anacortes-wa",
+      "destination": "/locations/anacortes/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-bellingham-protect-your-roof-with-professional-moss-removal-and-roof-cleaning",
+      "destination": "/locations/bellingham/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-bellingham-wa",
+      "destination": "/locations/bellingham/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-birch-bay-wa",
+      "destination": "/locations/birch-bay/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-blaine-wa",
+      "destination": "/locations/blaine/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-bow-wa",
+      "destination": "/locations/bow/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-burlington-wa",
+      "destination": "/locations/burlington/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-clear-lake-wa",
+      "destination": "/locations/clear-lake/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-cost-bellingham-wa",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-custer-wa",
+      "destination": "/locations/custer/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-deming-wa",
+      "destination": "/locations/deming/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-edison-wa",
+      "destination": "/locations/edison/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-everson-wa",
+      "destination": "/locations/everson/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-ferndale-wa",
+      "destination": "/locations/ferndale/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-glacier-wa",
+      "destination": "/locations/glacier/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-la-conner-wa",
+      "destination": "/locations/la-conner/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-lyman-wa",
+      "destination": "/locations/lyman/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-lynden-wa",
+      "destination": "/locations/lynden/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-maple-falls-wa",
+      "destination": "/locations/maple-falls/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-nooksack-wa",
+      "destination": "/locations/nooksack/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal-sumas-wa",
+      "destination": "/locations/sumas/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-removal",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-acme-wa",
+      "destination": "/locations/acme/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-alger-wa",
+      "destination": "/locations/alger/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-anacortes-wa",
+      "destination": "/locations/anacortes/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-bellingham-restore-your-homes-exterior-with-professional-pressure-washing",
+      "destination": "/locations/bellingham/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-bellingham-wa",
+      "destination": "/locations/bellingham/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-birch-bay-wa",
+      "destination": "/locations/birch-bay/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-blaine-wa",
+      "destination": "/locations/blaine/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-bow-wa",
+      "destination": "/locations/bow/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-burlington-wa",
+      "destination": "/locations/burlington/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-clear-lake-wa",
+      "destination": "/locations/clear-lake/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-cost-bellingham-wa",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-custer-wa",
+      "destination": "/locations/custer/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-deming-wa",
+      "destination": "/locations/deming/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-edison-wa",
+      "destination": "/locations/edison/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-everson-wa",
+      "destination": "/locations/everson/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-ferndale-wa",
+      "destination": "/locations/ferndale/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-glacier-wa",
+      "destination": "/locations/glacier/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-la-conner-wa",
+      "destination": "/locations/la-conner/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-lyman-wa",
+      "destination": "/locations/lyman/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-lynden-wa",
+      "destination": "/locations/lynden/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-maple-falls-wa",
+      "destination": "/locations/maple-falls/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-nooksack-wa",
+      "destination": "/locations/nooksack/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-sumas-wa",
+      "destination": "/locations/sumas/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-gutter-cleaning-services-in-bellingham-surrounding-areas",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-moss-removal-and-roof-treatment-in-bellingham-surrounding-areas",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-pressure-washing-services-in-bellingham-surrounding-areas",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-window-cleaning-services-in-bellingham-surrounding-areas",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-acme-wa",
+      "destination": "/locations/acme/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-alger-wa",
+      "destination": "/locations/alger/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-anacortes-wa",
+      "destination": "/locations/anacortes/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-and-moss-removal-in-bellingham-wa-why-soft-washing-is-the-safest-choice-for-composite-roofs",
+      "destination": "/services/roof-cleaning/composition-shingle-granule-loss/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-bellingham-wa",
+      "destination": "/locations/bellingham/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-birch-bay-wa",
+      "destination": "/locations/birch-bay/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-blaine-wa",
+      "destination": "/locations/blaine/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-bow-wa",
+      "destination": "/locations/bow/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-burlington-wa",
+      "destination": "/locations/burlington/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-clear-lake-wa",
+      "destination": "/locations/clear-lake/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-cost-bellingham-wa",
+      "destination": "/services/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-custer-wa",
+      "destination": "/locations/custer/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-deming-wa",
+      "destination": "/locations/deming/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-edison-wa",
+      "destination": "/locations/edison/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-everson-wa",
+      "destination": "/locations/everson/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-ferndale-wa",
+      "destination": "/locations/ferndale/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-glacier-wa",
+      "destination": "/locations/glacier/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-la-conner-wa",
+      "destination": "/locations/la-conner/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-lyman-wa",
+      "destination": "/locations/lyman/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-lynden-wa",
+      "destination": "/locations/lynden/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-maple-falls-wa",
+      "destination": "/locations/maple-falls/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-nooksack-wa",
+      "destination": "/locations/nooksack/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning-sumas-wa",
+      "destination": "/locations/sumas/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/roof-cleaning",
+      "destination": "/services/roof-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/service-area",
+      "destination": "/locations/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-acme-wa",
+      "destination": "/locations/acme/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-alger-wa",
+      "destination": "/locations/alger/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-anacortes-wa",
+      "destination": "/locations/anacortes/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-bellingham-wa",
+      "destination": "/locations/bellingham/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-bellingham-why-clean-solar-panels-produce-better-results-in-the-pacific-northwest",
+      "destination": "/locations/bellingham/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-birch-bay-wa",
+      "destination": "/locations/birch-bay/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-blaine-wa",
+      "destination": "/locations/blaine/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-bow-wa",
+      "destination": "/locations/bow/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-burlington-wa",
+      "destination": "/locations/burlington/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-clear-lake-wa",
+      "destination": "/locations/clear-lake/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-custer-wa",
+      "destination": "/locations/custer/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-deming-wa",
+      "destination": "/locations/deming/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-edison-wa",
+      "destination": "/locations/edison/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-everson-wa",
+      "destination": "/locations/everson/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-ferndale-wa",
+      "destination": "/locations/ferndale/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-glacier-wa",
+      "destination": "/locations/glacier/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-la-conner-wa",
+      "destination": "/locations/la-conner/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-lyman-wa",
+      "destination": "/locations/lyman/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-lynden-wa",
+      "destination": "/locations/lynden/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-maple-falls-wa",
+      "destination": "/locations/maple-falls/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-nooksack-wa",
+      "destination": "/locations/nooksack/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning-sumas-wa",
+      "destination": "/locations/sumas/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/solar-panel-cleaning",
+      "destination": "/services/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/the-complete-guide-to-professional-window-cleaning-in-bellingham-wa",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/the-hidden-costs-of-dirty-windows-the-crystal-clear-benefits-of-professional-window-cleaning-in-bellingham-wa",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/what-affects-the-cost-of-professional-window-cleaning-in-bellingham-and-surrounding-areas",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/why-professional-window-cleaning-in-bellingham-wa-is-worth-the-investment",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-acme-wa",
+      "destination": "/locations/acme/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-alabama-hill-bellingham",
+      "destination": "/locations/bellingham/alabama-hill/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-alger-wa",
+      "destination": "/locations/alger/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-anacortes-wa",
+      "destination": "/locations/anacortes/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-barkley-bellingham",
+      "destination": "/locations/bellingham/barkley/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-bellingham-wa",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-bellingham-why-professional-window-cleaning-makes-a-bigger-difference-than-you-think",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-birch-bay-wa",
+      "destination": "/locations/birch-bay/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-birchwood-bellingham",
+      "destination": "/locations/bellingham/birchwood/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-blaine-wa",
+      "destination": "/locations/blaine/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-bow-wa",
+      "destination": "/locations/bow/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-burlington-wa",
+      "destination": "/locations/burlington/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-clear-lake-wa",
+      "destination": "/locations/clear-lake/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-columbia-bellingham",
+      "destination": "/locations/bellingham/columbia/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-cordata-bellingham",
+      "destination": "/locations/bellingham/cordata/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-cost-bellingham-wa",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-custer-wa",
+      "destination": "/locations/custer/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-deming-wa",
+      "destination": "/locations/deming/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-edgemoor-bellingham",
+      "destination": "/locations/bellingham/edgemoor/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-edison-wa",
+      "destination": "/locations/edison/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-everson-wa",
+      "destination": "/locations/everson/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-fairhaven-bellingham",
+      "destination": "/locations/bellingham/fairhaven/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-ferndale-wa",
+      "destination": "/locations/ferndale/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-glacier-wa",
+      "destination": "/locations/glacier/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-happy-valley-bellingham",
+      "destination": "/locations/bellingham/happy-valley/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-la-conner-wa",
+      "destination": "/locations/la-conner/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-lyman-wa",
+      "destination": "/locations/lyman/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-lynden-wa",
+      "destination": "/locations/lynden/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-maple-falls-wa",
+      "destination": "/locations/maple-falls/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-mount-vernon-wa",
+      "destination": "/locations/mount-vernon/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-nooksack-wa",
+      "destination": "/locations/nooksack/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-oak-harbor-wa",
+      "destination": "/locations/oak-harbor/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-sedro-woolley-wa",
+      "destination": "/locations/sedro-woolley/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-silver-beach-bellingham",
+      "destination": "/locations/bellingham/silver-beach/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-south-hill-bellingham",
+      "destination": "/locations/bellingham/south-hill/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-squalicum-bellingham",
+      "destination": "/locations/bellingham/squalicum/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-sudden-valley-wa",
+      "destination": "/locations/sudden-valley/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-sumas-wa",
+      "destination": "/locations/sumas/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-sunnyland-bellingham",
+      "destination": "/locations/bellingham/sunnyland/",
+      "permanent": true
+    }
+  ]
+}

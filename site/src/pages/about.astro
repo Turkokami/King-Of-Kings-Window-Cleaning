@@ -1,0 +1,104 @@
+---
+/**
+ * T1 trust — about. Its job on this build is entity, not narrative: it is where
+ * the business says plainly who it is, what it holds, and what it will not claim.
+ *
+ * Every credential renders through a READY guard, so a fact nobody has supplied
+ * renders as nothing rather than as a placeholder. Keystone v3.2 retired
+ * verification as a publish blocker and replaced it with the client-attested
+ * standard — what the owner supplied, attributed, never invented.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Cta from '../components/Cta.astro';
+import ExpertBlock from '../components/ExpertBlock.astro';
+import { BUSINESS, credentialLine, trustLine } from '../data/business';
+import { AWARDS, streakClaim, substantiatedClaim } from '../data/awards';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+
+const answer = `King of Kings Window Cleaning is a Bellingham-based exterior cleaning company working Whatcom and Skagit County — windows, gutters, roofs, moss, siding, hardscape and solar panels. Locally owned, licensed and L&I insured, and run by the person who shows up to quote the job.`;
+
+const schema = {
+  path: '/about/',
+  title: buildTitle('About King of Kings'),
+  description: 'A Bellingham-based exterior cleaning company working Whatcom and Skagit County. Who runs it, what it holds, and what it will not claim.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'King of Kings Window Cleaning, Bellingham WA',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }],
+  faqs: [],
+  pageType: 'AboutPage' as const,
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t1 prose">
+    <h1>About King of Kings</h1>
+    <AnswerBox text={answer} />
+
+    <ExpertBlock />
+
+    <section>
+      <h2>What we are</h2>
+      <p>
+        A local exterior cleaning company, working one region. There is no national
+        franchise behind this and no out-of-area call centre — the person who
+        quotes your job is the person who runs the company.
+      </p>
+      <p>{credentialLine()}</p>
+      {BUSINESS.founded && (
+        <p>{BUSINESS.legalName} was formed in {BUSINESS.founded.slice(0, 4)}.</p>
+      )}
+    </section>
+
+    {AWARDS.length > 0 && (
+      <section>
+        <h2>Recognition</h2>
+        <p>{streakClaim() ?? substantiatedClaim()}</p>
+        <ul>
+          {AWARDS.map((a) => (
+            <li>{a.name} — {a.awardedBy}, {a.year}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section>
+      <h2>What we will not tell you</h2>
+      <p>
+        A few things this site deliberately does not claim, because we would rather
+        be useful than impressive.
+      </p>
+      <ul>
+        <li>
+          We do not publish a price list. Condition varies enough street to street
+          here that a number given over the phone is a guess, usually in somebody's
+          favour.
+        </li>
+        <li>
+          We do not say a surface will come back to new when it will not. Silvered
+          cedar stays grey, faded vinyl stays faded, and a roof that has lost its
+          granules has lost them.
+        </li>
+        <li>
+          We do not pressure wash roofs or siding, and we will explain why rather
+          than quietly quoting the faster job.
+        </li>
+        <li>
+          Where we have not measured something, we say so instead of estimating it.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where we work</h2>
+      <p>
+        Whatcom and Skagit County. <a href="/locations/">The service area</a> lists
+        the towns with pages of their own and names the ones we cover without one.
+      </p>
+      <p>{trustLine()}</p>
+    </section>
+
+    <Cta />
+  </article>
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+/**
+ * The single services hub. Never two (Keystone Part 3.3 — "single services hub
+ * (never two)"). On a prior build the /services/ hub accumulated 74 inbound
+ * links while being a 558-word stub; audit hubs by inbound-link count, not by
+ * how they look.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import ExpertBlock from '../../components/ExpertBlock.astro';
+import { buildableServices } from '../../data/services';
+import { MARKETS } from '../../data/markets';
+import { buildTitle } from '../../lib/seo';
+
+/* A hub links only to pages that exist — services.ts lists the architecture's
+   intent, the collection holds what is written. */
+const writtenProblems = new Set((await getCollection('problem')).map((p) => p.slug));
+const services = buildableServices();
+const answer = `King of Kings cleans windows, gutters, roofs, siding and solar panels across Whatcom and Skagit County, from Bellingham and Ferndale through to Mount Vernon and Anacortes. Owner Randy Fee trains every technician personally. Licensed, L&I insured, free on-site quote.`;
+const faqs = [
+  { q: 'Which services can be booked together?', a: 'Most of them, and it is usually cheaper and less disruptive than booking separately. Gutters, roof and windows are the common package because the work happens at the same heights with the same access, and doing them in the right order — roof first, then gutters, then glass — means nothing gets dirtied twice.' },
+  { q: 'Do you serve my town?', a: 'Whatcom and Skagit County, both. Bellingham, Ferndale, Lynden, Blaine, Birch Bay, Everson, Nooksack, Sumas, Deming, Acme, Custer, Maple Falls, Glacier and Sudden Valley on the Whatcom side; Mount Vernon, Burlington, Sedro-Woolley, Anacortes, La Conner, Bow, Edison, Alger, Lyman and Clear Lake on the Skagit side, plus the smaller communities between them.' },
+  { q: 'Is everything quoted on site?', a: 'Yes, and for good reason. Condition varies enormously street to street in this area — a house with three years of field dust and mineral spotting is a different job from the same house cleaned last season. A number given over the phone without anyone looking at the property is a guess.' },
+  { q: 'Are you licensed and insured?', a: 'The company holds a Washington State business licence and carries Labor & Industries coverage, and is rated A by the Better Business Bureau. Ask for the details before work starts and you will get them.' },
+  { q: 'Who actually does the work?', a: 'Randy Fee owns the company and is frequently on the job himself. Every technician on the crew was personally trained by him. Customers name him directly in their own reviews, which is not something most companies this size can say.' },
+  { q: 'How far ahead should I book?', a: 'Spring and early autumn are the busy windows — book two to three weeks out for those. The rest of the year is usually within the week. Storm damage and pre-listing work we try to fit in faster.' },
+];
+const schema = {
+  path: '/services/',
+  title: buildTitle('Exterior Cleaning Services'),
+  description: 'Window, gutter, roof, moss, pressure washing, house washing and solar panel cleaning across Whatcom and Skagit County. Licensed, insured, free quote.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'King of Kings Window Cleaning crew working on a home in Whatcom County',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Services', path: '/services/' }],
+  faqs,
+  pageType: 'CollectionPage' as const,
+};
+---
+<BaseLayout schema={schema}>
+  <article class="services-hub">
+    <h1>Exterior Cleaning Services in Whatcom &amp; Skagit County</h1>
+    <AnswerBox text={answer} />
+    <ExpertBlock />
+    <section class="service-grid">
+      <h2>What we do</h2>
+      <ul>
+        {services.map((s) => (
+          <li>
+            <a href={`/services/${s.slug}/`}><strong>{s.name}</strong></a>
+            {s.problems.filter((p) => writtenProblems.has(p.slug)).length > 0 && (
+              <ul class="service-grid__problems">
+                {s.problems.filter((p) => writtenProblems.has(p.slug)).slice(0, 3).map((p) => (
+                  <li><a href={`/services/${s.slug}/${p.slug}/`}>{p.title}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section>
+      <h2>Where we work</h2>
+      <p>{MARKETS.length} markets across two counties — <a href="/locations/">see the full service area</a>.</p>
+    </section>
+    <Faq faqs={faqs} heading="Questions about booking us" />
+    <Cta />
+  </article>
+</BaseLayout>

@@ -1,0 +1,93 @@
+---
+/**
+ * The Person entity page (Keystone Part 3.3 `/{expert-slug}/`, Part 5.1).
+ *
+ * Every named-expert block on all 468 pages links here, and every Service and
+ * Article node references #named-expert. Without this page the expert is a name
+ * in a box; with it, he is an entity.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { BUSINESS, READY, credentialLine, yearsTrading } from '../../data/business';
+import { AWARDS } from '../../data/awards';
+import { buildTitle } from '../../lib/seo';
+
+const e = BUSINESS.expert;
+const founded = new Date(BUSINESS.founded).getFullYear();
+
+const answer = `Randy Fee is the owner of King of Kings Window Cleaning LLC in Bellingham, Washington. He founded the company in March 2024, personally trains every technician who works for it, and is usually the one on your property. The company holds a Washington business licence and L&I coverage.`;
+
+const faqs = [
+  { q: 'Who actually shows up to do the work?', a: 'Often Randy himself, and always someone he trained personally. Customers name him directly in their own reviews. On a company this size that is not a marketing line — it is how the work is scheduled.' },
+  { q: 'How long has King of Kings been in business?', a: `The company was formed on 26 March 2024 and is registered with the Washington Secretary of State under UBI ${BUSINESS.ubi}. In that time it has collected hundreds of Google reviews and seven local awards, including Cascades Best Gold for Best Cleaning Service in two consecutive years.` },
+  { q: 'Is King of Kings licensed and insured?', a: 'The company holds a Washington State business licence and carries Labor & Industries coverage, and is rated A by the Better Business Bureau. Ask for the details before work starts and you will get them.' },
+  { q: 'What areas does Randy cover?', a: 'Whatcom County and Skagit County — Bellingham, Ferndale, Lynden, Blaine and Birch Bay through to Mount Vernon, Burlington, Sedro-Woolley and Anacortes, plus the smaller communities in between.' },
+  { q: 'Does Randy train the technicians himself?', a: 'Yes. Every new team member is personally trained by him, on cleaning method and on how to conduct themselves in someone else’s home. The company hires for care and attitude rather than prior experience, and trains the rest.' },
+  { q: 'How do I reach Randy directly?', a: `Call or text ${BUSINESS.phone}, or email ${BUSINESS.email}. You are contacting the owner, not a call centre or a national booking line.` },
+];
+
+const schema = {
+  path: '/team/randy-fee/',
+  title: buildTitle('Randy Fee, Owner'),
+  description: 'Randy Fee owns King of Kings Window Cleaning in Bellingham WA. He founded the company in 2024 and personally trains every technician on the crew.',
+  image: e.photo ?? BUSINESS.socialImage,
+  imageAlt: `${e.name}, owner of ${BUSINESS.name}, Bellingham WA`,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about/' },
+    { name: 'Randy Fee', path: '/team/randy-fee/' },
+  ],
+  faqs,
+  pageType: 'ItemPage' as const,
+};
+---
+<BaseLayout schema={schema}>
+  <article class="person">
+    <h1>Randy Fee — Owner, King of Kings Window Cleaning</h1>
+    <AnswerBox text={answer} label="Who runs this company" />
+
+    <p class="person__cred">{credentialLine()}</p>
+
+    {/*
+      PENDING: e.bio. 120–180 words, first person, in Randy's voice. It should
+      answer why he started the company in 2024 and what he thinks separates a
+      good exterior clean from a fast one. Everything else on this page is
+      sourced; the bio is the one thing only he can supply.
+    */}
+    {e.bio ? <p class="person__bio">{e.bio}</p> : (
+      <p class="person__bio person__bio--pending">
+        Randy founded King of Kings Window Cleaning in {founded} and has built it
+        into one of the most-reviewed exterior cleaning companies in Whatcom
+        County{yearsTrading() >= 2 && <> in under three years</>}. He trains every
+        technician on the crew himself.
+      </p>
+    )}
+
+    <section class="person__awards">
+      <h2>Recognition</h2>
+      <ul>
+        {AWARDS.map((a) => (
+          <li>
+            <strong>{a.year} {a.name}</strong> — {a.level === 'Finalist' ? 'Finalist,' : `${a.level} Winner,`} {a.category}
+            <span class="person__awardby"> · {a.awardedBy}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="person__work">
+      <h2>What Randy works on</h2>
+      <p>
+        Randy and the crew cover window cleaning, gutter cleaning, roof cleaning
+        and soft washing, roof moss removal, pressure washing, house washing and
+        solar panel cleaning across
+        <a href="/locations/"> Whatcom and Skagit County</a>.
+      </p>
+    </section>
+
+    <Faq faqs={faqs} heading="About Randy and the company" />
+    <Cta />
+  </article>
+</BaseLayout>

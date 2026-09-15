@@ -1,0 +1,83 @@
+---
+/**
+ * T3 — the problem micro page. Commercial-intent pages for problem-aware
+ * queries: "why gutters overflow in heavy rain", not "gutters".
+ *
+ * Part 4.3 declares these paragraph + ordered list, because problem-aware
+ * queries are procedural queries — every one carries a real <ol> of steps.
+ */
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnswerBox from '../../../components/AnswerBox.astro';
+import Faq from '../../../components/Faq.astro';
+import Cta from '../../../components/Cta.astro';
+import ExpertBlock from '../../../components/ExpertBlock.astro';
+import { serviceBySlug } from '../../../data/services';
+import { buildTitle } from '../../../lib/seo';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+export async function getStaticPaths() {
+  const problems = await getCollection('problem');
+  return problems.map((p) => ({
+    params: { service: p.data.parentService, problem: p.slug },
+    props: { slug: p.slug },
+  }));
+}
+
+const { slug } = Astro.props;
+const entry = (await getEntry('problem', slug))!;
+const { Content } = await entry.render();
+const d = entry.data;
+const service = serviceBySlug(d.parentService)!;
+
+const siblings = (await getCollection('problem'))
+  .filter((p) => p.data.parentService === d.parentService && p.slug !== slug);
+
+const schema = {
+  path: `/services/${service.slug}/${slug}/`,
+  title: d.title.length > 60 ? d.title : buildTitle(d.title),
+  description: d.metaDescription,
+  image: d.heroImage,
+  imageAlt: d.heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services/' },
+    { name: service.short, path: `/services/${service.slug}/` },
+    { name: d.title, path: `/services/${service.slug}/${slug}/` },
+  ],
+  faqs: d.faqs,
+};
+---
+<BaseLayout schema={schema} ogImage={d.heroImage}>
+  <article class="t3 prose">
+    <h1>{d.title}</h1>
+    <AnswerBox text={d.answer} />
+    <Content />
+    <ExpertBlock />
+
+    <nav class="wheel" aria-label="Related pages">
+      <h2>Related</h2>
+      {siblings.length > 0 && (
+        <>
+          <h3>Other {service.short.toLowerCase()} problems</h3>
+          <ul>
+            {siblings.map((s) => (
+              <li><a href={`/services/${service.slug}/${s.slug}/`}>{s.data.title}</a></li>
+            ))}
+          </ul>
+        </>
+      )}
+      <p>
+        <a href={`/services/${service.slug}/`}>{service.name}</a> ·
+        <a href="/services/">All services</a>
+      </p>
+    </nav>
+
+    <Faq faqs={d.faqs} id={`faq-${slug}`} heading="Questions about this" />
+    <Cta service={service.name} />
+    <p class="updated">Last updated <time datetime={d.updated.toISOString().slice(0, 10)}>
+      {d.updated.toISOString().slice(0, 10)}</time></p>
+  </article>
+</BaseLayout>

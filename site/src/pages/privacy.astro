@@ -1,0 +1,93 @@
+---
+/**
+ * Privacy. Short, accurate, and written to match what this site actually does —
+ * which at present is very little, because a static build with no client
+ * JavaScript collects nothing on its own.
+ *
+ * This page gets rewritten the moment analytics or a third-party widget ships.
+ * A privacy page that describes a site you no longer run is worse than none.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BUSINESS } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+const updated = '2026-09-15';
+
+const schema = {
+  path: '/privacy/',
+  title: buildTitle('Privacy'),
+  description: 'What King of Kings Window Cleaning collects on this website, what it does not collect, and how to ask us about the information we hold.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Privacy information for King of Kings Window Cleaning',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Privacy', path: '/privacy/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema} noindex={true}>
+  <article class="t1 prose">
+    <h1>Privacy</h1>
+
+    <h2>What this site collects</h2>
+    <p>
+      This website is a set of static pages. It has no login, cart or account, and
+      the pages themselves collect nothing about you.
+    </p>
+
+    <h2>The chat widget</h2>
+    <p>
+      Most pages carry a chat widget provided by LeadConnector, which is the
+      messaging tool behind our customer relationship system. It loads after the
+      page has rendered — when you first scroll, tap or type, or shortly after if
+      you do none of those — rather than immediately, and it is not present on the
+      contact or guarantee pages.
+    </p>
+    <p>
+      When it loads it runs LeadConnector's own code and will set its own storage
+      in your browser so a conversation survives a page change. If you start a
+      chat, what you type goes to LeadConnector and to us, and we use it to answer
+      you and to quote the work. LeadConnector processes it under its own terms as
+      our provider.
+    </p>
+    <p>
+      If you would rather not load it, it will not start on its own before you
+      interact with the page, and blocking third-party scripts in your browser
+      stops it entirely — the rest of the site works without it, because nothing
+      on these pages depends on JavaScript.
+    </p>
+
+    <h2>What happens when you contact us</h2>
+    <p>
+      If you call, email, or submit a quote request, we keep what you send us —
+      your name, contact details, the address of the property and what you have
+      asked about — so we can quote and carry out the work. We use it for that and
+      for following up about it. We do not sell it.
+    </p>
+
+    <h2>Hosting</h2>
+    <p>
+      The site is served by our hosting provider, which keeps standard server logs
+      including IP addresses for security and operational purposes. That is the
+      provider's processing, not ours, and it is the ordinary behaviour of any web
+      server.
+    </p>
+
+    <h2>Third-party services</h2>
+    <p>
+      Where we link out — to our Google Business Profile, to a review platform, to
+      a quote form hosted elsewhere — that service has its own privacy terms and
+      its own cookies, and following the link puts you under those rather than
+      these. If we later add analytics, this page will say so before it ships and
+      will name what it is — as it does above for the chat widget.
+    </p>
+
+    <h2>Asking about your information</h2>
+    <p>
+      Email <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a> or call{' '}
+      <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a> and ask. We will
+      tell you what we hold and remove it if you want it removed.
+    </p>
+
+    <p class="updated">Last updated <time datetime={updated}>{updated}</time>.</p>
+  </article>
+</BaseLayout>

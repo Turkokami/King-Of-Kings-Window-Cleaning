@@ -1,0 +1,257 @@
+# =============================================================================
+# Keystone v2 · Part 6A.1 step 1 — VERTICAL TAXONOMY: exterior cleaning
+# =============================================================================
+# Built once per vertical, roughly four hours, and it is agency IP: it is reused
+# on every exterior-cleaning client in the portfolio, not rebuilt per site.
+#
+# WHY AN LLM IS ALLOWED HERE AND NOWHERE ELSE IN PART 6A. The standard is
+# explicit: "An LLM is appropriate here — expanding species, synonym and
+# question lists — and nowhere else in this part." Expanding vocabulary is
+# generation. Volume, difficulty, SERP overlap and place names are measurement,
+# and prime directive 8 forbids generating any of them. So this file contains no
+# volume figure, no difficulty score, no ranking claim and no place name.
+#
+# HOW IT IS USED. The cross-product of the four slots below, plus the problem and
+# surface layers, is the candidate keyword set. That set goes into step 3
+# (volume), step 4 (proxy signals), step 5 (clustering) and step 6 (the
+# keyword -> URL map). It is an INPUT, not a page list. Nothing here earns a URL.
+# =============================================================================
+
+vertical: exterior-cleaning
+version: 1
+built: 2026-09-11
+portfolio_reuse: true
+
+# --- SLOT 1 · core service nouns ---------------------------------------------
+# The money services. Synonyms matter more than the canonical name here, because
+# the canonical name is what the agency calls it and the synonym is what the
+# customer types.
+core_services:
+  - canonical: window-cleaning
+    synonyms: [window washing, window cleaner, glass cleaning, window washer,
+               residential window cleaning, interior and exterior windows,
+               window and screen cleaning, water fed pole window cleaning]
+  - canonical: gutter-cleaning
+    synonyms: [gutter clean out, downspout cleaning, gutter flush, rain gutter cleaning,
+               gutter debris removal, gutter and downspout service]
+  - canonical: roof-cleaning
+    synonyms: [roof washing, roof soft wash, roof treatment, shingle cleaning,
+               roof debris removal, roof blow off]
+  - canonical: moss-removal
+    synonyms: [moss treatment, roof moss removal, de-mossing, moss killer application,
+               lichen removal, moss scraping]
+  - canonical: house-washing
+    synonyms: [soft washing, siding cleaning, exterior house wash, vinyl siding cleaning,
+               house soft wash, exterior wash down]
+  - canonical: pressure-washing
+    synonyms: [power washing, driveway cleaning, concrete cleaning, patio washing,
+               deck cleaning, walkway cleaning, fence washing]
+  - canonical: solar-panel-cleaning
+    synonyms: [solar array cleaning, PV panel washing, solar module cleaning,
+               solar panel maintenance]
+  - canonical: metal-roof-soft-washing
+    synonyms: [metal roof cleaning, standing seam cleaning, metal roof wash,
+               corrugated roof cleaning]
+  - canonical: commercial-window-cleaning
+    synonyms: [storefront window cleaning, office window cleaning, retail glass cleaning,
+               commercial glass service, building window cleaning]
+
+# --- SLOT 2 · urgency modifiers ----------------------------------------------
+# Exterior cleaning has weaker urgency intent than pest control or auto glass —
+# there is no 3am exterior-cleaning emergency. The modifiers that do carry here
+# are scheduling-pressure ones, and they cluster with listing and event dates.
+urgency_modifiers:
+  - same-day
+  - next-day
+  - this-week
+  - emergency          # real but thin: storm debris, blocked gutter mid-storm
+  - before-listing
+  - before-photos
+  - pre-sale
+  - move-out
+  - end-of-tenancy
+  - rush
+
+# --- SLOT 3 · segment modifiers ----------------------------------------------
+segment_modifiers:
+  - residential
+  - commercial
+  - storefront
+  - office
+  - restaurant
+  - retail
+  - church
+  - school
+  - HOA
+  - property-manager
+  - landlord
+  - rental
+  - vacation-rental
+  - multi-family
+  - apartment
+  - new-construction
+  - post-construction
+  - realtor
+
+# --- SLOT 4 · intent modifiers -----------------------------------------------
+intent_modifiers:
+  - cost
+  - price
+  - how-much
+  - quote
+  - estimate
+  - near-me
+  - best
+  - top-rated
+  - reviews
+  - cheap
+  - affordable
+  - vs                 # e.g. soft wash vs pressure wash
+  - DIY
+  - how-to
+  - how-often
+  - worth-it
+  - insured
+  - licensed
+  - same-day
+
+# --- THE PROBLEM LAYER -------------------------------------------------------
+# The standard calls this "the highest-leverage and most defensible layer in the
+# system." It is the exterior-cleaning equivalent of the German-cockroach /
+# subterranean-termite species layer: the phrasings a problem-aware customer
+# types before they know what service they need. These are the queries that earn
+# T3 problem micro pages, and they are the reason the problem tier exists at all.
+problem_layer:
+  window-cleaning:
+    - hard water spots on windows
+    - mineral stains on glass
+    - etched glass from sprinklers
+    - foggy window between panes
+    - condensation inside double glazing
+    - paint overspray on new windows
+    - construction film on glass
+    - scratched glass after cleaning
+    - window screens torn
+    - black specks in window tracks
+    - salt film on waterfront windows
+  gutter-cleaning:
+    - gutters overflowing in heavy rain
+    - water running behind the gutter
+    - downspout blocked
+    - plants growing in the gutter
+    - tiger stripes on gutters
+    - black streaks down the gutter face
+    - gutter pulling away from fascia
+    - ice in the gutter
+    - water pooling by the foundation
+  roof-cleaning:
+    - black streaks on the roof
+    - dark stains on shingles
+    - green growth on the roof
+    - moss growing under shingles
+    - granules in the gutter
+    - lichen on the roof
+    - needles piled on the roof valley
+    - roof looks dirty on one side only
+  moss-removal:
+    - moss on cedar shake
+    - lichen or moss which is it
+    - moss lifting shingles
+    - moss on a north facing roof
+    - zinc strips for moss
+    - will moss come back after treatment
+  house-washing:
+    - green algae on siding
+    - north facing wall mildew
+    - black spots on vinyl siding
+    - chalky residue on siding
+    - cobwebs under the eaves
+    - dirt splash on the lower siding
+    - mildew behind shrubs
+  pressure-washing:
+    - green slippery driveway
+    - moss on pavers
+    - oil stain on concrete
+    - grey weathered deck
+    - rust stains on concrete
+    - efflorescence white powder on brick
+  solar-panel-cleaning:
+    - solar output dropped
+    - bird droppings on solar panels
+    - pollen film on solar array
+    - moss at the panel edge
+    - is it safe to clean solar panels
+  metal-roof-soft-washing:
+    - streaks on a standing seam roof
+    - chalking on a painted metal roof
+    - moss in the metal roof ribs
+    - can you pressure wash a metal roof
+
+# --- THE SURFACE LAYER -------------------------------------------------------
+# The exterior-cleaning analogue of the Pest Library. Each entry is a candidate
+# T6 library profile and a disambiguation term that keeps a service page from
+# having to explain eight substrates at once.
+surface_layer:
+  glass: [annealed, tempered, low-E coated, laminated, leaded, self-cleaning coated,
+          insulated glazing unit, storm window, skylight, glass balustrade]
+  siding: [vinyl, fiber cement, cedar shingle, cedar bevel, T1-11, engineered wood,
+           stucco, EIFS, brick, painted wood, aluminium]
+  roofing: [asphalt composition shingle, cedar shake, cedar shingle, standing seam metal,
+            corrugated metal, concrete tile, clay tile, torch-down, TPO, EPDM,
+            composite synthetic]
+  gutter_metal: [aluminium K-style, galvanised steel, copper, half-round, box gutter]
+  hardscape: [broom-finish concrete, exposed aggregate, stamped concrete, pavers,
+              flagstone, brick, asphalt, composite decking, pressure-treated decking,
+              cedar decking]
+  growth: [green algae, gloeocapsa magma, mildew, mould, lichen, sheet moss,
+           cushion moss, liverwort, cyanobacteria]
+  deposit: [hard water mineral, salt spray, industrial particulate, agricultural dust,
+            pollen, pitch and sap, oxidation chalking, rust, efflorescence]
+
+# --- QUESTION FORMS ----------------------------------------------------------
+# Harvested shapes for the FAQ and AEO layer. These are templates, not measured
+# queries — they go into step 4's autocomplete / People-Also-Ask harvest as seeds,
+# and only what comes back measured is used.
+question_forms:
+  - how often should {service} be done
+  - how much does {service} cost
+  - is {service} worth it
+  - can I do {service} myself
+  - will {service} damage my {surface}
+  - what time of year is best for {service}
+  - how long does {service} take
+  - do you need to be home for {service}
+  - {problem} what causes it
+  - {problem} how to fix
+  - {surface_a} vs {surface_b} which is better
+  - is {method_a} or {method_b} safer for {surface}
+
+# --- SEASONALITY SEEDS -------------------------------------------------------
+# Qualitative only. Part 6A.3 turns this into a per-market curve from the Google
+# Ads monthly_searches array. Until that array is pulled, these are hypotheses to
+# be tested, not a calendar to publish against.
+seasonality_hypotheses:
+  - service: window-cleaning
+    hypothesis: twin peaks — late winter/spring after winter grime, early autumn after harvest dust
+    test_with: monthly_searches array at the client metro geo
+  - service: gutter-cleaning
+    hypothesis: autumn peak after leaf drop, secondary peak before the first sustained rain
+    test_with: monthly_searches array
+  - service: moss-removal
+    hypothesis: late-winter/early-spring peak when growth is most visible and treatment window opens
+    test_with: monthly_searches array
+  - service: pressure-washing
+    hypothesis: spring-into-summer peak, driven by outdoor-living season rather than by soil load
+    test_with: monthly_searches array
+  - service: solar-panel-cleaning
+    hypothesis: spring peak following the low-production winter, tied to output complaints
+    test_with: monthly_searches array
+
+# --- WHAT THIS FILE MUST NEVER CONTAIN ---------------------------------------
+forbidden:
+  - search volume figures
+  - keyword difficulty scores
+  - SERP overlap judgements
+  - place names, neighborhood names or subdivision names
+  - any assertion that a term "ranks" or "is competitive"
+  - a page list

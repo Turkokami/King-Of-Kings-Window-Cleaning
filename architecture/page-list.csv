@@ -1,0 +1,181 @@
+url,type,template,phase,status,note
+/,home,T1,2,new,"Brand promise, service entry grid, trust strip, 107+ internal links"
+/services/,services-hub,T1,2,new,Single services hub — never two
+/services/window-cleaning/,service-spoke,T2,2,new,Window Cleaning
+/services/gutter-cleaning/,service-spoke,T2,2,new,Gutter Cleaning
+/services/roof-cleaning/,service-spoke,T2,2,new,Roof Cleaning & Debris Removal
+/services/metal-roof-soft-washing/,service-spoke,T2,2,new,Metal Roof Soft Washing
+/services/moss-removal/,service-spoke,T2,2,new,Moss Removal
+/services/pressure-washing/,service-spoke,T2,2,new,Pressure Washing
+/services/house-washing/,service-spoke,T2,2,new,House Washing (Soft Wash)
+/services/solar-panel-cleaning/,service-spoke,T2,2,new,Solar Panel Cleaning
+/services/commercial-window-cleaning/,service-spoke,T2,2,new,Commercial Window Cleaning
+/our-guarantee/,trust,T8,2,new,Defined-term guarantee. Every 'risk-free' string links here.
+/financing/,financing,T2,2,new,"BNPL per service, live calculator"
+/about/,trust,T1,2,migrate,
+/reviews/,trust,T1,2,migrate,
+/contact/,trust,T1,2,migrate,
+/prepare-for-your-upcoming-service/,trust,T8,2,migrate,
+/referral-program/,trust,T2,2,migrate,
+/awards/,trust,T1,2,migrate,
+/careers/,trust,T1,2,migrate,
+/gallery/,proof,T1,2,migrate,
+/team/{expert-slug}/,person-entity,T2,1,new,"Named credentialed operator, hasCredential = WA registration"
+/locations/,geo-hub,T4,3,new,Real geo hub. /service-area/ 301s here.
+/locations/bellingham/,city,T4,3,migrate,"Bellingham, Whatcom County — Tier 1"
+/locations/bellingham/gutter-cleaning/,city-service,T4,3,migrate,Bellingham x gutter-cleaning
+/locations/bellingham/house-washing/,city-service,T4,3,new,Bellingham x house-washing
+/locations/bellingham/moss-removal/,city-service,T4,3,migrate,Bellingham x moss-removal
+/locations/bellingham/pressure-washing/,city-service,T4,3,migrate,Bellingham x pressure-washing
+/locations/bellingham/roof-cleaning/,city-service,T4,3,migrate,Bellingham x roof-cleaning
+/locations/bellingham/solar-panel-cleaning/,city-service,T4,3,migrate,Bellingham x solar-panel-cleaning
+/locations/bellingham/window-cleaning/,city-service,T4,3,migrate,Bellingham x window-cleaning
+/locations/ferndale/,city,T4,3,migrate,"Ferndale, Whatcom County — Tier 1"
+/locations/ferndale/gutter-cleaning/,city-service,T4,3,migrate,Ferndale x gutter-cleaning
+/locations/ferndale/house-washing/,city-service,T4,3,new,Ferndale x house-washing
+/locations/ferndale/roof-cleaning/,city-service,T4,3,migrate,Ferndale x roof-cleaning
+/locations/ferndale/window-cleaning/,city-service,T4,3,migrate,Ferndale x window-cleaning
+/locations/lynden/,city,T4,3,migrate,"Lynden, Whatcom County — Tier 1"
+/locations/lynden/gutter-cleaning/,city-service,T4,3,migrate,Lynden x gutter-cleaning
+/locations/lynden/house-washing/,city-service,T4,3,new,Lynden x house-washing
+/locations/lynden/roof-cleaning/,city-service,T4,3,migrate,Lynden x roof-cleaning
+/locations/lynden/window-cleaning/,city-service,T4,3,migrate,Lynden x window-cleaning
+/locations/blaine/,city,T4,3,migrate,"Blaine, Whatcom County — Tier 1"
+/locations/blaine/gutter-cleaning/,city-service,T4,3,migrate,Blaine x gutter-cleaning
+/locations/blaine/house-washing/,city-service,T4,3,new,Blaine x house-washing
+/locations/blaine/roof-cleaning/,city-service,T4,3,migrate,Blaine x roof-cleaning
+/locations/blaine/window-cleaning/,city-service,T4,3,migrate,Blaine x window-cleaning
+/locations/mount-vernon/,city,T4,3,migrate,"Mount Vernon, Skagit County — Tier 1"
+/locations/burlington/,city,T4,3,migrate,"Burlington, Skagit County — Tier 1"
+/locations/burlington/gutter-cleaning/,city-service,T4,3,migrate,Burlington x gutter-cleaning
+/locations/burlington/house-washing/,city-service,T4,3,new,Burlington x house-washing
+/locations/burlington/roof-cleaning/,city-service,T4,3,migrate,Burlington x roof-cleaning
+/locations/burlington/window-cleaning/,city-service,T4,3,migrate,Burlington x window-cleaning
+/locations/anacortes/,city,T4,3,migrate,"Anacortes, Skagit County — Tier 1"
+/locations/anacortes/gutter-cleaning/,city-service,T4,3,migrate,Anacortes x gutter-cleaning
+/locations/anacortes/house-washing/,city-service,T4,3,new,Anacortes x house-washing
+/locations/anacortes/roof-cleaning/,city-service,T4,3,migrate,Anacortes x roof-cleaning
+/locations/anacortes/window-cleaning/,city-service,T4,3,migrate,Anacortes x window-cleaning
+/locations/birch-bay/,city,T4,3,migrate,"Birch Bay, Whatcom County — Tier 2"
+/locations/everson/,city,T4,3,migrate,"Everson, Whatcom County — Tier 2"
+/locations/everson/gutter-cleaning/,city-service,T4,3,migrate,Everson x gutter-cleaning
+/locations/everson/house-washing/,city-service,T4,3,new,Everson x house-washing
+/locations/everson/roof-cleaning/,city-service,T4,3,migrate,Everson x roof-cleaning
+/locations/everson/window-cleaning/,city-service,T4,3,migrate,Everson x window-cleaning
+/locations/sudden-valley/,city,T4,3,migrate,"Sudden Valley, Whatcom County — Tier 2"
+/locations/sudden-valley/gutter-cleaning/,city-service,T4,3,migrate,Sudden Valley x gutter-cleaning
+/locations/sudden-valley/house-washing/,city-service,T4,3,new,Sudden Valley x house-washing
+/locations/sudden-valley/roof-cleaning/,city-service,T4,3,migrate,Sudden Valley x roof-cleaning
+/locations/sudden-valley/window-cleaning/,city-service,T4,3,migrate,Sudden Valley x window-cleaning
+/case-studies/gutter-cleaning-bellingham-wa/,case-study,T9,4,migrate,
+/case-studies/house-washing-lynden-wa/,case-study,T9,4,migrate,
+/case-studies/moss-removal-sedro-woolley-wa/,case-study,T9,4,migrate,
+/case-studies/pressure-washing-mount-vernon-wa/,case-study,T9,4,migrate,
+/case-studies/window-cleaning-bow-wa/,case-study,T9,4,migrate,
+/case-studies/{case-1}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-2}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-3}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-4}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-5}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-6}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-7}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-8}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-9}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-10}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-11}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-12}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-13}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-14}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/case-studies/{case-15}/,case-study,T9,4,new,"New — wired into its service spoke, city page and hub"
+/services/window-cleaning/hard-water-spots/,problem-micro,T3,5,new,
+/services/window-cleaning/construction-overspray/,problem-micro,T3,5,new,
+/services/window-cleaning/screen-repair-and-cleaning/,problem-micro,T3,5,new,
+/services/window-cleaning/skylight-cleaning/,problem-micro,T3,5,new,
+/services/window-cleaning/salt-spray-on-waterfront-glass/,problem-micro,T3,5,new,
+/services/roof-cleaning/black-algae-streaks/,problem-micro,T3,5,new,
+/services/roof-cleaning/cedar-shake-moss/,problem-micro,T3,5,new,
+/services/roof-cleaning/metal-roof-soft-washing/,problem-micro,T3,5,new,
+/services/roof-cleaning/composition-shingle-granule-loss/,problem-micro,T3,5,new,
+/services/moss-removal/moss-under-shingles/,problem-micro,T3,5,new,
+/services/moss-removal/lichen-vs-moss/,problem-micro,T3,5,new,
+/services/gutter-cleaning/overflowing-gutters/,problem-micro,T3,5,new,
+/services/gutter-cleaning/downspout-blockage/,problem-micro,T3,5,new,
+/services/gutter-cleaning/gutter-brightening/,problem-micro,T3,5,new,
+/services/pressure-washing/slippery-driveways-and-walkways/,problem-micro,T3,5,new,
+/services/pressure-washing/oxidised-vinyl-siding/,problem-micro,T3,5,new,
+/services/house-washing/north-facing-wall-mildew/,problem-micro,T3,5,new,
+/services/solar-panel-cleaning/pollen-and-industrial-fallout-soiling/,problem-micro,T3,5,new,
+/surface-library/,library-hub,T6,5,new,Topical-authority backbone
+/surface-library/annealed-glass/,library-profile,T6,5,new,
+/surface-library/tempered-glass/,library-profile,T6,5,new,
+/surface-library/low-e-coated-glass/,library-profile,T6,5,new,
+/surface-library/insulated-glass-units/,library-profile,T6,5,new,
+/surface-library/vinyl-siding/,library-profile,T6,5,new,
+/surface-library/fiber-cement-siding/,library-profile,T6,5,new,
+/surface-library/cedar-siding/,library-profile,T6,5,new,
+/surface-library/painted-wood-siding/,library-profile,T6,5,new,
+/surface-library/composition-asphalt-shingle/,library-profile,T6,5,new,
+/surface-library/standing-seam-metal-roof/,library-profile,T6,5,new,
+/surface-library/cedar-shake-roof/,library-profile,T6,5,new,
+/surface-library/concrete-tile-roof/,library-profile,T6,5,new,
+/surface-library/torch-down-flat-roof/,library-profile,T6,5,new,
+/surface-library/aluminium-gutters/,library-profile,T6,5,new,
+/surface-library/copper-gutters/,library-profile,T6,5,new,
+/surface-library/sheet-moss/,library-profile,T6,5,new,
+/surface-library/lichen/,library-profile,T6,5,new,
+/surface-library/gloeocapsa-magma-algae/,library-profile,T6,5,new,
+/surface-library/liverwort/,library-profile,T6,5,new,
+/surface-library/hard-water-mineral-scale/,library-profile,T6,5,new,
+/surface-library/cherry-point-industrial-fallout/,library-profile,T6,5,new,
+/surface-library/salish-sea-salt-spray/,library-profile,T6,5,new,
+/surface-library/douglas-fir-pollen/,library-profile,T6,5,new,
+/surface-library/agricultural-dust-nooksack-valley/,library-profile,T6,5,new,
+/compliance/wa-contractor-registration/,compliance,T8,5,new,WA L&I contractor registration and how to verify a UBI
+/compliance/lake-whatcom-watershed-rules/,compliance,T8,5,new,Lake Whatcom watershed phosphorus and runoff rules
+/compliance/bellingham-stormwater-wash-water/,compliance,T8,5,new,Bellingham stormwater rules for exterior wash water
+/compliance/skagit-county-wash-water/,compliance,T8,5,new,Skagit County wash-water discharge rules
+/compliance/hoa-window-cleaning-requirements/,compliance,T8,5,new,HOA and condo exterior-cleaning obligations
+/compliance/landlord-tenant-exterior-cleaning/,compliance,T8,5,new,Landlord and tenant exterior-cleaning obligations in WA
+/compliance/ladder-and-fall-protection/,compliance,T8,5,new,Fall protection and why a licensed crew matters
+/compliance/roof-warranty-and-soft-washing/,compliance,T8,5,new,Roof warranties and why pressure washing voids them
+/blog/,blog-hub,T1,6,migrate,
+/blog/{cluster-post-1}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-2}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-3}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-4}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-5}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-6}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-7}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-8}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-9}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-10}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-11}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-12}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-13}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-14}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-15}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-16}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-17}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-18}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-19}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-20}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-21}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-22}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-23}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-24}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-25}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-26}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-27}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-28}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-29}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-30}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-31}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-32}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-33}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-34}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-35}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-36}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-37}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-38}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-39}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke
+/blog/{cluster-post-40}/,blog,T6,6,new,Consolidated from 73 live posts; each feeds exactly one service spoke

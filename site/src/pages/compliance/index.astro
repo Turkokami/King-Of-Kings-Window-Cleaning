@@ -1,0 +1,63 @@
+---
+/**
+ * T8 hub — local rules. Permits, municipal code, and what actually differs
+ * between jurisdictions in this territory.
+ *
+ * Keystone Part 3.4 page type 5: "Enormous trust signal; almost no competitor
+ * builds it." In this market, none of the five does.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Cta from '../../components/Cta.astro';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+
+const pages = (await getCollection('compliance'))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const answer = 'What the local rules actually say about exterior cleaning in Whatcom and Skagit County, with the code sections cited and linked so you can read them yourself. Jurisdictions ten miles apart do not regulate this the same way.';
+
+const schema = {
+  path: '/compliance/',
+  title: buildTitle('Local Rules & Codes'),
+  description: 'What Whatcom and Skagit municipal codes say about exterior cleaning and wash water, with every section cited, linked and dated.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Local codes affecting exterior cleaning in Whatcom and Skagit County',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Local rules', path: '/compliance/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t8-hub prose">
+    <h1>Local Rules &amp; Codes</h1>
+    <AnswerBox text={answer} label="What this is" />
+
+    <p>
+      Most exterior cleaning quotes in this market do not mention the local codes
+      at all, and on a lot of jobs it genuinely does not come up. It comes up on
+      the ones where water runs somewhere it should not, and by then the
+      conversation is with a municipality rather than with a contractor.
+    </p>
+
+    <ul>
+      {pages.map((p) => (
+        <li>
+          <a href={`/compliance/${p.slug}/`}>{p.data.title}</a>
+          {' — reviewed '}
+          <time datetime={p.data.reviewed.toISOString().slice(0, 10)}>
+            {p.data.reviewed.toISOString().slice(0, 10)}
+          </time>
+        </li>
+      ))}
+    </ul>
+
+    <p>
+      These are plain-language summaries with sources, not legal advice. Codes are
+      amended and section numbering changes — every page carries its review date
+      for that reason.
+    </p>
+    <Cta />
+  </article>
+</BaseLayout>

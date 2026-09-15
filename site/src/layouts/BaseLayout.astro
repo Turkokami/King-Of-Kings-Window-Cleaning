@@ -1,0 +1,79 @@
+---
+/**
+ * BaseLayout.astro — head, meta, OG/Twitter, and the single JSON-LD injection point.
+ *
+ * M5 title/description, M7 shared hero + logo on every page, and the one place
+ * schema is written. Nothing else in this codebase emits JSON-LD.
+ */
+import { BUSINESS } from '../data/business';
+import { buildGraph, type PageSchemaInput } from '../lib/schema';
+import { trimDescription } from '../lib/seo';
+import '../styles/base.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PhoneBar from '../components/PhoneBar.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+
+export interface Props {
+  schema: PageSchemaInput;
+  /** Defaults to the shared brand social image (M7). */
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const { schema, ogImage, noindex = false } = Astro.props;
+/* Part 4A.1 — one primary action per page. The contact and guarantee pages have
+   their own; a floating launcher there is a third competing action. */
+const chatOk = !(BUSINESS.chatWidget.excludePaths as readonly string[]).includes(schema.path);
+const description = trimDescription(schema.description);
+const canonical = `${BUSINESS.siteUrl}${schema.path}`;
+const social = new URL(ogImage ?? BUSINESS.socialImage, BUSINESS.siteUrl).href;
+const jsonld = buildGraph({ ...schema, description });
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{schema.title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex,follow" />}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={BUSINESS.name} />
+  <meta property="og:title" content={schema.title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={social} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={social} />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  {/* Only where the widget will actually load — a preconnect to a host this page
+      never calls is a wasted handshake, not a free one. */}
+  {BUSINESS.chatWidget.enabled && chatOk && (
+    <link rel="preconnect" href="https://widgets.leadconnectorhq.com" crossorigin />
+  )}
+
+  <!--
+    Keystone 5.3 — the JSON-LD injection trap. `set:html` on a REAL script
+    element. Routing this through a pseudo-element double-escapes the graph and
+    renders it as visible text on the page. Do not refactor.
+  -->
+  <script type="application/ld+json" is:inline set:html={jsonld} />
+
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  <PhoneBar />
+  <ChatWidget enabled={chatOk} />
+</body>
+</html>

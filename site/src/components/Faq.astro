@@ -1,0 +1,40 @@
+---
+/**
+ * Faq.astro — the visible FAQ block.
+ *
+ * Renders from the SAME array that feeds the FAQPage node in schema.ts. There is
+ * never a second, divergent copy — that is how FAQ schema and visible content
+ * drift apart. Exactly one of these per URL (Keystone Part 5.1 node 6).
+ *
+ * Legacy baseline: FAQ schema on 6 of 287 pages.
+ */
+import type { Faq } from '../lib/schema';
+export interface Props { faqs: Faq[]; heading?: string; id?: string }
+/*
+ * ACCESSIBILITY — Dimension 14. `aria-labelledby` points at a fixed id, and a
+ * duplicate id on a page breaks the association silently for every assistive
+ * technology reading it. The contract is one FAQ block per URL, but a contract is
+ * not an enforcement mechanism: the id is now a prop so a second block on a page
+ * is addressable rather than broken.
+ */
+const { faqs, heading = 'Questions we get asked here', id = 'faq' } = Astro.props;
+const headingId = `${id}-heading`;
+
+if (import.meta.env.DEV && (faqs.length < 6 || faqs.length > 8)) {
+  console.warn(`[Faq] ${faqs.length} questions — the contract is 6–8.`);
+}
+---
+{faqs.length > 0 && (
+  <section class="faq" aria-labelledby={headingId}>
+    <h2 id={headingId}>{heading}</h2>
+    <dl class="faq__list">
+      {faqs.map((f, i) => (
+        <div class="faq__item">
+          <dt class="faq__q">{f.q}</dt>
+          {/* first answer mirrors the Quick Answer string (M2) */}
+          <dd class={i === 0 ? 'faq__a faq-lead' : 'faq__a'}>{f.a}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+)}

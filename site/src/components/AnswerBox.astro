@@ -1,0 +1,26 @@
+---
+/**
+ * AnswerBox.astro — the AEO Quick Answer (Keystone doctrine #3, mandate M2/M4).
+ *
+ * 40–60 words, first thing on every indexable page, written to be quoted verbatim
+ * by an answer engine. The SAME string is the meta description and the first FAQ
+ * answer — one sentence written well satisfies three mandates.
+ *
+ * Keystone v2 retires M4 (Speakable), but the Quick Answer itself is now called
+ * out in M2 as "the single highest-value AEO element on the page". The
+ * data-answer hook stays as a stable selector for testing and extraction; it is
+ * no longer referenced from schema.
+ * Zero pages on the legacy site have a Quick Answer of any kind.
+ */
+export interface Props { text: string; label?: string }
+const { text, label = 'The short answer' } = Astro.props;
+
+const words = text.trim().split(/\s+/).length;
+if (import.meta.env.DEV && (words < 35 || words > 70)) {
+  console.warn(`[AnswerBox] ${words} words — the contract is 40–60. "${text.slice(0, 70)}…"`);
+}
+---
+<div class="answer" data-answer>
+  <p class="answer__label">{label}</p>
+  <p class="answer__text">{text}</p>
+</div>

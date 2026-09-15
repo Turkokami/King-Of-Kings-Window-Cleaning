@@ -1,0 +1,73 @@
+{
+  "_doc": "Keystone v3.1 Dimension 14 — Accessibility. First audit. Run per TEMPLATE, not per page: 180 pages off these templates share one verdict, and a finding on a template blocks that template's first publish as a P0.",
+  "audited": "2026-09-14",
+  "rubric_version": "Keystone v3.2, Dimension 14",
+  "rule_source": "Vercel Web Interface Guidelines, referenced not copied (Keystone 16.5) — fetched fresh at run time.",
+  "scope": { "components": 7, "layouts": 1, "routes": 8, "stylesheets": 1 },
+  "headline": "The audit's biggest finding was not a defect in the markup — it was that the design layer did not exist. With no stylesheet, five of Dimension 14's criteria (focus state, contrast, tap target, reduced motion, skip-link visibility) were unimplemented rather than failing, which is a worse position and an invisible one.",
+  "findings_and_fixes": [
+    {
+      "id": "A11Y-1",
+      "severity": "P0",
+      "template": "components/Header.astro",
+      "finding": "The services submenu was a bare nested <ul> with no disclosure control. With no JavaScript in this build that resolves to either a CSS :hover dropdown — unreachable by keyboard, unusable on touch — or a permanently open list.",
+      "rule": "Every interactive element reachable and actuable by keyboard in a sensible order.",
+      "fix": "Rebuilt on <details>/<summary>. That is a real disclosure widget: focusable, operable with Enter and Space, exposes its expanded state to assistive technology, and needs no script. On a zero-JS static build it is the correct construction rather than a fallback. The services hub also stays a direct link inside the menu, so the disclosure is never the only path in.",
+      "status": "fixed"
+    },
+    {
+      "id": "A11Y-2",
+      "severity": "P0",
+      "template": "src/styles/ (absent)",
+      "finding": "No stylesheet existed. Focus states, WCAG AA contrast, 44px tap targets, prefers-reduced-motion and skip-link visibility were therefore all unimplemented.",
+      "rule": "Dimension 14, five separate criteria.",
+      "fix": "Wrote src/styles/base.css as one file carrying both the Keystone 1.3 named brand palette and the accessibility floor — deliberately together, because a colour is not chosen and then checked for contrast, it is chosen because it clears contrast against the ground it sits on. Contrast ratios are recorded inline per token. Includes :focus-visible with a two-layer ring drawn against the page ground so it survives on both themes, 44px minimum tap targets with touch-action: manipulation, a reduced-motion block, and a skip link that becomes visible on focus.",
+      "status": "fixed"
+    },
+    {
+      "id": "A11Y-3",
+      "severity": "finding",
+      "template": "components/Header.astro",
+      "finding": "The brand link wrapped a logo image whose alt text was the business name, so the link's accessible name was the business name rather than its destination. The header call link's only text was a string of digits, which reads as digits to anyone moving by links.",
+      "fix": "Logo alt emptied and the link given aria-label \"<name> — home\"; the call link given aria-label \"Call <name> on <number>\" with the visible digits marked aria-hidden.",
+      "status": "fixed"
+    },
+    {
+      "id": "A11Y-4",
+      "severity": "finding",
+      "template": "components/Faq.astro",
+      "finding": "aria-labelledby pointed at a hardcoded id. A duplicate id on a page breaks the association silently for every assistive technology reading it. The contract is one FAQ block per URL — but a contract is not an enforcement mechanism.",
+      "fix": "The id is now a prop, so a second block on a page is addressable rather than broken.",
+      "status": "fixed"
+    },
+    {
+      "id": "A11Y-5",
+      "severity": "finding",
+      "template": "pages/locations/[market]/[service].astro",
+      "finding": "In the spoke-and-wheel block, two link lists were introduced by <p> labels. A screen reader moving by structure heard two anonymous lists.",
+      "fix": "Labels promoted to <h3>. Same visual weight, and they become navigable landmarks.",
+      "status": "fixed"
+    },
+    {
+      "id": "A11Y-6",
+      "severity": "finding",
+      "template": "components/Cta.astro",
+      "finding": "Guarantee link text read \"See the terms\", which is not descriptive out of context.",
+      "fix": "Changed to \"See the guarantee terms\".",
+      "status": "fixed"
+    }
+  ],
+  "instrument": {
+    "script": "scripts/a11y.mjs, wired into npm run verify",
+    "gates": "Findings fail the build. This is the one gate v3.2 ADDED rather than retired, and it does not carry the shipping-blocker problem the retired gates had: it is fixed once, in one file, and then it is fixed for every page off that template.",
+    "a_bug_it_caught_in_itself": "The first run produced a false positive — a nav containing two SIBLING lists was flagged as a nested hover menu, because the check matched any two <ul> tags rather than actual nesting. Fixed with depth counting. A noisy check is how a harness gets ignored, so this mattered more than the finding would have."
+  },
+  "what_this_does_not_cover": [
+    "Focus ORDER — static analysis cannot judge whether the tab sequence makes sense.",
+    "Rendered contrast against a real background stack, as opposed to the token ratios recorded in the stylesheet.",
+    "Whether a page makes sense to someone actually using it with a screen reader.",
+    "Zoom to 200% and 320px width behaviour, which needs a browser.",
+    "Any template not yet written — the problem, library, compliance, case-study and blog routes do not exist, and each will need its own pass before its first publish."
+  ],
+  "dimension_14_status": "UNSCORED. Six findings raised and six fixed, but Part 10 says to score from measurement and the items above under what_this_does_not_cover have not been measured. A score before a browser pass would be exactly the kind of flattering number the standard warns against."
+}

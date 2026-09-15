@@ -1,0 +1,79 @@
+---
+/**
+ * T9 hub — case studies.
+ *
+ * Keystone Part 3.1: "a case study is simultaneously a geo page, a service page
+ * and a proof asset" — which is why it is the highest-trust asset in the system
+ * and the one most often missing. Five exist on the legacy site and are not wired
+ * into anything.
+ *
+ * Nothing is published here yet, and this page says so rather than pretending.
+ * A case study needs a real job, real photos and a real outcome; inventing one is
+ * the single clearest fabrication available in this trade, so the empty state is
+ * an honest state rather than an embarrassing one.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Cta from '../../components/Cta.astro';
+import { buildTitle } from '../../lib/seo';
+
+export const prerender = true;
+
+const studies = (await getCollection('caseStudy')).sort(
+  (a, b) => b.data.updated.valueOf() - a.data.updated.valueOf()
+);
+
+const answer = 'Real jobs on real properties in Whatcom and Skagit County — what the surface was doing, what we did about it, and what it looked like afterwards. Photographed on the day, with the property type and the method named.';
+
+const schema = {
+  path: '/case-studies/',
+  title: buildTitle('Our Work — Real Jobs'),
+  description: 'Real exterior cleaning jobs across Whatcom and Skagit County — property type, method and outcome, photographed on the day.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Completed exterior cleaning work in Whatcom County',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Our work', path: '/case-studies/' }],
+  faqs: [],
+  pageType: 'CollectionPage' as const,
+};
+---
+<BaseLayout schema={schema} noindex={studies.length === 0}>
+  <article class="t9-hub prose">
+    <h1>Our Work</h1>
+    <AnswerBox text={answer} />
+
+    {studies.length > 0 ? (
+      <ul class="case-grid">
+        {studies.map((c) => (
+          <li>
+            <a href={`/case-studies/${c.slug}/`}>{c.data.title}</a>
+            {' — '}{c.data.propertyType}, {c.data.market}. {c.data.outcome}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <section>
+        <h2>Nothing published here yet</h2>
+        <p>
+          A case study needs a real property, real photographs taken on the day,
+          and an outcome we can state plainly. We would rather this page be empty
+          than fill it with jobs that did not happen — which, in a trade where
+          before-and-after photos are the currency, is a distinction worth making
+          out loud.
+        </p>
+        <p>
+          In the meantime, the work is visible where it actually is: on our Google
+          Business Profile, where each job is posted with photos on the day it was
+          done and the neighbourhood named.
+        </p>
+      </section>
+    )}
+
+    <p>
+      <a href="/services/">What we do</a> ·
+      <a href="/locations/">Where we work</a> ·
+      <a href="/reviews/">What customers said</a>
+    </p>
+    <Cta />
+  </article>
+</BaseLayout>

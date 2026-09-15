@@ -1,0 +1,1822 @@
+{
+ "_doc": "Geographies Part 6A declined. Each is an areaServed mention on its parent page, not a URL. This file is the input to the areaServed arrays in the schema graph and to the coverage copy on /locations/ and the city pages \u2014 so a declined geography is still SAID, it is just not a page.",
+ "count": 255,
+ "mentions": [
+  {
+   "geo": "ferndale",
+   "name": "Ferndale",
+   "service": "moss-removal",
+   "mention_on": "/locations/ferndale/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "ferndale",
+   "name": "Ferndale",
+   "service": "pressure-washing",
+   "mention_on": "/locations/ferndale/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "ferndale",
+   "name": "Ferndale",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/ferndale/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lynden",
+   "name": "Lynden",
+   "service": "moss-removal",
+   "mention_on": "/locations/lynden/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lynden",
+   "name": "Lynden",
+   "service": "pressure-washing",
+   "mention_on": "/locations/lynden/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lynden",
+   "name": "Lynden",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/lynden/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "blaine",
+   "name": "Blaine",
+   "service": "moss-removal",
+   "mention_on": "/locations/blaine/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "blaine",
+   "name": "Blaine",
+   "service": "pressure-washing",
+   "mention_on": "/locations/blaine/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "blaine",
+   "name": "Blaine",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/blaine/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "house-washing",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "moss-removal",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "pressure-washing",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "mount-vernon",
+   "name": "Mount Vernon",
+   "service": "window-cleaning",
+   "mention_on": "/locations/mount-vernon/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "burlington",
+   "name": "Burlington",
+   "service": "moss-removal",
+   "mention_on": "/locations/burlington/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "burlington",
+   "name": "Burlington",
+   "service": "pressure-washing",
+   "mention_on": "/locations/burlington/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "burlington",
+   "name": "Burlington",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/burlington/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "house-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sedro-woolley",
+   "name": "Sedro-Woolley",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "anacortes",
+   "name": "Anacortes",
+   "service": "moss-removal",
+   "mention_on": "/locations/anacortes/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "anacortes",
+   "name": "Anacortes",
+   "service": "pressure-washing",
+   "mention_on": "/locations/anacortes/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "anacortes",
+   "name": "Anacortes",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/anacortes/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "moss-removal",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "pressure-washing",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "birch-bay",
+   "name": "Birch Bay",
+   "service": "window-cleaning",
+   "mention_on": "/locations/birch-bay/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "semiahmoo",
+   "name": "Semiahmoo",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "custer",
+   "name": "Custer",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "everson",
+   "name": "Everson",
+   "service": "moss-removal",
+   "mention_on": "/locations/everson/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "everson",
+   "name": "Everson",
+   "service": "pressure-washing",
+   "mention_on": "/locations/everson/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "everson",
+   "name": "Everson",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/everson/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "nooksack",
+   "name": "Nooksack",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sumas",
+   "name": "Sumas",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "deming",
+   "name": "Deming",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "acme",
+   "name": "Acme",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "maple-falls",
+   "name": "Maple Falls",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "glacier",
+   "name": "Glacier",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sudden-valley",
+   "name": "Sudden Valley",
+   "service": "moss-removal",
+   "mention_on": "/locations/sudden-valley/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sudden-valley",
+   "name": "Sudden Valley",
+   "service": "pressure-washing",
+   "mention_on": "/locations/sudden-valley/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "sudden-valley",
+   "name": "Sudden Valley",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/sudden-valley/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "kendall",
+   "name": "Kendall",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "van-zandt",
+   "name": "Van Zandt",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "la-conner",
+   "name": "La Conner",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lyman",
+   "name": "Lyman",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "edison",
+   "name": "Edison",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bow",
+   "name": "Bow",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alger",
+   "name": "Alger",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "clear-lake",
+   "name": "Clear Lake",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "big-lake",
+   "name": "Big Lake",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "conway",
+   "name": "Conway",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "concrete",
+   "name": "Concrete",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "hamilton",
+   "name": "Hamilton",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "bay-view",
+   "name": "Bay View",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "county": "Island",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "pressure-washing",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "roof-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "solar-panel-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "oak-harbor",
+   "name": "Oak Harbor",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "point-roberts",
+   "name": "Point Roberts",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "point-roberts",
+   "name": "Point Roberts",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "point-roberts",
+   "name": "Point Roberts",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "point-roberts",
+   "name": "Point Roberts",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lummi-island",
+   "name": "Lummi Island",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "lummi-island",
+   "name": "Lummi Island",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lummi-island",
+   "name": "Lummi Island",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "lummi-island",
+   "name": "Lummi Island",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "marietta",
+   "name": "Marietta",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "marietta",
+   "name": "Marietta",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "marietta",
+   "name": "Marietta",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "marietta",
+   "name": "Marietta",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "geneva",
+   "name": "Geneva",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "geneva",
+   "name": "Geneva",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "geneva",
+   "name": "Geneva",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "geneva",
+   "name": "Geneva",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "wickersham",
+   "name": "Wickersham",
+   "county": "Whatcom",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "wickersham",
+   "name": "Wickersham",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "wickersham",
+   "name": "Wickersham",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "wickersham",
+   "name": "Wickersham",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "rockport",
+   "name": "Rockport",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "rockport",
+   "name": "Rockport",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "rockport",
+   "name": "Rockport",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "rockport",
+   "name": "Rockport",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "samish-island",
+   "name": "Samish Island",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "samish-island",
+   "name": "Samish Island",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "samish-island",
+   "name": "Samish Island",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "samish-island",
+   "name": "Samish Island",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "guemes-island",
+   "name": "Guemes Island",
+   "county": "Skagit",
+   "service": "",
+   "mention_on": "/locations/",
+   "reason": "city page declined by Part 6A"
+  },
+  {
+   "geo": "guemes-island",
+   "name": "Guemes Island",
+   "service": "gutter-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "guemes-island",
+   "name": "Guemes Island",
+   "service": "moss-removal",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "guemes-island",
+   "name": "Guemes Island",
+   "service": "window-cleaning",
+   "mention_on": "/locations/",
+   "reason": "tuple declined by Part 6A"
+  },
+  {
+   "geo": "alabama-hill",
+   "name": "Alabama Hill",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "barkley",
+   "name": "Barkley",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "birchwood",
+   "name": "Birchwood",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "city-center",
+   "name": "City Center",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "columbia",
+   "name": "Columbia",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "cordata",
+   "name": "Cordata",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "cornwall-park",
+   "name": "Cornwall Park",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "edgemoor",
+   "name": "Edgemoor",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "fairhaven",
+   "name": "Fairhaven",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "happy-valley",
+   "name": "Happy Valley",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "irongate",
+   "name": "Irongate",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "king-mountain",
+   "name": "King Mountain",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "lettered-streets",
+   "name": "Lettered Streets",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "meridian",
+   "name": "Meridian",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "puget",
+   "name": "Puget",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "roosevelt",
+   "name": "Roosevelt",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "samish",
+   "name": "Samish",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "sehome",
+   "name": "Sehome",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "silver-beach",
+   "name": "Silver Beach",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "south",
+   "name": "South",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "south-hill",
+   "name": "South Hill",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "sunnyland",
+   "name": "Sunnyland",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "western-washington-university",
+   "name": "Western Washington University",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "whatcom-falls",
+   "name": "Whatcom Falls",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "york",
+   "name": "York",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "squalicum",
+   "name": "Squalicum",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  },
+  {
+   "geo": "chuckanut",
+   "name": "Chuckanut",
+   "service": "",
+   "mention_on": "/locations/bellingham/",
+   "reason": "no measured query demand \u2014 Part 6A"
+  }
+ ]
+}

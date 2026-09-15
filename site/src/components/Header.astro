@@ -1,0 +1,59 @@
+---
+import { BUSINESS } from '../data/business';
+import { buildableServices } from '../data/services';
+const services = buildableServices().filter((s) => s.geo);
+---
+{/*
+  ACCESSIBILITY — Dimension 14 (Keystone v3.1), audited 2026-09-14.
+
+  The submenu was a bare nested <ul>. With no disclosure control that is either a
+  CSS :hover dropdown, which is unreachable by keyboard and unusable on touch, or
+  a permanently open list. Both fail "every interactive element reachable and
+  actuable by keyboard in a sensible order."
+
+  Fixed with <details>/<summary>, which is a real disclosure widget: focusable,
+  operable with Enter and Space, exposes its expanded state to assistive tech, and
+  needs no JavaScript. On a static build with zero client JS that is the correct
+  construction rather than a fallback — and the services hub stays directly
+  reachable as its own link, so the disclosure is never the only path in.
+*/}
+<header class="site-header">
+  <a class="brand" href="/" aria-label={`${BUSINESS.name} — home`}>
+    <img src={BUSINESS.logo} alt="" width="180" height="44" />
+  </a>
+
+  <nav aria-label="Main">
+    {/*
+      Curated deliberately. Keystone 7B documents the menu auto_add trap that
+      ballooned a nav from 7 items to 118 on a previous build; on a static site
+      the equivalent mistake is mapping the full route list into the header.
+      Top-level nav is hand-held: hubs only, never spokes.
+    */}
+    <ul class="nav">
+      <li class="nav__item nav__item--has-menu">
+        <details class="nav__disclosure">
+          <summary class="nav__summary">Services</summary>
+          <ul class="nav__submenu">
+            <li><a href="/services/">All services</a></li>
+            {services.map((s) => (
+              <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>
+            ))}
+          </ul>
+        </details>
+      </li>
+      <li class="nav__item"><a href="/locations/">Service area</a></li>
+      <li class="nav__item"><a href="/case-studies/">Our work</a></li>
+      <li class="nav__item"><a href="/reviews/">Reviews</a></li>
+      <li class="nav__item"><a href="/about/">About</a></li>
+      <li class="nav__item"><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+
+  {/*
+    Link text out of context is a bare phone number, which reads as a string of
+    digits to a screen reader moving by links. The aria-label says what it does.
+  */}
+  <a class="header-call" href={`tel:${BUSINESS.phoneE164}`} aria-label={`Call ${BUSINESS.name} on ${BUSINESS.phone}`}>
+    <span aria-hidden="true">{BUSINESS.phone}</span>
+  </a>
+</header>

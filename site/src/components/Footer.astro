@@ -1,0 +1,58 @@
+---
+import { BUSINESS, READY, sameAsList } from '../data/business';
+import { marketsByCounty } from '../data/markets';
+import { AUTHORISED_CITIES, DECLINED_CITIES } from '../data/authorised';
+import { buildableServices } from '../data/services';
+const year = new Date().getFullYear();
+
+/*
+ * Keystone 3.5 names the footer as "what keeps a sixty-page geo tier from being
+ * orphaned" — but only for pages that exist. The footer previously listed all 41
+ * markets; 31 of them were declined by the demand gate and have no URL. They are
+ * still SAID, as areaServed prose, which is what Part 6A means by a mention.
+ */
+const linked = (county: 'Whatcom' | 'Skagit') =>
+  marketsByCounty(county).filter((m) => AUTHORISED_CITIES.includes(m.slug));
+const mentioned = marketsByCounty('Whatcom')
+  .concat(marketsByCounty('Skagit'), marketsByCounty('Island'))
+  .filter((m) => DECLINED_CITIES.includes(m.slug))
+  .map((m) => m.name);
+---
+<footer class="site-footer">
+  <div class="site-footer__cols">
+    <div>
+      <img src={BUSINESS.logo} alt={BUSINESS.name} width="160" height="40" />
+      <p class="nap">
+        <strong>{BUSINESS.legalName}</strong><br />
+        {/* NAP here must match the LocalBusiness node character for character. */}
+        {BUSINESS.address.addressLocality}, {BUSINESS.address.addressRegion}<br />
+        <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a><br />
+        <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+      </p>
+      {READY.ubi() && <p class="ubi">WA UBI {BUSINESS.ubi}</p>}
+    </div>
+    <div>
+      <h2>Services</h2>
+      <ul>{buildableServices().map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
+    </div>
+    <div>
+      <h2>Whatcom County</h2>
+      <ul>{linked('Whatcom').map((m) => <li><a href={`/locations/${m.slug}/`}>{m.name}</a></li>)}</ul>
+    </div>
+    <div>
+      <h2>Skagit County</h2>
+      <ul>{linked('Skagit').map((m) => <li><a href={`/locations/${m.slug}/`}>{m.name}</a></li>)}</ul>
+    </div>
+  </div>
+  {mentioned.length > 0 && (
+    <p class="also-served">
+      Also serving {mentioned.slice(0, -1).join(', ')} and {mentioned.at(-1)}.
+    </p>
+  )}
+  {READY.sameAs() && (
+    <ul class="social">{sameAsList().map((u) => <li><a href={u} rel="me noopener">{new URL(u).hostname.replace('www.', '')}</a></li>)}</ul>
+  )}
+  <p class="legal">
+    &copy; {year} {BUSINESS.legalName}. <a href="/our-guarantee/">Our guarantee</a> · <a href="/privacy/">Privacy</a>
+  </p>
+</footer>

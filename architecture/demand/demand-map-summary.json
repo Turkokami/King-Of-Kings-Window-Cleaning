@@ -1,0 +1,141 @@
+{
+  "generated": "2026-09-11",
+  "standard": "Keystone v2, Part 6A.7 \u2014 two or more of five demand signals promotes a geography to a page",
+  "markets_declared": 41,
+  "geo_services": 7,
+  "geo_slots_evaluated": 355,
+  "signals_measured": [
+    "S2 GSC impressions (2026-09-14)",
+    "S4 competitor coverage (2026-09-11)"
+  ],
+  "signals_measured_detail": {
+    "S2 GSC": {
+      "source": "Search Console Performance export, property https://www.kingofkingswindowcleaning.com/, 2025-05-13 to 2026-09-12 (488 days), Web search type, all countries.",
+      "threshold": {
+        "rule": ">=10 impressions per quarter",
+        "window_days": 488,
+        "quarters": 5.35,
+        "impressions_required": 53.5
+      },
+      "cities_meeting": [
+        "bellingham"
+      ],
+      "tuples_meeting": [
+        "gutter-cleaning|bellingham",
+        "house-washing|bellingham",
+        "moss-removal|bellingham",
+        "pressure-washing|bellingham",
+        "roof-cleaning|bellingham",
+        "solar-panel-cleaning|bellingham",
+        "window-cleaning|bellingham"
+      ],
+      "caveat": "GSC impressions measure THIS SITE'S exposure, not market demand. A market where the site has no page and no visibility reports near-zero by construction. That is precisely why Part 6A requires two signals: S4 (competitor coverage) catches geographies where demand demonstrably exists but this site is invisible."
+    }
+  },
+  "signals_unmeasured": {
+    "S1 volume": "Google Ads API GenerateKeywordHistoricalMetrics at the Bellingham metro geo target (needs Basic access), or DataForSEO Google Ads Search Volume. Keep the full twelve-month monthly_searches array \u2014 that array is the seasonality dataset for Part 6A.3.",
+    "S3 Ads matched locations": "Google Ads search terms plus Insights > When & where ads showed > Matched Locations, ranked by conversions, not impressions. Only exists if the client runs Ads."
+  },
+  "signal_satisfied": {
+    "S5 documented job history": {
+      "satisfied": true,
+      "scope": "territory-wide \u2014 every declared market",
+      "basis": "owner attestation, 2026-09-12",
+      "hardening": "a per-geography job count from the scheduling system would both harden this and rank the territory, which attestation cannot do"
+    }
+  },
+  "s4_distribution": {
+    "0": 181,
+    "1": 136,
+    "2": 32,
+    "3": 6
+  },
+  "slots_with_s4_met": 38,
+  "slots_with_one_competitor": 136,
+  "slots_with_no_competitor": 181,
+  "cities_where_s4_is_met_somewhere": [
+    "anacortes",
+    "bellingham",
+    "birch-bay",
+    "blaine",
+    "burlington",
+    "everson",
+    "ferndale",
+    "lynden",
+    "mount-vernon",
+    "sudden-valley"
+  ],
+  "cities_where_exactly_one_competitor_builds": [
+    "acme",
+    "alger",
+    "bow",
+    "custer",
+    "deming",
+    "geneva",
+    "glacier",
+    "la-conner",
+    "maple-falls",
+    "marietta",
+    "point-roberts",
+    "sedro-woolley",
+    "sumas"
+  ],
+  "cities_where_no_competitor_builds_anything": [
+    "alabama-hill",
+    "barkley",
+    "bay-view",
+    "big-lake",
+    "birchwood",
+    "chuckanut",
+    "city-center",
+    "clear-lake",
+    "columbia",
+    "concrete",
+    "conway",
+    "cordata",
+    "cornwall-park",
+    "edgemoor",
+    "edison",
+    "fairhaven",
+    "guemes-island",
+    "hamilton",
+    "happy-valley",
+    "irongate",
+    "kendall",
+    "king-mountain",
+    "lettered-streets",
+    "lummi-island",
+    "lyman",
+    "meridian",
+    "nooksack",
+    "oak-harbor",
+    "puget",
+    "rockport",
+    "roosevelt",
+    "samish",
+    "samish-island",
+    "sehome",
+    "semiahmoo",
+    "silver-beach",
+    "south",
+    "south-hill",
+    "squalicum",
+    "sunnyland",
+    "van-zandt",
+    "western-washington-university",
+    "whatcom-falls",
+    "wickersham",
+    "york"
+  ],
+  "slots_promoted_to_page_today": 45,
+  "retired_gates_v3_2": {
+    "job_history_cap": "RETIRED by Keystone v3.2 changelog item 1. Job history is one of the five demand signals, never a ceiling on city-page count and never a prerequisite. This file no longer computes a cap.",
+    "neighborhood_rank_prerequisite": "RETIRED by the same item. Neighborhood pages are judged on demand evidence alone; a market with no job history can be entered at the neighborhood layer.",
+    "verification_as_blocker": "RETIRED by changelog item 2. Nothing in this pipeline requires independent verification of a client-supplied fact before it ships. The client-attested standard applies: record who supplied it and when, mark it attested, and never invent."
+  },
+  "neighborhood_tier": {
+    "rule": "Part 3.4 item 4 \u2014 neighborhood pages are built only inside cities that already rank, never as the way into a market.",
+    "status": "BLOCKED. \"Already rank\" is a GSC/rank-tracker measurement. The 25 Bellingham neighborhood pages and every other neighborhood slot stay unbuilt until that measurement exists."
+  },
+  "what_this_prunes": "The architecture is the superset the evidence selects from. With S5 satisfied territory-wide, the slots carrying S4 clear immediately; the rest wait on GSC, which the client has access to. A slot that never accumulates a second signal becomes an areaServed mention on its parent city page rather than a page, and a geography correctly declined costs nothing on the v2 scorecard."
+}

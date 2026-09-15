@@ -1,0 +1,61 @@
+{
+  "total_indexable_pages": 180,
+  "by_phase": {
+    "1": 1,
+    "2": 21,
+    "3": 46,
+    "4": 20,
+    "5": 51,
+    "6": 41
+  },
+  "by_type": {
+    "blog": 40,
+    "city-service": 35,
+    "library-profile": 24,
+    "case-study": 20,
+    "problem-micro": 18,
+    "city": 10,
+    "service-spoke": 9,
+    "trust": 8,
+    "compliance": 8,
+    "home": 1,
+    "services-hub": 1,
+    "financing": 1,
+    "proof": 1,
+    "person-entity": 1,
+    "geo-hub": 1,
+    "library-hub": 1,
+    "blog-hub": 1
+  },
+  "by_status": {
+    "new": 129,
+    "migrate": 51
+  },
+  "markets_total": 41,
+  "markets_tier1": 8,
+  "markets_tier2": 25,
+  "markets_tier3": 8,
+  "markets_live_today": 25,
+  "markets_net_new": 16,
+  "whatcom_markets": 22,
+  "skagit_markets": 18,
+  "island_markets": 1,
+  "bellingham_neighborhoods_official": 25,
+  "bellingham_area_pages": 2,
+  "bellingham_neighborhoods_live": 12,
+  "bellingham_neighborhoods_new": 14,
+  "word_band_standard": "Keystone v2 per-page-type bands; no floor",
+  "other_t1_neighborhoods": 0,
+  "redirects": 197,
+  "words_at_3500_avg": 630000,
+  "demand_gate": {
+    "standard": "Keystone v2 Part 6A \u2014 a page is earned by evidence of demand, not by the existence of a slot in the lattice.",
+    "status": "MEASURED AND APPLIED. This page list is GENERATED FROM demand/demand-map.csv, not from a cross-product of markets and services. The list is the evidence.",
+    "measured_2026_09_14": "45 geo slots clear the two-signal gate \u2014 S2 (GSC impressions, measured from the client's 16-month export), S4 (competitor coverage, measured by sitemap enumeration), S5 (job history, owner-attested).",
+    "declined": "255 geographies and tuples declined. They are recorded in area-served-mentions.json and appear as areaServed coverage rather than as URLs \u2014 a declined geography is still said, it is just not a page.",
+    "prune": "468 candidate pages before the gate; this file after it.",
+    "part_3_4_hard_cap": "Resolved \u2014 job history is territory-wide, so the cap is the full market count and no longer binds. The demand gate binds instead.",
+    "neighborhood_tier": "Bellingham satisfies the structural clause (21,409 impressions, head term at position 9.4), but no Bellingham sub-area carries measured query demand, so all are declined on evidence and stay as candidates for the quarterly refresh.",
+    "what_the_old_lattice_did": "150 live geo pages produced 388 impressions and 1 click in sixteen months, median position 41, with 88 never shown at all."
+  }
+}

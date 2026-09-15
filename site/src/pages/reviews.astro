@@ -1,0 +1,69 @@
+---
+/**
+ * T1 trust — reviews.
+ *
+ * NO RATING IS HARD-CODED HERE. Keystone Part 5.3 and doctrine #6: aggregateRating
+ * comes from a verified Google Business Profile at build time or it does not
+ * render at all. A review count typed into a template is the exact defect the
+ * honesty dimension exists to catch, and it does not stop being one because the
+ * number happens to be true today.
+ *
+ * Until that pull is wired, this page routes people to the profile itself, which
+ * is both honest and where the reviews actually live.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import Cta from '../components/Cta.astro';
+import { BUSINESS } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+
+const gbp = BUSINESS.sameAs.googleBusinessProfile ?? null;
+const answer = `Our reviews live on our Google Business Profile, where you can read them in full and see when each one was left. We do not reprint a selection of them here — a curated wall of quotes tells you what a company chose to show you.`;
+
+const schema = {
+  path: '/reviews/',
+  title: buildTitle('Reviews'),
+  description: 'Read King of Kings Window Cleaning reviews on our Google Business Profile — in full, with dates, rather than a curated selection.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Customer reviews for King of Kings Window Cleaning',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Reviews', path: '/reviews/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t1 prose">
+    <h1>Reviews</h1>
+    <AnswerBox text={answer} />
+
+    <section>
+      <h2>Where to read them</h2>
+      {gbp ? (
+        <p><a class="cta__btn cta__btn--primary" href={gbp} rel="noopener">Read the reviews on Google</a></p>
+      ) : (
+        <p>
+          Search “King of Kings Window Cleaning Bellingham” on Google or Maps and
+          the profile comes up first — the reviews are on it.
+        </p>
+      )}
+      <p>
+        We are not reprinting a shortlist of them on this page. A selected wall of
+        quotes tells you what a company chose to show you; the profile tells you
+        what everybody said, with dates attached.
+      </p>
+    </section>
+
+    <section>
+      <h2>If something went wrong</h2>
+      <p>
+        Call <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a> before you
+        write the review, not because we would rather you did not write it, but
+        because most of what goes wrong on an exterior clean is fixable in one
+        visit and a review is a slow way to tell us.
+      </p>
+    </section>
+
+    <Cta />
+  </article>
+</BaseLayout>

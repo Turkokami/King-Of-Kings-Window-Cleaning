@@ -1,0 +1,31 @@
+{
+  "_doc": "Verified research findings that change what the build may assert. Each carries its source, because Keystone doctrine #7 makes the source of truth external, not remembered.",
+  "notes": [
+    {
+      "id": "RN-1",
+      "date": "2026-09-13",
+      "subject": "Cherry Point industrial composition has changed — the smelter is gone",
+      "finding": "The Alcoa Intalco aluminium smelter at Cherry Point ceased operating in 2020, laying off around 700 workers. Demolition was roughly 45% complete in March 2026, with buildings and silos scheduled down through 2026 and soil work into 2027. The 1,600-acre site was bought by AltaGas, which has proposed a green hydrogen facility, currently on hold pending policy and federal funding decisions. Two oil refineries remain in operation on either side of it: BP Cherry Point Refinery and Phillips 66 Ferndale Refinery.",
+      "why_it_matters": "Legacy copy across this market — including the client's own — leans on 'Cherry Point industrial fallout' as a Ferndale differentiator. That framing is still defensible, because two refineries operate and demolition of that scale produces dust. But any copy implying an operating smelter is wrong as of 2020, and any copy treating the area as a fixed, static source is describing it as it was. The composition has changed materially inside five years and is still changing.",
+      "action_taken": "Wrote /surface-library/cherry-point-industrial-fallout/ stating what is verifiably there, what the crew observes on glass, and — explicitly — what we have not measured and will not claim. Checked the written content for any smelter assertion: none found.",
+      "sources": [
+        "https://washingtonstatestandard.com/2026/03/06/demolition-of-last-northwest-aluminum-smelter-signals-end-of-an-industrial-era/",
+        "https://salish-current.org/2026/03/05/demolition-of-last-nw-aluminum-smelter-marks-end-of-era/",
+        "https://www.bp.com/en_us/united-states/home/what-we-do/production-and-operations/refineries/cherry-point-refinery.html",
+        "https://en.wikipedia.org/wiki/Ferndale_Refinery"
+      ]
+    },
+    {
+      "id": "RN-2",
+      "date": "2026-09-12",
+      "subject": "Ferndale and Bellingham regulate exterior wash water differently",
+      "finding": "Ferndale Municipal Code 13.35.020(B)(4) lists as an allowable discharge 'street and sidewalk wash water, water used to control dust, and routine external building wash down that does not use detergents'. Bellingham Municipal Code 15.42.050(C)(2) prohibits discharging into the stormwater drainage system or to surface and ground waters 'any materials other than stormwater', with no allowable-discharge list in that section.",
+      "why_it_matters": "Verified, current, and carried by no competitor in the market. It is the substance-gate uniqueFact on the Ferndale page and the spine of the first compliance page.",
+      "action_taken": "Wrote /compliance/wash-water-and-storm-drains/ with all four sources linked and a review date on the page.",
+      "sources": [
+        "https://www.codepublishing.com/WA/Ferndale/html/Ferndale1335.html",
+        "https://bellingham.municipal.codes/BMC/15.42.050"
+      ]
+    }
+  ]
+}

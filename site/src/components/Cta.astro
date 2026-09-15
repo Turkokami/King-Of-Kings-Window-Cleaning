@@ -1,0 +1,61 @@
+---
+/**
+ * Cta.astro — the primary action, named to the page's market (Keystone 4.1 block 6).
+ *
+ * THIS COMPONENT EXISTS BECAUSE OF A SPECIFIC DEFECT. The legacy site runs
+ * "Try Bellingham's Best Window Washing Risk-Free" as an <h2> on 74 pages:
+ * the Part 12.1 repeated-exact-match-H2 signature, an unqualified guarantee, and
+ * an unsubstantiated superiority claim, all in a heading.
+ *
+ * Fixed three ways here:
+ *  1. It renders as a <p>, never a heading — boilerplate lives in components,
+ *     not in page bodies, so it cannot inflate the duplicate-H2 count.
+ *  2. The offer line is substantiated (a real review count) or it falls back to
+ *     something we can stand behind. Never "Best".
+ *  3. Any guarantee wording renders only when defined terms exist, and it links
+ *     to /our-guarantee/ (doctrine #6).
+ */
+import { BUSINESS, READY, trustLine } from '../data/business';
+import { substantiatedClaim, streakClaim } from '../data/awards';
+
+export interface Props {
+  /** The market this CTA is named to — never a generic sitewide banner. */
+  market?: string;
+  service?: string;
+}
+const { market, service } = Astro.props;
+
+const what = service ? service.toLowerCase() : 'exterior cleaning';
+const where = market ? ` in ${market}` : ' across Whatcom and Skagit County';
+const lead = `Get a free on-site quote for ${what}${where}.`;
+const guaranteeReady = READY.guarantee();
+
+// The replacement for "Try Bellingham's Best Window Washing Risk-Free".
+// Two consecutive years of Cascades Best Gold, attributed to The Bellingham
+// Herald, said once, in a paragraph — not a superiority claim in an <h2> on 74 pages.
+const claim = streakClaim() ?? substantiatedClaim();
+---
+{/*
+  ACCESSIBILITY — Dimension 14. Both actions are <a> because both navigate: one to
+  a tel: URI, one to the quote form. They are styled as buttons and that is fine —
+  what is not fine, and what the rule set names, is a <div onClick>. Link text is
+  descriptive out of context ("Call (360) 303-6806", "Request a quote"), so a
+  screen reader moving by links hears what each one does.
+*/}
+<aside class="cta" aria-label="Get a quote">
+  <p class="cta__lead">{lead}</p>
+  <p class="cta__award">{claim}</p>
+  <p class="cta__trust">{trustLine()}</p>
+
+  <div class="cta__actions">
+    <a class="cta__btn cta__btn--primary" href={`tel:${BUSINESS.phoneE164}`}>Call {BUSINESS.phone}</a>
+    <a class="cta__btn" href={BUSINESS.quoteUrl}>Request a quote</a>
+  </div>
+
+  {guaranteeReady && (
+    <p class="cta__guarantee">
+      {BUSINESS.guarantee.headline}{' '}
+      <a href={BUSINESS.guarantee.termsUrl}>See the guarantee terms</a>.
+    </p>
+  )}
+</aside>

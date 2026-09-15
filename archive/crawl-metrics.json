@@ -1,0 +1,158 @@
+{
+  "site": "kingofkingswindowcleaning.com",
+  "canonical_host": "www.kingofkingswindowcleaning.com",
+  "crawl_date": "2026-09-10",
+  "method": "Keystone Part 9.4 full-site sweep — anonymous in-page fetch (credentials:'omit', cache:'no-store') via Claude in Chrome, concurrency 6, per Keystone 16.2. Cloud-container egress policy blocks this host, so the sweep was run from the operator's browser.",
+  "coverage": {
+    "sitemaps": ["/sitemap_index.xml", "/post-sitemap.xml", "/page-sitemap1.xml", "/page-sitemap2.xml", "/category-sitemap.xml"],
+    "urls_enumerated": 287,
+    "urls_fetched": 287,
+    "non_200": 0,
+    "fetch_errors": 0
+  },
+  "platform": {
+    "cms": "WordPress",
+    "theme": "hello-elementor",
+    "generator": "Elementor 4.2.3; css_print_method-external, google_font-enabled, font_display-auto",
+    "plugins_detected": ["elementor", "elementor-pro", "premium-addons-for-elementor", "premium-addons-pro", "perfmatters", "mousewheel-smooth-scroll", "wp-rocket"],
+    "site_builder_vendor": "180sites.com (linked in footer)",
+    "seo_plugin_signature": "single JSON-LD emitter, Rank Math-style graph (WebPage / BreadcrumbList / ImageObject / BlogPosting / Person)"
+  },
+  "url_taxonomy": {
+    "depth_0": 1,
+    "depth_1_flat_root_slugs": 275,
+    "depth_2": 11,
+    "directories_in_use": {"case-studies": 5, "category": 6},
+    "avg_path_length_chars": 40,
+    "max_path_length_chars": 113,
+    "note": "No /services/, /locations/ or any service or geo directory exists. 275 of 287 URLs are flat root-level slugs."
+  },
+  "content": {
+    "total_words_domain_wide": 297054,
+    "word_count_min": 32,
+    "word_count_p25": 934,
+    "word_count_median": 995,
+    "word_count_p75": 1070,
+    "word_count_max": 3154,
+    "pages_under_3000_words": 286,
+    "pages_under_2000_words": 280,
+    "pages_under_1000_words": 146,
+    "pages_under_400_words": 6,
+    "only_page_meeting_M1_floor": "/metal-roof-cleaning-bellingham-wa/ (3,154 words)"
+  },
+  "titles_and_meta": {
+    "pages_missing_title": 0,
+    "duplicate_title_groups": 0,
+    "avg_title_length": 51,
+    "max_title_length": 92,
+    "titles_over_60_chars": 26,
+    "pages_missing_meta_description": 0,
+    "avg_meta_length": 151,
+    "meta_outside_110_165": 39,
+    "canonical_mismatches": 0,
+    "noindex_pages": 0
+  },
+  "headings": {
+    "pages_with_exactly_one_h1": 287,
+    "pages_with_zero_h1": 0,
+    "pages_with_multiple_h1": 0,
+    "pages_with_zero_h2": 4,
+    "avg_h2_per_page": 5,
+    "sitewide_repeated_h2": [
+      {"text": "Try Bellingham's Best Window Washing Risk-Free", "pages": 74},
+      {"text": "Frequently Asked Questions", "pages": 12},
+      {"text": "Window Cleaning Across Bellingham", "pages": 12},
+      {"text": "Why Choose King of Kings Window Cleaning LLC", "pages": 10},
+      {"text": "What Customers Are Saying", "pages": 9},
+      {"text": "What changes the price", "pages": 6},
+      {"text": "What it costs in your town", "pages": 6},
+      {"text": "Get a free estimate", "pages": 6}
+    ]
+  },
+  "images": {
+    "total_img_elements": 2277,
+    "missing_alt": 305,
+    "pages_with_at_least_one_missing_alt": 287,
+    "webp_sources": 75,
+    "webp_share_pct": 3.3,
+    "lazy_loaded_on_sampled_geo_page": 0,
+    "explicit_width_height_on_sampled_geo_page": "13 of 13"
+  },
+  "schema": {
+    "json_ld_blocks_per_page": {"1": 287},
+    "single_emitter": true,
+    "nodes_present": ["WebPage", "BreadcrumbList", "ListItem", "ImageObject", "BlogPosting", "Person (blog author only)", "FAQPage (6 pages)", "CollectionPage", "ContactPage", "AboutPage"],
+    "LocalBusiness_nodes": 0,
+    "Organization_nodes": 0,
+    "Service_nodes": 0,
+    "aggregateRating_present": 0,
+    "sameAs_present": 0,
+    "SpeakableSpecification_present": 0,
+    "BreadcrumbList_pages": 286,
+    "FAQPage_pages": 6,
+    "typical_service_page_graph": "WebPage + BreadcrumbList + 2 ListItem = 4 nodes (Keystone requires 7)",
+    "parse_errors": 0
+  },
+  "internal_linking": {
+    "orphan_pages": 0,
+    "pages_with_2_or_fewer_inbound_links": 17,
+    "median_inbound_links": 7,
+    "max_inbound_links": 292,
+    "avg_outbound_internal_links_per_page": 13
+  },
+  "trust_and_nap": {
+    "phone": "(360) 303-6806",
+    "email": "kingofkingswindowcleaning@gmail.com",
+    "ubi_published_on_site": "605476674",
+    "street_address_published": false,
+    "business_model": "service-area business",
+    "review_claim_on_site": "248 Google Reviews",
+    "review_claim_in_schema": false,
+    "credential_language": ["Licensed", "Insured", "L&I"],
+    "external_profiles_linked": ["maps.google.com", "facebook.com", "instagram.com", "youtube.com", "nextdoor.com", "x.com", "yelp.com"],
+    "payment": "checkout.square.site",
+    "guarantee_language": "\"Risk-Free\" used as an H2 on 74 pages",
+    "terms_or_guarantee_page": null
+  },
+  "performance_sampled": {
+    "url": "/window-cleaning-ferndale-wa/",
+    "ttfb_ms": 149,
+    "dom_interactive_ms": 362,
+    "dom_content_loaded_ms": 363,
+    "load_event_ms": 595,
+    "requests": 96,
+    "transfer_total_kb": 707,
+    "transfer_css_kb": 486,
+    "images_on_page": 13,
+    "images_lazy_loaded": 0,
+    "note": "Lab timings measured logged-out over the WP Rocket cache. Field CWV (CrUX) not sampled."
+  },
+  "geo_lattice_as_built": {
+    "services_with_geo_pages": ["window-cleaning", "pressure-washing", "roof-cleaning", "moss-removal", "gutter-cleaning", "solar-panel-cleaning"],
+    "cities": ["acme", "alger", "anacortes", "bellingham", "birch-bay", "blaine", "bow", "burlington", "clear-lake", "custer", "deming", "edison", "everson", "ferndale", "glacier", "la-conner", "lyman", "lynden", "maple-falls", "mount-vernon", "nooksack", "oak-harbor", "sedro-woolley", "sudden-valley", "sumas"],
+    "city_count": 25,
+    "city_x_service_pages": 150,
+    "matrix_completeness": "150 of 150 — complete",
+    "neighborhood_pages": 12,
+    "neighborhood_city": "Bellingham only",
+    "neighborhood_service": "window cleaning only",
+    "neighborhoods_built": ["squalicum", "happy-valley", "birchwood", "columbia", "sunnyland", "alabama-hill", "silver-beach", "cordata", "barkley", "south-hill", "edgemoor", "fairhaven"],
+    "city_hub_page": "/service-area/",
+    "locations_directory": false
+  },
+  "page_family_word_counts": {
+    "home": {"pages": 1, "min": 2089, "median": 2089, "max": 2089},
+    "service_hubs": {"pages": 8, "min": 643, "median": 1758, "max": 2015},
+    "geo_window_cleaning": {"pages": 26, "min": 894, "median": 942, "max": 1361},
+    "geo_pressure_washing": {"pages": 26, "min": 933, "median": 965, "max": 1354},
+    "geo_roof_cleaning": {"pages": 26, "min": 1048, "median": 1075, "max": 1551},
+    "geo_moss_removal": {"pages": 26, "min": 988, "median": 1013, "max": 1598},
+    "geo_gutter_cleaning": {"pages": 26, "min": 1031, "median": 1056, "max": 1548},
+    "geo_solar_panel_cleaning": {"pages": 25, "min": 963, "median": 988, "max": 1154},
+    "neighborhood": {"pages": 12, "min": 962, "median": 975, "max": 1072},
+    "blog": {"pages": 57, "min": 647, "median": 923, "max": 2179},
+    "case_studies": {"pages": 6, "min": 355, "median": 754, "max": 1040},
+    "categories": {"pages": 6, "min": 158, "median": 683, "max": 699},
+    "other_utility_and_cost": {"pages": 40, "min": 32, "median": 961, "max": 2661}
+  }
+}

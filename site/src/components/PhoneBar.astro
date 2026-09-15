@@ -1,0 +1,7 @@
+---
+/* Sticky click-to-call on mobile (Keystone doctrine #2). CSS hides it above 720px. */
+import { BUSINESS } from '../data/business';
+---
+<a class="phonebar" href={`tel:${BUSINESS.phoneE164}`} aria-label={`Call ${BUSINESS.name}`}>
+  <span>Call {BUSINESS.phone}</span>
+</a>
