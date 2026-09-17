@@ -14,6 +14,8 @@ import { AUTHORISED_CITIES, AUTHORISED_TUPLES } from '../../../data/authorised';
 import { serviceBySlug } from '../../../data/services';
 import { geoCopy } from '../../../lib/geo';
 import { buildTitle } from '../../../lib/seo';
+import Photo from '../../../components/Photo.astro';
+import { CITY_HERO } from '../../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -47,6 +49,7 @@ const answer = d?.answer ?? copy.conditions;
 const description = d?.metaDescription ?? copy.conditions;
 const faqs = d?.faqs ?? [];
 const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
+const hero = CITY_HERO[slug];
 const heroAlt = d?.heroAlt ?? `Exterior cleaning work on a home in ${market.name}, Washington`;
 
 const schema = {
@@ -63,10 +66,13 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
   <article class="t4-city">
-    <div class="hero">
-      <p class="eyebrow">{market.county} County</p>
-      <h1>Exterior Cleaning in <span class="accent">{market.name}, WA</span></h1>
-      <AnswerBox text={answer} />
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <p class="eyebrow">{market.county} County</p>
+        <h1>Exterior Cleaning in <span class="accent">{market.name}, WA</span></h1>
+        <AnswerBox text={answer} />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
     </div>
     <ExpertBlock context={`We run the ${market.name} route on a regular rotation.`} />
 

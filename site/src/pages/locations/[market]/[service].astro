@@ -19,6 +19,8 @@ import { AUTHORISED_TUPLES, AUTHORISED_CITIES } from '../../../data/authorised';
 import { serviceBySlug, geoServices } from '../../../data/services';
 import { geoCopy, wheel } from '../../../lib/geo';
 import { buildTitle } from '../../../lib/seo';
+import Photo from '../../../components/Photo.astro';
+import { CITY_SERVICE_HERO } from '../../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -79,6 +81,7 @@ const description = data?.metaDescription
 // 166-character string because the trimmer then had to add the full stop.
 const faqs = data?.faqs ?? [];
 const heroImage = data?.heroImage ?? '/brand/king-of-kings-social.jpg';
+const hero = CITY_SERVICE_HERO[`${marketSlug}/${serviceSlug}`];
 const heroAlt = data?.heroAlt ?? `${service.name} crew working in ${market.name}, Washington`;
 
 const crumbs = [
@@ -96,12 +99,15 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
   <article class="t4">
-    <div class="hero">
-      <p class="eyebrow">{market.county} County</p>
-      {/* Exactly one H1, and it matches the page's core query (Part 9.1). */}
-      <h1>{service.name} in <span class="accent">{market.name}, WA</span></h1>
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <p class="eyebrow">{market.county} County</p>
+        {/* Exactly one H1, and it matches the page's core query (Part 9.1). */}
+        <h1>{service.name} in <span class="accent">{market.name}, WA</span></h1>
 
-      <AnswerBox text={answer} />
+        <AnswerBox text={answer} />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
     </div>
     <ExpertBlock context={`I run the ${market.name} route personally.`} />
 

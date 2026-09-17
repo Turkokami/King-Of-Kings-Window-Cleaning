@@ -1,0 +1,75 @@
+---
+/**
+ * The work gallery.
+ *
+ * WHY THIS IS NOT /case-studies/. A case study is a written asset — one job, the
+ * surface, the method, the outcome, in prose, with the property type named. None
+ * exist yet and that page says so. This is the weaker but honest version of the
+ * same evidence: the photographs, grouped by the job they came from, with the
+ * before and the after side by side.
+ *
+ * GROUPED BY JOB, NOT BY SERVICE. A wall of "after" shots proves nothing — the
+ * pair is the proof. So each section is one property on one day, in the order the
+ * work happened, which is also the order that makes the surface legible.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import Cta from '../components/Cta.astro';
+import { buildTitle } from '../lib/seo';
+import { WORK_RUNS, ALL_WORK } from '../data/photos';
+
+export const prerender = true;
+
+const answer = `Photographs from real exterior cleaning jobs across Whatcom and Skagit County — windows, gutters, roofs, siding, concrete and solar panels. Each set is one property on one day, with the before and after shots kept together so the surface can be judged rather than taken on trust.`;
+
+const schema = {
+  path: '/gallery/',
+  title: buildTitle('Our Work in Photographs'),
+  description: 'Real exterior cleaning jobs in Whatcom and Skagit County, photographed on the day — windows, gutters, roofs, siding, concrete and solar.',
+  image: WORK_RUNS[0].photos[0].file,
+  imageAlt: WORK_RUNS[0].photos[0].alt,
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Our work', path: '/gallery/' }],
+  faqs: [],
+  pageType: 'CollectionPage' as const,
+};
+---
+<BaseLayout schema={schema} ogImage={WORK_RUNS[0].photos[0].file}>
+  <article class="t9">
+    <div class="hero">
+      <p class="eyebrow">{ALL_WORK.length} photographs · {WORK_RUNS.length} jobs</p>
+      <h1>Our Work, <span class="accent">Photographed on the Day</span></h1>
+      <AnswerBox text={answer} label="What you are looking at" />
+    </div>
+
+    {WORK_RUNS.map((run) => (
+      <section class="job-run">
+        <h2>{run.title}</h2>
+        <PhotoGrid photos={run.photos} />
+      </section>
+    ))}
+
+    {/*
+      Said plainly rather than implied: these are photographs, not a portfolio of
+      written case studies, and the towns named are the ones recorded when the job
+      was documented.
+    */}
+    <section class="gallery-note">
+      <h2>About these photographs</h2>
+      <p>
+        Every photograph here is our own work, taken on the job. Where a town is
+        named it was recorded at the time; where it is not, the caption says the
+        county and stops there. Nothing on this page is stock photography, and
+        nothing has been staged for the camera.
+      </p>
+      <p>
+        Some surfaces we work on are not pictured yet — cedar shake and failed
+        insulated glass units among them. They will appear here when we have
+        photographed them properly rather than borrowed a picture of somebody
+        else's.
+      </p>
+    </section>
+
+    <Cta />
+  </article>
+</BaseLayout>

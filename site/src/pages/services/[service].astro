@@ -18,6 +18,8 @@ import { buildableServices, serviceBySlug } from '../../data/services';
 import { MARKETS } from '../../data/markets';
 import { marketsForService, DECLINED_CITIES } from '../../data/authorised';
 import { buildTitle } from '../../lib/seo';
+import Photo from '../../components/Photo.astro';
+import { SERVICE_HERO } from '../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -64,6 +66,8 @@ const answer = d?.answer ?? `${service.name} across Whatcom and Skagit County.`;
 const description = d?.metaDescription ?? answer;
 const faqs = d?.faqs ?? [];
 const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
+/* A real photograph of this service where the library had one. */
+const hero = SERVICE_HERO[service.slug];
 const heroAlt = d?.heroAlt ?? `${service.name} crew at work in Whatcom County, Washington`;
 
 const schema = {
@@ -80,10 +84,13 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={heroImage} noindex={!hasBody}>
   <article class="t2">
-    <div class="hero">
-      <p class="eyebrow">Whatcom &amp; Skagit County</p>
-      <h1>{service.name} in <span class="accent">Whatcom &amp; Skagit County</span></h1>
-      <AnswerBox text={answer} />
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <p class="eyebrow">Whatcom &amp; Skagit County</p>
+        <h1>{service.name} in <span class="accent">Whatcom &amp; Skagit County</span></h1>
+        <AnswerBox text={answer} />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
     </div>
     <ExpertBlock />
 

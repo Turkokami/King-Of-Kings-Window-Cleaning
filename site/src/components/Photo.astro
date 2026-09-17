@@ -1,0 +1,40 @@
+---
+/**
+ * Photo.astro — one job photograph with its caption.
+ *
+ * WIDTH AND HEIGHT ARE ALWAYS RENDERED. Without them the browser cannot reserve
+ * the box before the bytes arrive, and a gallery of twenty photographs becomes
+ * twenty layout shifts. They live in src/data/photos.ts beside the file path so
+ * the two cannot drift apart silently.
+ *
+ * LAZY BY DEFAULT, EAGER ONLY WHERE ASKED. `priority` is for a photograph that
+ * renders in the hero band, above the first paragraph — that one is the likely
+ * LCP element, so it must not be lazy and should say so. Everything below the
+ * fold stays lazy. Marking two images per page as the priority is the same as
+ * marking none, so this is one per page at most.
+ */
+import type { Photo } from '../data/photos';
+
+interface Props {
+  photo: Photo;
+  /** Renders in the hero band, above the first paragraph? Then it is the LCP candidate. */
+  priority?: boolean;
+  /** Extra class on the <figure>. */
+  class?: string;
+  /** Captions are content and carry the place; drop them only where the photo is furniture. */
+  captioned?: boolean;
+}
+const { photo, priority = false, class: cls = '', captioned = true } = Astro.props;
+---
+<figure class:list={['photo', cls]}>
+  <img
+    src={photo.file}
+    alt={photo.alt}
+    width={photo.width}
+    height={photo.height}
+    loading={priority ? 'eager' : 'lazy'}
+    decoding={priority ? 'sync' : 'async'}
+    fetchpriority={priority ? 'high' : 'auto'}
+  />
+  {captioned && photo.caption && <figcaption>{photo.caption}</figcaption>}
+</figure>

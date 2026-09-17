@@ -12,6 +12,8 @@ import AnswerBox from '../../components/AnswerBox.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
 import { buildTitle } from '../../lib/seo';
+import Photo from '../../components/Photo.astro';
+import { COMPLIANCE_HERO } from '../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -25,6 +27,7 @@ const { slug } = Astro.props;
 const entry = (await getEntry('compliance', slug))!;
 const { Content } = await entry.render();
 const d = entry.data;
+const hero = COMPLIANCE_HERO[slug];
 
 const schema = {
   path: `/compliance/${slug}/`,
@@ -42,8 +45,13 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={d.heroImage}>
   <article class="t8 prose">
-    <h1>{d.title}</h1>
-    <AnswerBox text={d.answer} label="The rule, in one paragraph" />
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <h1>{d.title}</h1>
+        <AnswerBox text={d.answer} label="The rule, in one paragraph" />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
+    </div>
     <Content />
 
     {/* Part 4.2 — sources and a review date, visible, not buried. */}

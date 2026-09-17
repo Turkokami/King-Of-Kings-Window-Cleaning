@@ -13,6 +13,8 @@ import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
 import { serviceBySlug } from '../../data/services';
 import { buildTitle } from '../../lib/seo';
+import Photo from '../../components/Photo.astro';
+import { LIBRARY_HERO } from '../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -26,6 +28,7 @@ const { slug } = Astro.props;
 const entry = (await getEntry('library', slug))!;
 const { Content } = await entry.render();
 const d = entry.data;
+const hero = LIBRARY_HERO[slug];
 
 const siblings = (await getCollection('library'))
   .filter((p) => p.data.category === d.category && p.slug !== slug);
@@ -46,8 +49,13 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={d.heroImage}>
   <article class="t6 prose">
-    <h1>{d.title}</h1>
-    <AnswerBox text={d.answer} label="What it is" />
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <h1>{d.title}</h1>
+        <AnswerBox text={d.answer} label="What it is" />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
+    </div>
     <Content />
 
     <nav class="wheel" aria-label="Related pages">

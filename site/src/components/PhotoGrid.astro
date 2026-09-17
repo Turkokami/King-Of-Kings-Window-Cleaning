@@ -1,0 +1,23 @@
+---
+/**
+ * PhotoGrid.astro — a run of photographs from one job, in the order they happened.
+ *
+ * A real <ul>, not a stack of divs: the Part 4.3 snippet-shape contract counts a
+ * styled grid of divs as not-a-list, and a gallery is a list of things by any
+ * honest reading. The figures keep their own captions.
+ */
+import type { Photo } from '../data/photos';
+import PhotoFigure from './Photo.astro';
+
+interface Props {
+  photos: Photo[];
+  /** Fewer, larger cells — used for the home page strip. */
+  wide?: boolean;
+}
+const { photos, wide = false } = Astro.props;
+---
+<ul class:list={['photo-grid', wide && 'photo-grid--wide']}>
+  {photos.map((p) => (
+    <li><PhotoFigure photo={p} /></li>
+  ))}
+</ul>

@@ -14,6 +14,8 @@ import Cta from '../../../components/Cta.astro';
 import ExpertBlock from '../../../components/ExpertBlock.astro';
 import { serviceBySlug } from '../../../data/services';
 import { buildTitle } from '../../../lib/seo';
+import Photo from '../../../components/Photo.astro';
+import { PROBLEM_HERO } from '../../../data/photos';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -31,6 +33,7 @@ const entry = (await getEntry('problem', slug))!;
 const { Content } = await entry.render();
 const d = entry.data;
 const service = serviceBySlug(d.parentService)!;
+const hero = PROBLEM_HERO[slug];
 
 const siblings = (await getCollection('problem'))
   .filter((p) => p.data.parentService === d.parentService && p.slug !== slug);
@@ -52,8 +55,13 @@ const schema = {
 ---
 <BaseLayout schema={schema} ogImage={d.heroImage}>
   <article class="t3 prose">
-    <h1>{d.title}</h1>
-    <AnswerBox text={d.answer} />
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <h1>{d.title}</h1>
+        <AnswerBox text={d.answer} />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
+    </div>
     <Content />
     <ExpertBlock />
 

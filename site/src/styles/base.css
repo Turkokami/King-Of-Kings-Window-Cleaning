@@ -340,6 +340,56 @@ button, summary { color: var(--link); }
   .t1-home .hero .trust-strip { grid-area: 4 / 2; flex-direction: column; gap: 10px; margin: 0; }
 }
 
+/* --- Photographs ----------------------------------------------------------
+ * Job photographs, from the company's own library. The frame is deliberately
+ * plain — a gold hairline and a caption — because the photograph is the content
+ * and a heavy frame competes with it.
+ */
+.photo { margin: 0; }
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  background: var(--sunk);          /* holds the box while the bytes arrive */
+}
+.photo figcaption {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 3px solid var(--gold);
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  max-width: 46ch;
+}
+
+.photo-grid {
+  list-style: none;
+  margin: 24px 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 26px 20px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+.photo-grid > li { max-width: none; }
+.photo-grid--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+/* Uniform cells so a run of portrait and landscape shots still reads as a grid;
+   the caption sits outside the cropped box, never on top of the picture. */
+.photo-grid .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* A photograph in the hero band, beside the text at desktop width. */
+.hero--photo { display: grid; gap: 22px; }
+.hero__media img { border-radius: var(--radius); }
+.hero__media figcaption { color: var(--on-navy-muted); border-left-color: var(--gold); }
+@media (min-width: 960px) {
+  .hero--photo { grid-template-columns: 1.05fr 0.95fr; column-gap: 44px; align-items: center; }
+  .hero--photo .hero__media img { max-height: 24rem; object-fit: cover; width: 100%; }
+}
+
+/* The gallery page: one section per job. */
+.job-run { margin: 0 0 12px; }
+.job-run h2 { margin-top: 1.9em; }
+
 /* --- Trust strip. Gold ticks, the way the live site sets out its promises. - */
 .trust-strip {
   display: flex;

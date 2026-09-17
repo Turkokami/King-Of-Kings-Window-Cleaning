@@ -17,6 +17,8 @@ import { AUTHORISED_CITIES, DECLINED_CITIES } from '../data/authorised';
 import { AWARDS, streakClaim } from '../data/awards';
 import { BUSINESS, credentialLine } from '../data/business';
 import { buildTitle } from '../lib/seo';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { HOME_STRIP } from '../data/photos';
 
 /* Part 6A — the home page links to the ten evidenced markets and names the rest. */
 const linked = (county: 'Whatcom' | 'Skagit') =>
@@ -83,6 +85,13 @@ const schema = {
     </section>
 
     {Content && <div class="prose"><Content /></div>}
+
+    <section class="work-strip">
+      <p class="eyebrow">Recent work</p>
+      <h2>Jobs in this county, photographed on the day</h2>
+      <PhotoGrid photos={HOME_STRIP} wide />
+      <p><a href="/gallery/">See more of our work</a></p>
+    </section>
 
     <section class="awards-strip">
       <p class="eyebrow">Recognition</p>

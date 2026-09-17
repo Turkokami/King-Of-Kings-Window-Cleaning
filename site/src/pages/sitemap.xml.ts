@@ -51,7 +51,7 @@ export async function tierUrls(tier: string): Promise<Array<{ loc: string; lastm
       return (await getCollection('compliance')).map((p) => u(`/compliance/${p.slug}/`, p.data.updated));
     case 'trust':
       // /privacy/ and /case-studies/ are noindex while empty — excluded on purpose.
-      return [u('/about/'), u('/contact/'), u('/reviews/'), u('/team/randy-fee/')];
+      return [u('/about/'), u('/contact/'), u('/reviews/'), u('/team/randy-fee/'), u('/gallery/'), u('/our-guarantee/')];
     default:
       return [];
   }
