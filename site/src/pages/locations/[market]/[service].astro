@@ -20,7 +20,8 @@ import { serviceBySlug, geoServices } from '../../../data/services';
 import { geoCopy, wheel } from '../../../lib/geo';
 import { buildTitle } from '../../../lib/seo';
 import Photo from '../../../components/Photo.astro';
-import { CITY_SERVICE_HERO } from '../../../data/photos';
+import { CITY_SERVICE_HERO, CITY_SERVICE_PHOTOS } from '../../../data/photos';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -82,6 +83,7 @@ const description = data?.metaDescription
 const faqs = data?.faqs ?? [];
 const heroImage = data?.heroImage ?? '/brand/king-of-kings-social.jpg';
 const hero = CITY_SERVICE_HERO[`${marketSlug}/${serviceSlug}`];
+const photos = CITY_SERVICE_PHOTOS[`${marketSlug}/${serviceSlug}`] ?? [];
 const heroAlt = data?.heroAlt ?? `${service.name} crew working in ${market.name}, Washington`;
 
 const crumbs = [
@@ -116,6 +118,13 @@ const schema = {
         <p><strong>Route live, content pending.</strong> This page is noindex until its 3,000–5,000 word body lands (mandate M1).</p>
         {!gate.ok && <p class="scaffold-notice__blocker">{gate.reason}</p>}
       </div>
+    )}
+
+    {photos.length > 0 && (
+      <section class="job-run">
+        <h2>{service.name}, photographed on the job</h2>
+        <PhotoGrid photos={photos} />
+      </section>
     )}
 
     {/* M3 — the spoke-and-wheel. Up to parent, in to hub, laterally to siblings. */}

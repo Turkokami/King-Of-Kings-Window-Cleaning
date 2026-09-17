@@ -17,7 +17,8 @@ import AnswerBox from '../components/AnswerBox.astro';
 import PhotoGrid from '../components/PhotoGrid.astro';
 import Cta from '../components/Cta.astro';
 import { buildTitle } from '../lib/seo';
-import { WORK_RUNS, ALL_WORK } from '../data/photos';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import { WORK_RUNS, ALL_WORK, BEFORE_AFTER } from '../data/photos';
 
 export const prerender = true;
 
@@ -41,6 +42,8 @@ const schema = {
       <h1>Our Work, <span class="accent">Photographed on the Day</span></h1>
       <AnswerBox text={answer} label="What you are looking at" />
     </div>
+
+    <BeforeAfter pairs={BEFORE_AFTER} heading="Before and after, same position" />
 
     {WORK_RUNS.map((run) => (
       <section class="job-run">

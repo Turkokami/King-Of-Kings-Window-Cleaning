@@ -390,6 +390,53 @@ button, summary { color: var(--link); }
 .job-run { margin: 0 0 12px; }
 .job-run h2 { margin-top: 1.9em; }
 
+/* --- Before and after, side by side ---------------------------------------
+ * Two photographs of the same position, both visible at once. Stacks at narrow
+ * widths rather than shrinking to two unreadable thumbnails.
+ */
+.ba-list { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 34px; }
+.ba { max-width: none; }
+.ba__label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--gold-deep);
+}
+.ba__pair { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .ba__pair { grid-template-columns: 1fr 1fr; } }
+.ba__side { margin: 0; }
+.ba__side img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--sunk);
+}
+.ba__side figcaption {
+  margin-top: 8px;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.ba__tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--ground);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 1px;
+}
+.ba__tag--after { background: var(--gold); color: var(--gold-ink); }
+
 /* --- Trust strip. Gold ticks, the way the live site sets out its promises. - */
 .trust-strip {
   display: flex;
@@ -667,3 +714,7 @@ img { max-width: 100%; height: auto; }
     scroll-behavior: auto !important;
   }
 }
+
+/* The home page's one big photograph, directly under the hero band. */
+.home-hero-photo { margin: 0 0 8px; }
+.home-hero-photo img { aspect-ratio: 16 / 7; object-fit: cover; width: 100%; }

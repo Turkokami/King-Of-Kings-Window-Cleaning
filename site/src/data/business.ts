@@ -151,7 +151,7 @@ export const BUSINESS = {
     // them, they are worth stating; we are not going to assume them.
     yearsInTrade: null as Pending<number>,                  // PENDING — years before founding
     bio: null as Pending<string>,                           // PENDING — 120-180 words, first person
-    photo: null as Pending<string>,                         // PENDING — a real photo, not stock
+    photo: '/photos/team/randy-fee.webp' as Pending<string>, // owner-supplied 2026-09-17
   },
 
   // ---- reviews ------------------------------------------------------------

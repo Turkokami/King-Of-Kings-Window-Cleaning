@@ -19,7 +19,8 @@ import { MARKETS } from '../../data/markets';
 import { marketsForService, DECLINED_CITIES } from '../../data/authorised';
 import { buildTitle } from '../../lib/seo';
 import Photo from '../../components/Photo.astro';
-import { SERVICE_HERO } from '../../data/photos';
+import { SERVICE_HERO, SERVICE_PHOTOS } from '../../data/photos';
+import PhotoGrid from '../../components/PhotoGrid.astro';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -68,6 +69,7 @@ const faqs = d?.faqs ?? [];
 const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
 /* A real photograph of this service where the library had one. */
 const hero = SERVICE_HERO[service.slug];
+const photos = SERVICE_PHOTOS[service.slug] ?? [];
 const heroAlt = d?.heroAlt ?? `${service.name} crew at work in Whatcom County, Washington`;
 
 const schema = {
@@ -98,6 +100,13 @@ const schema = {
       <div class="scaffold-notice">
         <p><strong>Route live, content pending.</strong> Noindex until the 3,000–5,000 word body lands (M1).</p>
       </div>
+    )}
+
+    {photos.length > 0 && (
+      <section class="job-run">
+        <h2>{service.name}, photographed on the job</h2>
+        <PhotoGrid photos={photos} />
+      </section>
     )}
 
     {problems.length > 0 && (

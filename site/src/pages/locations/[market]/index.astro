@@ -15,7 +15,8 @@ import { serviceBySlug } from '../../../data/services';
 import { geoCopy } from '../../../lib/geo';
 import { buildTitle } from '../../../lib/seo';
 import Photo from '../../../components/Photo.astro';
-import { CITY_HERO } from '../../../data/photos';
+import { CITY_HERO, CITY_PHOTOS } from '../../../data/photos';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -50,6 +51,7 @@ const description = d?.metaDescription ?? copy.conditions;
 const faqs = d?.faqs ?? [];
 const heroImage = d?.heroImage ?? '/brand/king-of-kings-social.jpg';
 const hero = CITY_HERO[slug];
+const photos = CITY_PHOTOS[slug] ?? [];
 const heroAlt = d?.heroAlt ?? `Exterior cleaning work on a home in ${market.name}, Washington`;
 
 const schema = {
@@ -81,6 +83,13 @@ const schema = {
         <p><strong>Route live, content pending.</strong> Noindex until the body lands (M1).</p>
         {!gate.ok && <p class="scaffold-notice__blocker">{gate.reason}</p>}
       </div>
+    )}
+
+    {photos.length > 0 && (
+      <section class="job-run">
+        <h2>Work we have photographed in {market.name}</h2>
+        <PhotoGrid photos={photos} />
+      </section>
     )}
 
     <section class="city-services">

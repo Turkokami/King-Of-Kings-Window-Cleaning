@@ -15,7 +15,8 @@ import ExpertBlock from '../../../components/ExpertBlock.astro';
 import { serviceBySlug } from '../../../data/services';
 import { buildTitle } from '../../../lib/seo';
 import Photo from '../../../components/Photo.astro';
-import { PROBLEM_HERO } from '../../../data/photos';
+import { PROBLEM_HERO, PROBLEM_PHOTOS } from '../../../data/photos';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
 
 export const prerender = true;
 export const dynamicParams = false;
@@ -34,6 +35,7 @@ const { Content } = await entry.render();
 const d = entry.data;
 const service = serviceBySlug(d.parentService)!;
 const hero = PROBLEM_HERO[slug];
+const photos = PROBLEM_PHOTOS[slug] ?? [];
 
 const siblings = (await getCollection('problem'))
   .filter((p) => p.data.parentService === d.parentService && p.slug !== slug);
@@ -63,6 +65,13 @@ const schema = {
       {hero && <Photo photo={hero} priority class="hero__media" />}
     </div>
     <Content />
+    {photos.length > 0 && (
+      <section class="job-run">
+        <h2>What this looks like on a real roof or wall</h2>
+        <PhotoGrid photos={photos} />
+      </section>
+    )}
+
     <ExpertBlock />
 
     <nav class="wheel" aria-label="Related pages">

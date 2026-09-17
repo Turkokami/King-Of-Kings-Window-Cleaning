@@ -18,7 +18,8 @@ import { AWARDS, streakClaim } from '../data/awards';
 import { BUSINESS, credentialLine } from '../data/business';
 import { buildTitle } from '../lib/seo';
 import PhotoGrid from '../components/PhotoGrid.astro';
-import { HOME_STRIP } from '../data/photos';
+import { HOME_STRIP, HOME_HERO } from '../data/photos';
+import Photo from '../components/Photo.astro';
 
 /* Part 6A — the home page links to the ten evidenced markets and names the rest. */
 const linked = (county: 'Whatcom' | 'Skagit') =>
@@ -74,6 +75,8 @@ const schema = {
         <a class="hero__btn hero__btn--ghost" href={BUSINESS.quoteUrl}>Get a free on-site quote</a>
       </div>
     </div>
+
+    <Photo photo={HOME_HERO} priority class="home-hero-photo" />
 
     <ExpertBlock />
 
