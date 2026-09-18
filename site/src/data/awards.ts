@@ -35,6 +35,11 @@ export const AWARDS: Award[] = [
   { year: 2026, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true },
   { year: 2026, name: 'Cascades Best', level: 'Silver', category: 'Best Customer Service', awardedBy: 'The Bellingham Herald', headline: false },
   { year: 2025, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true },
+  // 2026 CommunityVotes Bellingham — supplied by the client 2026-09-18 with the
+  // "Bellingham 2026 Winners" badge. Client-attested: recorded and dated, not
+  // independently verified against the CommunityVotes listing.
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'CommunityVotes Bellingham', headline: true },
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true },
   { year: 2025, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true },
   { year: 2025, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false },
   { year: 2024, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false },
@@ -66,7 +71,7 @@ export const substantiatedClaim = (): string => {
 
 /** Consecutive-year Gold in the same category is the strongest honest line available. */
 export const streakClaim = (): string | null => {
-  const golds = AWARDS.filter((a) => a.level === 'Gold' && a.category === 'Best Cleaning Service').map((a) => a.year).sort();
+  const golds = AWARDS.filter((a) => a.name === 'Cascades Best' && a.level === 'Gold' && a.category === 'Best Cleaning Service').map((a) => a.year).sort();
   if (golds.length < 2) return null;
   const consecutive = golds.every((y, i) => i === 0 || y === golds[i - 1] + 1);
   if (!consecutive) return null;

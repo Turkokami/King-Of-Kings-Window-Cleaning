@@ -523,3 +523,6 @@ export const HOME_STRIP: Photo[] = [
   commercialSolar[3],
   metalRoof[5],
 ];
+
+/** The home page's about section — a technician mid-job, not a posed shot. */
+export const ABOUT_PHOTO: Photo = lyndenHouseWash[3];

@@ -17,8 +17,9 @@ import { AUTHORISED_CITIES, DECLINED_CITIES } from '../data/authorised';
 import { AWARDS, streakClaim } from '../data/awards';
 import { BUSINESS, credentialLine } from '../data/business';
 import { buildTitle } from '../lib/seo';
-import PhotoGrid from '../components/PhotoGrid.astro';
-import { HOME_STRIP, HOME_HERO } from '../data/photos';
+import { HOME_HERO, ABOUT_PHOTO, BEFORE_AFTER } from '../data/photos';
+import ServiceCards from '../components/ServiceCards.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import Photo from '../components/Photo.astro';
 
 /* Part 6A — the home page links to the ten evidenced markets and names the rest. */
@@ -46,15 +47,17 @@ const schema = {
 };
 ---
 <BaseLayout schema={schema} noindex={!hasBody}>
-  <article class="t1-home">
+  <article class="t1-home prose">
     {/*
-      The hero band. The brand is a gold mark on near-black navy and the live
-      site opens on exactly that; the first build opened on a bare H1 against
-      white, which is why it read as unfinished. One phrase of the headline
-      carries the gold, which is the brand's own signature move.
-      Still exactly one H1 — the span is inside it.
+      STRUCTURE. The legacy home page is a stack of full-width bands — photo hero,
+      badge row, about, a dark services band, proof, reviews — and the first
+      build was one white column, which read as a single long document. Each
+      band below does one job, and the alternating grounds are what tell a reader
+      they have moved on to the next one. Content inside every band still sits in
+      the same 1120px column, so the reading width never changes.
     */}
-    <div class="hero">
+    <div class="hero hero--photo">
+      <Photo photo={HOME_HERO} priority class="hero__media" />
       <p class="eyebrow">Whatcom &amp; Skagit County · Locally owned</p>
       <h1>Window &amp; Exterior Cleaning in <span class="accent">Bellingham, WA</span></h1>
       <p class="hero__lead">
@@ -76,45 +79,64 @@ const schema = {
       </div>
     </div>
 
-    <Photo photo={HOME_HERO} priority class="home-hero-photo" />
+    {/*
+      Every award here is real, dated and attributed to the body that gave it —
+      the substantiated replacement for the legacy site's "Bellingham's Best"
+      (audit finding P0-5). Listing them is not leading with one: `headline` still
+      governs what the CTA is allowed to claim.
+    */}
+    <section class="band band--grey band--center awards-strip">
+      <p class="eyebrow">Recognition</p>
+      <h2>Voted for by Whatcom County, not by us</h2>
+      <ul>
+        {AWARDS.map((a) => (
+          <li><strong>{a.year}</strong> {a.name} — {a.level}{['Gold', 'Silver', 'Platinum'].includes(a.level) ? ' Winner,' : ','} {a.category} <em>({a.awardedBy})</em></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="about-split">
+      <Photo photo={ABOUT_PHOTO} class="about-split__media" />
+      <div class="about-split__text">
+        <p class="eyebrow">Locally owned · Bellingham</p>
+        <h2>Cleaned by the <span class="accent-deep">owner's own crew</span></h2>
+        <p>
+          King of Kings is run by its owner, Randy Fee, and every technician who
+          carries the name onto a property was trained by him. That is the whole
+          difference between a local company and a franchise: the person who set the
+          standard is the person you can call.
+        </p>
+        <ul class="check-list">
+          <li>Owner-run — every technician trained by Randy personally</li>
+          <li>{credentialLine()}</li>
+          <li>Free quotes, given in person, on site</li>
+          <li>Purified-water glass cleaning and low-pressure soft washing</li>
+        </ul>
+        <p><a class="hero__btn hero__btn--primary" href={BUSINESS.quoteUrl}>Get a free on-site quote</a></p>
+      </div>
+    </section>
 
     <ExpertBlock />
 
-    <section class="entry-grid">
+    <section class="band band--navy band--center">
       <p class="eyebrow">What we do</p>
-      <h2>Exterior cleaning, done by the owner's own crews</h2>
-      <ul>{buildableServices().map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
-      <p><a href="/services/">All services</a></p>
+      <h2>How can we help?</h2>
+      <ServiceCards />
+      <p><a href="/services/">All services</a> · <a href="/gallery/">Our work in photographs</a></p>
     </section>
 
-    {Content && <div class="prose"><Content /></div>}
-
-    <section class="work-strip">
-      <p class="eyebrow">Recent work</p>
-      <h2>Jobs in this county, photographed on the day</h2>
-      <PhotoGrid photos={HOME_STRIP} wide />
-      <p><a href="/gallery/">See more of our work</a></p>
+    <section class="band band--grey">
+      <p class="eyebrow">Before and after</p>
+      <h2>Same position, same day</h2>
+      <BeforeAfter pairs={BEFORE_AFTER.slice(0, 3)} />
+      <p><a href="/gallery/">See all {BEFORE_AFTER.length} before-and-after pairs</a></p>
     </section>
 
-    <section class="awards-strip">
-      <p class="eyebrow">Recognition</p>
-      <h2>Voted for by Whatcom County, not by us</h2>
-      {/*
-        Every award here is real, dated and attributed to the body that gave it —
-        which is the substantiated replacement for the legacy site's
-        "Bellingham's Best" (audit finding P0-5). Listing them is not the same as
-        leading with one: `headline` still governs what the CTA is allowed to claim.
-      */}
-      <ul>
-        {AWARDS.map((a) => (
-          <li>{a.year} {a.name} — {a.level}{['Gold', 'Silver', 'Platinum'].includes(a.level) ? ' Winner,' : ','} {a.category} <em>({a.awardedBy})</em></li>
-        ))}
-      </ul>
-      <p><a href="/team/randy-fee/">More about Randy and the company</a></p>
-    </section>
+    {Content && <Content />}
 
     {/* The hub distributing outward — every market, both counties. */}
-    <section class="locations-callout">
+    <section class="band band--grey locations-callout">
+      <p class="eyebrow">Service area</p>
       <h2>Where we work</h2>
       <h3>Whatcom County</h3>
       <ul class="locations-callout__grid">

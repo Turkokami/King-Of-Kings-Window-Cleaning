@@ -152,11 +152,49 @@ p { margin: 0 0 1.1em; }
  * they become the shell rather than a new wrapper being threaded through every
  * template.
  */
-.t1-home, .t2, .t3, .t4, .t4-city, .t5, .t6, .t8, .t9, .page {
-  max-width: var(--shell);
-  margin: 0 auto;
-  padding: 0 20px 72px;
+/* REBUILT 2026-09-18 AS BANDS. The first version constrained the whole article
+ * to one 1120px column, so every page was one long white sheet — the owner's own
+ * words were "we're just scrolling through one large screen". The legacy site is
+ * a stack of full-width bands, and that is the structure now:
+ *
+ *   · every direct child of the page's <article> sits in the content column,
+ *     positioned by margin rather than max-width so a paragraph still keeps its
+ *     own 68ch measure inside it;
+ *   · a child marked .band, .hero or .cta runs the full width of the window and
+ *     pulls its OWN content into the same column with padding.
+ *
+ * No 100vw anywhere, which is what usually makes a full-bleed band overflow when
+ * a scrollbar is present: the article is already full width, so 100% is exact.
+ * #main carries the specificity so component margins (.photo-grid, .expert) do
+ * not override the gutter.
+ */
+:root { --gutter: max(20px, calc((100% - var(--shell)) / 2)); }
+#main > article { max-width: none; margin: 0; padding: 0; }
+#main > article > * { margin-inline: var(--gutter); }
+#main > article > :is(.band, .hero, .cta) { margin-inline: 0; padding-inline: var(--gutter); }
+#main > article > :last-child:not(.band, .hero, .cta) { margin-bottom: 72px; }
+
+/* Bands touch each other — a white strip between grey and navy reads as a
+ * mistake. White space only appears between a band and contained content. */
+.band { padding-block: clamp(52px, 6vi, 92px); margin-block: 0; }
+#main > article > :not(.band, .hero, .cta) + :is(.band, .cta) { margin-top: 56px; }
+#main > article > :is(.band, .cta) + :not(.band, .hero, .cta) { margin-top: 56px; }
+.band > :first-child { margin-top: 0; }
+.band > :last-child { margin-bottom: 0; }
+.band h2 { margin-top: 0; }
+.band--grey { background: var(--sunk); }
+.band--navy {
+  background:
+    radial-gradient(70rem 30rem at 85% 0%, #1D2B45 0%, transparent 65%),
+    var(--navy);
+  color: var(--on-navy-muted);
 }
+.band--navy :is(h2, h3) { color: var(--on-navy); }
+.band--navy .eyebrow { color: var(--gold); }
+.band--navy a { color: var(--gold); }
+.band--navy a:hover { color: var(--gold-hover); }
+.band--center > :is(.eyebrow, h2, p) { text-align: center; margin-inline: auto; }
+.accent-deep { color: var(--gold-deep); }
 
 /* --- Focus. The single most commonly destroyed accessibility affordance. ----
  * The rule set names `outline: none` without a replacement as a defect. There is
@@ -287,13 +325,14 @@ button, summary { color: var(--link); }
  * scrollbar is present, and this file commits to sizing nothing in vw.
  */
 .hero {
+  position: relative;
+  isolation: isolate;               /* keeps the photo and its scrim under the text */
   background:
     radial-gradient(90rem 40rem at 15% -30%, #1D2B45 0%, transparent 60%),
     var(--navy);
   color: var(--on-navy);
-  border-radius: 0 0 var(--radius) var(--radius);
-  padding: clamp(28px, 4vi, 56px) clamp(20px, 3vi, 44px) clamp(24px, 3vi, 44px);
-  margin-bottom: 40px;
+  padding-block: clamp(48px, 7vi, 104px);
+  margin-bottom: 0;
 }
 .hero h1 { color: var(--on-navy); margin-bottom: 0.35em; }
 /* The brand's signature move: one phrase of the headline in gold. */
@@ -378,13 +417,27 @@ button, summary { color: var(--link); }
 .photo-grid .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
 
 /* A photograph in the hero band, beside the text at desktop width. */
-.hero--photo { display: grid; gap: 22px; }
-.hero__media img { border-radius: var(--radius); }
-.hero__media figcaption { color: var(--on-navy-muted); border-left-color: var(--gold); }
-@media (min-width: 960px) {
-  .hero--photo { grid-template-columns: 1.05fr 0.95fr; column-gap: 44px; align-items: center; }
-  .hero--photo .hero__media img { max-height: 24rem; object-fit: cover; width: 100%; }
+/* A photograph BEHIND the hero, full-bleed, under a navy scrim — the legacy
+ * site's opening, and the single biggest reason it looks like a business. The
+ * scrim is darkest where the text sits (left) so contrast holds over any photo;
+ * the text is never placed over the raw image. */
+.hero--photo { min-height: min(78vh, 680px); display: grid; align-content: center; }
+.hero--photo .hero__media { position: absolute; inset: 0; z-index: -2; margin: 0; }
+.hero--photo .hero__media img {
+  width: 100%; height: 100%; object-fit: cover; border-radius: 0; background: var(--navy);
 }
+.hero--photo::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg, rgb(13 21 38 / 0.94) 0%, rgb(13 21 38 / 0.86) 42%, rgb(13 21 38 / 0.55) 100%);
+}
+/* The caption is still in the DOM for assistive tech; a caption printed over a
+ * background photograph just fights the headline. */
+.hero--photo .hero__media figcaption {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.hero--photo .hero__text { max-width: 46rem; }
+.hero--photo .answer { background: rgb(13 21 38 / 0.62); backdrop-filter: blur(4px); }
 
 /* The gallery page: one section per job. */
 .job-run { margin: 0 0 12px; }
@@ -600,12 +653,14 @@ button, summary { color: var(--link); }
 
 /* --- Call to action -------------------------------------------------------- */
 .cta {
-  background: var(--navy);
+  background:
+    radial-gradient(70rem 30rem at 10% 100%, #1D2B45 0%, transparent 65%),
+    var(--navy);
   color: var(--on-navy);
   border: 0;
-  border-radius: var(--radius);
-  padding: 28px;
-  margin: 40px 0;
+  border-top: 3px solid var(--gold);
+  padding-block: clamp(48px, 6vi, 84px);
+  margin: 0;
 }
 .cta__lead { font-size: 1.3rem; font-weight: 800; color: var(--on-navy); margin-bottom: 0.4em; letter-spacing: -0.015em; }
 .cta__award { color: var(--gold); font-weight: 700; margin-bottom: 0.4em; }
@@ -715,6 +770,109 @@ img { max-width: 100%; height: auto; }
   }
 }
 
-/* The home page's one big photograph, directly under the hero band. */
-.home-hero-photo { margin: 0 0 8px; }
-.home-hero-photo img { aspect-ratio: 16 / 7; object-fit: cover; width: 100%; }
+/* --- Service tiles ------------------------------------------------------ */
+.service-cards {
+  list-style: none; margin: 28px 0 22px; padding: 0;
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr));
+  text-align: left;
+}
+.service-cards li { max-width: none; }
+.service-card {
+  display: flex; flex-direction: column; height: 100%;
+  background: var(--navy-soft);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.service-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--navy); }
+.band--navy .service-card__name, .service-card__name {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: var(--tap);
+  padding: 14px 16px;
+  color: var(--on-navy); font-weight: 800;
+}
+.service-card__name::after { content: "→"; color: var(--gold); }
+.service-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+
+/* --- About split: photograph and text side by side ---------------------- */
+.about-split { display: grid; gap: 28px; align-items: center; margin-block: 64px; }
+@media (min-width: 860px) { .about-split { grid-template-columns: 1fr 1fr; gap: 52px; } }
+.about-split__media img { aspect-ratio: 4 / 3; object-fit: cover; }
+.about-split__media figcaption { display: none; }
+.about-split h2 { margin-top: 0; }
+.check-list { list-style: none; margin: 18px 0 24px; padding: 0; display: grid; gap: 10px; }
+.check-list li { display: flex; gap: 10px; font-weight: 700; color: var(--ink); max-width: none; }
+.check-list li::before {
+  content: "✓"; flex: none;
+  width: 1.4em; height: 1.4em; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  background: var(--gold); color: var(--gold-ink); font-size: 0.8rem; font-weight: 800;
+}
+
+/* Awards as a centred badge row, the way the legacy page sets them out. */
+.band--center.awards-strip ul { margin-top: 26px; text-align: left; }
+.awards-strip strong { color: var(--gold-deep); }
+
+/* The last band sits directly on the footer; the gold rule separates them. */
+.site-footer { margin-top: 0; }
+
+/* Nine services: a 4-column grid strands the ninth on its own row. Three by
+   three at desktop width, auto-fill below that. */
+@media (min-width: 900px) { .service-cards { grid-template-columns: repeat(3, 1fr); } }
+
+/* --- Link wheels as tiles -------------------------------------------------
+ * Every hub, city and service page ends in lists of links to its neighbours.
+ * As default bullets they were the plainest thing on the page; as tiles they
+ * read as navigation, which is what they are. Still real <ul>s. */
+:is(.locations-callout__grid, .hub-wheel__grid, .geo-hub__grid, .city-services ul, .wheel ul, .problems ul, .library-links ul) {
+  list-style: none;
+  margin: 12px 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+}
+:is(.locations-callout__grid, .hub-wheel__grid, .geo-hub__grid, .city-services ul, .wheel ul, .problems ul, .library-links ul) li { max-width: none; }
+:is(.locations-callout__grid, .hub-wheel__grid, .geo-hub__grid, .city-services ul, .wheel ul, .problems ul, .library-links ul) a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: var(--tap);
+  padding: 10px 14px;
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  touch-action: manipulation;
+}
+:is(.locations-callout__grid, .hub-wheel__grid, .geo-hub__grid, .city-services ul, .wheel ul, .problems ul, .library-links ul) a:hover {
+  border-color: var(--rule-strong);
+  border-left-color: var(--gold);
+  background: var(--surface);
+}
+.band--grey :is(.locations-callout__grid) a { background: var(--ground); }
+
+/* --- Long-form bodies, broken into bands ---------------------------------
+ * astro.config.mjs wraps each H2 section of a markdown body in
+ * <section class="md-section">. Every other one runs full width on the grey
+ * ground, so a 1,500-word page reads as a sequence of topics rather than one
+ * sheet. The text column never moves: the grey band pulls its content into the
+ * same gutter the white sections sit in. */
+#main > article > .md-section { padding-block: clamp(36px, 4.5vi, 64px); }
+#main > article > .md-section:nth-child(even of .md-section) {
+  margin-inline: 0;
+  padding-inline: var(--gutter);
+  background: var(--sunk);
+}
+.md-section > h2:first-child { margin-top: 0; }
+.md-section > :last-child { margin-bottom: 0; }
+
+/* Breathing room between the last pair and the link under it. */
+.ba-section + p { margin-top: 28px; }

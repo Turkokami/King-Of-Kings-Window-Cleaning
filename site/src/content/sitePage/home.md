@@ -92,7 +92,8 @@ water back onto glass we have just cleaned. The
 The Bellingham Herald's readers voted King of Kings Gold for Best Cleaning
 Service in Cascades Best in two consecutive years, 2025 and 2026, and Silver for
 Best Customer Service in 2026. CommunityVotes Bellingham gave the company
-Platinum for Best Window Cleaning in 2025, Nextdoor neighbours voted it a
+Platinum for Best Window Cleaning in 2025 and again in 2026, and Gold for Best
+Cleaning Service in 2026; Nextdoor neighbours voted it a
 Neighborhood Fave in 2024 and 2025, and the Whatcom Business Alliance made it a
 finalist for Start-Up Business of the Year in 2024.
 

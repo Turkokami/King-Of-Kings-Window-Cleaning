@@ -1,0 +1,33 @@
+---
+/**
+ * ServiceCards.astro — the service tiles, each with a photograph of that work.
+ *
+ * The legacy home page leads its services section with picture tiles, and it is
+ * the part of that page that reads as a business rather than a document. These
+ * use the same job photographs as each service's own hero, so the tile and the
+ * page it opens agree.
+ *
+ * ACCESSIBILITY. The whole tile is one link, named by its visible text. The
+ * photograph inside it is decorative in that position (alt=""), because the link
+ * text already says what the tile is — an alt repeating the service name would be
+ * read out twice. The link carries aria-label as well, because seo-audit treats an
+ * empty-alt image inside an unlabelled link as a nameless link — and the label is
+ * the cleaner name anyway. A service with no photograph still gets a tile.
+ */
+import { buildableServices } from '../data/services';
+import { SERVICE_HERO } from '../data/photos';
+const services = buildableServices();
+---
+<ul class="service-cards">
+  {services.map((s) => {
+    const p = SERVICE_HERO[s.slug];
+    return (
+      <li>
+        <a class="service-card" href={`/services/${s.slug}/`} aria-label={s.name}>
+          {p && <img src={p.file} alt="" width={p.width} height={p.height} loading="lazy" decoding="async" />}
+          <span class="service-card__name">{s.name}</span>
+        </a>
+      </li>
+    );
+  })}
+</ul>
