@@ -11,12 +11,13 @@ localFacts:
   - "BMC 15.42.050(C)(2) prohibits discharging anything other than stormwater into the drainage system or to surface and ground water — there is no allowable-discharge list to fall back on"
   - "Cedar roofing and cedar siding concentrate in the wooded south end — Edgemoor, Fairhaven, South Hill and along Chuckanut Drive"
   - "Roughly 80% of the year's rain falls between October and March, which is why north elevations here never dry between weather systems"
+  - "About 40% of the city sits under tree canopy, 7,252 acres of it, and the City's draft urban forest plan targets 45% by 2050"   # source: https://cob.org/wp-content/uploads/Draft-Urban-Forest-Plan-April-2024.pdf
 areaServed: ["alabama-hill","barkley","birchwood","city-center","columbia","cordata","cornwall-park","edgemoor","fairhaven","happy-valley","irongate","king-mountain","lettered-streets","meridian","puget","roosevelt","samish","sehome","silver-beach","south","south-hill","sunnyland","western-washington-university","whatcom-falls","york","squalicum","chuckanut"]
 priceBand: null
 firstPartyProof: "Roosevelt neighborhood, September 2026 — full exterior maintenance on a single-family home: roof cleaning, gutter cleaning, moss preventative treatment and exterior window cleaning, photographed and posted to our Google profile at the time of the job."
 uniqueFact: "Bellingham regulates exterior runoff under two separate municipal code chapters, not one. BMC 15.42 governs stormwater citywide; BMC 16.80 adds Lake Whatcom Reservoir provisions aimed at reducing phosphorus under a Washington State Department of Ecology TMDL response plan. A property in the watershed is governed by both. No competitor in this market names either chapter."
 updated: 2026-09-14
-snippetShape: "paragraph"
+snippetShape: "paragraph+list"
 quantifiedFact:
   claim: "Bellingham regulates the Lake Whatcom Reservoir under its own municipal code chapter, BMC 16.80, whose stated purposes include securing a long-term sustainable drinking water supply and reducing phosphorus inputs as part of a total maximum daily load response plan required by the Washington State Department of Ecology."
   source: "Bellingham Municipal Code 16.80.030"
@@ -41,10 +42,12 @@ faqs:
     a: "King of Kings Window Cleaning LLC holds a Washington State business licence and carries Labor & Industries coverage, and is rated A by the Better Business Bureau. Ask for the details before work starts and you will get them."
   - q: "What is the quote process?"
     a: "On site, free, and in person. We walk the property with you, tell you which surfaces have growth, which have deposit and which have simply weathered, and give you a number for the work in front of us. A quote given over the phone without anyone looking at the house is a guess."
+  - q: "My building went up in the 1960s. Does that change anything?"
+    a: "It can. The City of Bellingham notes that buildings from 1950 to 1979 may contain PCBs, and wash water from them may need licensed hazardous disposal. We do not test for PCBs, but we ask the build year on every quote and raise the question before any washing is planned, not after."
 ---
 
-Bellingham is the market this company was built in, and after enough years in one
-city you stop cleaning houses and start recognising them — the same shingle from
+Bellingham is the market this company was founded in, in March 2024, and after
+enough seasons working one city you stop cleaning houses and start recognising them — the same shingle from
 the same era on the same street, the same north wall doing the same thing every
 February.
 
@@ -76,23 +79,83 @@ method-sensitive surface in the region. The north and east — Cordata, Barkley,
 Irongate — is newer construction, more vinyl and fiber cement, larger picture
 glass and more flush-mounted solar. Same city, two different toolkits.
 
+## Which Bellingham houses take the most care?
+
+The oldest ones, and this city has more of them than most visitors expect.
+Bellingham holds eight historic districts on the National Register: Broadway
+Park, Cissna Cottages, Downtown, Eldridge, Fairhaven, Sehome Hill, South Hill and
+York. The Cissna Cottages went up between 1900 and 1904, and York was
+substantially built out by the time of the Great Depression, so on those streets
+the paint, trim and glass have been taking the weather for the better part of a
+century.
+
+That changes the pace of a job rather than the list of services. Old paint does
+not want pressure. Old sashes want hands rather than force. Trim that has been
+repainted a dozen times will lift if somebody aims a wand at it, and on a house
+like that the repair costs far more than the clean ever did.
+
+At the other end of the scale is what is going up now. Roughly three-quarters of
+the permits issued in Bellingham over the past decade were for multi-family
+housing, so a growing share of the city lives in townhomes, condos and apartment
+blocks: more storeys, shared walls, and usually a manager or an association
+setting the schedule rather than one owner.
+
+## What do 36 inches of rain do to a house here?
+
+They keep it wet for half the year. Bellingham averages about 36 inches of rain
+annually, and roughly 80% of that falls between October and March. The total is
+unremarkable by Pacific Northwest standards; the concentration is what does the
+damage. For six months a north wall, a shaded roof plane or a gutter under a fir
+hardly sees a dry day, and those are the months moss, algae and organic film do
+their growing.
+
+The wind gives the rain a direction. Prevailing wind here is southerly in eleven
+months of the twelve, so weather arrives on the south side of a house and drives
+water into the siding, the window frames and the lower courses of the roof on
+that face. The north side stays damp and the south side takes the beating. Most
+houses in town show both, on opposite walls, and a sensible plan treats each
+elevation for what it actually has rather than washing the whole building the
+same way.
+
+## Which trees are behind most of the work?
+
+Roughly 40% of Bellingham sits under tree canopy, 7,252 acres of it, and the
+City's draft urban forest plan aims for 45% by 2050. For a homeowner that is a
+pleasant street and a maintenance calendar in the same breath.
+
+The forest species are the ones you would guess from a walk up Sehome Hill:
+western redcedar, Douglas-fir, big-leaf maple, vine maple, red alder, black
+cottonwood and Sitka spruce. Along the streets it is mostly maples, cherries and
+oaks. Each drops something different, at a different point in the year:
+
+- **The conifers** shed needles and fine litter in every month, so a roof under
+  them never really gets an off-season
+- **Big-leaf maple, alder and cottonwood** unload in autumn, in quantity, usually
+  just as the rain sets in
+- **Street maples, cherries and oaks** add blossom, leaf and seed to whichever
+  houses happen to line that block
+
+The practical upshot is that two identical houses on one street can need their
+gutters and roofs looked after on quite different cycles, depending on what is
+growing over the fence.
+
 ## What we do here
 
 Every service we sell, we sell in Bellingham, and most houses take several at
 once:
 
-- **[Window cleaning](/services/window-cleaning/)** — interior and exterior,
+- **[Window cleaning](/locations/bellingham/window-cleaning/)** — interior and exterior,
   screens and tracks, purified water on the pole for upper storeys
-- **[Gutter cleaning](/services/gutter-cleaning/)** — trough cleared, silt
+- **[Gutter cleaning](/locations/bellingham/gutter-cleaning/)** — trough cleared, silt
   flushed, every downspout confirmed running
-- **[Roof cleaning](/services/roof-cleaning/)** and
-  **[moss removal](/services/moss-removal/)** — soft wash and hand-lift, never
+- **[Roof cleaning](/locations/bellingham/roof-cleaning/)** and
+  **[moss removal](/locations/bellingham/moss-removal/)** — soft wash and hand-lift, never
   pressure
-- **[House washing](/services/house-washing/)** — low pressure, right solution,
+- **[House washing](/locations/bellingham/house-washing/)** — low pressure, right solution,
   dwell and rinse
-- **[Pressure washing](/services/pressure-washing/)** — drives, paths, patios and
+- **[Pressure washing](/locations/bellingham/pressure-washing/)** — drives, paths, patios and
   steps, with a surface cleaner rather than a wand
-- **[Solar panel cleaning](/services/solar-panel-cleaning/)** — purified water, no
+- **[Solar panel cleaning](/locations/bellingham/solar-panel-cleaning/)** — purified water, no
   abrasives, and never walking on the array
 
 Booked together they are one setup and one visit, and the sequence matters: roof
@@ -114,6 +177,34 @@ that has thought about where the water goes and one that has not. The full detai
 with the code sections cited and linked, is on
 [wash water and storm drains](/compliance/wash-water-and-storm-drains/).
 
+## Does a 1950s to 1970s building need a different wash?
+
+Sometimes, and it is worth asking before any water goes on. The City of
+Bellingham notes that buildings constructed between 1950 and 1979 may contain
+PCBs, and that wash water coming off them may require licensed hazardous
+disposal rather than the vegetated-area or sanitary-sewer route that covers
+ordinary work. A lot of the city's mid-century housing and commercial stock falls
+inside that window.
+
+We are not a hazardous-materials contractor and we do not test for PCBs. What we
+do is ask the build year, flag the question on the quote when it lands in that
+range, and plan any wash around the answer instead of finding out halfway
+through. For most houses it never comes up. Where it does, it is far better
+raised at the kitchen table than at the storm drain.
+
+## Do you work on apartments and business premises?
+
+Yes. With so much of Bellingham's recent building being multi-family, we quote
+townhome rows, condo buildings and small apartment blocks as well as houses,
+usually through a property manager or an association and usually as a whole
+building rather than unit by unit. Taller elevations mean more pole work on the
+glass and more planning around parking, entrances and the people who live there.
+
+For businesses, the City itself hands out free pressure wash water reclaim kits,
+which tells you how seriously it takes wash water reaching a drain. Commercial
+work gets planned to the same rule as residential: rinse goes to planting or to
+sanitary sewer, never to the inlet by the front door.
+
 ## The Bellingham year
 
 **February into April** is the biggest window of the year and rightly so. Winter
@@ -134,6 +225,20 @@ have gutters cleared ahead of the wet season rather than after the first overflo
 also the month to actually look at your roof — moss is green, swollen and obvious
 in the wet, and near-invisible and grey in August. Judging a roof in late summer is
 judging it at the moment it lies to you most convincingly.
+
+## What does a typical Bellingham visit look like?
+
+Two recent ones, both posted to our Google profile in September 2026, give a fair
+picture. In the Edgemoor neighborhood, one home had its roof, gutters, solar
+panels, skylights and exterior windows cleaned in a single visit, and the
+greenhouse in the garden got cleaned while we were there. In Roosevelt, a
+single-family home had roof cleaning, gutter cleaning, a moss preventative
+treatment and exterior window cleaning done together.
+
+Neither job was a one-surface call-out, and that is common here. Most houses
+under Bellingham's trees have several things going on at once, and doing them in
+one sequenced visit means each step leaves the next one clean instead of undoing
+it.
 
 ## Beyond the city limits
 

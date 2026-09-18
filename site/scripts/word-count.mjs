@@ -15,7 +15,9 @@
  *   2. The four-item SUBSTANCE GATE, which is the real gate and IS a build
  *      failure. A page ships only when it carries:
  *         · three verifiable local specifics
- *         · one first-party proof from that geography
+ *         · one first-party proof from that geography — RETIRED as a
+ *           requirement 2026-09-18 (operator decision, GUARDRAILS.md); still
+ *           checked for placeholders where present
  *         · one fact the top five competitors don't carry
  *         · zero sentences shared with a sibling page
  *
@@ -32,8 +34,10 @@ const BANDS = {
   sitePage:     { min: 600,  max: 1200, label: 'T1 home / hub' },
   service:      { min: 1200, max: 2500, label: 'T2 core service spoke' },
   problem:      { min: 700,  max: 1400, label: 'T3 problem micro page' },
-  city:         { min: 800,  max: 1600, label: 'T4 city page' },
-  cityService:  { min: 800,  max: 1600, label: 'T4 city x service page' },
+  // T4 widened 2026-09-18 at the operator's request ("at least 1.5–2k words" on
+  // every location page). Still advisory: the substance gate is the real gate.
+  city:         { min: 1500, max: 2100, label: 'T4 city page' },
+  cityService:  { min: 1500, max: 2100, label: 'T4 city x service page' },
   neighborhood: { min: 400,  max: 900,  label: 'T5 neighborhood page' },
   library:      { min: 1200, max: 2500, label: 'T6 library profile' },
   compliance:   { min: 900,  max: 1800, label: 'T8 compliance page' },
@@ -64,15 +68,6 @@ if (!files.length) {
   console.log('word-band: no content files yet — nothing to check');
   process.exit(0);
 }
-
-/*
- * Item 2 waivers — one entry per page, each with who decided and when. A waived
- * placeholder still prints on every build. Recorded in GUARDRAILS.md; delete the
- * entry the day the real proof lands.
- */
-const ITEM2_WAIVERS = {
-  'cityService/ferndale/window-cleaning.md': 'operator direction 2026-09-15, Ferndale job proof still owed',
-};
 
 const warnings = [];
 const failures = [];
@@ -115,12 +110,12 @@ for (const f of files) {
     // placeholder becomes the loophole that defeats the gate.
     const placeholder = /(PENDING|TBD|TODO|FIXME|XXX)/i;
     const field = (k) => ((fm.match(new RegExp(`^${k}:\\s*["']?(.*?)["']?\\s*$`, 'm')) || [])[1] || '');
-    if (!/firstPartyProof:/.test(fm)) {
-      failures.push(`SUBSTANCE GATE  ${rel}: no firstPartyProof — item 2 requires proof from this geography`);
-    } else if (placeholder.test(field('firstPartyProof'))) {
-      const msg = `SUBSTANCE GATE  ${rel}: firstPartyProof is a placeholder — item 2 needs a real job, photo or review`;
-      if (ITEM2_WAIVERS[rel]) console.warn(`WAIVED  ${msg} — ${ITEM2_WAIVERS[rel]}`);
-      else failures.push(msg);
+    // Item 2 is RETIRED as a requirement (operator decision 2026-09-18, recorded
+    // in GUARDRAILS.md). A page without the field passes. A page WITH the field
+    // must not carry a placeholder — a PENDING string in the data is how a fake
+    // eventually ships, so that still fails.
+    if (/firstPartyProof:/.test(fm) && placeholder.test(field('firstPartyProof'))) {
+      failures.push(`SUBSTANCE GATE  ${rel}: firstPartyProof is a placeholder — delete the field or make it real`);
     }
     // Item 3 — one fact the top five competitors don't carry.
     if (!/uniqueFact:/.test(fm)) {

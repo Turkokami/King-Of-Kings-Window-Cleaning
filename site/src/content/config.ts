@@ -106,9 +106,14 @@ const substanceGate = {
   /** Item 1 — three verifiable local specifics. Sourced, not remembered. */
   localFacts: z.array(z.string()).min(3,
     'Substance gate item 1: three verifiable local specifics'),
-  /** Item 2 — first-party proof from THIS geography: a real job, photo or review. */
-  firstPartyProof: z.string().min(20,
-    'Substance gate item 2: first-party proof from this geography'),
+  /**
+   * Item 2 — first-party proof from THIS geography: a real job, photo or review.
+   * RETIRED AS A REQUIREMENT 2026-09-18 by the site operator ("get rid of the
+   * blocker, it no longer applies"). Optional now. Where it is present it must be
+   * real — word-count.mjs still fails a placeholder — and nothing may be written
+   * into it that did not happen. See GUARDRAILS.md.
+   */
+  firstPartyProof: z.string().min(20).nullable().optional(),
   /** Item 3 — one fact the top five competitors do not carry. */
   uniqueFact: z.string().min(20,
     'Substance gate item 3: a fact the top five do not carry'),

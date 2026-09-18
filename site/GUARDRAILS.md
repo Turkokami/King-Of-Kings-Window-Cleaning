@@ -85,22 +85,21 @@ changing:**
 
 ---
 
-## Substance gate waivers
-
-### Ferndale window cleaning — item 2 (first-party proof) WAIVED
+## Substance gate item 2 (first-party proof) — RETIRED
 
 | | |
 |---|---|
-| Page | `src/content/cityService/ferndale/window-cleaning.md` |
-| Decided | 15 Sep 2026, by the site operator, to get the Keystone 7A build live on Vercel |
-| Gate | `scripts/word-count.mjs` → `ITEM2_WAIVERS` |
-| Still owed | A real Ferndale job photo, dated job note or Ferndale customer review |
+| Decided | 18 Sep 2026, by the site operator: "get rid of the blocker, it no longer applies" |
+| What changed | `firstPartyProof` is optional in `src/content/config.ts`; `scripts/word-count.mjs` no longer fails a geo page that lacks it |
+| What did not | A page that HAS the field must carry something real — a placeholder still fails the build. Items 1 (three sourced local facts) and 3 (a unique fact) still gate every geo page |
+| Replaces | The single-page Ferndale waiver of 15 Sep 2026, removed with its PENDING string |
 
-The placeholder is still a placeholder. It is not rendered on the page, and the
-gate prints a `WAIVED` line on every build so the debt stays visible. **When the
-proof lands, replace `firstPartyProof` and delete the waiver entry.** Do not add a
-second page to the waiver list to get a build through — that is the loophole the
-gate exists to close.
+The requirement was retired, not the principle: **no page may state a job,
+photo or review that did not happen.** Real proof is still the strongest thing a
+location page can carry. Where it exists — Bellingham (Roosevelt, Edgemoor and
+the gutter job), Lynden (house wash) and Mount Vernon (concrete) — it is used.
+Ask Randy to keep naming the town in his Google posts; every one is a proof line
+for a page that currently has none.
 
 ---
 

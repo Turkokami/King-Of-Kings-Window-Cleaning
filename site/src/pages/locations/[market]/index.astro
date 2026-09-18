@@ -40,7 +40,11 @@ const copy = geoCopy(slug);
 // linking to a tuple the evidence declined is a dead link by construction.
 const services = AUTHORISED_TUPLES[market.slug] ?? [];
 
-const entry = await getEntry('cityService', `${slug}/_city`)?.catch(() => undefined);
+// The T4 city collection is `city` (src/content/city/<slug>.md). This read
+// `cityService/<slug>/_city`, a path nothing was ever written to, so the
+// Bellingham city page sat in the repo unrendered and every town page showed the
+// scaffold. Fixed 2026-09-18.
+const entry = await getEntry('city', slug)?.catch(() => undefined);
 const hasBody = Boolean(entry);
 const { Content } = hasBody ? await entry!.render() : { Content: null };
 const d = entry?.data;

@@ -1,7 +1,7 @@
 ---
 title: "Window Cleaning in Ferndale WA"
-answer: "Window cleaning in Ferndale runs on a different schedule than it does in Bellingham. Cherry Point sits upwind, the Nooksack Valley throws farm dust through late summer, and a lot of Ferndale water is hard enough to leave mineral spots. We clean inside and out, screens and tracks included, with a free on-site quote."
-metaDescription: "Streak-free window cleaning for Ferndale homes. We handle Cherry Point fallout, farm dust and hard-water spotting. Licensed and L&I insured. Free on-site quote."
+answer: "Window cleaning in Ferndale runs on a different schedule than it does in Bellingham. Cherry Point sits upwind, the Nooksack Valley throws farm dust through late summer, and older glass often carries mineral spotting from years of sprinkler overspray. We clean inside and out, screens and tracks included, with a free on-site quote."
+metaDescription: "Streak-free window cleaning for Ferndale homes. We handle Cherry Point fallout, farm dust and old mineral spotting. Licensed and L&I insured. Free on-site quote."
 heroImage: "/photos/ferndale/window-cleaning-hero.webp"
 heroAlt: "Technician cleaning ground-floor windows on a two-storey home, Ferndale WA"
 market: "ferndale"
@@ -9,19 +9,15 @@ service: "window-cleaning"
 localFacts:
   - "Cherry Point industrial corridor sits west of town and upwind of most of Ferndale"
   - "Nooksack Valley agricultural dust peaks with late-summer fieldwork"
-  - "Hard water on private wells leaves mineral spotting that ordinary washing will not lift"
+  - "City water comes from three groundwater wells and has been fully reverse-osmosis treated since July 2025, after the City first added RO in 2014 to cut its hardness"   # source: https://www.cityofferndale.org/Archive/ViewFile/Item/107
   - "The Nooksack River floodplain keeps humidity high on the south and west sides of town"
   - "Housing stock splits between older farmhouses, 1970s-2000s subdivisions, and heavy new construction"
 priceBand: null
 caseStudy: null
-# Substance gate item 2 — first-party proof from THIS geography. PENDING: needs a
-# real Ferndale job — photo, dated job note or a review from a Ferndale customer.
-# The harness rejects the placeholder, so this page cannot ship until it is real.
-firstPartyProof: "PENDING — Randy to supply a Ferndale job photo or customer review"
 # Substance gate item 3 — one fact the top five competitors do not carry.
 uniqueFact: "Ferndale Municipal Code 13.35.020(B)(4) expressly permits routine external building wash down that does not use detergents — Bellingham's code, ten miles south, prohibits wash water reaching a storm drain. No competitor in this market names either."
-updated: 2026-09-10
-snippetShape: "paragraph"
+updated: 2026-09-18
+snippetShape: "paragraph+list"
 # ---------------------------------------------------------------------------
 # VERIFY BEFORE PUBLISH — Keystone doctrine #7, the site is the source of truth.
 # This page is the depth-and-voice exemplar. Every claim below is plausible and
@@ -44,7 +40,7 @@ faqs:
   - q: "What about the screens and the tracks?"
     a: "Screens come out, get washed and dried, and go back in the opening they came from. Tracks and sills get vacuumed and wiped. In Ferndale the tracks matter more than people expect — field dust and grit collect there and grind the weatherstripping every time the window slides."
   - q: "Do you need power or water at the house?"
-    a: "No. We carry our own water and filtration, so we can work on a property with the water shut off or on a vacant house between tenants. That also means we are not putting your hard well water back onto the glass we just cleaned."
+    a: "No. We carry our own water and filtration, so we can work on a property with the water shut off or on a vacant house between tenants. That also means nothing from your own tap dries back onto the glass we just cleaned."
   - q: "How long does a typical Ferndale house take?"
     a: "A single-storey home with twenty-odd openings is usually a morning. A two-storey with a lot of fixed glass or a stairwell window runs most of a day. New builds with big picture windows take longer than the window count suggests, because the panes are larger and the reach is worse."
   - q: "Can you get to windows over the deck or the conservatory?"
@@ -84,10 +80,11 @@ single most reliable seasonal pattern in Ferndale window cleaning: glass that
 looked fine in July looks tired by the middle of September, every year, without
 fail.
 
-**The water here is hard in a lot of places.** Mineral content varies across town,
-and it matters more than most people realise, because it changes what happens
-when the glass gets wet. Sprinkler overspray that hits a window and dries in the
-sun leaves the mineral behind. So does rain running off a mineral-stained sill.
+**Mineral spotting is older than the water now coming out of the tap.** The
+City softens its well water and has run full reverse osmosis since July 2025 —
+it first added RO in 2014 specifically to bring the hardness down. But glass
+remembers: years of sprinkler overspray from before that, or from a property
+still on its own supply, dried on the pane and left the mineral behind. So does rain running off a mineral-stained sill.
 Over a few seasons this builds a spotting pattern that ordinary washing does not
 touch, because the problem is no longer dirt sitting on the glass — it is
 deposit bonded to it.
@@ -136,10 +133,10 @@ left to sheet dry with no squeegee contact at all. It is the only sensible way t
 handle a second-storey window over a deck, a conservatory roof, or a planting bed
 you would rather nobody set a ladder in.
 
-We carry our own water and filtration. That matters more in Ferndale than it
-would elsewhere, because putting hard local water on glass and letting it dry is
-precisely how the spotting problem starts. A crew that fills from your outside
-tap on a hard-water property is undoing part of the job while they do it.
+We carry our own water and filtration, so what dries on your glass is water
+with nothing left in it — whatever your own supply is. On a property with its own
+source rather than city water, that difference is the whole point: letting
+mineral-bearing water dry on glass is exactly how the spotting problem starts.
 
 Hard-water spotting, where it is present and treatable, is a separate stage
 before the general clean, using a treatment made for mineral deposit rather than

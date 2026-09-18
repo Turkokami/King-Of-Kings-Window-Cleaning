@@ -39,7 +39,27 @@ const services = slugs('service');
 const map = fs.readFileSync('../architecture/demand/demand-map.csv', 'utf8').replace(/\r/g, '').trim().split('\n');
 const iUrl = map[0].split(',').indexOf('url');
 const iDec = map[0].split(',').indexOf('decision');
-const authorised = new Set(map.slice(1).map((l) => l.split(',')).filter((r) => r[iDec] === 'PAGE').map((r) => r[iUrl]));
+/*
+ * Quote-aware split. The map has quoted fields that contain commas ("27
+ * impressions over 16 months, threshold 53.5"), and a bare split(',') shifted
+ * every later column — so `decision` was never 'PAGE' and NO /locations/ link
+ * ever validated. It went unnoticed because nothing linked to a location page
+ * until the location bodies were written (2026-09-18). gen-authorised.mjs, which
+ * builds the routes, already parsed quotes correctly.
+ */
+const splitCsv = (line) => {
+  const out = []; let cur = ''; let q = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (q) { if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; } else if (ch === '"') q = false; else cur += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ',') { out.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  out.push(cur);
+  return out;
+};
+const authorised = new Set(map.slice(1).map(splitCsv).filter((r) => r[iDec] === 'PAGE').map((r) => r[iUrl]));
 
 // Static routes that exist as files rather than as content entries.
 const STATIC = new Set([
