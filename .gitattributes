@@ -1,0 +1,9 @@
+# The gate scripts (word-count, dedup) parse frontmatter on 
+. On Windows,
+# core.autocrlf would check these out as CRLF and the substance gate would stop
+# seeing localFacts. Keep text as LF in the working copy on every platform.
+* text=auto eol=lf
+*.webp binary
+*.png binary
+*.jpg binary
+*.woff2 binary
