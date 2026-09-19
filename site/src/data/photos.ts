@@ -368,6 +368,7 @@ export const BEFORE_AFTER: BeforeAfter[] = [
   { label: 'Waterfront window, Bow', before: byFile(bowWindows, 'waterfront-window-streaked-before'), after: byFile(bowWindows, 'waterfront-window-clear-after') },
   { label: 'Window bank, Bow', before: byFile(bowWindows, 'waterfront-windows-salt-haze-before'), after: byFile(bowWindows, 'waterfront-windows-clear-after') },
   { label: 'Glass door and frames, Bow', before: byFile(bowWindows, 'window-frames-webs-before-cleaning-bow'), after: byFile(bowWindows, 'glass-door-and-frames-clear-after') },
+  { label: 'Roof edge and gutter, Sedro-Woolley', before: byFile(gutterWork, 'roof-and-gutter-covered-in-debris-before'), after: byFile(gutterWork, 'roof-edge-and-gutter-cleared-after') },
   { label: 'Roof moss, Sedro-Woolley', before: byFile(sedroWoolleyMoss, 'roof-buried-in-moss-before-sedro-woolley'), after: byFile(sedroWoolleyMoss, 'roof-ridge-after-moss-removal') },
   { label: 'Buried skylights, Sedro-Woolley', before: byFile(sedroWoolleyMoss, 'skylights-buried-in-debris-before'), after: byFile(sedroWoolleyMoss, 'skylights-clear-after-moss-removal') },
   { label: 'Metal roof, Whatcom County', before: byFile(metalRoof, 'metal-roof-dulled-before-cleaning'), after: byFile(metalRoof, 'metal-roof-green-finish-restored') },

@@ -114,7 +114,14 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { color-scheme: light dark; }
+html {
+  color-scheme: light dark;
+  /* Backstop, not a fix: nothing should exceed the viewport, and the causes get
+   * fixed when found (the table floor above was one). `clip` stops a stray wide
+   * element dragging the whole page sideways on a phone without creating a
+   * scroll container, so position: fixed and the sticky call bar still work. */
+  overflow-x: clip;
+}
 
 body {
   margin: 0;
@@ -613,27 +620,11 @@ button, summary { color: var(--link); }
 }
 .entry-grid ul a:hover { background: var(--sunk); border-color: var(--rule-strong); }
 
-/* --- Awards. Real, dated, attributed — set as badges rather than a bullet
- * list, because the recognition is the trust signal the live site leads with. */
-.awards-strip ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
-}
-.awards-strip li {
-  max-width: none;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-top: 3px solid var(--gold);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  font-weight: 600;
-  font-size: 0.97rem;
-}
-.awards-strip em { display: block; color: var(--ink-muted); font-style: normal; font-weight: 400; font-size: 0.9rem; }
+/* --- Awards ---------------------------------------------------------------
+ * Superseded 2026-09-19. These were text cards in an auto-fit grid, which took
+ * most of a phone screen for nine awards and out-specified the badge grid that
+ * replaced them (`.awards-strip ul` beat `.award-grid`). The badge grid lives in
+ * the Award badges section at the end of this file. */
 
 /* --- The named expert ------------------------------------------------------ */
 .expert {
@@ -728,10 +719,11 @@ button, summary { color: var(--link); }
  * They must stay IN THE DOM at every width — a display:none table is not
  * extractable, which the contract names explicitly. So they scroll, never hide.
  */
-.prose table { border-collapse: collapse; width: 100%; min-width: 34rem; }
-.prose th, .prose td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
-.prose thead th { background: var(--sunk); font-size: 0.85rem; }
-.table-scroll { overflow-x: auto; }
+/* The 34rem floor that used to live here applied at EVERY width, so on a phone a
+ * table was 544px inside a 412px screen and the whole page could be dragged
+ * sideways — the surface-library pages were the visible case. Table styling now
+ * lives in the Tables section at the end of this file, where the minimum width is
+ * only applied from 700px up and rows stack into cards below that. */
 
 /* Long-form body copy set at a readable measure. */
 .prose h2 { padding-top: 0.2em; }
@@ -814,8 +806,6 @@ img { max-width: 100%; height: auto; }
 }
 
 /* Awards as a centred badge row, the way the legacy page sets them out. */
-.band--center.awards-strip ul { margin-top: 26px; text-align: left; }
-.awards-strip strong { color: var(--gold-deep); }
 
 /* The last band sits directly on the footer; the gold rule separates them. */
 .site-footer { margin-top: 0; }
@@ -876,3 +866,207 @@ img { max-width: 100%; height: auto; }
 
 /* Breathing room between the last pair and the link under it. */
 .ba-section + p { margin-top: 28px; }
+
+/* --- Tables ---------------------------------------------------------------
+ * The old rules only matched `.prose table`, and the location and service
+ * templates do not carry that class — so every table in a town or service body
+ * rendered completely unstyled, three columns crushed into a phone screen. These
+ * rules apply to any table inside a page body.
+ *
+ * Below 700px each row becomes a card and every cell is introduced by its column
+ * heading, which astro.config.mjs stamps into data-label. The header row is
+ * hidden from sight with the clip technique rather than display:none — Part 4.3
+ * requires a declared table to stay extractable at every width, and a screen
+ * reader still reads the real header.
+ */
+.table-scroll { overflow-x: auto; margin: 26px 0; }
+#main table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
+#main :is(th, td) {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  max-width: none;
+}
+#main thead th {
+  background: var(--navy);
+  color: var(--on-navy);
+  font-size: 0.76rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-bottom: 0;
+}
+#main thead th:first-child { border-top-left-radius: var(--radius); }
+#main thead th:last-child { border-top-right-radius: var(--radius); }
+#main tbody tr:nth-child(even) { background: var(--surface); }
+#main tbody td:first-child { font-weight: 700; color: var(--ink); }
+#main tbody tr:last-child td { border-bottom: 0; }
+@media (min-width: 700px) {
+  #main table { min-width: 34rem; }
+  .band--grey #main tbody tr:nth-child(even) { background: rgb(255 255 255 / 0.6); }
+}
+@media (max-width: 699px) {
+  .table-scroll { overflow-x: visible; }
+  #main :is(table, tbody, tr, td) { display: block; width: 100%; }
+  /* Not display:none — the table must stay in the DOM and readable by AT. */
+  #main thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  #main tbody tr {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    margin: 0 0 14px;
+    padding: 4px 0;
+  }
+  #main tbody td { border-bottom: 0; padding: 9px 15px; }
+  #main tbody td + td { border-top: 1px solid var(--rule); }
+  #main tbody td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+  }
+  #main tbody td:first-child { font-size: 1.05rem; }
+}
+
+
+/* --- Photographs placed inside a body ------------------------------------
+ * astro.config.mjs (rehypePhotos) drops a before/after pair and a few single
+ * frames between the H2 sections of a long page. On a phone everything is full
+ * width and in reading order; from 900px a single frame sits beside the text,
+ * alternating sides down the page. */
+.photo-pair {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+  margin: 26px 0 30px;
+  clear: both;
+}
+@media (min-width: 620px) { .photo-pair { grid-template-columns: 1fr 1fr; } }
+.photo-pair .photo img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+.inset { margin: 8px 0 22px; }
+.inset img { aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 900px) {
+  .inset { width: 44%; }
+  .inset--right { float: right; margin: 6px 0 20px 30px; }
+  .inset--left  { float: left;  margin: 6px 30px 20px 0; }
+}
+/* A floated frame must not escape its own section. */
+.md-section::after { content: ""; display: block; clear: both; }
+
+
+/* --- Before / after, one split frame --------------------------------------
+ * Mirrors how the legacy site shows these: a single picture split down the
+ * middle with a marker on the seam. Ours does not drag — no client JS — so both
+ * halves stay visible at every width, which is the point of showing a pair. */
+.ba-split { margin: 26px 0 30px; clear: both; }
+.ba-split__frame {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sunk);
+}
+.ba-split__half { position: relative; display: block; min-width: 0; }
+.ba-split__half img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+/* The seam. */
+.ba-split__half + .ba-split__half { box-shadow: -2px 0 0 0 #fff; }
+.ba-split__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--gold-ink);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 12px rgb(13 21 38 / 0.45);
+  pointer-events: none;
+}
+.ba-split__handle::before { content: "◀▶"; font-size: 0.72rem; letter-spacing: -1px; font-weight: 800; }
+.ba-split__tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgb(13 21 38 / 0.82);
+  color: #fff;
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ba-split__tag--after { left: auto; right: 10px; background: var(--gold); color: var(--gold-ink); }
+.ba-split figcaption {
+  margin-top: 10px;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.ba-split figcaption strong { color: var(--ink); }
+/* The gallery lists these; no bullets, and they are already spaced. */
+.ba-list > li .ba-split { margin-top: 0; }
+
+
+/* --- Award badges ---------------------------------------------------------
+ * The client's own awards page shows these as artwork with a short line under
+ * each, and that is a far better use of the space than nine text cards stacked
+ * down a phone screen. Two per row on a phone, four on a desktop. */
+.award-grid {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 24px 18px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 620px) { .award-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px) { .award-grid { grid-template-columns: repeat(5, 1fr); } }
+.award { max-width: none; text-align: center; }
+.award img {
+  display: block;
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+  margin: 0 auto 10px;
+}
+.award__year {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 10px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--gold-deep);
+}
+.award__label {
+  margin: 0;
+  font-weight: 800;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.award__by {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}

@@ -65,12 +65,6 @@ const schema = {
       {hero && <Photo photo={hero} priority class="hero__media" />}
     </div>
     <Content />
-    {photos.length > 0 && (
-      <section class="job-run band band--grey">
-        <h2>What this looks like on a real roof or wall</h2>
-        <PhotoGrid photos={photos} />
-      </section>
-    )}
 
     <ExpertBlock />
 

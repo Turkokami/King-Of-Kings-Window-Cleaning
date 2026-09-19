@@ -29,21 +29,33 @@ export interface Award {
   awardedBy: string;
   /** Safe to lead with? Gold/Platinum wins in the core category only. */
   headline: boolean;
+  /**
+   * The awarding body's own badge, mirrored into /public/awards from the
+   * client's awards page. Optional: an award with no badge renders as a plain
+   * card rather than borrowing another award's artwork.
+   */
+  badge?: string;
+  /** The short line under the badge, in the wording the client's own page uses. */
+  shortLabel: string;
 }
 
 export const AWARDS: Award[] = [
-  { year: 2026, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true },
-  { year: 2026, name: 'Cascades Best', level: 'Silver', category: 'Best Customer Service', awardedBy: 'The Bellingham Herald', headline: false },
-  { year: 2025, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true },
+  { year: 2026, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true, badge: '/awards/cascades-2026-cleaning-service.webp', shortLabel: 'Voted Best Cleaning Service' },
+  { year: 2026, name: 'Cascades Best', level: 'Silver', category: 'Best Customer Service', awardedBy: 'The Bellingham Herald', headline: false, badge: '/awards/cascades-2026-customer-service.webp', shortLabel: 'Voted Best Customer Service' },
+  { year: 2025, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true, badge: '/awards/cascades-2025-cleaning-service.webp', shortLabel: 'Voted Best Cleaning Service' },
   // 2026 CommunityVotes Bellingham — supplied by the client 2026-09-18 with the
   // "Bellingham 2026 Winners" badge. Client-attested: recorded and dated, not
   // independently verified against the CommunityVotes listing.
-  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'CommunityVotes Bellingham', headline: true },
-  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true },
-  { year: 2025, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true },
-  { year: 2025, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false },
-  { year: 2024, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false },
-  { year: 2024, name: 'Whatcom Business Alliance Awards', level: 'Finalist', category: 'Start-Up Business of the Year', awardedBy: 'Whatcom Business Alliance', headline: false },
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'CommunityVotes Bellingham', headline: true, shortLabel: 'Voted Gold, Best Cleaning Service' },
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true, shortLabel: 'Voted Platinum, Window Cleaning' },
+  { year: 2025, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true, badge: '/awards/communityvotes-2025-platinum-window-cleaning.webp', shortLabel: 'Voted Best in Window Cleaning' },
+  { year: 2025, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false, badge: '/awards/nextdoor-neighborhood-fave-2025.webp', shortLabel: 'Neighborhood Fave 2025' },
+  { year: 2024, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false, badge: '/awards/nextdoor-neighborhood-fave-2024.webp', shortLabel: 'Neighborhood Fave 2024' },
+  { year: 2024, name: 'Whatcom Business Alliance Awards', level: 'Finalist', category: 'Start-Up Business of the Year', awardedBy: 'Whatcom Business Alliance', headline: false, badge: '/awards/whatcom-business-awards-2024-finalist.webp', shortLabel: 'Start-Up Business finalist' },
+  // Published on the client's own /awards/ page with its badge; added here
+  // 2026-09-19 so the grid matches that page. Client-attested, not verified
+  // against BusinessRate directly.
+  { year: 2024, name: 'Best of BusinessRate', level: 'Winner', category: 'Window Cleaning Service', awardedBy: 'BusinessRate', headline: false, badge: '/awards/businessrate-2024-best-reviews.webp', shortLabel: 'Voted Best Reviews' },
 ];
 
 /** schema.org `award` — one plain string per recognition.

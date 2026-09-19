@@ -1,22 +1,19 @@
 ---
 /**
- * BeforeAfter.astro — one property, two photographs, same position.
+ * BeforeAfter.astro — one property, two photographs, same position, one frame.
  *
- * NOT A SLIDER. The legacy site uses a drag-handle comparison widget, which is a
- * client-side JavaScript component and this build ships none. It is also the
- * weaker presentation: a slider shows one state at a time and hides the other
- * behind an interaction most people never perform, and it cannot be extracted by
- * anything reading the page. Two labelled figures side by side show both at once,
- * work at 320px, print, and survive with images disabled.
- *
- * The "Before" and "After" tags are real text in the markup, not a background
- * image or a pseudo-element, so they are read out in order with their captions.
+ * NOT A DRAG SLIDER. The legacy site uses a handle you drag across the image;
+ * that is a client-side JavaScript component and this build ships none. It is
+ * also the weaker presentation: a slider shows one state at a time and hides the
+ * other behind an interaction most people never perform, and nothing reading the
+ * page can extract it. This shows both halves at once, split down the middle in
+ * the same style, and works at 320px, in print, and with images disabled.
  */
 import type { BeforeAfter } from '../data/photos';
 
 interface Props {
   pairs: BeforeAfter[];
-  /** Rendered above the list; omit where the page already has a heading for it. */
+  /** Rendered above the list; omit where the page already has a heading. */
   heading?: string;
 }
 const { pairs, heading } = Astro.props;
@@ -26,20 +23,23 @@ const { pairs, heading } = Astro.props;
     {heading && <h2>{heading}</h2>}
     <ul class="ba-list">
       {pairs.map((p) => (
-        <li class="ba">
-          <h3 class="ba__label">{p.label}</h3>
-          <div class="ba__pair">
-            <figure class="ba__side">
-              <img src={p.before.file} alt={p.before.alt} width={p.before.width} height={p.before.height}
-                   loading="lazy" decoding="async" />
-              <figcaption><span class="ba__tag">Before</span> {p.before.caption}</figcaption>
-            </figure>
-            <figure class="ba__side">
-              <img src={p.after.file} alt={p.after.alt} width={p.after.width} height={p.after.height}
-                   loading="lazy" decoding="async" />
-              <figcaption><span class="ba__tag ba__tag--after">After</span> {p.after.caption}</figcaption>
-            </figure>
-          </div>
+        <li>
+          <figure class="ba-split">
+            <span class="ba-split__frame">
+              <span class="ba-split__half">
+                <img src={p.before.file} alt={p.before.alt} width={p.before.width} height={p.before.height}
+                     loading="lazy" decoding="async" />
+                <span class="ba-split__tag">Before</span>
+              </span>
+              <span class="ba-split__half">
+                <img src={p.after.file} alt={p.after.alt} width={p.after.width} height={p.after.height}
+                     loading="lazy" decoding="async" />
+                <span class="ba-split__tag ba-split__tag--after">After</span>
+              </span>
+              <span class="ba-split__handle" aria-hidden="true"></span>
+            </span>
+            <figcaption><strong>{p.label}</strong> — {p.before.caption}</figcaption>
+          </figure>
         </li>
       ))}
     </ul>

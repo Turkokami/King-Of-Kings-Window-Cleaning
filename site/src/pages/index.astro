@@ -88,9 +88,20 @@ const schema = {
     <section class="band band--grey band--center awards-strip">
       <p class="eyebrow">Recognition</p>
       <h2>Voted for by Whatcom County, not by us</h2>
-      <ul>
+      {/*
+        The badge grid the client's own awards page uses. Every badge is the
+        awarding body's artwork, mirrored locally; an award whose badge we do not
+        have renders as a plain card rather than borrowing another one's.
+      */}
+      <ul class="award-grid">
         {AWARDS.map((a) => (
-          <li><strong>{a.year}</strong> {a.name} — {a.level}{['Gold', 'Silver', 'Platinum'].includes(a.level) ? ' Winner,' : ','} {a.category} <em>({a.awardedBy})</em></li>
+          <li class="award">
+            {a.badge
+              ? <img src={a.badge} alt={`${a.year} ${a.name} badge — ${a.awardedBy}`} width="420" height="420" loading="lazy" decoding="async" />
+              : <span class="award__year" aria-hidden="true">{a.year}</span>}
+            <p class="award__label">{a.shortLabel}</p>
+            <p class="award__by">{a.year} · {a.awardedBy}</p>
+          </li>
         ))}
       </ul>
     </section>
