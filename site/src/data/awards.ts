@@ -44,10 +44,17 @@ export const AWARDS: Award[] = [
   { year: 2026, name: 'Cascades Best', level: 'Silver', category: 'Best Customer Service', awardedBy: 'The Bellingham Herald', headline: false, badge: '/awards/cascades-2026-customer-service.webp', shortLabel: 'Voted Best Customer Service' },
   { year: 2025, name: 'Cascades Best', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'The Bellingham Herald', headline: true, badge: '/awards/cascades-2025-cleaning-service.webp', shortLabel: 'Voted Best Cleaning Service' },
   // 2026 CommunityVotes Bellingham — supplied by the client 2026-09-18 with the
-  // "Bellingham 2026 Winners" badge. Client-attested: recorded and dated, not
-  // independently verified against the CommunityVotes listing.
-  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'CommunityVotes Bellingham', headline: true, shortLabel: 'Voted Gold, Best Cleaning Service' },
-  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true, shortLabel: 'Voted Platinum, Window Cleaning' },
+  // "Bellingham 2026 Winners" badge, and the badge artwork itself on 2026-09-19.
+  // Client-attested: recorded and dated, not independently verified against the
+  // CommunityVotes listing.
+  //
+  // BOTH 2026 ROWS CARRY THE SAME BADGE ON PURPOSE. CommunityVotes issues one
+  // winners badge per town per year, not one per category, so this is each
+  // award's own artwork rather than one award borrowing another's. The badge is
+  // not on the client's live awards page — the file dated 2026 there is the 2025
+  // badge re-uploaded — so this copy came from the client directly.
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Gold', category: 'Best Cleaning Service', awardedBy: 'CommunityVotes Bellingham', headline: true, badge: '/awards/communityvotes-2026-winners.webp', shortLabel: 'Voted Gold, Best Cleaning Service' },
+  { year: 2026, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true, badge: '/awards/communityvotes-2026-winners.webp', shortLabel: 'Voted Platinum, Window Cleaning' },
   { year: 2025, name: 'CommunityVotes Bellingham', level: 'Platinum', category: 'Best Window Cleaning', awardedBy: 'CommunityVotes Bellingham', headline: true, badge: '/awards/communityvotes-2025-platinum-window-cleaning.webp', shortLabel: 'Voted Best in Window Cleaning' },
   { year: 2025, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false, badge: '/awards/nextdoor-neighborhood-fave-2025.webp', shortLabel: 'Neighborhood Fave 2025' },
   { year: 2024, name: 'Neighborhood Fave', level: 'Winner', category: 'Neighborhood Favorite', awardedBy: 'Nextdoor', headline: false, badge: '/awards/nextdoor-neighborhood-fave-2024.webp', shortLabel: 'Neighborhood Fave 2024' },

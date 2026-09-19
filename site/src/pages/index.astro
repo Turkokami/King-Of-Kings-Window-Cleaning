@@ -97,7 +97,7 @@ const schema = {
         {AWARDS.map((a) => (
           <li class="award">
             {a.badge
-              ? <img src={a.badge} alt={`${a.year} ${a.name} badge — ${a.awardedBy}`} width="420" height="420" loading="lazy" decoding="async" />
+              ? <img src={a.badge} alt={`${a.shortLabel} — ${a.year} ${a.name} badge`} width="420" height="420" loading="lazy" decoding="async" />
               : <span class="award__year" aria-hidden="true">{a.year}</span>}
             <p class="award__label">{a.shortLabel}</p>
             <p class="award__by">{a.year} · {a.awardedBy}</p>

@@ -55,9 +55,17 @@ const schema = {
       <section>
         <h2>Recognition</h2>
         <p>{streakClaim() ?? substantiatedClaim()}</p>
-        <ul>
+        {/* Same badge grid as the home page — the awarding bodies' own artwork,
+            which reads faster than a bulleted list of their names. */}
+        <ul class="award-grid">
           {AWARDS.map((a) => (
-            <li>{a.name} — {a.awardedBy}, {a.year}</li>
+            <li class="award">
+              {a.badge
+                ? <img src={a.badge} alt={`${a.shortLabel} — ${a.year} ${a.name} badge`} width="420" height="420" loading="lazy" decoding="async" />
+                : <span class="award__year" aria-hidden="true">{a.year}</span>}
+              <p class="award__label">{a.shortLabel}</p>
+              <p class="award__by">{a.year} · {a.awardedBy}</p>
+            </li>
           ))}
         </ul>
       </section>

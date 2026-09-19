@@ -70,7 +70,13 @@ const schema = {
       <ul>
         {AWARDS.map((a) => (
           <li>
-            <strong>{a.year} {a.name}</strong> — {a.level === 'Finalist' ? 'Finalist,' : `${a.level} Winner,`} {a.category}
+            {/*
+              `level` is already the whole word for Nextdoor's "Winner" and the
+              WBA's "Finalist", so appending "Winner," to everything printed
+              "Winner Winner, Neighborhood Favorite". Only the placing levels
+              take the noun — the same fix awardStrings() carries in awards.ts.
+            */}
+            <strong>{a.year} {a.name}</strong> — {['Gold', 'Silver', 'Platinum'].includes(a.level) ? `${a.level} Winner,` : `${a.level},`} {a.category}
             <span class="person__awardby"> · {a.awardedBy}</span>
           </li>
         ))}
