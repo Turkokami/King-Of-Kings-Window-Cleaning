@@ -1,0 +1,174 @@
+---
+/**
+ * Terms of Service.
+ *
+ * WHY THIS PAGE EXISTS. It was live on the legacy site at this exact path,
+ * linked from every footer, and the rebuild had no equivalent — so the cutover
+ * would have 404'd a page that carries the company's estimate, scheduling,
+ * payment and guarantee terms. The operator supplied the URL on 22 Sep 2026.
+ *
+ * THE WORDING IS THE CLIENT'S, NOT OURS. Section 6 is the source of the
+ * guarantee wording in business.ts and on /our-guarantee/. A warranty that gets
+ * paraphrased is a warranty that gets changed, so the substance here is
+ * reproduced from the published terms rather than rewritten. Only the headings
+ * and ordering are ours.
+ *
+ * Source: King of Kings Window Cleaning LLC Terms of Service, last updated
+ * 5 August 2026. Re-check this page against the client's own copy whenever they
+ * revise it — a stale terms page is worse than no terms page.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BUSINESS } from '../data/business';
+import { buildTitle } from '../lib/seo';
+
+export const prerender = true;
+/** The date the CLIENT last revised the terms, not the date we last touched this file. */
+const termsUpdated = '5 August 2026';
+
+const schema = {
+  path: '/terms-of-service/',
+  title: buildTitle('Terms of Service'),
+  description: 'The terms King of Kings Window Cleaning works under — estimates, scheduling, payment, the satisfaction guarantee and what it excludes.',
+  image: '/brand/king-of-kings-social.jpg',
+  imageAlt: 'Terms of service for King of Kings Window Cleaning',
+  crumbs: [{ name: 'Home', path: '/' }, { name: 'Terms of service', path: '/terms-of-service/' }],
+  faqs: [],
+};
+---
+<BaseLayout schema={schema}>
+  <article class="t1 prose">
+    <h1>Terms of Service</h1>
+    <p><strong>Last updated:</strong> {termsUpdated}</p>
+
+    <p>
+      By using this website, requesting an estimate, scheduling services or
+      communicating with us, you agree to these terms. If you do not agree with
+      them, please do not use the website or the services.
+    </p>
+
+    <h2>1. Company</h2>
+    <p>
+      {BUSINESS.legalName} provides residential and commercial exterior cleaning,
+      including window cleaning, gutter cleaning, roof debris removal, roof moss
+      removal and prevention, pressure washing, house washing and solar panel
+      cleaning. Availability varies with location, weather and scheduling.
+    </p>
+
+    <h2>2. Estimates</h2>
+    <p>
+      Every estimate given through this website, by phone, by text or by email is
+      an estimate. Final pricing can change with property size, access, the degree
+      of cleaning required, safety considerations, additional requested services,
+      and conditions that could not reasonably be identified before the visit. A
+      final price may be confirmed on arrival where that is necessary.
+    </p>
+
+    <h2>3. Scheduling</h2>
+    <p>
+      Appointments are booked subject to availability. We may need to reschedule
+      for weather, unsafe working conditions, equipment problems, emergencies or
+      other circumstances outside our control, and we will contact you as soon as
+      we know.
+    </p>
+
+    <h2>4. What we need from you</h2>
+    <ul>
+      <li>Safe access to the property.</li>
+      <li>Pets secured during the service.</li>
+      <li>Fragile or valuable items moved out of the work areas.</li>
+      <li>Water and electrical access where the work reasonably requires it.</li>
+      <li>Any known hazards or property concerns told to us before we start.</li>
+    </ul>
+    <p>Where safe access cannot be provided, the visit may have to be rescheduled.</p>
+
+    <h2>5. Payment</h2>
+    <p>
+      Payment is due on completion unless something else has been arranged in
+      advance. We accept the payment methods listed at the time of service. Late
+      payment may be subject to collection efforts where the law permits.
+    </p>
+
+    <h2>6. Satisfaction guarantee</h2>
+    <p>
+      If you are not satisfied with the quality of our work, contact us within
+      <strong>7 days</strong> of your service. We will inspect the concern and,
+      where appropriate, return to address issues related to the original scope of
+      work at no additional charge.
+    </p>
+    <p>The guarantee does not cover:</p>
+    <ul>
+      <li>New dirt, pollen, dust or debris that accumulates after service.</li>
+      <li>Weather-related spotting after service.</li>
+      <li>
+        Existing damage, failed window seals, scratches, hard water staining,
+        oxidation, mineral deposits or defective glass.
+      </li>
+      <li>Conditions outside the original scope of work.</li>
+    </ul>
+    <p>
+      The same terms are set out, with the reasoning behind the exclusions, on
+      <a href="/our-guarantee/">our guarantee page</a>.
+    </p>
+
+    <h2>7. Pre-existing conditions</h2>
+    <p>
+      We use professional equipment and industry-accepted methods, and we are not
+      responsible for conditions that were already there: scratched or damaged
+      glass, failed window seals, oxidised frames, existing roof damage, loose
+      gutters, aging caulking, deteriorated paint, existing leaks or manufacturing
+      defects. Where we notice something before or during the work we will point
+      it out, and photograph it if you want a record.
+    </p>
+
+    <h2>8. Information on this website</h2>
+    <p>
+      We keep this site accurate, but pricing, services, promotions and
+      availability can change without notice. Nothing here is a binding quote or a
+      guarantee of a particular result.
+    </p>
+
+    <h2>9. Intellectual property</h2>
+    <p>
+      The text, logos, graphics, photographs and video on this website are the
+      property of {BUSINESS.legalName} unless stated otherwise, and may not be
+      copied, reproduced or distributed without written permission.
+    </p>
+
+    <h2>10. Third-party links</h2>
+    <p>
+      This site links to other websites from time to time. We are not responsible
+      for their content, policies or practices.
+    </p>
+
+    <h2>11. Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, {BUSINESS.legalName} is not liable
+      for indirect, incidental, consequential or special damages arising from the
+      use of this website or our services, and our total liability will not exceed
+      the amount paid for the specific service the claim arises from.
+    </p>
+
+    <h2>12. Weather and safety</h2>
+    <p>
+      Exterior cleaning depends on safe conditions. We may postpone or stop work
+      for rain, high wind, lightning, freezing temperatures, unsafe roof
+      conditions or anything else that puts the crew or the quality of the work at
+      risk, and we will reschedule at the earliest reasonable opportunity.
+    </p>
+
+    <h2>13. Changes to these terms</h2>
+    <p>
+      We may update these terms. Changes take effect when they are posted here,
+      and continued use of the website or our services means you accept them.
+    </p>
+
+    <h2>14. Contact</h2>
+    <p>
+      {BUSINESS.legalName}, Bellingham, WA — serving Whatcom County, Skagit County
+      and Oak Harbor.<br />
+      Phone: <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phone}</a><br />
+      Email: <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a>
+    </p>
+    <p>See also our <a href="/privacy/">privacy page</a>.</p>
+  </article>
+</BaseLayout>

@@ -45,9 +45,17 @@ const schema = {
     {studies.length > 0 ? (
       <ul class="case-grid">
         {studies.map((c) => (
-          <li>
-            <a href={`/case-studies/${c.slug}/`}>{c.data.title}</a>
-            {' — '}{c.data.propertyType}, {c.data.market}. {c.data.outcome}
+          <li class="case-card">
+            {/* The photograph is the substance of a case study, so it leads.
+                It is decorative here because the heading beneath says the same
+                thing — and the image link carries an aria-label so a screen
+                reader moving by links does not meet a nameless one. */}
+            <a href={`/case-studies/${c.slug}/`} class="case-card__media" aria-label={c.data.title}>
+              <img src={c.data.heroImage} alt="" width="1050" height="1400" loading="lazy" decoding="async" />
+            </a>
+            <p class="case-card__where">{c.data.propertyType} · {c.data.market}</p>
+            <h2 class="case-card__title"><a href={`/case-studies/${c.slug}/`}>{c.data.title}</a></h2>
+            <p class="case-card__outcome">{c.data.outcome}</p>
           </li>
         ))}
       </ul>

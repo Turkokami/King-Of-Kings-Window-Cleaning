@@ -172,6 +172,52 @@ const splitNode = (pair) => ({
   ],
 });
 
+/* Two photographs side by side, used when a case study has more frames than the
+ * body has sections. Nothing is dropped: they double up rather than disappear. */
+const photoPairNode = (a, b) => ({
+  type: 'element', tagName: 'div', properties: { className: ['photo-pair'] },
+  children: [figureNode(a, []), figureNode(b, [])],
+});
+
+const sectionsOf = (tree) => tree.children.filter(
+  (n) => n.type === 'element' && n.tagName === 'section' &&
+         ((n.properties && n.properties.className) || []).includes('md-section'));
+
+/**
+ * Case-study placement. Matched before/after frames lead, then the jobsite
+ * photographs in the order the work happened, spread down the body so the
+ * evidence sits beside the passage that describes it.
+ */
+function placeCaseStudy(tree, cs) {
+  const sections = sectionsOf(tree);
+  if (sections.length < 3) return;
+
+  const nodes = (cs.pairs || []).map(splitNode);
+  const singles = (cs.photos || []).slice();
+  // Positions available after the opening section. Where there are more
+  // photographs than positions, they go two to a row instead of being cut.
+  const slots = Math.max(1, sections.length - 1 - nodes.length);
+  // Two is the most that fits a row at reading width, so a very long shoot
+  // clusters toward the end of the body rather than being truncated.
+  const per = Math.min(2, Math.max(1, Math.ceil(singles.length / slots)));
+  for (let i = 0; i < singles.length; i += per) {
+    const chunk = singles.slice(i, i + per);
+    nodes.push(chunk.length === 1
+      ? figureNode(chunk[0], ['inset', nodes.length % 2 ? 'inset--left' : 'inset--right'])
+      : photoPairNode(chunk[0], chunk[1]));
+  }
+
+  const step = Math.max(1, Math.floor((sections.length - 1) / Math.max(1, nodes.length)));
+  const inserts = nodes.map((node, i) => ({
+    after: sections[Math.min(1 + i * step, sections.length - 1)], node,
+  }));
+
+  for (const ins of inserts.reverse()) {
+    const at = tree.children.indexOf(ins.after);
+    if (at >= 0) tree.children.splice(at + 1, 0, ins.node);
+  }
+}
+
 function rehypePhotos() {
   return (tree, file) => {
     const src = (file.history && file.history[0]) || '';
@@ -202,6 +248,15 @@ function rehypePhotos() {
       pool = photoIndex.problem[slug] || [];
     } else if (collection === 'library' || collection === 'compliance') {
       pool = (photoIndex[collection] || {})[slug] || [];
+    } else if (collection === 'caseStudy') {
+      /* A case study is the one page type where every photograph is from the
+       * same property on the same day. It gets its own placement below: all of
+       * them go in the body, in the order the job happened, because the
+       * photographs ARE the evidence rather than decoration. */
+      const cs = (photoIndex.caseStudy || {})[slug];
+      if (!cs) return;
+      placeCaseStudy(tree, cs);
+      return;
     }
     if (!pool.length) return;
 

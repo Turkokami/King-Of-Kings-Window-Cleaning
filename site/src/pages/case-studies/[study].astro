@@ -1,0 +1,104 @@
+---
+/**
+ * T9 — the case study itself.
+ *
+ * Keystone Part 3.1 calls this the highest-trust asset in the system: it is a geo
+ * page, a service page and a proof asset at once. The hub has been waiting for
+ * one since launch and said so rather than inventing a job.
+ *
+ * URLS ARE THE LEGACY ONES ON PURPOSE. /case-studies/window-cleaning-bow-wa/ and
+ * /case-studies/gutter-cleaning-bellingham-wa/ are live on the WordPress site
+ * today. Keeping the paths identical means the cutover needs no redirect for
+ * them and whatever equity they have carries straight across.
+ *
+ * The photographs are placed INSIDE the body by rehypePhotos (see
+ * astro.config.mjs → placeCaseStudy), not stacked underneath it, because on a
+ * case study each frame is evidence for the passage it sits beside.
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import Photo from '../../components/Photo.astro';
+import { buildTitle } from '../../lib/seo';
+import { CASE_STUDY_PHOTOS } from '../../data/photos';
+import { serviceBySlug } from '../../data/services';
+
+export const prerender = true;
+export const dynamicParams = false;
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudy');
+  return studies.map((s) => ({ params: { study: s.slug }, props: { entry: s } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await entry.render();
+
+const media = CASE_STUDY_PHOTOS[entry.slug];
+const hero = media?.hero;
+const service = serviceBySlug(d.service);
+
+/*
+ * Only link the town if it HAS a page. Bow is a real market and a real job, and
+ * it has no city page — the demand gate declined it (Part 6A). Linking it anyway
+ * is how a case study manufactures a dead link, which is exactly what the
+ * crawler catches at build. Declined towns are still said, just not linked.
+ */
+const citySlug = d.market.toLowerCase().replace(/\s+/g, '-');
+const hasCityPage = (await getCollection('city')).some((c) => c.slug === citySlug);
+
+/* The visible last-updated date (Part 6.6). It moves when the content moves. */
+const updated = d.updated.toISOString().slice(0, 10);
+
+const schema = {
+  path: `/case-studies/${entry.slug}/`,
+  title: d.title.length <= 60 ? buildTitle(d.title) : d.title,
+  description: d.metaDescription,
+  image: d.heroImage,
+  imageAlt: d.heroAlt,
+  crumbs: [
+    { name: 'Home', path: '/' },
+    { name: 'Our work', path: '/case-studies/' },
+    { name: d.market, path: `/case-studies/${entry.slug}/` },
+  ],
+  faqs: d.faqs,
+  article: { headline: d.title, datePublished: updated, dateModified: updated },
+  pageType: 'ItemPage' as const,
+};
+---
+<BaseLayout schema={schema} ogImage={d.heroImage}>
+  <article class="t9">
+    <div class:list={['hero', hero && 'hero--photo']}>
+      <div class="hero__text">
+        <p class="eyebrow">{d.propertyType} · {d.market}</p>
+        <h1>{d.title}</h1>
+        <AnswerBox text={d.answer} label="What the job was" />
+      </div>
+      {hero && <Photo photo={hero} priority class="hero__media" />}
+    </div>
+
+    <Content />
+
+    <section class="t9__meta">
+      <h2>The short version</h2>
+      <p>{d.outcome}</p>
+      <p>
+        {service && (
+          <>This was <a href={`/services/${service.slug}/`}>{service.name.toLowerCase()}</a>. </>
+        )}
+        {hasCityPage
+          ? <>More of the same work in <a href={`/locations/${citySlug}/`}>{d.market}</a>, and the</>
+          : <>We cover {d.market} from the same base as the rest of the county. The</>}
+        {' '}rest of the jobs we have documented are on <a href="/case-studies/">our work</a>.
+      </p>
+      {/* Part 6.6 — the date is visible, not only in the schema graph. */}
+      <p class="t9__updated">Documented {updated}. Photographs taken on the day of the job.</p>
+    </section>
+
+    <Faq faqs={d.faqs} heading="Questions about this job" />
+    <Cta market={d.market} service={service?.name} />
+  </article>
+</BaseLayout>

@@ -144,6 +144,41 @@
     "caption": "The test is not that it looks clean — it is that water has an unbroken path to the downpipe."
    },
    {
+    "file": "/photos/work/clogged-gutter-packed-with-fir-needles.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Gutter packed solid with fir needles and wet leaves before cleaning",
+    "caption": "Before. Packed to the lip, which is why the downspouts had stopped taking water at all."
+   },
+   {
+    "file": "/photos/work/seedling-growing-at-downspout-outlet.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Debris and a small seedling pulled from a gutter beside an open downspout outlet",
+    "caption": "A seedling had rooted beside the outlet. Anything growing in a gutter means the debris has stayed wet long enough to hold a plant."
+   },
+   {
+    "file": "/photos/work/ladder-set-for-gutter-access-bellingham.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Ladder set against a roofline for gutter access during the cleaning",
+    "caption": "Cleared by hand from a ladder rather than blown out from above, which is what keeps the debris out of the downspouts."
+   },
+   {
+    "file": "/photos/work/truck-and-debris-bin-on-site-bellingham.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Service truck in a driveway beside a collection bin filled with debris removed from the gutters",
+    "caption": "What came out of the gutters on this one property. It leaves with us."
+   },
+   {
+    "file": "/photos/work/cleared-gutter-above-back-deck.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Clean, unobstructed gutter above a back deck after debris removal and flushing",
+    "caption": "After, above the back deck."
+   },
+   {
     "file": "/photos/work/gutter-full-of-autumn-leaves.webp",
     "width": 1152,
     "height": 738,
@@ -643,6 +678,41 @@
     "height": 1400,
     "alt": "Gutter run clear of needles and debris with an open path toward the downspout",
     "caption": "The test is not that it looks clean — it is that water has an unbroken path to the downpipe."
+   },
+   {
+    "file": "/photos/work/clogged-gutter-packed-with-fir-needles.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Gutter packed solid with fir needles and wet leaves before cleaning",
+    "caption": "Before. Packed to the lip, which is why the downspouts had stopped taking water at all."
+   },
+   {
+    "file": "/photos/work/seedling-growing-at-downspout-outlet.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Debris and a small seedling pulled from a gutter beside an open downspout outlet",
+    "caption": "A seedling had rooted beside the outlet. Anything growing in a gutter means the debris has stayed wet long enough to hold a plant."
+   },
+   {
+    "file": "/photos/work/ladder-set-for-gutter-access-bellingham.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Ladder set against a roofline for gutter access during the cleaning",
+    "caption": "Cleared by hand from a ladder rather than blown out from above, which is what keeps the debris out of the downspouts."
+   },
+   {
+    "file": "/photos/work/truck-and-debris-bin-on-site-bellingham.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Service truck in a driveway beside a collection bin filled with debris removed from the gutters",
+    "caption": "What came out of the gutters on this one property. It leaves with us."
+   },
+   {
+    "file": "/photos/work/cleared-gutter-above-back-deck.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Clean, unobstructed gutter above a back deck after debris removal and flushing",
+    "caption": "After, above the back deck."
    }
   ],
   "bellingham/window-cleaning": [
@@ -935,6 +1005,41 @@
     "height": 1400,
     "alt": "Gutter run clear of needles and debris with an open path toward the downspout",
     "caption": "The test is not that it looks clean — it is that water has an unbroken path to the downpipe."
+   },
+   {
+    "file": "/photos/work/clogged-gutter-packed-with-fir-needles.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Gutter packed solid with fir needles and wet leaves before cleaning",
+    "caption": "Before. Packed to the lip, which is why the downspouts had stopped taking water at all."
+   },
+   {
+    "file": "/photos/work/seedling-growing-at-downspout-outlet.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Debris and a small seedling pulled from a gutter beside an open downspout outlet",
+    "caption": "A seedling had rooted beside the outlet. Anything growing in a gutter means the debris has stayed wet long enough to hold a plant."
+   },
+   {
+    "file": "/photos/work/ladder-set-for-gutter-access-bellingham.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Ladder set against a roofline for gutter access during the cleaning",
+    "caption": "Cleared by hand from a ladder rather than blown out from above, which is what keeps the debris out of the downspouts."
+   },
+   {
+    "file": "/photos/work/truck-and-debris-bin-on-site-bellingham.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Service truck in a driveway beside a collection bin filled with debris removed from the gutters",
+    "caption": "What came out of the gutters on this one property. It leaves with us."
+   },
+   {
+    "file": "/photos/work/cleared-gutter-above-back-deck.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Clean, unobstructed gutter above a back deck after debris removal and flushing",
+    "caption": "After, above the back deck."
    }
   ],
   "lynden": [
@@ -1549,5 +1654,153 @@
     "caption": "After, same rows. Dried without spotting."
    }
   }
- ]
+ ],
+ "caseStudy": {
+  "window-cleaning-bow-wa": {
+   "hero": {
+    "file": "/photos/work/waterfront-home-before-window-cleaning-bow.webp",
+    "width": 1050,
+    "height": 1400,
+    "alt": "Two-storey waterfront home with large windows along a covered porch",
+    "caption": "The property in Bow, Skagit County. Glass facing salt water is a different job from glass ten miles inland."
+   },
+   "pairs": [
+    {
+     "label": "The big waterfront window",
+     "before": {
+      "file": "/photos/work/waterfront-window-streaked-before.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "Large waterfront window before cleaning, heavy streaking and salt residue clouding the view",
+      "caption": "Before. The streaking is mineral residue left behind as salt spray dries on the pane."
+     },
+     "after": {
+      "file": "/photos/work/waterfront-window-clear-after.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "The same waterfront window after cleaning, clear glass and an unobstructed view to the water",
+      "caption": "After, same pane."
+     }
+    },
+    {
+     "label": "The window bank",
+     "before": {
+      "file": "/photos/work/waterfront-windows-salt-haze-before.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "Bank of green-framed waterfront windows before cleaning, hazy with salt spray",
+      "caption": "Before. Salt haze does not rinse off in the rain — it has to be washed off, or it keeps dulling the view."
+     },
+     "after": {
+      "file": "/photos/work/waterfront-windows-clear-after.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "Bank of green-framed windows after cleaning, glass and frames clear",
+      "caption": "After, same bank of windows."
+     }
+    },
+    {
+     "label": "Glass door and frames",
+     "before": {
+      "file": "/photos/work/window-frames-webs-before-cleaning-bow.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "Green-framed glass door and sidelight before cleaning, webs and dirt along the frames",
+      "caption": "Before. Webs and debris collect in the frame channels, not only on the glass, which is why frames and tracks are part of the job."
+     },
+     "after": {
+      "file": "/photos/work/glass-door-and-frames-clear-after.webp",
+      "width": 1050,
+      "height": 1400,
+      "alt": "Green-framed glass door after cleaning, free of webs and debris",
+      "caption": "After, same door. Frames and sill cleared as well as the glass."
+     }
+    }
+   ],
+   "photos": [
+    {
+     "file": "/photos/work/water-fed-pole-upper-gable-windows.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Water-fed pole reaching upper gable windows to scrub and rinse them from the ground",
+     "caption": "Upper gable glass reached from the ground. Purified water means nothing is left on the pane as it dries."
+    }
+   ]
+  },
+  "gutter-cleaning-bellingham-wa": {
+   "hero": {
+    "file": "/photos/work/clogged-gutter-packed-with-fir-needles.webp",
+    "width": 900,
+    "height": 1200,
+    "alt": "Gutter packed solid with fir needles and wet leaves before cleaning",
+    "caption": "Before. Packed to the lip, which is why the downspouts had stopped taking water at all."
+   },
+   "pairs": [],
+   "photos": [
+    {
+     "file": "/photos/work/gutter-debris-removed-by-hand-bellingham.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Gloved hand holding a large clump of wet organic debris pulled from a gutter",
+     "caption": "A Bellingham home. Gutters here fill with fir needles rather than leaves, and needles pack into a mat water cannot pass."
+    },
+    {
+     "file": "/photos/work/wet-leaves-and-needles-from-gutter.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Handful of wet leaves and fir needles lifted out of a gutter above a deck",
+     "caption": "Cleared by hand and bagged rather than flushed down the downpipe — which is how a clear gutter ends up with a blocked drain."
+    },
+    {
+     "file": "/photos/work/seedling-growing-at-downspout-outlet.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Debris and a small seedling pulled from a gutter beside an open downspout outlet",
+     "caption": "A seedling had rooted beside the outlet. Anything growing in a gutter means the debris has stayed wet long enough to hold a plant."
+    },
+    {
+     "file": "/photos/work/ladder-set-for-gutter-access-bellingham.webp",
+     "width": 900,
+     "height": 1200,
+     "alt": "Ladder set against a roofline for gutter access during the cleaning",
+     "caption": "Cleared by hand from a ladder rather than blown out from above, which is what keeps the debris out of the downspouts."
+    },
+    {
+     "file": "/photos/work/roof-valley-cleared-of-debris.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Roof valley and gutter line after accumulated needles and debris were removed",
+     "caption": "The valley matters as much as the gutter: debris held there keeps the shingles underneath permanently damp."
+    },
+    {
+     "file": "/photos/work/truck-and-debris-bin-on-site-bellingham.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Service truck in a driveway beside a collection bin filled with debris removed from the gutters",
+     "caption": "What came out of the gutters on this one property. It leaves with us."
+    },
+    {
+     "file": "/photos/work/gutter-run-clear-to-downspout.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Gutter run clear of needles and debris with an open path toward the downspout",
+     "caption": "The test is not that it looks clean — it is that water has an unbroken path to the downpipe."
+    },
+    {
+     "file": "/photos/work/cleared-gutter-channel-bellingham.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Cleared gutter channel running along a roofline with an open path for water",
+     "caption": "After. Bellingham."
+    },
+    {
+     "file": "/photos/work/cleared-gutter-above-back-deck.webp",
+     "width": 1050,
+     "height": 1400,
+     "alt": "Clean, unobstructed gutter above a back deck after debris removal and flushing",
+     "caption": "After, above the back deck."
+    }
+   ]
+  }
+ }
 }

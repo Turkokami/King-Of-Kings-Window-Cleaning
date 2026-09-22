@@ -48,12 +48,30 @@ changing:**
 - **The launcher CSS targets another vendor's DOM.** If they rename the container
   the overlap fix stops applying silently. Re-check at the 28-day review.
 - **Accessibility.** The widget cannot be audited by `scripts/a11y.mjs`. It needs a
-  browser pass, and a finding in it is a finding on every template.
+  browser pass, and a finding in it is a finding on every template. **Checked by
+  the site operator on 22 Sep 2026 — "chat widget works great."** That closes the
+  open browser pass. Re-check after any vendor change: the loader's payload can
+  move without the tag moving, which is the whole reason this note exists.
 
 ---
 
 ## Business data
 
+- **The UBI is published. DECIDED 22 Sep 2026** by the site operator: "remove the
+  UBI blocker, it's not our job to publish it." It was previously gated behind a
+  written-confirmation flag that nobody was going to send, while the number was
+  simultaneously hard-coded into an FAQ on `/team/randy-fee/` — so the site was
+  inconsistent with itself rather than discreet. One flag now governs it
+  everywhere: `BUSINESS.publishUbi`. The business publishes the same number in
+  the footer of every page of its own site. Set the flag to `false` if that ever
+  changes.
+- **The guarantee has real terms as of 22 Sep 2026.** They were never missing —
+  they were at `/terms-of-service/` on the legacy site, section 6, last revised
+  5 August 2026. `BUSINESS.guarantee.terms` reproduces that wording rather than
+  paraphrasing it, because paraphrasing a warranty rewrites a contract, and
+  `/terms-of-service/` mirrors the full document. `/our-guarantee/` is indexable
+  now that it says something defined. **If the client revises his terms, both
+  places have to move.**
 - **`streetAddress` is null site-wide.** The Secretary of State principal office
   address is residential. It is also currently published on the Google Business
   Profile, which is an inconsistency the client has to resolve — hide it on the
@@ -109,8 +127,21 @@ for a page that currently has none.
   the image is decorative. Dimension 14 requires exactly this.
 - **The services submenu is `<details>/<summary>`, not a hover dropdown.** With no
   client JS, a hover menu is unreachable by keyboard.
-- **`/privacy/` and `/case-studies/` are noindex.** Privacy is thin by design;
-  case studies is empty and says so rather than being filled with invented jobs.
+- **`/privacy/` is noindex**, because it is thin by design. `/case-studies/` was
+  too, while it was empty; it is indexable as of 22 Sep 2026 now that two real
+  documented jobs are published there. The noindex is conditional on the
+  collection being empty, so it comes back on its own if the studies are ever
+  removed.
+- **Case-study URLs match the legacy ones exactly** —
+  `/case-studies/window-cleaning-bow-wa/` and
+  `/case-studies/gutter-cleaning-bellingham-wa/`. That is deliberate: those paths
+  are live on the WordPress site today, so the cutover needs no redirect for them.
+  Do not "tidy" the slugs.
+- **A case study only shows before/after pairs where the two frames are the same
+  position.** The Bow job was photographed as matched pairs and declares three;
+  the Bellingham gutter job was shot as a sequence and declares none, so it shows
+  the sequence instead. Labelling two different gutter runs "before" and "after"
+  would be the exact fabrication this build refuses everywhere else.
 - **Eight in-body links were de-linked**, not deleted — they pointed at problem
   pages not yet written. Re-link them when the pages land;
   `scripts/content-links.mjs` fails the build if you link one early.

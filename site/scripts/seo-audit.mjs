@@ -43,7 +43,7 @@ for (const f of files) {
    * bans two rules down. So: utility and informational pages are exempt from the
    * token expectation and from the bare-title antipattern. Everything else is not.
    */
-  const utility = /^\/(privacy|about|reviews|contact|our-guarantee|case-studies|team|services|locations|surface-library|compliance|financing|gallery)\/?$/.test(u)
+  const utility = /^\/(privacy|terms-of-service|about|reviews|contact|our-guarantee|case-studies|team|services|locations|surface-library|compliance|financing|gallery)\/?$/.test(u)
     || /^\/(surface-library|compliance|team)\//.test(u)
     // 404 is noindex and has no query to compete for. It was the last thing in
     // the audit and it is not a real finding.

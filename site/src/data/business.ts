@@ -91,15 +91,27 @@ export const BUSINESS = {
   geo: { latitude: 48.6490629 as Pending<number>, longitude: -122.3739165 as Pending<number> },
 
   // ---- credentials --------------------------------------------------------
-  // UBI is already published on the live site. Keystone Part 8: publishing an
-  // identifier is a CLIENT DECISION. Confirmed in writing before it ships in schema.
-  // VERIFIED — WA UBI, published on the live site and matching the Secretary of
-  // State filing. Randy Fee is the registered agent and Individual Governor.
+  // VERIFIED — WA UBI, published in the footer of the client's own live site and
+  // matching the Secretary of State filing. Randy Fee is the registered agent and
+  // Individual Governor.
   ubi: '605476674',                                         // VERIFIED
-  // `as boolean` is deliberate: the object is `as const`, so a bare `false`
-  // narrows to the literal type and the READY.ubi() guard becomes a compile
-  // error instead of a runtime check.
-  ubiPublicationConfirmed: false as boolean,                // PENDING — written confirmation
+  //
+  // DECIDED 2026-09-22 by the site operator: "remove the UBI blocker, it's not
+  // our job to publish it." The gate is gone: this is no longer a pending item
+  // waiting on written confirmation from the client.
+  //
+  // It resolves to PUBLISHED rather than withheld, for a reason worth recording.
+  // The business already publishes this number itself, in the footer of every
+  // page of its own live site, and it was ALREADY rendering here in the FAQ on
+  // /team/randy-fee/ while the footer guard suppressed it — so the site was
+  // inconsistent with itself, not private. Mirroring what the client publishes is
+  // not an agency deciding to disclose an identifier, which is what Part 8 is
+  // actually about. Withholding it would have meant deleting a true credential
+  // that is live on both sites today, which nobody asked for.
+  //
+  // Set to false if he wants it off the new site; the footer, the credential line
+  // and the schema all follow this one flag.
+  publishUbi: true as boolean,                              // DECIDED — mirrors the client's own footer
 
   // ---- the "licensed" question, stated honestly ---------------------------
   // The site says "Licensed & L&I insured". No contractor registration number
@@ -185,11 +197,48 @@ export const BUSINESS = {
   quoteUrl: '/contact/',
 
   // ---- guarantee (doctrine #6 — defined terms only) -----------------------
-  // The live site runs "Risk-Free" on 74 pages with no terms page anywhere.
-  // No guarantee string renders until `terms` is written and /our-guarantee/ exists.
+  // The legacy site runs "Risk-Free" on 74 pages with no terms page anywhere.
+  // RESOLVED 2026-09-22: the terms did exist, at /terms-of-service/, which the
+  // operator pointed us at. Section 6, "Satisfaction Guarantee", is a properly
+  // defined term — a window to raise a concern, an inspection, a defined remedy
+  // and a stated exclusion list — so the wording below is his, not ours. It is
+  // reproduced rather than paraphrased, because paraphrasing a warranty is
+  // rewriting a contract.
+  //
+  // Source: King of Kings Window Cleaning LLC Terms of Service, last updated
+  // 5 August 2026, section 6. Mirrored in full at /terms-of-service/.
   guarantee: {
-    headline: null as Pending<string>,                      // PENDING — owner
-    terms: null as Pending<string>,                         // PENDING — owner
+    headline: 'Not satisfied? Tell us within 7 days and we come back.' as Pending<string>,
+    terms: `<p>
+        From the company's <a href="/terms-of-service/">Terms of Service</a>,
+        section 6, last updated 5 August 2026:
+      </p>
+      <blockquote>
+        <p>
+          If you are not satisfied with the quality of our work, please contact us
+          within 7 days of your service. We will inspect the concern and, when
+          appropriate, return to address issues related to the original scope of
+          work at no additional charge.
+        </p>
+      </blockquote>
+      <p>The guarantee does not cover:</p>
+      <ul>
+        <li>New dirt, pollen, dust or debris that accumulates after service.</li>
+        <li>Weather-related spotting after service.</li>
+        <li>
+          Existing damage, failed window seals, scratches, hard water staining,
+          oxidation, mineral deposits or defective glass.
+        </li>
+        <li>Conditions outside the original scope of work.</li>
+      </ul>
+      <p>
+        Those exclusions are worth reading rather than skipping, because two of
+        them are the things people most often expect a guarantee to cover.
+        A <a href="/surface-library/insulated-glass-units/">failed sealed unit</a>
+        fogs between the panes where no cleaner can reach, and hard water staining
+        is etched into the glass surface rather than sitting on it — neither is
+        dirt, and neither is fixed by cleaning the window again.
+      </p>` as Pending<string>,
     termsUrl: '/our-guarantee/',
   },
 } as const;
@@ -212,7 +261,7 @@ export const READY = {
     typeof BUSINESS.reviews.reviewCount === 'number',
   guarantee: () => Boolean(BUSINESS.guarantee.headline && BUSINESS.guarantee.terms),
   geo: () => typeof BUSINESS.geo.latitude === 'number' && typeof BUSINESS.geo.longitude === 'number',
-  ubi: () => BUSINESS.ubiPublicationConfirmed === true,
+  ubi: () => BUSINESS.publishUbi === true,
   sameAs: () => Object.values(BUSINESS.sameAs).filter(Boolean).length > 0,
 };
 

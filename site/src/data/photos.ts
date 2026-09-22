@@ -117,6 +117,24 @@ const bellinghamGutters: Photo[] = [
   w('gutter-run-clear-to-downspout', 1050, 1400,
     'Gutter run clear of needles and debris with an open path toward the downspout',
     'The test is not that it looks clean — it is that water has an unbroken path to the downpipe.'),
+  // Added 2026-09-22 with the Bellingham gutter case study. These five were on
+  // the client's own case-study page and the media-library pull missed them —
+  // it walked galleries, and these are laid out as single blocks.
+  w('clogged-gutter-packed-with-fir-needles', 900, 1200,
+    'Gutter packed solid with fir needles and wet leaves before cleaning',
+    'Before. Packed to the lip, which is why the downspouts had stopped taking water at all.'),
+  w('seedling-growing-at-downspout-outlet', 1050, 1400,
+    'Debris and a small seedling pulled from a gutter beside an open downspout outlet',
+    'A seedling had rooted beside the outlet. Anything growing in a gutter means the debris has stayed wet long enough to hold a plant.'),
+  w('ladder-set-for-gutter-access-bellingham', 900, 1200,
+    'Ladder set against a roofline for gutter access during the cleaning',
+    'Cleared by hand from a ladder rather than blown out from above, which is what keeps the debris out of the downspouts.'),
+  w('truck-and-debris-bin-on-site-bellingham', 1050, 1400,
+    'Service truck in a driveway beside a collection bin filled with debris removed from the gutters',
+    'What came out of the gutters on this one property. It leaves with us.'),
+  w('cleared-gutter-above-back-deck', 1050, 1400,
+    'Clean, unobstructed gutter above a back deck after debris removal and flushing',
+    'After, above the back deck.'),
 ];
 
 const gutterWork: Photo[] = [
@@ -527,3 +545,45 @@ export const HOME_STRIP: Photo[] = [
 
 /** The home page's about section — a technician mid-job, not a posed shot. */
 export const ABOUT_PHOTO: Photo = lyndenHouseWash[3];
+
+/* ------------------------------------------------------------ case studies */
+
+/**
+ * T9 case studies. These are the only pages whose photographs are ALL from one
+ * property on one day, which is what makes them proof rather than illustration —
+ * so they are listed explicitly per study instead of being matched by service.
+ *
+ * `pairs` is only populated where the two frames are genuinely the same position
+ * before and after. The Bellingham gutter job was photographed as a sequence
+ * rather than as matched pairs, so it declares none and shows the sequence
+ * instead: labelling two different gutter runs "before" and "after" would be the
+ * exact fabrication this build refuses everywhere else.
+ */
+export interface CaseStudyPhotos { hero: Photo; pairs: BeforeAfter[]; photos: Photo[] }
+
+export const CASE_STUDY_PHOTOS: Record<string, CaseStudyPhotos> = {
+  'window-cleaning-bow-wa': {
+    hero: byFile(bowWindows, 'waterfront-home-before-window-cleaning-bow'),
+    pairs: [
+      { label: 'The big waterfront window', before: byFile(bowWindows, 'waterfront-window-streaked-before'), after: byFile(bowWindows, 'waterfront-window-clear-after') },
+      { label: 'The window bank', before: byFile(bowWindows, 'waterfront-windows-salt-haze-before'), after: byFile(bowWindows, 'waterfront-windows-clear-after') },
+      { label: 'Glass door and frames', before: byFile(bowWindows, 'window-frames-webs-before-cleaning-bow'), after: byFile(bowWindows, 'glass-door-and-frames-clear-after') },
+    ],
+    photos: [byFile(bowWindows, 'water-fed-pole-upper-gable-windows')],
+  },
+  'gutter-cleaning-bellingham-wa': {
+    hero: byFile(bellinghamGutters, 'clogged-gutter-packed-with-fir-needles'),
+    pairs: [],
+    photos: [
+      byFile(bellinghamGutters, 'gutter-debris-removed-by-hand-bellingham'),
+      byFile(bellinghamGutters, 'wet-leaves-and-needles-from-gutter'),
+      byFile(bellinghamGutters, 'seedling-growing-at-downspout-outlet'),
+      byFile(bellinghamGutters, 'ladder-set-for-gutter-access-bellingham'),
+      byFile(bellinghamGutters, 'roof-valley-cleared-of-debris'),
+      byFile(bellinghamGutters, 'truck-and-debris-bin-on-site-bellingham'),
+      byFile(bellinghamGutters, 'gutter-run-clear-to-downspout'),
+      byFile(bellinghamGutters, 'cleared-gutter-channel-bellingham'),
+      byFile(bellinghamGutters, 'cleared-gutter-above-back-deck'),
+    ],
+  },
+};

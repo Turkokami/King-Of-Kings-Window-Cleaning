@@ -37,12 +37,17 @@ const out = {
   library: Object.fromEntries(Object.entries(m.LIBRARY_HERO ?? {}).map(([k, v]) => [k, [v]])),
   compliance: Object.fromEntries(Object.entries(m.COMPLIANCE_HERO ?? {}).map(([k, v]) => [k, [v]])),
   pairs: m.BEFORE_AFTER ?? [],
+  // T9 case studies carry their own photographs — one property, one day — rather
+  // than drawing from the service pool, so the plugin reads them per study.
+  // Shape differs from the maps above: { hero, pairs[], photos[] } per slug.
+  caseStudy: m.CASE_STUDY_PHOTOS ?? {},
 };
 
 // SERVICE_PHOTOS is keyed by service slug already; keep the name the plugin uses.
 out.service = m.SERVICE_PHOTOS ?? {};
 
 fs.writeFileSync('src/data/photo-index.json', JSON.stringify(out, null, 1) + '\n');
+const size = (v) => (Array.isArray(v) ? v.length : 1 + v.pairs.length + v.photos.length);
 const count = Object.values(out).reduce(
-  (n, v) => n + (Array.isArray(v) ? v.length : Object.values(v).reduce((a, b) => a + b.length, 0)), 0);
+  (n, v) => n + (Array.isArray(v) ? v.length : Object.values(v).reduce((a, b) => a + size(b), 0)), 0);
 console.log(`photo-index: ${count} entries across ${Object.keys(out).length} maps`);

@@ -21,7 +21,9 @@ const answer = `Randy Fee is the owner of King of Kings Window Cleaning LLC in B
 
 const faqs = [
   { q: 'Who actually shows up to do the work?', a: 'Often Randy himself, and always someone he trained personally. Customers name him directly in their own reviews. On a company this size that is not a marketing line — it is how the work is scheduled.' },
-  { q: 'How long has King of Kings been in business?', a: `The company was formed on 26 March 2024 and is registered with the Washington Secretary of State under UBI ${BUSINESS.ubi}. In that time it has collected hundreds of Google reviews and seven local awards, including Cascades Best Gold for Best Cleaning Service in two consecutive years.` },
+  // The award count is counted, not typed. It said "seven" while awards.ts held
+  // ten, which is the ordinary way a hand-written number goes quietly stale.
+  { q: 'How long has King of Kings been in business?', a: `The company was formed on 26 March 2024 and is registered with the Washington Secretary of State${READY.ubi() ? ` under UBI ${BUSINESS.ubi}` : ''}. In that time it has collected ${AWARDS.length} local awards, including Cascades Best Gold for Best Cleaning Service in two consecutive years.` },
   { q: 'Is King of Kings licensed and insured?', a: 'The company holds a Washington State business licence and carries Labor & Industries coverage, and is rated A by the Better Business Bureau. Ask for the details before work starts and you will get them.' },
   { q: 'What areas does Randy cover?', a: 'Whatcom County and Skagit County — Bellingham, Ferndale, Lynden, Blaine and Birch Bay through to Mount Vernon, Burlington, Sedro-Woolley and Anacortes, plus the smaller communities in between.' },
   { q: 'Does Randy train the technicians himself?', a: 'Yes. Every new team member is personally trained by him, on cleaning method and on how to conduct themselves in someone else’s home. The company hires for care and attitude rather than prior experience, and trains the rest.' },

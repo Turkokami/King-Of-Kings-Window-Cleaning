@@ -1070,3 +1070,45 @@ img { max-width: 100%; height: auto; }
   font-size: 0.78rem;
   color: var(--ink-muted);
 }
+
+/* --- Case studies ---------------------------------------------------------
+ * The hub is a two-up card grid on anything wider than a phone; the photograph
+ * leads because on a case study the photograph IS the claim. Cards are cropped
+ * to a consistent frame so a portrait and a landscape hero do not stagger. */
+.case-grid {
+  list-style: none;
+  margin: 28px 0 34px;
+  padding: 0;
+  display: grid;
+  gap: 30px 26px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .case-grid { grid-template-columns: 1fr 1fr; } }
+.case-card { max-width: none; }
+.case-card__media {
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sunk);
+}
+.case-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.case-card__where {
+  margin: 12px 0 2px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.case-card__title { margin: 0 0 6px; font-size: 1.15rem; line-height: 1.25; }
+.case-card__outcome { margin: 0; color: var(--ink-muted); }
+
+/* The documented-on line at the foot of a study. Part 6.6 wants the date seen,
+ * not only emitted into the schema graph. */
+.t9__updated { font-size: 0.85rem; color: var(--ink-muted); }
