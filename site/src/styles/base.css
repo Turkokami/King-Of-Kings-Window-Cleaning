@@ -1112,3 +1112,21 @@ img { max-width: 100%; height: auto; }
 /* The documented-on line at the foot of a study. Part 6.6 wants the date seen,
  * not only emitted into the schema graph. */
 .t9__updated { font-size: 0.85rem; color: var(--ink-muted); }
+
+/* --- CTA buttons on a light ground -----------------------------------------
+ * The gold fill was scoped to `.cta .cta__btn--primary`, so on /contact/ — a
+ * white page, and the page the whole site's quote links point at — the primary
+ * action rendered as an outline identical to the secondary one. And now that one
+ * of those controls is a real <button> (it opens the CRM widget rather than
+ * navigating), it needs `font: inherit` and an explicit background: a <button>
+ * takes neither from the page, so it came out Arial on UA grey. */
+.cta__btn {
+  font: inherit;
+  font-weight: 800;
+  background: transparent;
+  color: var(--link);
+  cursor: pointer;
+}
+.cta__btn--primary { background: var(--gold); color: var(--gold-ink); }
+.cta__btn--primary:hover { background: var(--gold-hover); color: var(--gold-ink); }
+.cta__btn:hover { background: rgb(13 21 38 / 0.06); }
