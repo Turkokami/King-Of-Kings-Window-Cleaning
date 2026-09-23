@@ -6,7 +6,7 @@
  * geographies and (geo, service) tuples that cleared the two-signal gate. A route
  * may only link to what is in here; everything else is areaServed prose.
  *
- * Generated 2026-09-22 · 10 city pages · 35 city x service pages · 31 declined cities.
+ * Generated 2026-09-23 · 10 city pages · 35 city x service pages · 31 declined cities.
  */
 export const AUTHORISED_CITIES: readonly string[] = [
   "anacortes",

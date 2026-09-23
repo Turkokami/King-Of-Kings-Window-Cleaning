@@ -56,8 +56,18 @@ export const BUSINESS = {
     requestedBy: 'Cassidy Alber, forwarded by Randy Fee',
     requestedOn: '2026-09-14',
     ownershipConfirmedOn: '2026-09-15',
-    /** Part 4A.1 — pages with their own primary action do not get a competing one. */
-    excludePaths: ['/contact/', '/our-guarantee/', '/privacy/'],
+    /**
+     * Part 4A.1 — pages with their own primary action do not get a competing one.
+     *
+     * /contact/ CAME OFF THIS LIST on 23 Sep 2026, at the operator's direction:
+     * "contact should be wired to the widget that collects their info for leads."
+     * The Part 4A.1 reasoning inverts on that page — the widget is not a third
+     * action competing with the conversion path, it IS the conversion path, and
+     * it is the only lead capture on a static build that cannot send mail. The
+     * page's own "Request a quote online" button opens it (see ChatWidget.astro,
+     * data-open-chat), which also fixed that button linking to /contact/ itself.
+     */
+    excludePaths: ['/our-guarantee/', '/privacy/'],
   },
 
   // ---- contact ------------------------------------------------------------

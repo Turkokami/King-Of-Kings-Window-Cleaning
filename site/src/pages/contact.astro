@@ -6,9 +6,18 @@
  *
  * The form here is deliberately NOT rebuilt: Keystone 4A.2 says to embed the
  * client's existing CRM form on a static build, because a static site cannot
- * email and rebuilding the form silently destroys their lead tracking. Until
- * that embed is supplied, this page routes to the number and the existing quote
- * URL rather than to a form that goes nowhere.
+ * send mail and rebuilding the form silently destroys their lead tracking.
+ *
+ * RESOLVED 23 Sep 2026, at the operator's direction. The client's CRM form was
+ * already on the site: it is inside the LeadConnector widget — "Get a Free
+ * Estimate", collecting name, phone and a message, with an SMS consent checkbox
+ * — and this was the one page it had been excluded from, under Part 4A.1, as an
+ * action competing with call and quote. On the page whose whole job is lead
+ * capture that reasoning is backwards. The widget now loads here and the page's
+ * own quote button opens it.
+ *
+ * That button used to point at BUSINESS.quoteUrl, which is '/contact/' — this
+ * page. The single control on the site's conversion page reloaded the page.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AnswerBox from '../components/AnswerBox.astro';
@@ -42,7 +51,21 @@ const schema = {
            aria-label={`Call King of Kings Window Cleaning on ${BUSINESS.phone}`}>
           Call {BUSINESS.phone}
         </a>
-        <a class="cta__btn" href={BUSINESS.quoteUrl}>Request a quote online</a>
+        {/*
+          Opens the CRM's own quote form (ChatWidget.astro wires every
+          [data-open-chat] control). It ships hidden and is revealed by that
+          script, so it is never shown to a visitor whose browser could not open
+          it — they get the phone number and the email address, which work
+          without JavaScript and are on this page anyway.
+        */}
+        <button type="button" class="cta__btn" data-open-chat hidden>
+          Request a quote online
+        </button>
+      </p>
+      <p>
+        The quote form asks for your name, a number to reach you on, and what you
+        want looked at. It goes straight to the office — nobody is sitting in a
+        queue somewhere else.
       </p>
       <p><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></p>
       <p>{trustLine()}</p>

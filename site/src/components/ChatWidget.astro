@@ -72,6 +72,39 @@ const show = enabled && w.enabled && Boolean(w.widgetId);
       } else {
         setTimeout(load, 6000);
       }
+
+      /*
+       * A page's own control can open the widget: <button data-open-chat>.
+       * /contact/ uses this, so "Request a quote online" opens the form that
+       * actually collects the lead instead of linking to the page it is on.
+       *
+       * VERIFIED IN A BROWSER on 23 Sep 2026 rather than assumed: the vendor
+       * exposes window.leadConnector.chatWidget.openWidget(), and calling it
+       * flips the custom element's data-active from false to true. If they ever
+       * drop that method the control opens nothing — which is why the vendor's
+       * own floating launcher stays on the page as the fallback path.
+       *
+       * Controls are hidden in the HTML and revealed here, so a button that
+       * could not possibly work is never shown to someone without JavaScript.
+       */
+      function openWidget() {
+        var w = window.leadConnector && window.leadConnector.chatWidget;
+        if (w && typeof w.openWidget === 'function') { w.openWidget(); return true; }
+        return false;
+      }
+      function openFromControl(ev) {
+        ev.preventDefault();
+        if (openWidget()) return;
+        load();                        // the click itself may be what loads it
+        var tries = 0;
+        var t = setInterval(function () {
+          if (openWidget() || ++tries > 40) clearInterval(t);   // give up after ~10s
+        }, 250);
+      }
+      Array.prototype.forEach.call(document.querySelectorAll('[data-open-chat]'), function (el) {
+        el.hidden = false;
+        el.addEventListener('click', openFromControl);
+      });
     })();
   </script>
 )}

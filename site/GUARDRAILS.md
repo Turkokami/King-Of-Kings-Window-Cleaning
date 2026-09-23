@@ -22,9 +22,28 @@ who decided it and when. If something here looks wrong, raise it — do not
 **This is the only client-side JavaScript in the project.** If you find a second
 one, something has gone wrong.
 
+**It is the lead capture.** The widget is not a support chat — it opens "Get a
+Free Estimate" and collects name, phone and a message with an SMS consent
+checkbox. On a static build that cannot send mail, it is the only thing on the
+site that takes a lead without a phone call.
+
+**`/contact/` uses it, as of 23 Sep 2026**, at the operator's direction:
+"contact should be wired to the widget that collects their info for leads." The
+page's own "Request a quote online" button carries `data-open-chat` and the
+widget script opens it. Two things that fixed: the widget had been excluded from
+the one page whose job is conversion, and that button previously linked to
+`BUSINESS.quoteUrl` — which is `/contact/`, the page it was on.
+
+**The opener depends on a vendor method.** `window.leadConnector.chatWidget
+.openWidget()`, confirmed in a real browser on 23 Sep 2026 (it flips the custom
+element's `data-active` to true). It is not documented by the vendor, so treat
+it as breakable: if it disappears, the button opens nothing and the vendor's own
+floating launcher is the fallback. **Check it at every field review**, with the
+rest of the widget checks below.
+
 **It is deliberately not the snippet as supplied.** The request was for a plain
 `<script>` before `</body>` on every page. It is instead loaded on first
-interaction or after idle, never before paint, and excluded from `/contact/`,
+interaction or after idle, never before paint, and excluded from
 `/our-guarantee/` and `/privacy/`. Four reasons, all of them scored dimensions:
 
 1. **Dimension 9 / INP.** This build otherwise ships zero client JS. A blocking
@@ -36,6 +55,8 @@ interaction or after idle, never before paint, and excluded from `/contact/`,
    this injects third-party DOM that static analysis cannot audit.
 3. **Part 4A.1, one primary action per page.** A floating launcher is a third
    action competing with call and quote, and on mobile it usually wins the tap.
+   That still holds everywhere except `/contact/`, where the widget is the
+   conversion path rather than a competitor to it.
 4. **It lands where the sticky call bar lands.** `base.css` lifts it above the bar
    on mobile and caps its z-index below the skip link.
 
