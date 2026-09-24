@@ -1,18 +1,23 @@
 ---
 /**
- * Privacy. Short, accurate, and written to match what this site actually does —
- * which at present is very little, because a static build with no client
- * JavaScript collects nothing on its own.
+ * Privacy. Short, accurate, and written to match what this site actually does.
  *
- * This page gets rewritten the moment analytics or a third-party widget ships.
- * A privacy page that describes a site you no longer run is worse than none.
+ * UPDATED 24 Sep 2026, when GA4 and the Meta pixel were carried over from the
+ * legacy site for the cutover. The earlier version promised that this page would
+ * name any analytics "before it ships" — this is that promise being kept, and it
+ * is why the page names the pixel in plain words instead of calling it
+ * "marketing technologies". A privacy page that describes a site you no longer
+ * run is worse than none.
+ *
+ * Anything added to BUSINESS.analytics or BUSINESS.chatWidget has to land here
+ * in the same commit.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { BUSINESS } from '../data/business';
 import { buildTitle } from '../lib/seo';
 
 export const prerender = true;
-const updated = '2026-09-15';
+const updated = '2026-09-24';
 
 const schema = {
   path: '/privacy/',
@@ -31,7 +36,44 @@ const schema = {
     <h2>What this site collects</h2>
     <p>
       This website is a set of static pages. It has no login, cart or account, and
-      the pages themselves collect nothing about you.
+      the pages themselves collect nothing about you. Three third-party services
+      do run on it, and each is named below: a chat widget, Google Analytics, and
+      a Meta advertising pixel.
+    </p>
+
+    <h2>Google Analytics</h2>
+    <p>
+      We use Google Analytics 4 to see how many people visit, which pages get read
+      and roughly where they arrived from — a search, a link, an advert. It sets
+      its own cookies in your browser and sends Google your IP address, which
+      Google uses to work out an approximate location and then discards rather
+      than storing.
+    </p>
+    <p>
+      We read it in aggregate. It tells us a page was read, not who read it, and
+      we have no way to tie it to you personally unless you separately contact us.
+    </p>
+
+    <h2>The Meta advertising pixel</h2>
+    <p>
+      We advertise on Facebook and Instagram, and this site carries Meta's pixel
+      so we can tell which adverts lead to someone actually looking at the work.
+      It reports your visit to Meta, and if you have a Facebook or Instagram
+      account Meta can connect that visit to it. It may also be used to show you
+      our adverts afterwards.
+    </p>
+    <p>
+      This is the one thing on this site that is here for our benefit rather than
+      yours, so we would rather say so plainly than bury it. You can limit it in
+      your Meta account's ad settings, and a tracker blocker stops it here.
+    </p>
+
+    <h2>Turning all of it off</h2>
+    <p>
+      None of the three loads before the page has rendered, and none of them is
+      needed for the site to work — every page is readable with JavaScript turned
+      off completely. Blocking third-party scripts, or using a browser that does
+      it for you, stops all three without breaking anything you came here to read.
     </p>
 
     <h2>The chat widget</h2>
@@ -39,8 +81,8 @@ const schema = {
       Most pages carry a chat widget provided by LeadConnector, which is the
       messaging tool behind our customer relationship system. It loads after the
       page has rendered — when you first scroll, tap or type, or shortly after if
-      you do none of those — rather than immediately, and it is not present on the
-      contact or guarantee pages.
+      you do none of those — rather than immediately. It is on the contact page,
+      where it is the quote form, and not on the guarantee or privacy pages.
     </p>
     <p>
       When it loads it runs LeadConnector's own code and will set its own storage
@@ -77,8 +119,8 @@ const schema = {
       Where we link out — to our Google Business Profile, to a review platform, to
       a quote form hosted elsewhere — that service has its own privacy terms and
       its own cookies, and following the link puts you under those rather than
-      these. If we later add analytics, this page will say so before it ships and
-      will name what it is — as it does above for the chat widget.
+      these. Analytics and the advertising pixel
+      are named above, which is the promise this page previously made about them.
     </p>
 
     <h2>Asking about your information</h2>

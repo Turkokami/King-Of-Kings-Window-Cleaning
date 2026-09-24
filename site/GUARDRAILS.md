@@ -19,8 +19,8 @@ who decided it and when. If something here looks wrong, raise it — do not
 | Component | `src/components/ChatWidget.astro` |
 | Kill switch | `chatWidget.enabled = false` turns it off everywhere in one edit |
 
-**This is the only client-side JavaScript in the project.** If you find a second
-one, something has gone wrong.
+**There are exactly two client-side scripts in this project**: this widget's
+loader and `Analytics.astro`. If you find a third, something has gone wrong.
 
 **It is the lead capture.** The widget is not a support chat — it opens "Get a
 Free Estimate" and collects name, phone and a message with an SMS consent
@@ -73,6 +73,28 @@ changing:**
   the site operator on 22 Sep 2026 — "chat widget works great."** That closes the
   open browser pass. Re-check after any vendor change: the loader's payload can
   move without the tag moving, which is the whole reason this note exists.
+
+### Analytics — GA4 and the Meta pixel, added 24 Sep 2026
+
+Carried over from the legacy site at the operator's direction so the cutover does
+not put a hole in the client's own data. GA4 `G-21TYNNYE42` continues the SAME
+property — a fresh measurement ID would have reset sixteen months of history on
+the day the site got better. Meta pixel `1514930130117745`; the business runs ads
+off it. Kill switch: `BUSINESS.analytics.enabled = false`.
+
+**Its idle cap is 1200ms, not the widget's 8000ms, and that is deliberate.** The
+widget can wait for an interaction because a visitor who never interacts never
+needed it. A pageview that waits for an interaction never fires at all: every
+bounced visit vanishes, the numbers land under the legacy site's, and the
+comparison the client will actually make — "is the new site doing better?" — is
+corrupted in our favour. Undercounting your own traffic is worse than not
+measuring it, because it looks like data.
+
+**`/privacy/` names all three services in plain words** and has to be updated in
+the same commit as anything added to `BUSINESS.analytics`. The page previously
+promised it would name any analytics before they shipped; that promise was kept
+on 24 Sep 2026, which is why the pixel is described as what it is rather than as
+"marketing technologies".
 
 ---
 

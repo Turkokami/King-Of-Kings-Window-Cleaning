@@ -1,0 +1,91 @@
+---
+/**
+ * Analytics.astro — GA4 and the Meta pixel, carried over from the legacy site.
+ *
+ * PROVENANCE. Both IDs read off the legacy pages on 24 Sep 2026; the operator
+ * approved carrying both over the same day, so the cutover does not put a hole
+ * in sixteen months of the client's own data. GA4 continues the SAME property
+ * (G-21TYNNYE42) — a fresh measurement ID would have reset the history on the
+ * day the site got better.
+ *
+ * WHY IT IS NOT THE STANDARD SNIPPET. Same reasoning as ChatWidget.astro: this
+ * build ships almost no client JavaScript and a blocking third-party tag in the
+ * head is the classic INP and LCP regressor.
+ *
+ * BUT — AND THIS IS THE DIFFERENCE FROM THE CHAT WIDGET — analytics cannot be
+ * deferred as lazily. The widget can wait for an interaction, because a visitor
+ * who never interacts never needed it. A pageview that waits for an interaction
+ * simply never fires: every bounced visit disappears, the numbers quietly fall
+ * short of the legacy site's, and the comparison the client will actually make
+ * ("is the new site doing better?") is corrupted in the new site's favour.
+ * Undercounting your own traffic is worse than not measuring it, because it
+ * looks like data.
+ *
+ * So: still never before paint, but a hard 1200ms idle cap rather than the
+ * widget's 8000ms, and any earlier interaction wins. That registers effectively
+ * every real session while still letting the page paint first.
+ *
+ * The `<script>` tags are `is:inline` deliberately — they must not be bundled.
+ */
+import { BUSINESS } from '../data/business';
+
+const a = BUSINESS.analytics;
+const show = a.enabled && Boolean(a.ga4 || a.metaPixel);
+---
+{show && (
+  <script is:inline define:vars={{ ga4: a.ga4, pixel: a.metaPixel }}>
+    (function () {
+      var fired = false;
+      function start() {
+        if (fired) return;
+        fired = true;
+        ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+          window.removeEventListener(e, start, { passive: true });
+        });
+
+        if (ga4) {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', ga4);
+          var g = document.createElement('script');
+          g.async = true;
+          g.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4;
+          document.head.appendChild(g);
+        }
+
+        if (pixel) {
+          /* Meta's own stub, trimmed: it queues calls until the library lands,
+             which is what lets us fire PageView before the network round-trip. */
+          var n = window.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!window._fbq) window._fbq = n;
+          n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+          var f = document.createElement('script');
+          f.async = true;
+          f.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          document.head.appendChild(f);
+          window.fbq('init', pixel);
+          window.fbq('track', 'PageView');
+        }
+      }
+
+      /* Never before paint. Any real interaction wins; otherwise idle with a
+         short cap, so a visitor who reads one page and leaves is still counted. */
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, start, { passive: true, once: true });
+      });
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(start, { timeout: 1200 });
+      } else {
+        setTimeout(start, 1200);
+      }
+      /* A visit that ends before either of those fires would go unrecorded, so
+         catch the page being hidden or closed as well. */
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') start();
+      });
+    })();
+  </script>
+)}

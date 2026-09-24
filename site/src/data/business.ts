@@ -45,6 +45,27 @@ export const BUSINESS = {
   googleSiteVerification: 'v5xFp4f0OrK06YDLso2eXmNc7-h7WjKzxNj2zLwmx1I',
 
   /**
+   * Analytics carried over from the legacy site so the cutover does not put a
+   * hole in the client's own data. Both IDs were read off the legacy pages on
+   * 24 Sep 2026; the operator approved carrying both the same day.
+   *
+   * GA4 continues the SAME property, which is the point — a new measurement ID
+   * would have reset the history on the day the site got better, making the
+   * rebuild impossible to evaluate.
+   *
+   * The pixel is here because the business runs Meta ads off it. It is the only
+   * thing on this site that exists for someone other than the visitor, which is
+   * why it is named plainly on /privacy/ rather than buried.
+   *
+   * Kill switch: set `enabled` false and both stop shipping everywhere.
+   */
+  analytics: {
+    enabled: true,
+    ga4: 'G-21TYNNYE42',                                    // VERIFIED — legacy site
+    metaPixel: '1514930130117745',                          // VERIFIED — legacy site
+  },
+
+  /**
    * Third-party chat widget — LeadConnector / GoHighLevel.
    *
    * Requested 2026-09-14 by Cassidy Alber via the business inbox, forwarded by
