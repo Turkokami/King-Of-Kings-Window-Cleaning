@@ -39,6 +39,12 @@ const jsonld = buildGraph({ ...schema, description });
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex,follow" />}
+  {/* Keeps the Search Console property verified through the cutover. The legacy
+      site verifies by meta tag, so serving this is what stops Google
+      un-verifying the property the moment DNS points here. */}
+  {BUSINESS.googleSiteVerification && (
+    <meta name="google-site-verification" content={BUSINESS.googleSiteVerification} />
+  )}
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={BUSINESS.name} />

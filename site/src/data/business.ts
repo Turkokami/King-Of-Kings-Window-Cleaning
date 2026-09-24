@@ -30,6 +30,21 @@ export const BUSINESS = {
   socialImage: '/brand/king-of-kings-social.jpg',           // M7 — shared hero on every page
 
   /**
+   * Search Console's verification token, read off the legacy site's <head> on
+   * 24 Sep 2026.
+   *
+   * THIS IS A CUTOVER BLOCKER, NOT A NICETY. The GSC property is verified by a
+   * meta tag served from the site. The moment DNS points here, a build without
+   * this tag stops serving it, and Google un-verifies the property — taking the
+   * owner's access to sixteen months of performance data, the index coverage
+   * reports and the sitemap submission with it, right when they are most needed.
+   *
+   * It is a public token. It proves control of the site to Google and nothing
+   * else, which is why it is safe to commit and pointless to hide.
+   */
+  googleSiteVerification: 'v5xFp4f0OrK06YDLso2eXmNc7-h7WjKzxNj2zLwmx1I',
+
+  /**
    * Third-party chat widget — LeadConnector / GoHighLevel.
    *
    * Requested 2026-09-14 by Cassidy Alber via the business inbox, forwarded by
