@@ -2,7 +2,9 @@
   "name": "king-of-kings-window-cleaning",
   "type": "module",
   "private": true,
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "astro dev",
     "photos:index": "node scripts/build-photo-index.mjs",
@@ -10,8 +12,15 @@
     "preview": "astro preview",
     "verify": "node scripts/content-links.mjs && node scripts/dead-links.mjs && node scripts/seo-audit.mjs && node scripts/word-count.mjs && node scripts/dedup.mjs && node scripts/citability.mjs && node scripts/a11y.mjs && node scripts/keyword-map-check.mjs && node scripts/validate-schema.mjs",
     "research": "node scripts/research-report.mjs",
-    "typecheck": "tsc -p tsconfig.check.json --noEmit"
+    "typecheck": "tsc -p tsconfig.check.json --noEmit",
+    "redirects": "node scripts/sync-redirects.mjs"
   },
-  "dependencies": { "astro": "^5.0.0" },
-  "devDependencies": { "typescript": "^5.6.0", "@astrojs/check": "^0.9.0", "linkedom": "^0.18.5" }
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@astrojs/check": "^0.9.0",
+    "linkedom": "^0.18.5"
+  }
 }

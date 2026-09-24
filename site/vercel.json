@@ -990,6 +990,236 @@
       "source": "/window-cleaning-sunnyland-bellingham/",
       "destination": "/locations/bellingham/window-cleaning/",
       "permanent": true
+    },
+    {
+      "source": "/100-5-star-reviews-and-counting-thank-you-from-king-of-kings-window-cleaning-llc/",
+      "destination": "/reviews/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/",
+      "destination": "/surface-library/",
+      "permanent": true
+    },
+    {
+      "source": "/careers/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/category/gutter-cleaning/page/2/",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/window-cleaning/page/2/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/category/window-cleaning/page/3/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/does-solar-panel-cleaning-really-increase-energy-production/",
+      "destination": "/services/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/eco-friendly-moss-removal-solutions-for-washington-state-safe-alternatives-to-harmful-chemicals/",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/how-moss-damages-your-roof-and-how-to-protect-it/",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/how-often-should-you-clean-your-windows-a-seasonal-guide-for-northwest-wa-homeowners/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/how-often-should-you-clean-your-windows-for-the-best-results-in-bellingham-surrounding-areas/",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/instant-quote/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/moss-prevention-tips-for-bellingham-homeowners-what-to-know-this-season/",
+      "destination": "/locations/bellingham/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/pressure-washing-slippery-driveways-walkways-winter-safety-tips-for-homeowners/",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-roof-cleaning-moss-removal-for-fall-winter-in-bellingham-surrounding-areas/",
+      "destination": "/locations/bellingham/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/professional-solar-panel-cleaning-in-bow-wa-protecting-your-solar-investment/",
+      "destination": "/services/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/",
+      "destination": "/gallery/",
+      "permanent": true
+    },
+    {
+      "source": "/randy-fee/",
+      "destination": "/team/randy-fee/",
+      "permanent": true
+    },
+    {
+      "source": "/referral-program/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/residential-window-cleaning/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/services/commercial-power-washing/",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/spring-cleaning-starts-with-your-windows-why-professional-window-washing-is-essential/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/the-benefits-of-professional-gutter-cleaning-in-sedro-woolley-for-year-round-protection/",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/the-benefits-of-professional-window-washing-for-spring-cleaning/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/top-5-dangers-of-clogged-gutters-every-homeowner-in-whatcom-skagit-county-should-know/",
+      "destination": "/services/gutter-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/top-5-questions-customers-ask-about-window-washing/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/transform-your-home-with-full-exterior-cleaning-services/",
+      "destination": "/services/house-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/transform-your-view-with-professional-window-cleaning/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/trusted-partners/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/why-fall-is-the-best-time-for-pressure-washing-in-bellingham-surrounding-areas/",
+      "destination": "/locations/bellingham/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/why-moss-grows-so-fast-in-bellingham-surrounding-areas-and-how-professional-roof-cleaning-protects-your-home/",
+      "destination": "/locations/bellingham/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/why-pressure-washing-is-perfect-for-pacific-northwest-homes-in-sedro-woolley/",
+      "destination": "/services/pressure-washing/",
+      "permanent": true
+    },
+    {
+      "source": "/why-professional-window-cleaning-matters-for-homes-in-ferndale-wa/",
+      "destination": "/locations/ferndale/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/why-pure-water-is-the-only-safe-way-to-clean-solar-panels/",
+      "destination": "/services/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/why-roof-moss-removal-is-essential-for-homes-in-ferndale-wa-this-season/",
+      "destination": "/locations/ferndale/",
+      "permanent": true
+    },
+    {
+      "source": "/why-roof-moss-removal-is-essential-for-mount-vernon-homeowners/",
+      "destination": "/locations/mount-vernon/",
+      "permanent": true
+    },
+    {
+      "source": "/why-roof-moss-removal-is-important-for-homes-in-mount-vernon-wa/",
+      "destination": "/locations/mount-vernon/",
+      "permanent": true
+    },
+    {
+      "source": "/why-solar-panel-cleaning-in-bellingham-wa-helps-maximize-energy-production/",
+      "destination": "/locations/bellingham/solar-panel-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/why-winter-window-washing-matters-in-bellingham-surrounding-areas/",
+      "destination": "/locations/bellingham/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/window-cleaning-downtown-burlington/",
+      "destination": "/locations/burlington/window-cleaning/",
+      "permanent": true
+    },
+    {
+      "source": "/winter-moss-removal-roof-cleaning-why-treating-moss-now-saves-your-roof/",
+      "destination": "/services/moss-removal/",
+      "permanent": true
+    },
+    {
+      "source": "/winter-window-washing-why-clean-windows-matter-even-in-cold-weather/",
+      "destination": "/services/window-cleaning/",
+      "permanent": true
     }
   ]
 }
