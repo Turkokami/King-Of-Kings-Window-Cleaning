@@ -1130,3 +1130,16 @@ img { max-width: 100%; height: auto; }
 .cta__btn--primary { background: var(--gold); color: var(--gold-ink); }
 .cta__btn--primary:hover { background: var(--gold-hover); color: var(--gold-ink); }
 .cta__btn:hover { background: rgb(13 21 38 / 0.06); }
+
+/* --- Before/after alignment in a list --------------------------------------
+ * `p, li { max-width: var(--measure) }` is a READING rule — it keeps lines of
+ * text at 68ch. The gallery and the home page wrap each before/after in an <li>,
+ * so that rule was also capping the picture at 705px and leaving it flush left
+ * inside a 1120px band, under a heading that spans the full width. It read as
+ * broken because it was: a text measure applied to a photograph.
+ *
+ * The frame keeps that width — 44rem is the same size it has been — but it is
+ * now stated on purpose and centred under the heading. In markdown bodies the
+ * split frame is not inside an <li>, so it was never affected and is untouched. */
+.ba-list > li { max-width: none; }
+.ba-list .ba-split { max-width: 44rem; margin-inline: auto; }
