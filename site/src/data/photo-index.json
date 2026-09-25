@@ -223,18 +223,18 @@
   ],
   "roof-cleaning": [
    {
-    "file": "/photos/work/rinsing-steep-shingle-roof.webp",
+    "file": "/photos/work/rinsing-metal-shingle-roof-from-ridge.webp",
     "width": 1152,
     "height": 738,
-    "alt": "Steep gray shingled roof being rinsed with a low-pressure stream of water",
-    "caption": "Rinsing down a steep pitch from the ridge, worked from a ladder rather than from the shingles."
+    "alt": "Steep gray metal shingle roof being rinsed with a low-pressure stream of water",
+    "caption": "Rinsing down a steep pitch from the ridge, worked from a ladder rather than off the roof itself."
    },
    {
-    "file": "/photos/work/rinsing-shingled-roof-low-pressure.webp",
+    "file": "/photos/work/low-pressure-rinse-metal-shingle-roof.webp",
     "width": 1200,
     "height": 1600,
-    "alt": "Shingled roof being sprayed with a low-pressure stream from a hose",
-    "caption": "The only pressure a composition roof should ever see."
+    "alt": "Metal shingle roof being rinsed at low pressure from a hose",
+    "caption": "A metal roof pressed to look like asphalt shingle — easy to misread from the ground, and it changes what the roof can safely take. Low pressure either way: pressure strips coatings off metal."
    },
    {
     "file": "/photos/work/shingle-roof-ridge-after-treatment.webp",
@@ -360,13 +360,6 @@
   ],
   "metal-roof-soft-washing": [
    {
-    "file": "/photos/work/metal-roof-dulled-before-cleaning.webp",
-    "width": 1320,
-    "height": 980,
-    "alt": "Green standing-seam metal roof on a stone home before cleaning, dulled by organic growth",
-    "caption": "Before, Whatcom County. The green finish is still under there; what you see is growth sitting on the coating."
-   },
-   {
     "file": "/photos/work/standing-seam-metal-roof-assessed.webp",
     "width": 1200,
     "height": 1600,
@@ -405,8 +398,8 @@
     "file": "/photos/work/metal-roof-green-finish-restored.webp",
     "width": 1320,
     "height": 942,
-    "alt": "The stone home's metal roof after cleaning, with the green finish restored",
-    "caption": "After, from the same position as the first photograph in this run."
+    "alt": "A stone home's green standing-seam metal roof in Whatcom County",
+    "caption": "Whatcom County. Standing seam takes a soft wash and nothing harder — the colour is a coating, and pressure takes it off."
    }
   ],
   "house-washing": [
@@ -1550,23 +1543,6 @@
     "height": 1400,
     "alt": "The same skylights after debris removal, fully exposed on a cleared roof",
     "caption": "After, same skylights."
-   }
-  },
-  {
-   "label": "Metal roof, Whatcom County",
-   "before": {
-    "file": "/photos/work/metal-roof-dulled-before-cleaning.webp",
-    "width": 1320,
-    "height": 980,
-    "alt": "Green standing-seam metal roof on a stone home before cleaning, dulled by organic growth",
-    "caption": "Before, Whatcom County. The green finish is still under there; what you see is growth sitting on the coating."
-   },
-   "after": {
-    "file": "/photos/work/metal-roof-green-finish-restored.webp",
-    "width": 1320,
-    "height": 942,
-    "alt": "The stone home's metal roof after cleaning, with the green finish restored",
-    "caption": "After, from the same position as the first photograph in this run."
    }
   },
   {

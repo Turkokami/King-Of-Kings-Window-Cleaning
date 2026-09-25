@@ -60,9 +60,19 @@ const schema = {
       <Photo photo={HOME_HERO} priority class="hero__media" />
       <p class="eyebrow">Whatcom &amp; Skagit County · Locally owned</p>
       <h1>Window &amp; Exterior Cleaning in <span class="accent">Bellingham, WA</span></h1>
+      {/*
+        Randy, 24 Sep 2026: the opening has to name the pressure washing work —
+        driveways and decks — and solar panels. It was reading as a
+        windows-and-gutters company, which undersells half the van.
+
+        NOT "pressure washes solar panels". Panels are cleaned with purified
+        water at low pressure; a pressure washer on a panel is how you void the
+        warranty. The sentence keeps the two apart on purpose.
+      */}
       <p class="hero__lead">
-        Windows, gutters, roofs and siding — cleaned on a schedule that suits a
-        wet, wooded, coastal county, from Bellingham to Anacortes.
+        Windows, gutters, roofs and siding, pressure washing for driveways and
+        decks, and solar panel cleaning — on a schedule that suits a wet, wooded,
+        coastal county, from Bellingham to Anacortes.
       </p>
 
       <AnswerBox text={answer} />

@@ -1,7 +1,7 @@
 ---
 title: "Window & Exterior Cleaning in Bellingham WA | King of Kings"
-answer: "King of Kings cleans windows, gutters, roofs and siding across Whatcom and Skagit County, from Bellingham to Anacortes. Owner Randy Fee trains every technician personally. The company holds a Washington State business licence and carries Labor & Industries coverage, and every job is quoted on site, in person, for free."
-metaDescription: "Window, gutter, roof and siding cleaning across Whatcom and Skagit County. Owner-trained crews, licensed and L&I insured, free on-site quotes."
+answer: "King of Kings cleans windows, gutters, roofs and siding across Whatcom and Skagit County, pressure washes driveways and decks, and cleans solar panels — from Bellingham to Anacortes. Owner Randy Fee trains every technician personally. The company holds a Washington State business licence and carries Labor & Industries coverage, and every job is quoted on site, in person, for free."
+metaDescription: "Window, gutter, roof and siding cleaning, pressure washing and solar panel cleaning across Whatcom and Skagit County. Free on-site quotes."
 heroImage: "/brand/king-of-kings-social.jpg"
 heroAlt: "King of Kings technician cleaning first-floor commercial glass from a ladder"
 kind: "home"

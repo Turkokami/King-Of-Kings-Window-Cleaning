@@ -191,12 +191,17 @@ const sedroWoolleyMoss: Photo[] = [
 ];
 
 const roofWork: Photo[] = [
-  w('rinsing-steep-shingle-roof', 1152, 738,
-    'Steep gray shingled roof being rinsed with a low-pressure stream of water',
-    'Rinsing down a steep pitch from the ridge, worked from a ladder rather than from the shingles.'),
-  w('rinsing-shingled-roof-low-pressure', 1200, 1600,
-    'Shingled roof being sprayed with a low-pressure stream from a hose',
-    'The only pressure a composition roof should ever see.'),
+  // CORRECTED 24 Sep 2026 by Randy: "This roof looks like a composite roof but
+  // actual a metal that looks like asphalt." Both frames were captioned as
+  // composition shingle and are not — the give-away is the valley, which is one
+  // continuous sheet rather than cut courses. Renamed as well as recaptioned, so
+  // the filename cannot put them back on a composition page by keyword match.
+  w('rinsing-metal-shingle-roof-from-ridge', 1152, 738,
+    'Steep gray metal shingle roof being rinsed with a low-pressure stream of water',
+    'Rinsing down a steep pitch from the ridge, worked from a ladder rather than off the roof itself.'),
+  w('low-pressure-rinse-metal-shingle-roof', 1200, 1600,
+    'Metal shingle roof being rinsed at low pressure from a hose',
+    'A metal roof pressed to look like asphalt shingle — easy to misread from the ground, and it changes what the roof can safely take. Low pressure either way: pressure strips coatings off metal.'),
   w('shingle-roof-ridge-after-treatment', 1152, 738,
     'High-angle view along a shingle roof ridge with a vent pipe, water beyond',
     'Composition shingle with the growth taken off it. The granules are the wearing surface and they do not grow back.'),
@@ -212,9 +217,6 @@ const roofWork: Photo[] = [
 ];
 
 const metalRoof: Photo[] = [
-  w('metal-roof-dulled-before-cleaning', 1320, 980,
-    'Green standing-seam metal roof on a stone home before cleaning, dulled by organic growth',
-    'Before, Whatcom County. The green finish is still under there; what you see is growth sitting on the coating.'),
   w('standing-seam-metal-roof-assessed', 1200, 1600,
     'Standing-seam metal roof inspected and assessed before a low-pressure soft wash',
     'Assessed before anything is applied — coating condition decides what the roof can take.'),
@@ -230,9 +232,14 @@ const metalRoof: Photo[] = [
   w('metal-roof-clean-after-soft-wash', 1320, 942,
     'Standing-seam metal roof after a low-pressure soft wash, clean and reflective',
     'After. Nothing was recoated — that is the original finish with the growth taken off it.'),
+  // REMOVED FROM THE BEFORE/AFTER SET 24 Sep 2026. Randy: "Those metal roofs are
+  // the same pics." He was right — the two frames were 8 apart on a perceptual
+  // hash, i.e. the same shot seconds apart, presented as before and after. The
+  // near-duplicate is deleted and this one keeps no claim about which it is,
+  // because nothing in the frame proves it either way.
   w('metal-roof-green-finish-restored', 1320, 942,
-    "The stone home's metal roof after cleaning, with the green finish restored",
-    'After, from the same position as the first photograph in this run.'),
+    "A stone home's green standing-seam metal roof in Whatcom County",
+    'Whatcom County. Standing seam takes a soft wash and nothing harder — the colour is a coating, and pressure takes it off.'),
 ];
 
 /* ----------------------------------------------------------- house washing */
@@ -389,7 +396,6 @@ export const BEFORE_AFTER: BeforeAfter[] = [
   { label: 'Roof edge and gutter, Sedro-Woolley', before: byFile(gutterWork, 'roof-and-gutter-covered-in-debris-before'), after: byFile(gutterWork, 'roof-edge-and-gutter-cleared-after') },
   { label: 'Roof moss, Sedro-Woolley', before: byFile(sedroWoolleyMoss, 'roof-buried-in-moss-before-sedro-woolley'), after: byFile(sedroWoolleyMoss, 'roof-ridge-after-moss-removal') },
   { label: 'Buried skylights, Sedro-Woolley', before: byFile(sedroWoolleyMoss, 'skylights-buried-in-debris-before'), after: byFile(sedroWoolleyMoss, 'skylights-clear-after-moss-removal') },
-  { label: 'Metal roof, Whatcom County', before: byFile(metalRoof, 'metal-roof-dulled-before-cleaning'), after: byFile(metalRoof, 'metal-roof-green-finish-restored') },
   { label: 'Side wall, Lynden', before: byFile(lyndenHouseWash, 'side-wall-before-house-washing-lynden'), after: byFile(lyndenHouseWash, 'side-wall-after-house-washing-lynden') },
   { label: 'Siding close-up, Lynden', before: byFile(lyndenHouseWash, 'lap-siding-close-up-before-soft-wash'), after: byFile(lyndenHouseWash, 'lap-siding-close-up-after-soft-wash') },
   { label: 'Long wall, Lynden', before: byFile(lyndenHouseWash, 'long-wall-before-house-washing-lynden'), after: byFile(lyndenHouseWash, 'long-wall-after-house-washing-lynden') },
@@ -417,9 +423,11 @@ export const SERVICE_HERO: Record<string, Photo> = {
   'gutter-cleaning': hero('/photos/service/gutter-cleaning-hero.webp', 1320, 942,
     'Roof edge and gutter cleared of debris, with the shingle surface exposed',
     'A cleared roof edge and gutter line in Whatcom County.'),
+  // Same frame as rinsing-metal-shingle-roof-from-ridge, and the same correction:
+  // this is metal profiled to look like shingle, not composition.
   'roof-cleaning': hero('/photos/service/roof-cleaning-hero.webp', 1152, 738,
-    'Steep gray shingled roof being rinsed with a low-pressure stream of water',
-    'Rinsing a shingle roof at low pressure — the only pressure a composition roof should see.'),
+    'Steep gray metal shingle roof being rinsed with a low-pressure stream of water',
+    'Rinsing a roof at low pressure from the ridge. Low pressure is the rule on every roof covering we work on.'),
   'moss-removal': hero('/photos/service/moss-removal-hero.webp', 1073, 1400,
     'Asphalt roof buried under thick moss, needles and forest debris before treatment',
     'Sedro-Woolley, before treatment. This is what a shaded roof does under forest cover here.'),
