@@ -1220,6 +1220,11 @@
       "source": "/winter-window-washing-why-clean-windows-matter-even-in-cold-weather/",
       "destination": "/services/window-cleaning/",
       "permanent": true
+    },
+    {
+      "source": "/window-cleaning-downtown-mount-vernon/",
+      "destination": "/locations/mount-vernon/",
+      "permanent": true
     }
   ]
 }
